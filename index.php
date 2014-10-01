@@ -10,7 +10,23 @@
 	<li><a href="phpinfo.php"><?php echo 'PHP '.phpversion();?></a></li>
 	<li><?php echo 'Apache '.apache_get_version();?></li>
 </ul>
-	<?php
-	?>
+<div>
+	<h1>pg</h1>
+	<ul>
+		<li><a href="pg/profiz_mailing">Версталка рассылок profiz.ru</a></li>
+	</ul>
+</div>
+<div>
+	<h1>learning</h1>
+	<ul>
+		<li><a href="learning/specialist">specialist</a></li>
+		<ul>
+			<li><a href="learning/specialist/level1">level1</a></li>
+			<li><a href="learning/specialist/level2">level2</a></li>
+			<li><a href="learning/specialist/level3">level3</a></li>
+			<li><a href="learning/specialist/level4">level4</a></li>
+		</ul>
+	</ul>
+</div>
 </body>
 </html>
