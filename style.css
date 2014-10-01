@@ -1,0 +1,15 @@
+a {
+    text-decoration: underline;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.alert {
+
+}
+
+.error {
+	background-color: #e64530;
+}
