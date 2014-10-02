@@ -20,7 +20,10 @@ abstract class AUser {
 class User extends AUser {
 	public  static $countObjects = 0;
 	public function __construct() {
-		self::$countObjects++;
+		++self::$countObjects;
+	}
+	public function __clone() {
+		++self::$countObjects;
 	}
 	public function showInfo(){}
 }
@@ -35,10 +38,14 @@ class SuperUser extends User implements ISuperUser {
 	public $role;
 	public  static $countObjects = 0;
 	public function __construct($login, $password, $role) {
-		self::$countObjects++;
+		++self::$countObjects;
 		$this->login = $login;
 		$this->password = $password;
 		$this->role = $role;
+	}
+
+	public function __clone() {
+		++self::$countObjects;
 	}
 
 	public function getInfo(){
@@ -50,11 +57,13 @@ $su = new SuperUser('Supa', '123', 'admin');
 $su = new SuperUser('Supa', '123', 'admin');
 $su = new SuperUser('Supa', '123', 'admin');
 $su = new SuperUser('Supa', '123', 'admin');
+$su = clone $su;
 $su = new User();
 $su = new User();
 $su = new User();
 $su = new User();
 $su = new User();
+$su = clone $su;
 echo 'Всего обычных пользователей: '.User::$countObjects;
 echo '<br>';
 echo 'Всего супер-пользователей: '.SuperUser::$countObjects;
