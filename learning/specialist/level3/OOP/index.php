@@ -5,8 +5,15 @@
 		public $login;
 		public $password;
 
-		public function __construct($name, $login, $pass) {
-			$this->name = $name;
+		public function __construct($name = null, $login = null, $pass = null) {
+			try {
+				if(!$name) {
+					throw new Exception('Не указано имя!');
+				}
+				$this->name = $name;
+			} catch(Exception $e) {
+				echo $e->getMessage();
+			}
 			$this->login = $login;
 			$this->password = $pass;
 		}
@@ -62,9 +69,51 @@ echo '<hr>';
 echo $user->getMethodName();
 echo '<hr>';
 
-$a = 'a';
-$b = 'b';
+$user4 = new User();
 
-$a =& $b;
+class MyExceptionOne extends Exception {
+	public function __construct($msg) {
+		parent::__construct($msg);
+	}
+}
 
-var_dump($a);
+class MyExceptionTwo extends Exception {
+	public function __construct($msg) {
+		parent::__construct($msg);
+	}
+}
+
+class Animal {
+	public $name;
+	public $age;
+
+	public function __construct($n=null, $a=0) {
+		try {
+			if(!$n) {
+				throw new MyExceptionOne('Нет имени');
+			}
+			if(!$a) {
+				throw new MyExceptionTwo('Не указан возраст');
+			}
+			if(!isset($z)) {
+				throw new MyExceptionTwo('Нет z');
+			}
+			$this->name = $n;
+			$this->age = $a;
+
+		} catch(Exception $e) {
+			echo 'Here '.$e->getMessage();
+		} catch(MyExceptionTwo $e) {
+			echo $e->getMessage();
+		} catch(MyExceptionOne $e) {
+			echo $e->getMessage();
+		}
+
+	}
+}
+echo '<hr>';
+$animal = new Animal('Vaska', 5);
+echo '<hr>';
+$animal = new Animal('Bobik');
+echo '<hr>';
+$animal = new Animal(null, 7);
