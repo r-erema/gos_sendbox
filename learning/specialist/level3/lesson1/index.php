@@ -11,6 +11,10 @@
 			$this->password = $pass;
 		}
 
+		public function User() {
+			echo 'construct';
+		}
+
 		public function __destruct() {
 			echo "$this->login мёртв, бедный $this->name<br>";
 		}
