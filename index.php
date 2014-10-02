@@ -19,13 +19,19 @@
 <div>
 	<h1>learning</h1>
 	<ul>
-		<li><a href="learning/specialist">specialist</a></li>
-		<ul>
-			<li><a href="learning/specialist/level1">level1</a></li>
-			<li><a href="learning/specialist/level2">level2</a></li>
-			<li><a href="learning/specialist/level3">level3</a></li>
-			<li><a href="learning/specialist/level4">level4</a></li>
-		</ul>
+		<li><a href="learning/specialist">specialist</a>
+			<ul>
+				<li><a href="learning/specialist/level1">level1</a></li>
+				<li><a href="learning/specialist/level2">level2</a></li>
+				<li><a href="learning/specialist/level3">level3</a></li>
+				<li><a href="learning/specialist/level4">level4</a></li>
+			</ul>
+		</li>
+		<li><a href="learning/php.net">php.net</a>
+			<ul>
+				<li><a href="learning/php.net/links">links</a><li>
+			</ul>
+		</li>
 	</ul>
 </div>
 </body>

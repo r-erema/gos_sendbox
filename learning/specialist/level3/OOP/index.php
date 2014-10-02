@@ -45,7 +45,7 @@ $user2 = new User('Жора', 'nasos', 'aroj');
 $user2->showInfo();
 echo '<hr>';
 
-$user3 = new User('Rocky', 'ItalianStalion', 'knock-out');
+$user3 = new User('Rocky', 'ItalianStallion', 'knock-out');
 $user3->showInfo();
 echo '<hr>';
 
@@ -57,3 +57,10 @@ echo '<hr>';
 
 echo $user->getMethodName();
 echo '<hr>';
+
+$a = 'a';
+$b = 'b';
+
+$a =& $b;
+
+var_dump($a);
