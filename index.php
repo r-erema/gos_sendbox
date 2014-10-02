@@ -32,6 +32,12 @@
 				<li><a href="learning/php.net/links">links</a><li>
 			</ul>
 		</li>
+		<li>
+			<a href="learning/other">other</a>
+			<ul>
+				<li><a href="learning/other/links">links</a></li>
+			</ul>
+		</li>
 	</ul>
 </div>
 </body>
