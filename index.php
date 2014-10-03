@@ -14,6 +14,7 @@
 	<h1>pg</h1>
 	<ul>
 		<li><a href="pg/profiz_mailing">Версталка рассылок profiz.ru</a></li>
+		<li><a href="pg/digest-coder">Версталка дайджеста</a></li>
 	</ul>
 </div>
 <div>
