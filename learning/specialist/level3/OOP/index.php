@@ -11,12 +11,12 @@
 			$this->password = $pass;
 		}
 
-		public function __destruct() {
-			echo "<span style='color: #af0000'>Деструктор:</span> $this->login мёртв, бедный $this->name<br>";
+		public function User() {
+			echo 'construct';
 		}
 
-		public function __clone() {
-			echo "<span style='color: #4baf53'>Клонирование:</span> Объект с именем $this->name клонирован<br>";
+		public function __destruct() {
+			echo "$this->login мёртв, бедный $this->name<br>";
 		}
 
 		public function showInfo() {
@@ -62,23 +62,9 @@ echo '<hr>';
 echo $user->getMethodName();
 echo '<hr>';
 
-$user4 = clone $user3;
-$user4->showInfo();
+$a = 'a';
+$b = 'b';
 
-class SuperUser extends User {
-	public $role;
+$a =& $b;
 
-	public function __construct($name, $login, $pass, $role) {
-		parent::__construct($name, $login, $pass);
-		$this->role = $role;
-	}
-	public function showInfo() {
-		parent::showInfo();
-		echo "<p>Пароль: $this->role</p>";
-	}
-}
-
-$user5 = new SuperUser('Super', 'Vasya', '345', 'admin');
-echo '<hr>';
-$user5->showInfo();
-echo '<hr>';
+var_dump($a);
