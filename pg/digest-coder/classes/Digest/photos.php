@@ -67,4 +67,9 @@
 	    'Д.Ю. Бирук' => "biruk.png",
 	    'Е.Н. Бурак' => "burak.png",
 	    'М.В. Шатило' => "shatilo.png",
+		'Ю.К. Прокопенкова' => "prokopenkova.png",
+		'Н.С. Хаданович' => "hadanovich.png",
+		'Г.А. Худоченко' => "hudochenko.png",
+		'В.В. Толкач' => "tolkach.png",
+		'Н.Л. Сивец' => "sivec.png",
     );

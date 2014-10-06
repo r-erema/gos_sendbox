@@ -37,6 +37,7 @@
 			<a href="learning/other">other</a>
 			<ul>
 				<li><a href="learning/other/links">links</a></li>
+				<li><a href="learning/other/lateStaticBinding">Late Static Binding</a></li>
 			</ul>
 		</li>
 	</ul>
