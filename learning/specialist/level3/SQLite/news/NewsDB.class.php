@@ -45,9 +45,16 @@
 		}
 
 		public function saveNews($title, $category, $description, $source){
-			$dateTime = time();
-			$sql = "INSERT INTO messages(title, category, description, source, datetime) VALUES ('$title', $category, '$description', '$source', $dateTime)";
-			$this->_db->exec($sql) || die($this->_db->lastErrorMsg());
+			try {
+				$dateTime = time();
+				$sql = "INSERT INTO messages(title, category, description, source, datetime) VALUES ('$title', $category, '$description', '$source', $dateTime)";
+				$res = $this->_db->exec($sql);
+				if(!$res) {
+					throw new Exception($this->_db->lastErrorMsg());
+				}
+			} catch(Exception $e) {
+				return false;
+			}
 		}
 
 		protected function db2Arr(SQLite3Result $data) {
@@ -59,11 +66,18 @@
 		}
 
 		public function getNews(){
-			$sql = "SELECT messages.id as id, title, CATEGORIES.name as category, description, source, datetime
+			try {
+				$sql = "SELECT messages.id as id, title, CATEGORIES.name as category, description, source, datetime
 					FROM messages, CATEGORIES WHERE CATEGORIES.id = messages.category
 					ORDER BY messages.id DESC";
-			($res = $this->_db->query($sql)) || die($this->_db->lastErrorMsg());
-			return$this->db2Arr($res);
+				$res = $this->_db->query($sql);
+				if(!is_object($res)) {
+					throw new Exception($this->_db->lastErrorMsg());
+				}
+				return$this->db2Arr($res);
+			} catch(Exception $e) {
+				return false;
+			}
 		}
 
 		public function deleteNews($id){
