@@ -5,6 +5,9 @@
 	if( $_SERVER['REQUEST_METHOD'] == 'POST') {
 		include 'save_news.inc.php';
 	}
+	if(isset($_GET['del'])) {
+		include 'delete_news.inc.php';
+	}
 ?>
 
 <meta charset="utf-8">

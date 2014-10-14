@@ -66,5 +66,17 @@
 			return$this->db2Arr($res);
 		}
 
-		public function deleteNews($id){}
+		public function deleteNews($id){
+			try {
+				$sql = "DELETE FROM messages WHERE id = $id";
+				$res = $this->_db->exec($sql);
+				if(!$res) {
+					throw new Exception($this->_db->lastErrorMsg());
+				}
+				return true;
+			} catch(Exception $e) {
+				return false;
+			}
+		}
+
 	}
