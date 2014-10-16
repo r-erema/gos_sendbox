@@ -52,6 +52,7 @@
 				if(!$res) {
 					throw new Exception($this->_db->lastErrorMsg());
 				}
+				return true;
 			} catch(Exception $e) {
 				return false;
 			}
@@ -86,6 +87,8 @@
 				$res = $this->_db->exec($sql);
 				if(!$res) {
 					throw new Exception($this->_db->lastErrorMsg());
+				} elseif(!$this->_db->changes()) {
+					throw new Exception('Не удалено ни одной новости');
 				}
 				return true;
 			} catch(Exception $e) {
