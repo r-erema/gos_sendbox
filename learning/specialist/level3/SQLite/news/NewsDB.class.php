@@ -5,7 +5,9 @@
 
 		protected $_db;
 		const DB_NAME = 'E:\dev\server\domains\localhost\htdocs\learning\specialist\level3\SQLite\news\news.db';
-
+		const RSS_NAME = 'rss.xml';
+		const RSS_TITLE = 'Новостная лента';
+		const Rss_LINK = 'http://localhost/learning/specialist/level3/SQLite/news/news.php';
 		public function __construct() {
 			if(is_file(self::DB_NAME)) {
 				$this->_db = new SQLite3(self::DB_NAME);
@@ -52,6 +54,7 @@
 				if(!$res) {
 					throw new Exception($this->_db->lastErrorMsg());
 				}
+				$this->createRss();
 				return true;
 			} catch(Exception $e) {
 				return false;
@@ -96,4 +99,38 @@
 			}
 		}
 
+		public function createRss() {
+			$dom = new DOMDocument('1.0', 'utf-8');
+			$dom->formatOutput = true;
+			$dom->preserveWhiteSpace = true;
+			$rss = $dom->createElement('rss');
+			$dom->appendChild($rss);
+			$channel = $dom->createElement('channel');
+			$rss->appendChild($channel);
+			$title = $dom->createElement('title', self::RSS_TITLE);
+			$link = $dom->createElement('link', self::Rss_LINK);
+			$channel->appendChild($title);
+			$channel->appendChild($link);
+			$newsList = $this->getNews();
+			if(!$newsList) {
+				return false;
+			}
+			foreach($newsList as $news) {
+				$item = $dom->createElement('item');
+				$title = $dom->createElement('title', $news['title']);
+				$category = $dom->createElement('category', $news['category']);
+				$description = $dom->createElement('description', $news['description']);
+				$txtLink = self::Rss_LINK.'?id='.$news['id'];
+				$link = $dom->createElement('link', $txtLink);
+				$date = date('r', $news['datetime']);
+				$pubDate = $dom->createElement('pubDate', $date);
+				$item->appendChild($title);
+				$item->appendChild($link);
+				$item->appendChild($description);
+				$item->appendChild($pubDate);
+				$item->appendChild($category);
+				$channel->appendChild($item);
+			}
+			$dom->save(self::RSS_NAME);
+		}
 	}
