@@ -4,7 +4,7 @@
 	class NewsDB implements INewsDB {
 
 		protected $_db;
-		const DB_NAME = 'D:\dev\server\domains\localhost\htdocs\learning\specialist\level3\SQLite\news\news.db';
+		const DB_NAME = 'E:\dev\server\domains\localhost\htdocs\learning\specialist\level3\SQLite\news\news.db';
 
 		public function __construct() {
 			if(is_file(self::DB_NAME)) {
