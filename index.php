@@ -15,6 +15,7 @@
 	<ul>
 		<li><a href="pg/profiz_mailing">Версталка рассылок profiz.ru</a></li>
 		<li><a href="pg/digest-coder">Версталка дайджеста</a></li>
+		<li><a href="pg/check_maillist_profiz">Проверка дюмуленок</a></li>
 	</ul>
 </div>
 <div>
