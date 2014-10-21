@@ -35,7 +35,6 @@
         'С.С. Семенихина' => "semenihina.png",
         'В.Л. Полторан' => "poltoran.png",
         'А.В. Жук' => "zhuk.png",
-        'C.И. Ерошина' => "eroshina.png",
         'Ю.В. Назаренко' => "nazarenko.png",
         'Н.Г. Семижон' => "semigon.png",
         'А.А. Бурда' => "burda.png",
