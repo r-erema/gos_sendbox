@@ -71,4 +71,5 @@
 		'Г.А. Худоченко' => "hudochenko.png",
 		'В.В. Толкач' => "tolkach.png",
 		'Н.Л. Сивец' => "sivec.png",
+		'С.Н. Козырев' => "kozirev.png",
 	);
