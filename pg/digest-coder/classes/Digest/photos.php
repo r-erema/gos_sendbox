@@ -72,4 +72,7 @@
 		'В.В. Толкач' => "tolkach.png",
 		'Н.Л. Сивец' => "sivec.png",
 		'С.Н. Козырев' => "kozirev.png",
+		'М.В. Лось' => "los.png",
+		'В.В. Дражин' => "dragin.png",
+		'Е.В. Гадлевская' => "gadlevskaya.png",
 	);
