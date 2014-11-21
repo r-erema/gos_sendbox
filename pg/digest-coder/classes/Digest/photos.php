@@ -75,4 +75,7 @@
 		'М.В. Лось' => "los.png",
 		'В.В. Дражин' => "dragin.png",
 		'Е.В. Гадлевская' => "gadlevskaya.png",
+		'А.В. Баранашник' => "baranashnik.png",
+		'В.Д. Мацинкевич' => "macinkevich.png",
+		'А.А. Пощастьева' => "poschastyeva.png",
 	);
