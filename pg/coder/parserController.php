@@ -2,12 +2,15 @@
 
 class parserController {
 
-	public function __construct($parserName, $text = null, array $params = []) {
-		$this->executeParser($parserName, $text, $params);
+	public function __construct($parserName, array $texts = [], array $params = []) {
+		foreach($texts as $context => $text) {
+			$this->executeParser($parserName, $text, $context);
+		}
+
 	}
 
-	private function executeParser($parserName, $text, $params) {
-		$parser = new $parserName($text, $params);
+	private function executeParser($parserName, $text, $context) {
+		$parser = new $parserName($text, $context);
 		$parser->run();
 	}
 

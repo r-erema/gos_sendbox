@@ -3,31 +3,30 @@
 	<head>
 		<title>coder</title>
 	</head>
-	<script>
-
-	</script>
+	<script src="js/jquery-2.1.3.min.js"></script>
+	<script src="js/js.js"></script>
 	<body>
-		<form method="post" action="">
-			<p>
-				<label for="object">Что верстаем?:</label>
-				<select name=parser id="object">
-					<option value="profizDigestParser">Рассылку profiz.ru</option>
-					<option value="normativkaDigestParser">Дайджест</option>
-				</select>
-			</p>
-				<p><label for="text">Сюда текст:</label></p>
-				<p><textarea id="text" cols="70" rows="30" name="text"></textarea></p>
-			<p>
-				<input type="submit">
-			</p>
+	<div>
+		<label for="parser-select">Что верстаем?:</label>
+		<select name=parser id="parser-select">
+			<option value=""></option>
+			<option id="profizDigestParser" value="profizDigestParser">Рассылку profiz.ru</option>
+			<option id="normativkaDigestParser" value="normativkaDigestParser">Дайджест</option>
+		</select>
+	</div>
+	<div id="form-wrapper">
+		<form id="parse-form" method="post" action="">
+			<input type="submit" style="display: none">
 		</form>
+	</div>
+	<p id="inf-message"></p>
 	</body>
 </html>
 
 <?php
-	if(isset($_POST['text'])) {
+	if(isset($_POST)) {
 		require_once 'parserController.php';
-		$parser = new parserController($_POST['parser'], $_POST['text']);
+		$parser = new parserController($_POST['parserName'], $_POST['texts']);
 	}
 
 	function __autoload($className) {
