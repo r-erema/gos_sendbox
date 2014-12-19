@@ -1,15 +1,13 @@
 <?php
+	class Parser {
 
-class Parser {
+		protected $parsed = [];
+		protected $params = [];
+		protected $text;
 
-	public $sourceText;
+		public function __construct($text, array $params = []) {
+			$this->text = $text;
+			$this->params = $params;
+		}
 
-	public function __construct($text = null) {
-		$this->sourceText = $text;
 	}
-
-	private function getScenario($id) {
-		switch ()
-	}
-
-}

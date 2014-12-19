@@ -7,9 +7,9 @@
 		<form method="post" action="">
 			<p>
 				<label for="object">Что верстаем?:</label>
-				<select name="object" id="object">
-					<option>Дайджест</option>
-					<option>Рассылку profiz.ru</option>
+				<select name=parser id="object">
+					<option value="normativkaDigestParser">Дайджест</option>
+					<option value="profizDigestParser">Рассылку profiz.ru</option>
 				</select>
 			</p>
 				<p><label for="text">Сюда текст:</label></p>
@@ -23,6 +23,15 @@
 
 <?php
 	if(isset($_POST['text'])) {
-		require_once 'parser.class.php';
-		$parser = new Parser($_POST['text']);
+		require_once 'parserController.php';
+		$parser = new parserController($_POST['parser'], $_POST['text']);
+	}
+
+	function __autoload($className) {
+		$path = $className.".class.php";
+		if (file_exists($path)) {
+			require_once $path;
+		} else {
+			die("The file {$className}.php could not be found!");
+		}
 	}

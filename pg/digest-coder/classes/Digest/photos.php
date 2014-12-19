@@ -78,4 +78,6 @@
 		'А.В. Баранашник' => "baranashnik.png",
 		'В.Д. Мацинкевич' => "macinkevich.png",
 		'А.А. Пощастьева' => "poschastyeva.png",
+		'С.В. Морозова' => "morozova.png",
+		'О.В. Прокопенко' => "prokopenko.png",
 	);
