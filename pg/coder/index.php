@@ -24,7 +24,7 @@
 </html>
 
 <?php
-	if(isset($_POST)) {
+	if(isset($_POST['parserName']) && !empty($_POST['parserName']) && isset($_POST['texts']) && !empty($_POST['texts'])) {
 		require_once 'parserController.php';
 		$parser = new parserController($_POST['parserName'], $_POST['texts']);
 	}

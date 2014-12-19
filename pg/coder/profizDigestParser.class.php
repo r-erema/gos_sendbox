@@ -5,33 +5,35 @@ class profizDigestParser extends Parser {
 	 *
 	 */
 	public function run() {
-		//Разбиваем весь текст на рубрики
-		$fetchedRubrics = $this->fetchRubrics();
-		//Разбиваем каждую рубрику на статьи
-		$fetchedArticles = $this->fetchArticlesFromRubrics($fetchedRubrics);
+		foreach($this->texts as $context => $text) {
+			//Разбиваем весь текст на рубрики
+			$fetchedRubrics = $this->fetchRubrics($text);
+			//Разбиваем каждую рубрику на статьи
+			$fetchedArticles = $this->fetchArticlesFromRubrics($fetchedRubrics);
 
-		//Выделяему в каждой статье тайтл, ссылку, автора, основной текст...
-		foreach($fetchedArticles as $rubricName => $articles) {
-			foreach($articles as $article) {
-				$splitArticles[$rubricName][] = $this->splitArticleOnElements($article);
+			//Выделяему в каждой статье тайтл, ссылку, автора, основной текст...
+			foreach($fetchedArticles as $rubricName => $articles) {
+				foreach($articles as $article) {
+					$splitArticles[$rubricName][] = $this->splitArticleOnElements($article);
+				}
 			}
-		}
 
-		foreach($splitArticles as $rubricName => &$articles) {
-			foreach($articles as &$article) {
-				$article['text'] = $this->handleArticlesText($article['text']);
+			foreach($splitArticles as $rubricName => &$articles) {
+				foreach($articles as &$article) {
+					$article['text'] = $this->handleArticlesText($article['text']);
+				}
 			}
+			$this->parsed[$context] = $splitArticles;
 		}
-		$this->parsed = $splitArticles;
 	}
 
 	/**
 	 * Вытягиваеттекст рубрик из всего текста
 	 * @return array
 	 */
-	private function fetchRubrics() {
+	private function fetchRubrics($text) {
 		$rubrics = [];
-		preg_match_all('#^([A-ZА-ЯЁ —\-\.]{3,})\s(.+?)(?:(?=\s^[A-ZА-ЯЁ —\-\.]{3,}\s|Подробно о журнале))#msu', $this->text, $matches);
+		preg_match_all('#^([A-ZА-ЯЁ —\-\.]{3,})\s(.+?)(?:(?=\s^[A-ZА-ЯЁ —\-\.]{3,}\s|Подробно о журнале))#msu', $text, $matches);
 		if(!empty($matches[1]) && !empty($matches[2])) {
 			for($i = 0; $i < count($matches[1]); $i++) {
 				$rubrics[$matches[1][$i]] = trim($matches[2][$i]);

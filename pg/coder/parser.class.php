@@ -2,11 +2,10 @@
 	class Parser {
 
 		protected $parsed = [];
-		protected $text;
+		protected $texts;
 
-		public function __construct($text, $context) {
-			$this->text = $text;
-			$this->context = $context;
+		public function __construct($texts) {
+			$this->texts = $texts;
 		}
 
 	}

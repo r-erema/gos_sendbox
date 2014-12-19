@@ -66,7 +66,7 @@ $(function () {
 		removeTextareaLink.on('click', function () {
 			$('#' + id + '-textarea-fieldset').remove();
 			$('button#add-' + id + '-textarea').attr('disabled',false);
-			if($('#parse-form :not(input[type=submit])').length == 0) {
+			if($('#parse-form').children().not('input[type=submit]').length == 1) {
 				$('#parse-form input[type=submit]').remove();
 			}
 		});
