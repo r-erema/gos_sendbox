@@ -3,13 +3,16 @@
 	<head>
 		<title>coder</title>
 	</head>
+	<script>
+
+	</script>
 	<body>
 		<form method="post" action="">
 			<p>
 				<label for="object">Что верстаем?:</label>
 				<select name=parser id="object">
-					<option value="normativkaDigestParser">Дайджест</option>
 					<option value="profizDigestParser">Рассылку profiz.ru</option>
+					<option value="normativkaDigestParser">Дайджест</option>
 				</select>
 			</p>
 				<p><label for="text">Сюда текст:</label></p>
