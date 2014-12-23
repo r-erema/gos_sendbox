@@ -15,12 +15,11 @@
 				<tr>
 					<td><table width="100%" border="0" cellpadding="0" cellspacing="0">
 							<tr>
-								<td width="145" ><img src="http://www.profiz.ru/pictures/cover/peo/m_12_2014.jpg" alt="" width="118" height="164" /></td>
+								<td width="145" ><img src="http://www.profiz.ru/pictures/cover/peo/m_<?php echo $this->parsed['peo']['params']['month']; ?>_2014.jpg" alt="" width="118" height="164" /></td>
 								<td><h2 style="color:#365f91">Вышел новый  номер<br />журнала<br>
 										«Планово-экономический отдел»!</h2>
 									<br />
-									<h3 style="color:#943634"><i>Тема декабрьского номера: «Управление предприятием»
-										</i></h3></td>
+									<h3 style="color:#943634"><i><?php echo $this->parsed['peo']['params']['signature']; ?></i></h3></td>
 								<td width="260" valign="top" align="right"><p><small>Подробно о журнале: <a href="http://profiz.ru/peo/?utm_source=economistinfo&utm_medium=email&utm_campaign=monthly-announce-december">«Планово-экономический отдел»</a></small></p>
 									<p><small>Подписаться на журнал можно<br />
 											по тел. (495) 258-08-15<br />
@@ -32,7 +31,7 @@
 	</tr>
 </table>
 
-<?php foreach($this->parsed['peo'] as $rubricName => $rubricArticles): ?>
+<?php foreach($this->parsed['peo']['content'] as $rubricName => $rubricArticles): ?>
 	<h3 style="margin:1.7em 0;"><?php echo $rubricName; ?></h3>
 	<?php if($rubricArticles !== null): ?>
 		<?php foreach($rubricArticles as $article): ?>

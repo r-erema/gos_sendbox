@@ -26,6 +26,28 @@ $(function () {
 					'code' : 'eco',
 					'abbr' :'ЭКО'
 				}
+			],
+			addresseeForums : [
+				{
+					'name' : 'buhgalter-info.ru',
+					'link' : 'http://buhgalter-info.ru/'
+				},
+				{
+					'name' : 'kadrovik-info.ru',
+					'link' : 'http://kadrovik-info.ru/'
+				},
+				{
+					'name' : 'economist-info.ru',
+					'link' : 'http://economist-info.ru/'
+				},
+				{
+					'name' : 'sekretar-info.ru',
+					'link' : 'http://sekretar-info.ru/'
+				},
+				{
+					'name' : 'ecolog-info.ru',
+					'link' : 'http://ecolog-info.ru/'
+				}
 			]
 		}
 	};
@@ -35,7 +57,8 @@ $(function () {
 		$('#parse-form').empty().attr('name', $(this).val());
 		switch($(this).val()) {
 			case 'profizDigestParser' :
-				$('#parse-form').append('<input type="hidden" value="' + $(this).val() + '" name="parserName">')
+				$('#parse-form').append('<input type="hidden" value="' + $(this).val() + '" name="parserName">');
+				$('#parse-form').addAdreseeForumButtons();
 				$.each($(this).addProfizButtonsPanel().children(), function() {
 					$(this).on('click', function () {
 						$(this).attr('disabled', true);
@@ -50,6 +73,15 @@ $(function () {
 			default: $('#inf-message').text('Неизвестный select');
 		}
 	});
+
+	$.prototype.addAdreseeForumButtons = function() {
+		var div = $('<div id="addressee-forums-buttons">Форум получателей:<br /></div>');
+		$.each(config.profiz.addresseeForums, function () {
+			div.append('<input type="radio" name="addresseeForum" value="' + this.name + '">' + this.name + '<br />');
+		});
+		$(this).append(div);
+		return div;
+	};
 
 	$.prototype.addProfizButtonsPanel = function() {
 		var panel = $('<div id="profiz-mags-to-parse-buttons-panel"></div>');
@@ -72,7 +104,7 @@ $(function () {
 		});
 		var textarea = $('<textarea id="' + id + '-parse-textarea" cols="70" rows="30" name=texts[' + id + ']>');
 		textareaWrapper.append('<legend>' + id + '</legend>').append(textarea).append(removeTextareaLink);
-		return textareaWrapper.prependTo($(this));
+		return textareaWrapper.appendTo($(this));
 	}
 
 });

@@ -3,6 +3,30 @@ class profizDigestParser extends Parser {
 
 	private $context;
 	private $currRubric;
+	private $currAddresseeForum;
+
+	private $addrForumsParams = [
+		'buhgalter-info.ru' => [
+			'link' => 'http://buhgalter-info.ru/',
+			'name' => 'buhgalter-info.ru'
+		],
+		'kadrovik-info.ru' => [
+			'link' => 'http://kadrovik-info.ru/',
+			'name' => 'kadrovik-info.ru'
+		],
+		'economist-info.ru' => [
+			'link' => 'http://economist-info.ru/',
+			'name' => 'economist-info.ru'
+		],
+		'sekretar-info.ru' => [
+			'link' => 'http://sekretar-info.ru/',
+			'name' => 'sekretar-info.ru'
+		],
+		'ecolog-info.ru' => [
+			'link' => 'http://ecolog-info.ru/',
+			'name' => 'ecolog-info.ru'
+		],
+	];
 
 	private $magsParams = [
 		'peo' => [
@@ -47,6 +71,10 @@ class profizDigestParser extends Parser {
 		'Вопрос — ответ',
 	];
 
+	public function __construct($text, $params) {
+		parent::__construct($text);
+		$this->currAddresseeForum = $params['addresseeForum'];
+	}
 	/**
 	 *
 	 */
@@ -55,6 +83,8 @@ class profizDigestParser extends Parser {
 			$this->context = $context;
 			//Разбиваем весь текст по журналам
 			foreach ($this->fetchMagsTexts($text) as $this->context => $mag_text) {
+				$this->parsed[$this->context]['params']['signature'] = $this->getMagSignature($mag_text);
+				$this->parsed[$this->context]['params']['month'] = $this->getMagNumber($mag_text);
 				//Разбиваем текст журналов на рубрики
 				$fetchedRubrics = $this->fetchRubrics($mag_text);
 				//Разбиваем каждую рубрику на статьи
@@ -68,10 +98,10 @@ class profizDigestParser extends Parser {
 						foreach($articles as $article) {
 							$art = $this->splitArticleOnElements($article);
 							$art['text'] = &$this->handleArticlesText($art['text']);
-							$this->parsed[$this->context][$rubricName][] = $art;
+							$this->parsed[$this->context]['content'][$rubricName][] = $art;
 						}
 					} else {
-						$this->parsed[$this->context][$rubricName] = null;
+						$this->parsed[$this->context]['content'][$rubricName] = null;
 					}
 				}
 			}
@@ -188,7 +218,8 @@ class profizDigestParser extends Parser {
 	private function fetchMagsTexts($text) {
 		$mags_text = [];
 		switch($this->context) {
-			case 'kr' : $pattern =  '#^[A-ZА-ЯЁ —\-\.]{3,}\s.+?(?:(?=( *ТЕМАТИЧЕСКИЕ СТРАНИЦЫ.+)))#msu'; break;
+			//case 'kr' : $pattern =  '#^[A-ZА-ЯЁ —\-\.]{3,}\s.+?(?:(?=( *ТЕМАТИЧЕСКИЕ СТРАНИЦЫ.+)))#msu'; break;
+			case 'kr' : $pattern =  '#«Кадровые решения»\s.+?(?:(?=( *ТЕМАТИЧЕСКИЕ СТРАНИЦЫ.+)))#msu'; break;
 			default : $pattern = null; break;
 		}
 		if($pattern !== null) {
@@ -223,4 +254,97 @@ class profizDigestParser extends Parser {
 			$templatePath = "templates/porfiz-digest/mainLayout.php";
 			file_exists($templatePath) ? require_once $templatePath : die("Шаблон '$templatePath' отсутсвует");
 	}
+
+	private function getMagSignature($text) {
+		switch($this->context) {
+			case 'peo' : $pattern = '#(Тема .+? номера: \r\n.*)#mu'; break;
+			case 'sr' : $pattern = '#(Читайте в .+? номере?)#mu'; break;
+			case 'kr' : $pattern = '#(Читайте в .+? номере?)#mu'; break;
+			case 'super' : $pattern = '#«СОВРЕМЕННЫЕ ТЕХНОЛОГИИ УПРАВЛЕНИЯ ПЕРСОНАЛОМ»\r\n(.+)?\r\n_{2,}#mu'; break;
+			/*case 'sr' : $pattern = '#(?:([А-Я][а-я]+ [А-Я]\.(?:[А-Я]\.)?(?: +)??)\r\n)?(.+?)(?:\r\n|$)(http:.+?\r\n)?(.+)?#su'; break;
+			case 'kr' : $pattern = '#(?:([А-Я][а-я]+ [А-Я]\. (?:[А-Я]\.)?(?:,)?(?: +)?(?:[А-Я][а-я]+ [А-Я]\. (?:[А-Я]\.)?)?)\r\n)?(.+?)(?:\r\n|$)(http:.+?\r\n)?(.+)?#su'; break;
+			case 'super' : $pattern = '#(?:([А-Я][а-я]+ [А-Я][а-я]+?)\r\n)?(.+?)(?:\r\n|$)(http:.+?\r\n)?(.+)?#su'; break;
+			case 'se' : $pattern = '#(?:([А-Я][а-я]+ [А-Я]\. (?:[А-Я]\.)?(?: +)??)\r\n)?(.+?)(?:\r\n|$)(http:.+?\r\n)?(.+)?#su'; break;
+			case 'eco' : $pattern = $this->currRubric == 'ВОПРОС — ОТВЕТ' ? '#()()()(.*)#su' : '#(?:([А-Я]\.(?:[А-Я]\.)? [А-Я][а-я]+(?: +)?)\r\n)?(.+?)(?:\r\n|$)(http:.+?\r\n)?(.+)?#su'; break;*/
+			default : die("Не удалось извлечь подпись журнала. Метод: ".__METHOD__.". Низвестный контекст: $this->context"); break;
+
+		}
+		preg_match_all($pattern, $text, $matches);
+		if(empty($matches[1][0])) {
+			die("Не удалось извлечь подпись журнала, не найдено совпадений. Метод: ".__METHOD__.". Контекст: $this->context");
+		} else {
+			return trim(preg_replace('#\r\n#um', ' ', $matches[1][0]));
+		}
+	}
+
+	private function getMagNumber($text) {
+		switch($this->context) {
+			case 'peo' :
+				$pattern = '#Тема (.+?) номера: \r\n.*?#mu';
+				$months = [
+					'январского' => 1,
+					'февральского' => 2,
+					'мартовского' => 3,
+					'апрельского' => 4,
+					'майского' => 5,
+					'июньского' => 6,
+					'июльского' => 7,
+					'августовского' => 8,
+					'сентябрьского' => 9,
+					'октябрьского' => 10,
+					'ноябрьского' => 11,
+					'декабрьского' => 12
+				];
+				break;
+			case 'sr' :
+				$pattern = '#Читайте в (.+?) номере?#mu';
+				$months = [
+					'январском' => 1,
+					'февральском' => 2,
+					'мартовском' => 3,
+					'апрельском' => 4,
+					'майском' => 5,
+					'июньском' => 6,
+					'июльском' => 7,
+					'августовском' => 8,
+					'сентябрьском' => 9,
+					'октябрьском' => 10,
+					'ноябрьском' => 11,
+					'декабрьском' => 12
+				];
+				break;
+			case 'kr' :
+				$pattern = '#Читайте в (.+?) номере?#mu';
+				$months = [
+					'январском' => 1,
+					'февральском' => 2,
+					'мартовском' => 3,
+					'апрельском' => 4,
+					'майском' => 5,
+					'июньском' => 6,
+					'июльском' => 7,
+					'августовском' => 8,
+					'сентябрьском' => 9,
+					'октябрьском' => 10,
+					'ноябрьском' => 11,
+					'декабрьском' => 12
+				];
+				break;
+			case 'super' : $months = []; $pattern = null; break;
+			/*
+			case 'se' : $pattern = '#(?:([А-Я][а-я]+ [А-Я]\. (?:[А-Я]\.)?(?: +)??)\r\n)?(.+?)(?:\r\n|$)(http:.+?\r\n)?(.+)?#su'; break;
+			case 'eco' : $pattern = $this->currRubric == 'ВОПРОС — ОТВЕТ' ? '#()()()(.*)#su' : '#(?:([А-Я]\.(?:[А-Я]\.)? [А-Я][а-я]+(?: +)?)\r\n)?(.+?)(?:\r\n|$)(http:.+?\r\n)?(.+)?#su'; break;*/
+			default : die("Не удалось извлечь номер журнала. Метод: ".__METHOD__.". Низвестный контекст: $this->context"); break;
+
+		}
+		if($this->context != 'super') {
+			preg_match_all($pattern, $text, $matches);
+			if(empty($matches[1][0])) {
+				die("Не удалось извлечь месяц журнала, не найдено совпадений. Метод: ".__METHOD__.". Контекст: $this->context");
+			}
+			return $months[$matches[1][0]];
+		}
+		return null;
+	}
+
 }
