@@ -323,14 +323,15 @@ class profizDigestParser extends Parser {
 			default : die("Не удалось извлечь номер журнала. Метод: ".__METHOD__.". Низвестный контекст: $this->context"); break;
 
 		}
-		if($this->context != 'super') {
+		if($this->context == 'super') {
+			return $this->parsed['kr']['params']['month'];
+		} else {
 			preg_match_all($pattern, $text, $matches);
 			if(empty($matches[1][0])) {
 				die("Не удалось извлечь месяц журнала, не найдено совпадений. Метод: ".__METHOD__.". Контекст: $this->context");
 			}
 			return $months[$matches[1][0]];
 		}
-		return null;
 	}
 
 }
