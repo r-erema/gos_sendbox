@@ -80,4 +80,6 @@
 		'А.А. Пощастьева' => "poschastyeva.png",
 		'С.В. Морозова' => "morozova.png",
 		'О.В. Прокопенко' => "prokopenko.png",
+		'Г.Ф. Асоскова' => "asoskova.png",
+		'Н.Е. Король' => "korol.png",
 	);

@@ -7,10 +7,4 @@ class parserController {
 		$parser->run();
 	}
 
-	/*
-	private function executeParser($parserName, $text, $context) {
-		$parser = new $parserName($text);
-		$parser->run();
-	}
-	*/
 }
