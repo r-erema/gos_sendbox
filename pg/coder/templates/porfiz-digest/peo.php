@@ -10,16 +10,25 @@
 <body>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
-		<td width="145" ><img src="http://www.profiz.ru/pictures/cover/se/m_12_2014.jpg" alt="" width="118" height="164" /></td>
-		<td>
-			<h2 style="color:#365f91">Вышел новый  номер<br />журнала «Справочник экономиста»!<img src="http://ru.commontools.net/bs/banner/DfVL70/8mGMt0/?nobody=1" alt="Рассылка анонса" style="width: 1px; height: 1px;" border="0" /><img src="http://www.google-analytics.com/collect?v=1&tid=UA-1992459-1&cid=%[1]%&t=event&ec=email&ea=open&el=buhgalterinfo" /></h2>
-			<br />
-			<h3 style="color:#943634"><i>Читайте в декабрьском номере</i></h3>
-		</td>
-		<td width="260" valign="top" align="right">
-			<p><small>Подробно о журнале: <a href="http://profiz.ru/se/?utm_source=buhgalterinfo&utm_medium=email&utm_campaign=monthly-announce-december">«Справочник экономиста»</a></small></p>
-			<p><small>Подписаться на журнал можно<br />по тел. (495) 258-08-15 <br />или <a href="http://profiz.ru/subscribe/?utm_source=buhgalterinfo&utm_medium=email&utm_campaign=monthly-announce-december">на сайте</a></small></p>
-		</td>
+		<td><table width="100%" border="0" cellpadding="0" cellspacing="0">
+				<tr></tr>
+				<tr>
+					<td><table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td width="145" ><img src="http://www.profiz.ru/pictures/cover/peo/m_12_2014.jpg" alt="" width="118" height="164" /></td>
+								<td><h2 style="color:#365f91">Вышел новый  номер<br />журнала<br>
+										«Планово-экономический отдел»!</h2>
+									<br />
+									<h3 style="color:#943634"><i>Тема декабрьского номера: «Управление предприятием»
+										</i></h3></td>
+								<td width="260" valign="top" align="right"><p><small>Подробно о журнале: <a href="http://profiz.ru/peo/?utm_source=economistinfo&utm_medium=email&utm_campaign=monthly-announce-december">«Планово-экономический отдел»</a></small></p>
+									<p><small>Подписаться на журнал можно<br />
+											по тел. (495) 258-08-15<br />
+											или <a href="http://profiz.ru/subscribe/?utm_source=economistinfo&utm_medium=email&utm_campaign=monthly-announce-december">на сайте</a></small></p></td>
+							</tr>
+						</table></td>
+				</tr>
+			</table></td>
 	</tr>
 </table>
 

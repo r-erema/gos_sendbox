@@ -4,6 +4,32 @@ class profizDigestParser extends Parser {
 	private $context;
 	private $currRubric;
 
+	private $magsParams = [
+		'peo' => [
+			'name' => 'Планово-экономический отдел',
+			'link' => 'http://www.profiz.ru/peo/'
+		],
+		'kr' => [
+			'name' => 'Кадровые решения',
+			'link' => 'http://www.profiz.ru/kr/'
+		],
+		'sr' => [
+			'name' => 'Секретарь-референт',
+			'link' => 'http://www.profiz.ru/sr/'
+		],
+		'sec' => [
+			'name' => 'СанЭпидемКонтроль',
+			'link' => 'http://www.profiz.ru/sec/'
+		],
+		'eco' => [
+			'name' => 'Справочник эколога',
+			'link' => 'http://www.profiz.ru/eco/'
+		],
+		'se' => [
+			'name' => 'Справочник экономиста',
+			'link' => 'http://www.profiz.ru/se/'
+		]
+	];
 	private $rubricsWithoutAuthors = [
 		'ДОКУМЕНТ НОМЕРА',
 		'ВОПРОС — ОТВЕТ',
@@ -62,7 +88,7 @@ class profizDigestParser extends Parser {
 			switch($this->context) {
 				case 'super' : $pattern = '#^_{5,}([A-ZА-ЯЁ —\-\.]{3,})?\s(.*)(?:(?=\s^Подробно о журнале))#msu'; $matches[1] = 'Костыль'; break;
 				case 'eco' : $pattern = '#(^[А-Я\—., ]{7,}?)(\r\n.*?)?(?:(?=^[А-Я\—., ]{7,}\r\n|_{7,}))#msu'; $matches[1] = 'Костыль'; break;
-				default : $pattern = '#^([A-ZА-ЯЁ —\-\,.]{3,})\s(.+?)(?:(?=\s^[A-ZА-ЯЁ —\-\.]{3,}\s|Подробно о журнале))#msu'; break;
+				default : $pattern = '#^([A-ZА-ЯЁ —\-\,.]{7,})\s(.+?)(?:(?=\s^[A-ZА-ЯЁ —\-\.]{7,}\s|Подробно о журнале))#msu'; break;
 			}
 			preg_match_all($pattern, $text, $matches);
 			if(!empty($matches[1]) && !empty($matches[2])) {
