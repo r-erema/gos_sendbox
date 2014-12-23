@@ -6,7 +6,7 @@
 ?>
 
 
-<p style="font:11pt Arial;margin-top:3em;">Подробно о журналах:
+<p style="font:11pt Arial;margin-top:3em;">Подробно о журнал<?php if(count($this->parsed) > 1):?>ах<?php else: ?>е<?php endif; ?>:
 
 <?php
 $total = count($this->parsed);
