@@ -12,12 +12,14 @@
 $total = count($this->parsed);
 $counter = 0;
 foreach($this->parsed as $context => $data): ?>
-	<?php $counter++; if($counter == 1): ?>
-		<a href="<?php echo $this->magsParams[$context]['link'];?>">«<?php echo $this->magsParams[$context]['name'];?>»</a>
-	<?php elseif($counter == $total): ?>
-		и <a href="<?php echo $this->magsParams[$context]['link'];?>">«<?php echo $this->magsParams[$context]['name'];?>»</a>
-	<?php else: ?>
-		, <a href="<?php echo $this->magsParams[$context]['link'];?>">«<?php echo $this->magsParams[$context]['name'];?>»</a>
+		<?php $counter++; if($context != 'super'): ?>
+		<?php if($counter == 1): ?>
+			<a href="<?php echo $this->magsParams[$context]['link'];?>">«<?php echo $this->magsParams[$context]['name'];?>»</a>
+		<?php elseif($counter == $total): ?>
+			и <a href="<?php echo $this->magsParams[$context]['link'];?>">«<?php echo $this->magsParams[$context]['name'];?>»</a>
+		<?php else: ?>
+			, <a href="<?php echo $this->magsParams[$context]['link'];?>">«<?php echo $this->magsParams[$context]['name'];?>»</a>
+		<?php endif; ?>
 	<?php endif; ?>
 <?php endforeach; ?>
 	<br />
@@ -30,21 +32,23 @@ foreach($this->parsed as $context => $data): ?>
 	$total = count($this->parsed);
 	$counter = 0;
 	foreach($this->parsed as $context => $data): ?>
-		<?php
+		<?php $counter++;  if($context != 'super'): ?>
+			<?php
 			//если 1ый элемент
-			$counter++; if($counter == 1):
-		?>
-			<a href="<?php echo $this->magsParams[$context]['link'];?>">«<?php echo $this->magsParams[$context]['name'];?>»</a>
-		<?php
+			if($counter == 1):
+				?>
+				<a href="<?php echo $this->magsParams[$context]['link'];?>">«<?php echo $this->magsParams[$context]['name'];?>»</a>
+			<?php
 			//если последний элемент
 			elseif($counter == $total):
-		?>
-			и <a href="<?php echo $this->magsParams[$context]['link'];?>">«<?php echo $this->magsParams[$context]['name'];?>»</a>
-		<?php
+				?>
+				и <a href="<?php echo $this->magsParams[$context]['link'];?>">«<?php echo $this->magsParams[$context]['name'];?>»</a>
+			<?php
 			//если все остальные
 			else:
-		?>
-			, <a href="<?php echo $this->magsParams[$context]['link'];?>">«<?php echo $this->magsParams[$context]['name'];?>»</a>
+				?>
+				, <a href="<?php echo $this->magsParams[$context]['link'];?>">«<?php echo $this->magsParams[$context]['name'];?>»</a>
+			<?php endif; ?>
 		<?php endif; ?>
 <?php endforeach; ?> при регистрации на форуме <a href="<?php echo $this->addrForumsParams[$this->currAddresseeForum]['link'] ?>"><?php echo $this->addrForumsParams[$this->currAddresseeForum]['name'] ?></a>.</strong><br>
 		Рассылка отправлена на e-mail %[e]% в %[t]% для %[n]%.<br>

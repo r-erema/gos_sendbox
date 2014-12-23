@@ -263,11 +263,6 @@ class profizDigestParser extends Parser {
 			case 'super' : $pattern = '#«СОВРЕМЕННЫЕ ТЕХНОЛОГИИ УПРАВЛЕНИЯ ПЕРСОНАЛОМ»\r\n(.+)?\r\n_{2,}#mu'; break;
 			case 'se' :  $pattern = '#(Читайте в .+? номере?)#mu'; break;
 			case 'eco' :  $pattern = '#(Читайте в .+? номере?)#mu'; break;
-/*
-			case 'se' : $pattern = '#(?:([А-Я][а-я]+ [А-Я]\. (?:[А-Я]\.)?(?: +)??)\r\n)?(.+?)(?:\r\n|$)(http:.+?\r\n)?(.+)?#su'; break;
-			case 'eco' : $pattern = $this->currRubric == 'ВОПРОС — ОТВЕТ' ? '#()()()(.*)#su' : '#(?:([А-Я]\.(?:[А-Я]\.)? [А-Я][а-я]+(?: +)?)\r\n)?(.+?)(?:\r\n|$)(http:.+?\r\n)?(.+)?#su'; break;
-*/
-
 			default : die("Не удалось извлечь подпись журнала. Метод: ".__METHOD__.". Низвестный контекст: $this->context"); break;
 
 		}
