@@ -24,7 +24,7 @@
 				<?php if($article['link'] !== null):?>
 					<a href="<?php echo $article['link']?>" style="color:#365f91">
 				<?php endif; ?>
-				<?php echo $article['title']; ?>
+					<?php echo $article['title']; ?>
 				<?php if($article['link'] !== null): ?>
 					</a>
 				<?php endif; ?>

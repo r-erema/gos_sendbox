@@ -27,7 +27,7 @@ foreach($this->parsed as $context => $data): ?>
 	<a href="<?php echo $this->magsParams[$context]['link']; ?>/?utm_source=<?php echo $this->addrForumsParams[$this->currAddresseeForum]['name'] ?>&utm_medium=email&utm_campaign=monthly-announce-<?php echo $this->parsed[$context]['params']['google_stat_utm']; ?>">«<?php echo $this->magsParams[$context]['name'];?>»</a>
 <?php endforeach; ?>
 	<br />
-	Подписаться на журналы можно по тел. <big><b>(495) 258-08-15</b></big> или на <a href="http://profiz.ru/subscribe/">сайте</a><br />
+	Подписаться на журналы можно по тел. <big><b>(495) 258-08-15</b></big> или на <a href="http://profiz.ru/subscribe/?utm_source=<?php echo $this->addrForumsParams[$this->currAddresseeForum]['name'] ?>&utm_medium=email&utm_campaign=monthly-announce-<?php echo $this->parsed[$context]['params']['google_stat_utm']; ?>"">сайте</a><br />
 	© ООО «Профессиональное издательство»</p>
 
 

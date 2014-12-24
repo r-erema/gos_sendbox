@@ -1,0 +1,13 @@
+body {
+	width: 1000px;
+	margin: 15px auto;
+	font-family: "Arial", "Myriad Pro", "Myriad Web", "Tahoma", "Helvetica", sans-serif;
+}
+
+div {
+	margin-bottom: 15px;
+}
+
+fieldset {
+	border-radius: 5px;
+}
