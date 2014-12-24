@@ -95,6 +95,7 @@ class profizDigestParser extends Parser {
 		'Ваш вопрос',
 		'Ваши вопросы',
 		'Вопрос — ответ',
+		'Эпидемия лихорадки Эбола: причины и прогнозы развития'
 	];
 
 	/**
@@ -178,6 +179,7 @@ class profizDigestParser extends Parser {
 					case 'super' : $pattern = '#([А-Я][а-я]+ [А-Я][а-я]+?\r\n(.+?))(?:(?=[А-Я][а-я]+ [А-Я][а-я]+|$))#su'; break;
 					case 'se' : $pattern = '#(?:[А-Я][а-я]+ [А-Я]\.(?:([А-Я]\.)?)|Вопрос — ответ).+?(?:(?=[А-Я][а-я]+ [А-Я]\.(?:([А-Я]\.)?)|$|Вопрос — ответ))#su'; break;
 					case 'eco' : $pattern = '#(?:[А-Я]\.(?:[А-Я]\.)? [А-Я][а-я]+)?.+?(?:(?=[А-Я]\.(?:[А-Я]\.) [А-Я][а-я]+ ?|$))#su'; break;
+					case 'sec' : $pattern = '#(?:[А-Я][а-я]+ [А-Я]\. [А-Я]\.(?:, [А-Я][а-я]+ [А-Я]\. [А-Я]\.)*)?.+?(?:(?=[А-Я][а-я]+ [А-Я]\. [А-Я]\.(?:, [А-Я][а-я]+ [А-Я]\. [А-Я]\.)?|$))#su'; break;
 					default : die("Не удалось выбрать шаблон. Метод: ".__METHOD__.". Низвестный контекст: $this->context"); break;
 				}
 				foreach($rubrics as $rubricName => $rubricText) {
@@ -210,6 +212,7 @@ class profizDigestParser extends Parser {
 			case 'super' : $pattern = '#(?:([А-Я][а-я]+ [А-Я][а-я]+?)\r\n)?(.+?)(?:\r\n|$)(http:.+?\r\n)?(.+)?#su'; break;
 			case 'se' : $pattern = '#(?:([А-Я][а-я]+ [А-Я]\. (?:[А-Я]\.)?(?: +)??)\r\n)?(.+?)(?:\r\n|$)(http:.+?\r\n)?(.+)?#su'; break;
 			case 'eco' : $pattern = $this->currRubric == 'ВОПРОС — ОТВЕТ' ? '#()()()(.*)#su' : '#(?:([А-Я]\.(?:[А-Я]\.)? [А-Я][а-я]+(?: +)?)\r\n)?(.+?)(?:\r\n|$)(http:.+?\r\n)?(.+)?#su'; break;
+			case 'sec' : $pattern = '#(?:([А-Я][а-я]* [А-Я]\. [А-Я]\.(?:, [А-Я][а-я]* [А-Я]\. [А-Я]\.)*?)\r\n)?(.+?)\r\n(http.+?\r\n)?(.+)?#su'; break;
 			default : die("Не удалось выбрать шаблон. Метод: ".__METHOD__.". Низвестный контекст: $this->context"); break;
 
 		}
@@ -297,6 +300,7 @@ class profizDigestParser extends Parser {
 			case 'super' : $pattern = '#«СОВРЕМЕННЫЕ ТЕХНОЛОГИИ УПРАВЛЕНИЯ ПЕРСОНАЛОМ»\r\n(.+)?\r\n_{2,}#mu'; break;
 			case 'se' :  $pattern = '#(Читайте в .+? номере?)#mu'; break;
 			case 'eco' :  $pattern = '#(Читайте в .+? номере?)#mu'; break;
+			case 'sec' :  $pattern = '#(Читайте в №.+?)\r\n#mu'; break;
 			default : die("Не удалось извлечь подпись журнала. Метод: ".__METHOD__.". Низвестный контекст: $this->context"); break;
 
 		}
@@ -353,6 +357,15 @@ class profizDigestParser extends Parser {
 			case 'super' : $months = []; $pattern = null; break;
 			case 'se' : $pattern = '#Читайте в (.+?) номере?#mu'; break;
 			case 'eco' : $pattern = '#Читайте в (.+?) номере?#mu'; break;
+			case 'sec' : $pattern = '#Читайте в № [0-9] ([а-я]+\/[а-я]+)?#mu';
+				$months = [
+					'январь/февраль' => 1,
+					'март/апрель' => 2,
+					'май/июнь' => 3,
+					'июль/август' => 4,
+					'сентябрь/октябрь' => 5,
+					'ноябрь/декабрь' => 6,
+				];break;
 			default : die("Не удалось извлечь номер журнала. Метод: ".__METHOD__.". Низвестный контекст: $this->context"); break;
 
 		}
@@ -386,6 +399,16 @@ class profizDigestParser extends Parser {
 			'November',
 			'December'
 		];
+		if($this->context == 'sec') {
+			$months = [
+				'January',
+				'March',
+				'May',
+				'July',
+				'September',
+				'November',
+			];
+		}
 		return $months[$monthNumber - 1] . "-" . date('Y');
 	}
 }

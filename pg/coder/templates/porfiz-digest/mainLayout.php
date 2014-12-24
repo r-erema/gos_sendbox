@@ -1,3 +1,12 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style type="text/css">
+		html, body {margin: 0; padding: 0; font: normal 10pt arial;}
+	</style>
+</head>
+<body>
 <img src="http://www.google-analytics.com/collect?v=1&tid=<?php echo $this->addrForumsParams[$this->currAddresseeForum]['google-id'] ?>&cid=%[1]%&t=event&ec=email&ea=open&el=<?php echo $this->addrForumsParams[$this->currAddresseeForum]['name'] ?>" />
 <?php
 	foreach($this->parsed as $context => $data) {
@@ -25,3 +34,5 @@ foreach($this->parsed as $context => $data): ?>
 <p align="center"><font color="#666666"><strong>Вы подписались на рассылку новостей журнала «<?php echo $this->addrForumsParams[$this->currAddresseeForum]['subscribe-mag']; ?>» при регистрации на форуме <a href="<?php echo $this->addrForumsParams[$this->currAddresseeForum]['link'] ?>"><?php echo $this->addrForumsParams[$this->currAddresseeForum]['name'] ?></a>.</strong><br>
 		Рассылка отправлена на e-mail %[e]% в %[t]% для %[n]%.<br>
 		Вы можете <a href="<?php echo $this->addrForumsParams[$this->currAddresseeForum]['link'] ?>/user/news-unsubscribe/?code=%[1]%">отписаться</a> от этой рассылки.</font></p>
+</body>
+</html>

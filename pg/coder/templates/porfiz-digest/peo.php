@@ -1,13 +1,3 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Справочник экономиста</title>
-	<style type="text/css">
-		html, body {margin: 0; padding: 0; font: normal 10pt arial;}
-	</style>
-</head>
-<body>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td><table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -54,5 +44,3 @@
 		<?php endforeach; ?>
 	<?php endif; ?>
 <?php endforeach; ?>
-</body>
-</html>

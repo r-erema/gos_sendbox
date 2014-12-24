@@ -5,7 +5,7 @@
 			<h2>ТЕМАТИЧЕСКИЕ СТРАНИЦЫ </h2>
 			<h3>«СОВРЕМЕННЫЕ ТЕХНОЛОГИИ УПРАВЛЕНИЯ ПЕРСОНАЛОМ»</h3>
 			<br />
-			<h3 style="color:#943634"><strong><?php echo $this->parsed['super']['params']['signature']; ?></strong></h3>
+			<h3 style="color:#943634"><strong><?php echo $this->parsed['eco']['params']['signature']; ?></strong></h3>
 		</td>
 		<td width="160" valign="top" align="right">
 			<p>&nbsp;</p></td>

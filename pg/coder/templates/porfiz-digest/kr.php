@@ -1,20 +1,9 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Кадровые решения</title>
-	<style type="text/css">
-		html, body {margin: 0; padding: 0; font: normal 10pt arial;}
-	</style>
-</head>
-<body>
-
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td width="145" ><img src="http://www.profiz.ru/pictures/cover/kr/m_<?php echo $this->parsed['kr']['params']['month']; ?>_2014.jpg" alt="" width="118" height="164" /></td>
 		<td>
 			<h4>Здравствуйте, %[n]%.</h4>
-			<h2 style="color:#365f91">Вышел новый номер<br />журнала «Кадровые решения»!<img src="http://ru.commontools.net/bs/banner/DfVL70/bZras0/?nobody=1" alt="Рассылка анонса" style="width: 1px; height: 1px;" border="0" /><img src="http://www.google-analytics.com/collect?v=1&tid=UA-1992459-1&cid=%[1]%&t=event&ec=email&ea=open&el=kadrovikinfo" /></h2>
+			<h2 style="color:#365f91">Вышел новый номер<br />журнала «Кадровые решения»!<img src="http://www.google-analytics.com/collect?v=1&tid=UA-1992459-1&cid=%[1]%&t=event&ec=email&ea=open&el=kadrovikinfo" /></h2>
 			<br />
 			<h3 style="color:#943634"><i><?php echo $this->parsed['kr']['params']['signature']; ?></i></h3>
 		</td>
@@ -48,6 +37,3 @@
 		<?php endforeach; ?>
 	<?php endif; ?>
 <?php endforeach; ?>
-
-</body>
-</html>

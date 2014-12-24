@@ -1,14 +1,3 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Секретарь-референт</title>
-	<style type="text/css">
-		html, body {margin: 0; padding: 0; font: normal 10pt arial;}
-	</style>
-</head>
-<body>
-
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td width="145" ><img src="http://www.profiz.ru/pictures/cover/sr/m_<?php echo $this->parsed['sr']['params']['month']; ?>_2014.jpg" alt="" width="118" height="164" /></td>
@@ -49,6 +38,3 @@
 		<?php endforeach; ?>
 	<?php endif; ?>
 <?php endforeach; ?>
-
-</body>
-</html>
