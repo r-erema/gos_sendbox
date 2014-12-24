@@ -8,24 +8,34 @@ class profizDigestParser extends Parser {
 	private $addrForumsParams = [
 		'buhgalter-info.ru' => [
 			'link' => 'http://buhgalter-info.ru/',
-			'name' => 'buhgalter-info.ru'
+			'name' => 'buhgalter-info.ru',
+			'subscribe-mag' => 'Справочник экономиста',
+			'google-id' => 'UA-3173717-4'
 		],
 		'kadrovik-info.ru' => [
 			'link' => 'http://kadrovik-info.ru/',
-			'name' => 'kadrovik-info.ru'
+			'name' => 'kadrovik-info.ru',
+			'subscribe-mag' => 'Кадровые решения',
+			'google-id' => 'UA-3173717-6'
 		],
 		'economist-info.ru' => [
 			'link' => 'http://economist-info.ru/',
-			'name' => 'economist-info.ru'
+			'name' => 'economist-info.ru',
+			'subscribe-mag' => 'Справочник экономиста',
+			'google-id' => 'UA-3173717-5'
 		],
 		'sekretar-info.ru' => [
 			'link' => 'http://sekretar-info.ru/',
-			'name' => 'sekretar-info.ru'
+			'name' => 'sekretar-info.ru',
+			'subscribe-mag' => 'Секретарь-референт',
+			'google-id' => 'UA-3173717-1'
 		],
 		'ecolog-info.ru' => [
 			'link' => 'http://ecolog-info.ru/',
-			'name' => 'ecolog-info.ru'
-		],
+			'name' => 'ecolog-info.ru',
+			'subscribe-mag' => 'Справочник эколога',
+			'google-id' => 'UA-3173717-10'
+		]
 	];
 
 	private $magsParams = [
@@ -85,6 +95,7 @@ class profizDigestParser extends Parser {
 			foreach ($this->fetchMagsTexts($text) as $this->context => $mag_text) {
 				$this->parsed[$this->context]['params']['signature'] = $this->getMagSignature($mag_text);
 				$this->parsed[$this->context]['params']['month'] = $this->getMagNumber($mag_text);
+				$this->parsed[$this->context]['params']['google_stat_utm'] = $this->getGoogleStatUtm($this->parsed[$this->context]['params']['month']);
 				//Разбиваем текст журналов на рубрики
 				$fetchedRubrics = $this->fetchRubrics($mag_text);
 				//Разбиваем каждую рубрику на статьи
@@ -329,4 +340,21 @@ class profizDigestParser extends Parser {
 		}
 	}
 
+	private function getGoogleStatUtm($monthNumber) {
+		$months = [
+			'January',
+			'February',
+			'March',
+			'April',
+			'May',
+			'June',
+			'July',
+			'August',
+			'September',
+			'October',
+			'November',
+			'December'
+		];
+		return $months[$monthNumber - 1] . "-" . date('Y');
+	}
 }
