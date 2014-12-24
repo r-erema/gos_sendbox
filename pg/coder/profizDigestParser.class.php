@@ -138,7 +138,7 @@ class profizDigestParser extends Parser {
 				}
 			}
 		}
-		$this->renderLayout("templates/porfiz-digest/mainLayout.php");
+		$this->renderLayout("porfiz-digest/mainLayout.php");
 	}
 
 	/**
