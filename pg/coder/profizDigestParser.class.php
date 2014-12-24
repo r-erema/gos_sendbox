@@ -3,9 +3,12 @@ class profizDigestParser extends Parser {
 
 	private $context;
 	private $currRubric;
-	private $currAddresseeForum;
+	protected $currAddresseeForum;
 
-	private $addrForumsParams = [
+	/**
+	 * @var array
+	 */
+	protected $addrForumsParams = [
 		'buhgalter-info.ru' => [
 			'link' => 'http://buhgalter-info.ru/',
 			'name' => 'buhgalter-info.ru',
@@ -38,7 +41,10 @@ class profizDigestParser extends Parser {
 		]
 	];
 
-	private $magsParams = [
+	/**
+	 * @var array
+	 */
+	protected $magsParams = [
 		'peo' => [
 			'name' => 'Планово-экономический отдел',
 			'link' => 'http://www.profiz.ru/peo/'
@@ -64,6 +70,10 @@ class profizDigestParser extends Parser {
 			'link' => 'http://www.profiz.ru/se/'
 		]
 	];
+
+	/**
+	 * @var array
+	 */
 	private $rubricsWithoutAuthors = [
 		'ДОКУМЕНТ НОМЕРА',
 		'ВОПРОС — ОТВЕТ',
@@ -71,20 +81,31 @@ class profizDigestParser extends Parser {
 		'KADROVIK-INFO.RU',
 	];
 
+	/**
+	 * @var array
+	 */
 	private $rubricsWithoutTitles = [
 		'ВОПРОС — ОТВЕТ',
 	];
 
+	/**
+	 * @var array
+	 */
 	private $articlesWithoutAuthors = [
 		'Ваш вопрос',
 		'Ваши вопросы',
 		'Вопрос — ответ',
 	];
 
+	/**
+	 * @param $text
+	 * @param $params
+	 */
 	public function __construct($text, $params) {
 		parent::__construct($text);
 		$this->currAddresseeForum = $params['addresseeForum'];
 	}
+
 	/**
 	 *
 	 */
@@ -117,7 +138,7 @@ class profizDigestParser extends Parser {
 				}
 			}
 		}
-		$this->getLayout();
+		$this->renderLayout("templates/porfiz-digest/mainLayout.php");
 	}
 
 	/**
@@ -229,7 +250,6 @@ class profizDigestParser extends Parser {
 	private function fetchMagsTexts($text) {
 		$mags_text = [];
 		switch($this->context) {
-			//case 'kr' : $pattern =  '#^[A-ZА-ЯЁ —\-\.]{3,}\s.+?(?:(?=( *ТЕМАТИЧЕСКИЕ СТРАНИЦЫ.+)))#msu'; break;
 			case 'kr' : $pattern =  '#«Кадровые решения»\s.+?(?:(?=( *ТЕМАТИЧЕСКИЕ СТРАНИЦЫ.+)))#msu'; break;
 			default : $pattern = null; break;
 		}
@@ -249,10 +269,14 @@ class profizDigestParser extends Parser {
 		} else {
 			$mags_text[$this->context] = $text;
 		}
-
 		return $mags_text;
 	}
 
+	/**
+	 * @param $articleTitle
+	 * @param $author
+	 * @return bool
+	 */
 	private function checkEmptyAuthorResolution($articleTitle, $author) {
 		if (in_array($articleTitle, $this->articlesWithoutAuthors)) {
 			return true;
@@ -261,11 +285,10 @@ class profizDigestParser extends Parser {
 		}
 	}
 
-	private function getLayout() {
-			$templatePath = "templates/porfiz-digest/mainLayout.php";
-			file_exists($templatePath) ? require_once $templatePath : die("Шаблон '$templatePath' отсутсвует");
-	}
-
+	/**
+	 * @param $text
+	 * @return string
+	 */
 	private function getMagSignature($text) {
 		switch($this->context) {
 			case 'peo' : $pattern = '#(Тема .+? номера: \r\n.*)#mu'; break;
@@ -285,6 +308,10 @@ class profizDigestParser extends Parser {
 		}
 	}
 
+	/**
+	 * @param $text
+	 * @return mixed
+	 */
 	private function getMagNumber($text) {
 
 		$months = [
@@ -340,6 +367,10 @@ class profizDigestParser extends Parser {
 		}
 	}
 
+	/**
+	 * @param $monthNumber
+	 * @return string
+	 */
 	private function getGoogleStatUtm($monthNumber) {
 		$months = [
 			'January',
