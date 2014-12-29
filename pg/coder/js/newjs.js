@@ -23,10 +23,15 @@ $(function () {
 	var controlPanel = $('#parser-control-panel');
 	var parseForm = $('#parse-form');
 	var formWrapper = $('#form-wrapper');
+	var submitBtn = parseForm.find('input[type="submit"]');
+	var parserName = parseForm.find('input[name="parserName"]');
 
 	parserSelect.on('change', function() {
 		controlPanel.hide('fast').empty();
+		formWrapper.hide('fast');
+		parseForm.children().not(submitBtn).not(parserName).remove();
 		var selectValue = $(this).val();
+		parserName.attr('value',selectValue);
 		switch(selectValue) {
 			case 'profizDigestParser' : controlPanel.apppendProfizMagsDigestControls().show('fast'); break;
 			default : body.prependMessage('error','Неизвестный парсер'); break;
@@ -44,7 +49,6 @@ $(function () {
 		$('.message').remove();
 		var messageBlock = $('<div class="message">' + text + '</div>');
 		messageBlock.append(createRemover(messageBlock));
-		//x.appendTo(messageBlock);
 		return messageBlock.prependTo($(this)).addClass(type).show('fast');
 	};
 
@@ -54,6 +58,8 @@ $(function () {
 	 */
 	$.prototype.apppendProfizMagsDigestControls = function () {
 		$(this).append(createProfizMagsButtonsPanel());
+		parseForm.prepend(createAddresseeForumsPanel());
+		formWrapper.show();
 		return this;
 	};
 
@@ -70,11 +76,12 @@ $(function () {
 	};
 
 	var createAddresseeForumsPanel = function () {
-		var div = $('<div id="addressee-forums-buttons">Форум получателей:<br /></div>');
+		var wrapper = $('<div class="addr-forums-wrapper"><h3>Форум на который пойдет рассылка</h3></div>');
+		var list = $('<ul></ul>').appendTo(wrapper);
 		$.each(config.addresseeForums, function () {
-			div.append('<input type="radio" name="addresseeForum" value="' + this.name + '">' + this.name + '<br />');
+			list.append($('<li><input type="radio" name="addresseeForum" id = ' + this.name + ' value="' + this.name + '"><label for="' + this.name + '">' + this.name + '</label></li>'));
 		});
-		return div;
+		return wrapper;
 	};
 
 	$(document).on('click', '[name="add-textarea"]',function () {
@@ -87,8 +94,7 @@ $(function () {
 		});
 		textAreaWrapper.append();
  		var textarea = $('<textarea id="' + mag + '-parse-textarea" cols="120" rows="20" name=texts[' + mag + ']>');
-		formWrapper.prepend(textAreaWrapper.append(textarea));
-		formWrapper.show();
+		submitBtn.before(textAreaWrapper.append(textarea));
 	});
 
 	/**
@@ -104,7 +110,6 @@ $(function () {
 			});
 		});
 		return x;
-	}
-
+	};
 
 });

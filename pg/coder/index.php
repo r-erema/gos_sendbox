@@ -24,6 +24,7 @@
 		<div id="parser-control-panel"></div>
 		<div id="form-wrapper">
 			<form id="parse-form" method="post" action="parser.class.php">
+				<input type="hidden" name="parserName">
 				<input type="submit" value="Сверстать">
 			</form>
 		</div>
