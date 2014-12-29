@@ -82,4 +82,5 @@
 		'О.В. Прокопенко' => "prokopenko.png",
 		'Г.Ф. Асоскова' => "asoskova.png",
 		'Н.Е. Король' => "korol.png",
+		'Е.И. Мельникова' => "melnikova.png",
 	);
