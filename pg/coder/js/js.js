@@ -34,6 +34,7 @@ $(function () {
 		parserName.attr('value',selectValue);
 		switch(selectValue) {
 			case 'profizDigestParser' : controlPanel.apppendProfizMagsDigestControls().show('fast'); break;
+			case 'normativkaDigestParser' : prepareNormativkaDigestForm(); break;
 			default : body.prependMessage('error','Неизвестный парсер'); break;
 		}
 	});
@@ -59,7 +60,7 @@ $(function () {
 	$.prototype.apppendProfizMagsDigestControls = function () {
 		$(this).append(createProfizMagsButtonsPanel());
 		parseForm.prepend(createAddresseeForumsPanel());
-		formWrapper.show();
+		formWrapper.show('fast');
 		return this;
 	};
 
@@ -76,10 +77,10 @@ $(function () {
 	};
 
 	var createAddresseeForumsPanel = function () {
-		var wrapper = $('<div class="addr-forums-wrapper"><h3>Форум на который пойдет рассылка</h3></div>');
+		var wrapper = $('<div class="addr-forums-wrapper"><h3>Форум на который пойдет рассылка*</h3></div>');
 		var list = $('<ul></ul>').appendTo(wrapper);
 		$.each(config.addresseeForums, function () {
-			list.append($('<li><input type="radio" name="addresseeForum" id = ' + this.name + ' value="' + this.name + '"><label for="' + this.name + '">' + this.name + '</label></li>'));
+			list.append($('<li><input type="radio" name="params[addresseeForum]" id = ' + this.name + ' value="' + this.name + '" required="required"><label for="' + this.name + '">' + this.name + '</label></li>'));
 		});
 		return wrapper;
 	};
@@ -110,6 +111,12 @@ $(function () {
 			});
 		});
 		return x;
+	};
+
+	var prepareNormativkaDigestForm = function () {
+		parseForm.prepend(('<div><label for="normativka-digest-textarea">Текст дайджеста*:</label><textarea id="normativka-digest-textarea" cols="120" rows="20" name=texts[normativka-digest] required="required"></textarea></div>'));
+		parseForm.prepend(('<div><label for="digest-number-input">Введите номер дайджеста*:</label><input id="digest-number-input" type="text" name="params[digestNumber]" required="required"></div>'));
+		formWrapper.show('fast');
 	};
 
 });
