@@ -9,16 +9,22 @@
 	</head>
 	<body>
 		<div id="parser-select-wrapper">
-			<label for="parser-select">Что верстаем?</label>
-			<select name=parser id="parser-select">
-				<option></option>
-				<option id="profizDigestParser" value="profizDigestParser">Рассылку profiz.ru</option>
-				<option id="normativkaDigestParser" value="normativkaDigestParser">Дайджест Нормативка.by</option>
-			</select>
+			<h3>Что верстаем?</h3>
+			<ul>
+				<li>
+					<input type="radio" name="parser-select" id="profizDigestParser" value="profizDigestParser">
+					<label for="profizDigestParser">Рассылку profiz.ru</label>
+				</li>
+				<li>
+					<input type="radio" name="parser-select" id="normativkaDigestParser" value="normativkaDigestParser">
+					<label for="normativkaDigestParser">Дайджест Нормативка.by</label>
+				</li>
+			</ul>
 		</div>
 		<div id="parser-control-panel"></div>
 		<div id="form-wrapper">
 			<form id="parse-form" method="post" action="parser.class.php">
+				<input type="submit" value="Сверстать">
 			</form>
 		</div>
 	</body>
