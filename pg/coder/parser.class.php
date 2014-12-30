@@ -1,3 +1,4 @@
+<meta charset="utf-8">
 <?php
 if(isset($_POST['parserName']) && !empty($_POST['parserName']) && isset($_POST['texts']) && !empty($_POST['texts'])) {
 	require_once 'parserController.php';
