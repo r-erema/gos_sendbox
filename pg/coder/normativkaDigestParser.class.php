@@ -8,6 +8,85 @@ class normativkaDigestParser extends Parser {
 	private $period;
 	private $seminarsMonth;
 
+	private $authorsPhotos = array(
+		'М.Б. Хивук' => "hivuk.png",
+		'О.Н. Сушко' => "sushko.png",
+		'О.Ю. Савина' => "savina.png",
+		'Н.Н. Метельская'=> "metelskaya.png",
+		'Ю.Г. Кардымон' => "kardimon.png",
+		'В.Э. Самосейко' => "samoseyko.png",
+		'А.В. Анисимова' => "anisimova.png",
+		'А.В. Волчек' => "volchyok.png",
+		'Е.Ю. Бурина' => "burina.png",
+		'В.Ф. Алексеева' => "alekseeva.png",
+		'А.В. Недоступ' => "nedostup.png",
+		'Н.А. Дубинский' => "dubinskiy.png",
+		'О.И. Гасюкевич' => "gasukevich.png",
+		'С.Ч. Белявский' => "belyavskiy.png",
+		'Л.А. Шерснёва' => "shersneva.png",
+		'А.Я. Татринова' => "tatrinova.png",
+		'Н.Е. Нехай' => "nehay.png",
+		'А.И. Штейнер' => "shteiner.png",
+		'Д.В. Григорович' => "grigorovich.png",
+		'Т.А. Тёмкина' => "temkina.png",
+		'В.Н. Лемеш' => "lemesh.png",
+		'А.Э. Аброскин' => "abroskin.png",
+		'И.Е. Демидович' => "demidovich.png",
+		'О.Н. Бортошик' => "bortoshik.png",
+		'С.И. Ерошина' => "eroshina.png",
+		'С.С. Семенихина' => "semenihina.png",
+		'В.Л. Полторан' => "poltoran.png",
+		'А.В. Жук' => "zhuk.png",
+		'Ю.В. Назаренко' => "nazarenko.png",
+		'Н.Г. Семижон' => "semigon.png",
+		'А.А. Бурда' => "burda.png",
+		'Е.Ю. Четверикова' => "chetverikova.png",
+		'Л.И. Пиянзина' => "piyanzina.png",
+		'Т.А. Михейчик' => "miheychyk.png",
+		'В.Г. Ржеутская' => "rjeutskaya.png",
+		'Л.А. Шерснева' => "shersneva.png",
+		'П.В. Хроменко' => "hromenko.png",
+		'Е.А. Авчинникова' => "avchinnikova.png",
+		'Н.Н. Грабовская' => "grabovskaya.png",
+		'В.М. Аникович' => "anikovich.png",
+		'Е.В. Мурашко' => "murashko.png",
+		'А.В. Черва' => "cherva.png",
+		'В.В. Белокопытов' => "belokopitov.png",
+		'В.М. Филиппенков' => "filippenkov.png",
+		'И.А. Тихонович' => "tihonovich.png",
+		'И.В. Клименков' => "klimenkov.png",
+		'Е.А. Стриховская' => "strihovskaya.png",
+		'Т.А. Саханько' => "sahanko.png",
+		'О.П. Чиж' => "chiz.png",
+		'В.В. Хатько' => "hatko.png",
+		'Л.И. Пиязина' => "piyanzina.png",
+		'Н.В. Недоступ' => "nedostup.png",
+		'Д.В. Семашко' => "semashko.png",
+		'И.Е. Демилович' => "demilovich.png",
+		'И.С. Бурак' => "burak.png",
+		'Н.В. Андрейчикова' => "andreychikova.png",
+		'Д.Ю. Бирук' => "biruk.png",
+		'Е.Н. Бурак' => "burak.png",
+		'М.В. Шатило' => "shatilo.png",
+		'Ю.К. Прокопенкова' => "prokopenkova.png",
+		'Н.С. Хаданович' => "hadanovich.png",
+		'Г.А. Худоченко' => "hudochenko.png",
+		'В.В. Толкач' => "tolkach.png",
+		'Н.Л. Сивец' => "sivec.png",
+		'С.Н. Козырев' => "kozirev.png",
+		'М.В. Лось' => "los.png",
+		'В.В. Дражин' => "dragin.png",
+		'Е.В. Гадлевская' => "gadlevskaya.png",
+		'А.В. Баранашник' => "baranashnik.png",
+		'В.Д. Мацинкевич' => "macinkevich.png",
+		'А.А. Пощастьева' => "poschastyeva.png",
+		'С.В. Морозова' => "morozova.png",
+		'О.В. Прокопенко' => "prokopenko.png",
+		'Г.Ф. Асоскова' => "asoskova.png",
+		'Н.Е. Король' => "korol.png",
+		'Е.И. Мельникова' => "melnikova.png",
+	);
+
 	public function __construct($text, $params) {
 		parent::__construct($text);
 		$this->digestNumber =(int) $params['digestNumber'];
@@ -16,7 +95,7 @@ class normativkaDigestParser extends Parser {
 	public function run() {
 		$tmp = [];
 		foreach($this->texts as $context => $text) {
-			//$r = $this->handleArticlesText($text);
+
 			$this->period = $this->getDigestPeriod($text);
 			$this->parsed = $this->splitDigestOnParts($text);
 			$this->seminarsMonth = $this->fetchSeminarsMonth($text);
@@ -76,7 +155,7 @@ class normativkaDigestParser extends Parser {
 				}
 			}
 		}
-		$this->renderLayout("normativka-digest/main.php");
+		$this->renderLayout("normativka-digest/mainLayout.php");
 	}
 
 	private function splitDigestOnParts($text) {
@@ -161,24 +240,26 @@ class normativkaDigestParser extends Parser {
 		preg_match_all($pattern, $article, $matches);
 		switch($this->currPart) {
 			case 'Анонс аналитических материалов' :
-				empty($matches[1][0]) ? die ("Не удалось извлечь автора из статьи: $article<br> Часть: $this->currPart") : $splitArticle['authors'][] = trim($matches[1][0]);
-				empty($matches[2][0]) ? die ("Не удалось извлечь ссылку из статьи: $article<br> Часть: $this->currPart") : $splitArticle['link'] = trim($matches[2][0]);
+				empty($matches[1][0]) ? die ("Не удалось извлечь автора из статьи: $article<br> Часть: $this->currPart") : $splitArticle['authors']['name'] = trim($matches[1][0]);
+				empty($matches[1][0]) ? die ("Не удалось извлечь автора из статьи: $article<br> Часть: $this->currPart") : $splitArticle['authors']['photo'] = $this->getAuthorPhotoByName($splitArticle['authors']['name']);
+				empty($matches[2][0]) ? die ("Не удалось извлечь ссылку из статьи: $article<br> Часть: $this->currPart") : $splitArticle['link'] = trim($this->normalizeLink($matches[2][0]));
 				empty($matches[3][0]) ? die ("Не удалось извлечь заголовок из статьи: $article<br> Часть: $this->currPart") : $splitArticle['title'] = trim($matches[3][0]);
 				empty($matches[4][0]) ? die ("Не удалось извлечь основной текст из статьи: $article<br> Часть: $this->currPart") : $splitArticle['text'] = trim($matches[4][0]);
 				break;
 			case 'Нормативно-правовая информация' :
 				empty($matches[1][0]) ? die ("Не удалось извлечь заголовок из статьи: $article<br> Часть: $this->currPart") : $splitArticle['title'] = trim($matches[1][0]);
-				empty($matches[2][0]) ? die ("Не удалось извлечь ссылку из статьи: $article<br> Часть: $this->currPart") : $splitArticle['link'] = trim($matches[2][0]);
+				empty($matches[2][0]) ? die ("Не удалось извлечь ссылку из статьи: $article<br> Часть: $this->currPart") : $splitArticle['link'] = trim($this->normalizeLink($matches[2][0]));
 				empty($matches[3][0]) ? die ("Не удалось извлечь основной текст из статьи: $article<br> Часть: $this->currPart") : $splitArticle['text'] = trim($matches[3][0]);
 				break;
 			case 'Читайте на следующей неделе' :
-				empty($matches[1][0]) ? die ("Не удалось извлечь автора из статьи: $article<br> Часть: $this->currPart") : $splitArticle['authors'][] = trim($matches[1][0]);
-				empty($matches[2][0]) ? die ("Не удалось извлечь ссылку из статьи: $article<br> Часть: $this->currPart") : $splitArticle['link'] = trim($matches[2][0]);
+				empty($matches[1][0]) ? die ("Не удалось извлечь автора из статьи: $article<br> Часть: $this->currPart") : $splitArticle['authors']['name'] = trim($matches[1][0]);
+				empty($matches[1][0]) ? die ("Не удалось извлечь автора из статьи: $article<br> Часть: $this->currPart") : $splitArticle['authors']['photo'] = $this->getAuthorPhotoByName($splitArticle['authors']['name']);
+				empty($matches[2][0]) ? die ("Не удалось извлечь ссылку из статьи: $article<br> Часть: $this->currPart") : $splitArticle['link'] = trim($this->normalizeLink($matches[2][0]));
 				empty($matches[3][0]) ? die ("Не удалось извлечь заголовок из статьи: $article<br> Часть: $this->currPart") : $splitArticle['title'] = trim($matches[3][0]);
 				break;
 			case 'Семинары Prof.by' :
 				empty($matches[1][0]) ? die ("Не удалось извлечь дату семинара: $article<br> Часть: $this->currPart") : $splitArticle['date'] = trim($matches[1][0]);
-				empty($matches[2][0]) ? die ("Не удалось извлечь ссылку из семинара: $article<br> Часть: $this->currPart") : $splitArticle['link'] = trim($matches[2][0]);
+				empty($matches[2][0]) ? die ("Не удалось извлечь ссылку из семинара: $article<br> Часть: $this->currPart") : $splitArticle['link'] = trim($this->normalizeLink($matches[2][0]));
 				empty($matches[3][0]) ? die ("Не удалось извлечь заголовок из семинара: $article<br> Часть: $this->currPart") : $splitArticle['title'] = trim($matches[3][0]);
 				empty($matches[4][0]) ? die ("Не удалось извлечь основной текст из семинара: $article<br> Часть: $this->currPart") : $splitArticle['text'] = trim($matches[4][0]);
 				break;
@@ -228,7 +309,28 @@ class normativkaDigestParser extends Parser {
 	}
 
 	private function fetchSeminarsMonth($text) {
+		preg_match_all('#Семинары на ([а-я]+?)\r\n#u', $text, $matches);
+		if(empty($matches[1][0])) {
+			die("Не удалось извлечь месяц семинаров");
+		} else {
+			return $matches[1][0];
+		}
+	}
 
+	private function normalizeLink($link) {
+		preg_match('#http.+?(?=sid|$)#u', $link, $matches);
+		if(empty($matches[0])) {
+			die('Не удалось удалить лишнее из ссылки');
+		} else {
+			return $matches[0];
+		}
+	}
+
+	private function getAuthorPhotoByName($authorName) {
+		if(!isset($this->authorsPhotos[$authorName])) {
+			die("Не удалось найти фото автора $authorName");
+		}
+		return $this->authorsPhotos[$authorName];
 	}
 
 }

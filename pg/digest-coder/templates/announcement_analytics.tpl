@@ -29,32 +29,32 @@
 
 <!-- FOR BUHGALTER CONTENT START -->
 <table width="620" cellspacing="0" cellpadding="0" border="0">
-    {foreach from = $data.ann_analytics.buh.arts key=id item=art}
-    <tr>
-        <td width="64" valign="top">
-            <img src="http://normativka.by/pictures/video/authors/{$art.photo}" alt="" style="margin-top: 3px;" width="64" height="64" />
-        </td>
-        <td width="12">
-            <!-- padding -->
-        </td>
-        <td width="544" valign="top">
-            <p style="font-family: Arial,Helvetica, sans-serif; font-size: 15px; font-weight: bold; margin-top: 0; margin-bottom: 3px;">{$art.title}</p>
-            <p style="font-family: Arial,Helvetica, sans-serif; font-size: 13px; margin-top: 0; margin-bottom: 0; color: #909090;">{$art.author}</p>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="3" height="15">
-            <!-- padding -->
-        </td>
-    </tr>
-    {/foreach}
-    <tr>
-        <td colspan="3" height="10">
-            <!-- padding -->
-        </td>
-    </tr>
-</table>
-<!-- FOR BUHGALTER CONTENT END -->
+        {foreach from = $data.ann_analytics.buh.arts key=id item=art}
+            <tr>
+                <td width="64" valign="top">
+                    <img src="http://normativka.by/pictures/video/authors/{$art.photo}" alt="" style="margin-top: 3px;" width="64" height="64" />
+                </td>
+                <td width="12">
+                    <!-- padding -->
+                </td>
+                <td width="544" valign="top">
+                    <p style="font-family: Arial,Helvetica, sans-serif; font-size: 15px; font-weight: bold; margin-top: 0; margin-bottom: 3px;">{$art.title}</p>
+                    <p style="font-family: Arial,Helvetica, sans-serif; font-size: 13px; margin-top: 0; margin-bottom: 0; color: #909090;">{$art.author}</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" height="15">
+                    <!-- padding -->
+                </td>
+            </tr>
+        {/foreach}
+        <tr>
+            <td colspan="3" height="10">
+                <!-- padding -->
+            </td>
+        </tr>
+    </table>
+    <!-- FOR BUHGALTER CONTENT END -->
 
 <!-- FOR KADROVIK TITLE START -->
 <table class="digest-template-title digest-template-title-kadrovik" width="620" height="34" cellspacing="0" cellpadding="0" border="0">
