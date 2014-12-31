@@ -2,7 +2,8 @@
 <tr>
 	<td style="padding-top: 15px; padding-bottom: 20px; padding-left: 40px; padding-right: 40px;" bgcolor="#ffffff">
 		<h1 style="text-align: center; font-size: 30px; font-family: Arial, Helvetica, sans-serif; margin-top: 0; margin-bottom: 10px;">Анонс аналитических материалов</h1>
-		<h2 style="text-align: center; font-size: 18px; font-family: Arial, Helvetica, sans-serif; margin-top: 0; margin-bottom: 35px;">Читайте на следующей неделе</h2>
+		<h2 style="text-align: center; font-size: 18px; font-family: Arial, Helvetica, sans-serif; margin-top: 0; margin-bottom: 10px;">Читайте на следующей неделе</h2>
+		<h2 style="text-align: center; font-size: 18px; font-family: Arial, Helvetica, sans-serif; margin-top: 0; margin-bottom: 35px;"><?php echo $this->period; ?></h2>
 		<?php foreach($this->parsed['Читайте на следующей неделе'] as $profName => $articles): ?>
 			<!-- FOR <?php if ($profName == 'Бухгалтеру'): ?>BUHGALTER<?php elseif ($profName == 'Кадровику'): ?>KADROVIK<?php elseif ($profName == 'Кадровику'): ?>JURISCONSULT<?php endif; ?> TITLE START -->
 			<table class="digest-template-title" width="620" height="34" cellspacing="0" cellpadding="0" border="0">

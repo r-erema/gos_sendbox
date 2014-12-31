@@ -7,7 +7,7 @@
 		<table class="digest-template-title" width="620" height="22" cellspacing="0" cellpadding="0" border="0">
 			<tr>
 				<td height="11" width="210"></td>
-				<td rowspan="3"><h3 style="font-family: Arial, Helvetica, sans-serif; font-size: 18px; font-weight: normal; text-align: center; margin-top: 0; margin-bottom: 0;">Семинары на январь</h3></td>
+				<td rowspan="3"><h3 style="font-family: Arial, Helvetica, sans-serif; font-size: 18px; font-weight: normal; text-align: center; margin-top: 0; margin-bottom: 0;">Семинары на <?php echo $this->seminarsMonth; ?></h3></td>
 				<td width="210"></td>
 			</tr>
 			<tr>
