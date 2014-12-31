@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <?php
-	$templatePath = "templates/normativka-digest/analytics.php";
+	$templatePath = "templates/normativka-digest/analyticsAnnounce.php";
 	file_exists($templatePath) ? require_once $templatePath : die("Шаблон '$templatePath' отсутсвует");
 ?>
 <tr>
@@ -27,7 +27,10 @@
 		<td>
 			<center>
 				<table width="700" cellspacing="0" cellpadding="0" border="0">
-					{include file = "regulatory_information.tpl"}
+					<?php
+						$templatePath = "templates/normativka-digest/regInfo.php";
+						file_exists($templatePath) ? require_once $templatePath : die("Шаблон '$templatePath' отсутсвует");
+					?>
 					<tr>
 						<td height="6">
 							<!-- padding -->
