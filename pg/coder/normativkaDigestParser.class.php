@@ -233,7 +233,7 @@ class normativkaDigestParser extends Parser {
 		switch($this->currPart) {
 			case 'Анонс аналитических материалов' : $pattern = '#([А-Я]\.[А-Я]\. [А-Я][а-я]+.?)\r\n(http.+?)?\r\n(.+?)\r\n(.+)#su'; break;
 			case 'Нормативно-правовая информация' : $pattern = '#(.+?)\r\n(http.+?)\r\n(.+)#su'; break;
-			case 'Читайте на следующей неделе' : $pattern = '#([А-Я]\.[А-Я]\. [А-Я][а-я]+.?)\r\n(http.+?)\r\n(.+)#su'; break;
+			case 'Читайте на следующей неделе' : $pattern = '#([А-Я]\.[А-Я]\. [А-Я][а-я]+.?)\r\nhttp.+?\r\n(.+)#su'; break;
 			case 'Семинары Prof.by' : $pattern = '#(^[0-9][0-9]? [а-я]+ ??)\r\n(http.+?)\r\n(.+?):\r\n(.+)#su'; break;
 			default : die("Невозможно статью на части, неивестная часть дайджеста: $this->currPart, $this->currProf, метод: ".__METHOD__); break;
 		}
@@ -254,8 +254,7 @@ class normativkaDigestParser extends Parser {
 			case 'Читайте на следующей неделе' :
 				empty($matches[1][0]) ? die ("Не удалось извлечь автора из статьи: $article<br> Часть: $this->currPart") : $splitArticle['authors']['name'] = trim($matches[1][0]);
 				empty($matches[1][0]) ? die ("Не удалось извлечь автора из статьи: $article<br> Часть: $this->currPart") : $splitArticle['authors']['photo'] = $this->getAuthorPhotoByName($splitArticle['authors']['name']);
-				empty($matches[2][0]) ? die ("Не удалось извлечь ссылку из статьи: $article<br> Часть: $this->currPart") : $splitArticle['link'] = trim($this->normalizeLink($matches[2][0]));
-				empty($matches[3][0]) ? die ("Не удалось извлечь заголовок из статьи: $article<br> Часть: $this->currPart") : $splitArticle['title'] = trim($matches[3][0]);
+				empty($matches[2][0]) ? die ("Не удалось извлечь заголовок из статьи: $article<br> Часть: $this->currPart") : $splitArticle['title'] = trim($matches[2][0]);
 				break;
 			case 'Семинары Prof.by' :
 				empty($matches[1][0]) ? die ("Не удалось извлечь дату семинара: $article<br> Часть: $this->currPart") : $splitArticle['date'] = trim($matches[1][0]);
