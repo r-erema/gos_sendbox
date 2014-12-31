@@ -36,10 +36,12 @@
 							<!-- padding -->
 						</td>
 					</tr>
-					{include file = "analytics_articles.tpl"}
+					<?php
+						$templatePath = "templates/normativka-digest/analyticsArticles.php";
+						file_exists($templatePath) ? require_once $templatePath : die("Шаблон '$templatePath' отсутсвует");
+					?>
 					<tr>
 						<td height="6">
 							<!-- padding -->
 						</td>
 					</tr>
-					{include file = "videochannel.tpl"}
