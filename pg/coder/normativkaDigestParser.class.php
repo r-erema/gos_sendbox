@@ -247,8 +247,8 @@ class normativkaDigestParser extends Parser {
 					$splitArticle['authors'][1]['photo'] = $this->getAuthorPhotoByName($splitArticle['authors'][1]['name']);
 				}
 				empty($matches[3][0]) ? die ("Не удалось извлечь ссылку из статьи: $article<br> Часть: $this->currPart") : $splitArticle['link'] = trim($this->normalizeLink($matches[3][0]));
-				empty($matches[4][0]) ? die ("Не удалось извлечь заголовок из статьи: $article<br> Часть: $this->currPart") : $splitArticle['title'] = trim($matches[3][0]);
-				empty($matches[5][0]) ? die ("Не удалось извлечь основной текст из статьи: $article<br> Часть: $this->currPart") : $splitArticle['text'] = trim($matches[4][0]);
+				empty($matches[4][0]) ? die ("Не удалось извлечь заголовок из статьи: $article<br> Часть: $this->currPart") : $splitArticle['title'] = trim($matches[4][0]);
+				empty($matches[5][0]) ? die ("Не удалось извлечь основной текст из статьи: $article<br> Часть: $this->currPart") : $splitArticle['text'] = trim($matches[5][0]);
 				break;
 			case 'Нормативно-правовая информация' :
 				empty($matches[1][0]) ? die ("Не удалось извлечь заголовок из статьи: $article<br> Часть: $this->currPart") : $splitArticle['title'] = trim($matches[1][0]);
