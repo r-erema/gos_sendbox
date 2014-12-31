@@ -1,4 +1,3 @@
-<meta charset="utf-8">
 <?php
 	$templatePath = "templates/normativka-digest/analyticsAnnounce.php";
 	file_exists($templatePath) ? require_once $templatePath : die("Шаблон '$templatePath' отсутсвует");

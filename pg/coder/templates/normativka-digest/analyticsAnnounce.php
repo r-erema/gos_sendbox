@@ -31,15 +31,21 @@
 			<table width="620" cellspacing="0" cellpadding="0" border="0">
 				<?php foreach($articles as $article): ?>
 				<tr>
+					<?php foreach($article['authors'] as $author):?>
 					<td width="64" valign="top">
-						<img src="http://normativka.by/pictures/video/authors/<?php echo $article['authors']['photo']; ?>" alt="" style="margin-top: 3px;" width="64" height="64" />
+						<img src="http://normativka.by/pictures/video/authors/<?php echo $author['photo']; ?>" alt="" style="margin-top: 3px;" width="64" height="64" />
 					</td>
 					<td width="12">
 						<!-- padding -->
 					</td>
-					<td width="544" valign="top">
+					<?php endforeach; ?>
+					<td width="544" valign="top" <?php if($this->profArticlesHasSeveralAuthors($articles) && count($article['authors']) == 1):?> colspan="3"<?php endif; ?>>
 						<p style="font-family: Arial,Helvetica, sans-serif; font-size: 15px; font-weight: bold; margin-top: 0; margin-bottom: 3px;"><?php echo $article['title']; ?></p>
-						<p style="font-family: Arial,Helvetica, sans-serif; font-size: 13px; margin-top: 0; margin-bottom: 0; color: #909090;"><?php echo $article['authors']['name']; ?></p>
+						<p style="font-family: Arial,Helvetica, sans-serif; font-size: 13px; margin-top: 0; margin-bottom: 0; color: #909090;">
+							<?php $i = 1; $counter = count($article['authors']); foreach($article['authors'] as $author):?>
+								<?php echo $author['name']?><?php if($i < $counter): $i++?>, <?php endif?>
+							<?php endforeach; ?>
+						</p>
 					</td>
 				</tr>
 				<tr>
