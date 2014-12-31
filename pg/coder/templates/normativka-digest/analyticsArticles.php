@@ -37,7 +37,7 @@
 					<!-- padding -->
 				</td>
 				<td width="544" valign="top">
-					<p style="font-family: Arial,Helvetica, sans-serif; font-size: 15px; font-weight: normal; margin-top: 0; margin-bottom: 3px;"><a href="<?php echo $article['link']; ?>" style="color: #134c95;"><?php echo $article['title']; ?></a></p>
+					<p style="font-family: Arial,Helvetica, sans-serif; font-size: 15px; font-weight: normal; margin-top: 0; margin-bottom: 3px;"><a href="<?php echo $article['link']; ?>?utm_source=digest-<?php echo $this->digestNumber; ?>&utm_medium=email&utm_campaign=digest" style="color: #134c95;"><?php echo $article['title']; ?></a></p>
 					<?php foreach($article['text'] as $paragraph):?>
 						<?php if(is_array($paragraph)): ?>
 							<ul style="margin-top: 0; margin-bottom: 8px; padding-left: 20px;">

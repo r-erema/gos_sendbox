@@ -34,7 +34,7 @@
 		<!-- REGULATORY INFORMATION FOR <?php if ($profName == 'Бухгалтеру'): ?>BUHGALTER<?php elseif ($profName == 'Кадровику'): ?>KADROVIK<?php elseif ($profName == 'Кадровику'): ?>JURISCONSULT<?php endif; ?> CONTENT START -->
 		<div style="margin-bottom: 10px; font-family: Arial, Helvetica, sans-serif; font-size: 13px;">
 			<?php foreach($articles as $article): ?>
-			<p style="font-size: 15px; margin-top: 0; margin-bottom: 8px;"><a href="<?php echo $article['link']; ?>" style="color: #134c95;" target="_blank"><?php echo $article['title']; ?></a></p>
+			<p style="font-size: 15px; margin-top: 0; margin-bottom: 8px;"><a href="<?php echo $article['link']; ?>?utm_source=digest-<?php echo $this->digestNumber; ?>&utm_medium=email&utm_campaign=digest" style="color: #134c95;" target="_blank"><?php echo $article['title']; ?></a></p>
 			<?php foreach($article['text'] as $paragraph): ?>
 				<?php if(is_array($paragraph)): ?>
 					<ul style="margin-top: 0; margin-bottom: 8px; padding-left: 20px;">

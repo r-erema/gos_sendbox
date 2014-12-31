@@ -32,7 +32,7 @@
 					<?php
 						preg_match('#([0-9]+) ([а-я]+)#u', $seminar['date'], $matches);
 					?><span style="font-size: 36px; font-weight: bold;"><?php echo $matches[1]; ?></span> <?php echo $matches[2]; ?></p>
-				<p style="font-size: 13px; margin-top: 0; margin-bottom: 8px;"><strong><a href="<?php echo $seminar['link']; ?>/" style="color: #134c95;" target="_blank"><?php echo $seminar['title']; ?></a>:</strong></p>
+				<p style="font-size: 13px; margin-top: 0; margin-bottom: 8px;"><strong><a href="<?php echo $seminar['link']; ?>/?utm_source=digest-<?php echo $this->digestNumber; ?>&utm_medium=email&utm_campaign=digest" style="color: #134c95;" target="_blank"><?php echo $seminar['title']; ?></a>:</strong></p>
 				<?php foreach($seminar['text'] as $paragraph):?>
 					<?php if(is_array($paragraph)): ?>
 						<ul style="margin-top: 0; margin-bottom: 8px; padding-left: 20px;">

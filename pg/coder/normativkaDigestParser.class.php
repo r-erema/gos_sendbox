@@ -2,11 +2,11 @@
 
 class normativkaDigestParser extends Parser {
 
-	private $digestNumber;
 	private $currPart;
 	private $currProf;
-	private $period;
-	private $seminarsMonth;
+	public $digestNumber;
+	public $period;
+	public $seminarsMonth;
 
 	private $authorsPhotos = array(
 		'М.Б. Хивук' => "hivuk.png",
