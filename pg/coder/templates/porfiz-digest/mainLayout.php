@@ -31,7 +31,7 @@ foreach($this->parsed as $context => $data): ?>
 	© ООО «Профессиональное издательство»</p>
 
 
-<p align="center"><font color="#666666"><strong>Вы подписались на рассылку новостей журнала «<?php echo $this->addrForumsParams[$this->currAddresseeForum]['subscribe-mag']; ?>» при регистрации на форуме <a href="<?php echo $this->addrForumsParams[$this->currAddresseeForum]['link'] ?>?utm_source=economistinfo&utm_medium=email&utm_campaign=monthly-announce-<?php echo $this->parsed[$context]['params']['google_stat_utm']; ?>"><?php echo $this->addrForumsParams[$this->currAddresseeForum]['name'] ?></a>.</strong><br>
+<p align="center"><font color="#666666"><strong>Вы подписались на рассылку новостей журнала «<?php echo $this->addrForumsParams[$this->currAddresseeForum]['subscribe-mag']; ?>» при регистрации на форуме <a href="<?php echo $this->addrForumsParams[$this->currAddresseeForum]['link'] ?>?utm_source=<?php echo $this->addrForumsParams[$this->currAddresseeForum]['name'] ?>&utm_medium=email&utm_campaign=monthly-announce-<?php echo $this->parsed[$context]['params']['google_stat_utm']; ?>"><?php echo $this->addrForumsParams[$this->currAddresseeForum]['name'] ?></a>.</strong><br>
 		Рассылка отправлена на e-mail %[e]% в %[t]% для %[n]%.<br>
 		Вы можете <a href="<?php echo $this->addrForumsParams[$this->currAddresseeForum]['link'] ?>/user/news-unsubscribe/?code=%[1]%">отписаться</a> от этой рассылки.</font></p>
 </body>
