@@ -1,15 +1,15 @@
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
-		<td width="145" ><img src="http://www.profiz.ru/pictures/cover/kr/m_<?php echo $this->parsed['kr']['params']['month']; ?>_2014.jpg" alt="" width="118" height="164" /></td>
+		<td width="145" ><img src="http://www.profiz.ru/pictures/cover/kr/m_<?php echo $this->parsed['kr']['params']['month']; ?>_2015.jpg" alt="" width="118" height="164" /></td>
 		<td>
 			<h4>Здравствуйте, %[n]%.</h4>
-			<h2 style="color:#365f91">Вышел новый номер<br />журнала «Кадровые решения»!<img src="http://www.google-analytics.com/collect?v=1&tid=UA-1992459-1&cid=%[1]%&t=event&ec=email&ea=open&el=kadrovikinfo" /></h2>
+			<h2 style="color:#365f91">Вышел новый номер<br />журнала «Кадровые решения»!</h2>
 			<br />
 			<h3 style="color:#943634"><i><?php echo $this->parsed['kr']['params']['signature']; ?></i></h3>
 		</td>
 		<td width="260" valign="top" align="right">
-			<p><small>Подробно о журнале: <a href="http://profiz.ru/kr/?utm_source=kadrovikinfo&utm_medium=email&utm_campaign=monthly-announce-december">«Кадровые решения»</a></small></p>
-			<p><small>Подписаться на журнал можно<br />по тел. (495) 258-08-15 <br />или <a href="http://profiz.ru/subscribe/?utm_source=kadrovikinfo&utm_medium=email&utm_campaign=monthly-announce-december">на сайте</a></small></p>
+			<p><small>Подробно о журнале: <a href="http://profiz.ru/kr/?utm_source=<?php echo $this->addrForumsParams[$this->currAddresseeForum]['name'] ?>&utm_medium=email&utm_campaign=monthly-announce-<?php echo $this->parsed[$context]['params']['google_stat_utm']; ?>">«Кадровые решения»</a></small></p>
+			<p><small>Подписаться на журнал можно<br />по тел. (495) 258-08-15 <br />или <a href="http://profiz.ru/subscribe/?utm_source=<?php echo $this->addrForumsParams[$this->currAddresseeForum]['name'] ?>&utm_medium=email&utm_campaign=monthly-announce-<?php echo $this->parsed[$context]['params']['google_stat_utm']; ?>">на сайте</a></small></p>
 		</td>
 	</tr>
 </table>
@@ -21,7 +21,7 @@
 			<b><?php echo $article['author']; ?></b>
 			<h2 style="margin:0.15em 0 0 0;color:#365f91">
 				<?php if($article['link'] !== null):?>
-					<a href="<?php echo $article['link']?>" style="color:#365f91">
+					<a href="<?php echo $article['link']?>?utm_source=<?php echo $this->addrForumsParams[$this->currAddresseeForum]['name'] ?>&utm_medium=email&utm_campaign=monthly-announce-<?php echo $this->parsed[$context]['params']['google_stat_utm']; ?>" style="color:#365f91">
 				<?php endif; ?>
 					<?php echo $article['title']; ?>
 				<?php if($article['link'] !== null): ?>

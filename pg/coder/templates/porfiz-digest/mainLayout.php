@@ -23,15 +23,15 @@ $counter = 0;
 foreach($this->parsed as $context => $data): ?>
 		<?php $counter++; if($context != 'super'): ?>
 		<?php if($counter == 1): ?> <?php elseif($counter == $total): ?>и <?php else: ?>, <?php endif; ?>
+		<a href="<?php echo $this->magsParams[$context]['link']; ?>?utm_source=<?php echo $this->addrForumsParams[$this->currAddresseeForum]['name'] ?>&utm_medium=email&utm_campaign=monthly-announce-<?php echo $this->parsed[$context]['params']['google_stat_utm']; ?>">«<?php echo $this->magsParams[$context]['name'];?>»</a>
 	<?php endif; ?>
-	<a href="<?php echo $this->magsParams[$context]['link']; ?>/?utm_source=<?php echo $this->addrForumsParams[$this->currAddresseeForum]['name'] ?>&utm_medium=email&utm_campaign=monthly-announce-<?php echo $this->parsed[$context]['params']['google_stat_utm']; ?>">«<?php echo $this->magsParams[$context]['name'];?>»</a>
 <?php endforeach; ?>
 	<br />
 	Подписаться на журналы можно по тел. <big><b>(495) 258-08-15</b></big> или на <a href="http://profiz.ru/subscribe/?utm_source=<?php echo $this->addrForumsParams[$this->currAddresseeForum]['name'] ?>&utm_medium=email&utm_campaign=monthly-announce-<?php echo $this->parsed[$context]['params']['google_stat_utm']; ?>"">сайте</a><br />
 	© ООО «Профессиональное издательство»</p>
 
 
-<p align="center"><font color="#666666"><strong>Вы подписались на рассылку новостей журнала «<?php echo $this->addrForumsParams[$this->currAddresseeForum]['subscribe-mag']; ?>» при регистрации на форуме <a href="<?php echo $this->addrForumsParams[$this->currAddresseeForum]['link'] ?>"><?php echo $this->addrForumsParams[$this->currAddresseeForum]['name'] ?></a>.</strong><br>
+<p align="center"><font color="#666666"><strong>Вы подписались на рассылку новостей журнала «<?php echo $this->addrForumsParams[$this->currAddresseeForum]['subscribe-mag']; ?>» при регистрации на форуме <a href="<?php echo $this->addrForumsParams[$this->currAddresseeForum]['link'] ?>?utm_source=economistinfo&utm_medium=email&utm_campaign=monthly-announce-<?php echo $this->parsed[$context]['params']['google_stat_utm']; ?>"><?php echo $this->addrForumsParams[$this->currAddresseeForum]['name'] ?></a>.</strong><br>
 		Рассылка отправлена на e-mail %[e]% в %[t]% для %[n]%.<br>
 		Вы можете <a href="<?php echo $this->addrForumsParams[$this->currAddresseeForum]['link'] ?>/user/news-unsubscribe/?code=%[1]%">отписаться</a> от этой рассылки.</font></p>
 </body>

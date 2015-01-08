@@ -1,11 +1,11 @@
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
-		<td width="145" ><img src="http://www.profiz.ru/pictures/cover/stup/m_<?php echo $this->parsed['super']['params']['month']; ?>_2014.jpg" alt="" width="118" height="164" /></td>
+		<td width="145" ><img src="http://www.profiz.ru/pictures/cover/stup/m_<?php echo $this->parsed['super']['params']['month']; ?>_2015.jpg" alt="" width="118" height="164" /></td>
 		<td>
 			<h2>ТЕМАТИЧЕСКИЕ СТРАНИЦЫ </h2>
 			<h3>«СОВРЕМЕННЫЕ ТЕХНОЛОГИИ УПРАВЛЕНИЯ ПЕРСОНАЛОМ»</h3>
 			<br />
-			<h3 style="color:#943634"><strong><?php echo $this->parsed['eco']['params']['signature']; ?></strong></h3>
+			<h3 style="color:#943634"><strong><?php echo $this->parsed['super']['params']['signature']; ?></strong></h3>
 		</td>
 		<td width="160" valign="top" align="right">
 			<p>&nbsp;</p></td>
@@ -20,7 +20,7 @@
 			<b><?php echo $article['author']; ?></b>
 			<h2 style="margin:0.15em 0 0 0;color:#943634">
 				<?php if($article['link'] !== null):?>
-				<a href="<?php echo $article['link']?>" style="color:#365f91">
+				<a href="<?php echo $article['link']?>?utm_source=<?php echo $this->addrForumsParams[$this->currAddresseeForum]['name'] ?>&utm_medium=email&utm_campaign=monthly-announce-<?php echo $this->parsed[$context]['params']['google_stat_utm']; ?>" style="color:#365f91">
 					<?php endif; ?>
 					<?php echo $article['title']; ?>
 					<?php if($article['link'] !== null): ?>
