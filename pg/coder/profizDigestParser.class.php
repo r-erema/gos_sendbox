@@ -124,7 +124,6 @@ class profizDigestParser extends Parser {
 				$fetchedArticles = $this->fetchArticlesFromRubrics($fetchedRubrics);
 
 				//Выделяему в каждой статье тайтл, ссылку, автора, основной текст...
-				$splitArticles = [];
 				foreach($fetchedArticles as $rubricName => $articles) {
 					$this->currRubric = $rubricName;
 					if(!empty($articles)) {
