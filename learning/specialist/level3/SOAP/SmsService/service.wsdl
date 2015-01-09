@@ -44,6 +44,7 @@
 				</element>
 			</xs:schema>
 		</types>
+	
 		<!--Сообщения процедуры sendSms-->
 		<message name="sendSmsRequest">
 			<part name="Request" element="tns:Request" />
