@@ -26,7 +26,7 @@
 		}
 	}
 
-	$id = 1;
+	$id = 5;
 	$requestXML = xmlrpc_encode_request('getNewsById', [$id]);
 	make_request($requestXML, $output);
 	var_dump($output);
