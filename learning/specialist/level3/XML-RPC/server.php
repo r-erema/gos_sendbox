@@ -1,7 +1,6 @@
 <?php
 	$arStock = ['1' => 100, '2' => 200, '3' => 300];
-
-	function get_stock($methodNamem, $args, $extra) {
+	function get_stock($methodName, $args, $extra) {
 		if(!is_array($args) || count($args) != 2) {
 			return ['faultCode' => -2, 'faultString' => 'Неверное количество параметров!'];
 		}
@@ -18,3 +17,6 @@
 
 	$xmlrpcServer = xmlrpc_server_create();
 	xmlrpc_server_register_method($xmlrpcServer, 'getStock', 'get_stock');
+
+	header('Content-Type: text/xml;charset=utf-8');
+	print xmlrpc_server_call_method($xmlrpcServer, $reuest_xml, null);
