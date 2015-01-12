@@ -85,6 +85,7 @@ class normativkaDigestParser extends Parser {
 		'Г.Ф. Асоскова' => "asoskova.png",
 		'Н.Е. Король' => "korol.png",
 		'Е.И. Мельникова' => "melnikova.png",
+		'Р.А. Верменков' => "veremenkov.png",
 	);
 
 	public function __construct($text, $params) {
@@ -231,9 +232,9 @@ class normativkaDigestParser extends Parser {
 		$pattern = null;
 		$splitArticle = [];
 		switch($this->currPart) {
-			case 'Анонс аналитических материалов' : $pattern = '#([А-Я]\.[А-Я]\. [А-Я][а-я]+.)(?:, ([А-Я]\.[А-Я]\. [А-Я][а-я]+.))??\r\n(http.+?)?\r\n(.+?)\r\n(.+)#su'; break;
+			case 'Анонс аналитических материалов' : $pattern = '#([А-Я]\.[А-Я]\. [А-Я][а-яё]+.)(?:, ([А-Я]\.[А-Я]\. [А-Я][а-яё]+.))??\r\n(http.+?)?\r\n(.+?)\r\n(.+)#su'; break;
 			case 'Нормативно-правовая информация' : $pattern = '#(.+?)\r\n(http.+?)\r\n(.+)#su'; break;
-			case 'Читайте на следующей неделе' : $pattern = '#([А-Я]\.[А-Я]\. [А-Я][а-я]+.)(?:, ([А-Я]\.[А-Я]\. [А-Я][а-я]+.))??\r\nhttp.+?\r\n(.+)#su'; break;
+			case 'Читайте на следующей неделе' : $pattern = '#([А-Я]\.[А-Я]\. [А-Я][а-яё]+.)(?:, ([А-Я]\.[А-Я]\. [А-Я][а-яё]+.))??\r\nhttp.+?\r\n(.+)#su'; break;
 			case 'Семинары Prof.by' : $pattern = '#(^[0-9][0-9]? [а-я]+ ??)\r\n(http.+?)\r\n(.+?):\r\n(.+)#su'; break;
 			default : die("Невозможно статью на части, неивестная часть дайджеста: $this->currPart, $this->currProf, метод: ".__METHOD__); break;
 		}
@@ -251,7 +252,9 @@ class normativkaDigestParser extends Parser {
 				empty($matches[5][0]) ? die ("Не удалось извлечь основной текст из статьи: $article<br> Часть: $this->currPart") : $splitArticle['text'] = trim($matches[5][0]);
 				break;
 			case 'Нормативно-правовая информация' :
-				empty($matches[1][0]) ? die ("Не удалось извлечь заголовок из статьи: $article<br> Часть: $this->currPart") : $splitArticle['title'] = trim($matches[1][0]);
+				empty($matches[1][0]) ?
+					die ("Не удалось извлечь заголовок из статьи: $article<br> Часть: $this->currPart") :
+					$splitArticle['title'] = trim($matches[1][0]);
 				empty($matches[2][0]) ? die ("Не удалось извлечь ссылку из статьи: $article<br> Часть: $this->currPart") : $splitArticle['link'] = trim($this->normalizeLink($matches[2][0]));
 				empty($matches[3][0]) ? die ("Не удалось извлечь основной текст из статьи: $article<br> Часть: $this->currPart") : $splitArticle['text'] = trim($matches[3][0]);
 				break;
