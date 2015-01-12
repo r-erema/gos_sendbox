@@ -8,6 +8,12 @@ switch($_POST['action']){
 		}
 		break;
 	case 'anthology':
+		$f = new DVDFactory();
+		if(isset($_POST['bonus']) && $_POST['bonus'] == 1) {
+			$dvd = $f->create('BonusDVD');
+		} else {
+			$dvd = $f->create('DVD');
+		}
 		$band = trim(strip_tags($_POST['band']));
 		$tracks = array_map(function($val){return (int)$val;}, $_POST['order']);
 		$dvd = new DVD();
@@ -20,10 +26,17 @@ switch($_POST['action']){
 		$id = abs((int)$_POST['id']);
 		$band = trim(strip_tags($_POST['band']));
 		$title = trim(strip_tags($_POST['title']));
-		$dvd = new DVD();
-		$dvd->setTitle($title);
+		$dvd = new DVDStrategy();
+		if(isset($_POST['format']) && $_POST['format'] == "1") {
+			$obj = new DVDAsJSON();
+		} else {
+			$obj = new DVDAsXML();
+		}
+		$dvd->setStrategy($obj);
+		$dvd->get($id);
+		/*$dvd->setTitle($title);
 		$dvd->setBand($band);
-		$dvd->getXML($id);
+		$dvd->getXML($id);*/
 		break;
 }
 header('Location: catalog.php');
