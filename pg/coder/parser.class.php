@@ -16,7 +16,7 @@ function __autoload($className) {
 ?>
 
 <?php
-	class Parser {
+	abstract class Parser {
 
 		protected $parsed = [];
 		protected $texts;
