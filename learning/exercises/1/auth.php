@@ -28,4 +28,4 @@
 	$auth = Auth::getInstance();
 	$auth->login($_POST['email'], $_POST['login'], $_POST['password']);
 
-	header('Location: index.php');
+	header('Location: indext.php');
