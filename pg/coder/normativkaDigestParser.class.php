@@ -86,6 +86,7 @@ class normativkaDigestParser extends Parser {
 		'Н.Е. Король' => "korol.png",
 		'Е.И. Мельникова' => "melnikova.png",
 		'Р.А. Верменков' => "veremenkov.png",
+		'Е.А. Недоступ' => "nedostup_ea.png",
 	);
 
 	public function __construct($text, $params) {
