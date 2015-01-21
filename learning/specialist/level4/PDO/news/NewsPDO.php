@@ -1,11 +1,38 @@
 <?php
 	class NewsPDO {
 		private $_db;
-		const DB_CONNECTION_STRING = 'sqlite:news.db';
+		const DB_NAME = 'news.db';
+		const DB_CONNECTION_STRING = "sqlite:news.db";
 
 		public function __construct() {
-			$this->_db = new PDO(self::DB_CONNECTION_STRING);
-			$this->_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			try {
+				$this->_db = new PDO(self::DB_CONNECTION_STRING);
+				$this->_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+				$this->_db->beginTransaction();
+				$sql = "CREATE TABLE msgs(
+								id INTEGER PRIMARY KEY AUTOINCREMENT,
+								title TEXT,
+								category INTEGER,
+								description TEXT,
+								source TEXT,
+								datetime INTEGER
+							)";
+				$this->_db->exec($sql);
+				$sql = "CREATE TABLE category(
+									id INTEGER PRIMARY KEY AUTOINCREMENT,
+									name TEXT
+								)";
+				$this->_db->exec($sql);
+				$sql = "INSERT INTO category(id, name)
+					SELECT 1 as id, '��������' as name
+					UNION SELECT 2 as id, '��������' as name
+					UNION SELECT 3 as id, '�����' as name";
+				$this->_db->exec($sql);
+				$this->_db->commit();
+			} catch (PDOException $e) {
+				$this->_db->rollBack();
+				var_dump($e->getMessage());
+			}
 		}
 
 		public function __destruct() {
