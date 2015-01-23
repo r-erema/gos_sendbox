@@ -196,19 +196,19 @@ class normativkaDigestParser extends Parser {
 	}
 
 	private function splitPartByProf($text) {
-		preg_match_all('#Бухгалтеру(.+?)Кадровику(.+?)Юристу(.+?)$#su', $text, $matches);
+		preg_match_all('#Бухгалтеру(.+?)(?:Экономисту(.+?))?Кадровику(.+?)Юристу(.+?)$#su', $text, $matches);
 		if(empty($matches[1][0])) {
 			die("Не удалось извлечь текст 'Бухгалтеру' в части $this->currPart");
-		} elseif(empty($matches[2][0])) {
-			die("Не удалось извлечь текст 'Кадровику' в части $this->currPart");
 		} elseif(empty($matches[3][0])) {
+			die("Не удалось извлечь текст 'Кадровику' в части $this->currPart");
+		} elseif(empty($matches[4][0])) {
 			die("Не удалось извлечь текст 'Юристу' в части $this->currPart");
 		} else {
-			return [
-				'Бухгалтеру' => trim($matches[1][0]),
-				'Кадровику' => trim($matches[2][0]),
-				'Юристу' => trim($matches[3][0])
-			];
+			$splParts['Бухгалтеру'] = trim($matches[1][0]);
+			!empty($matches[2][0]) ? $splParts['Экономисту'] = trim($matches[2][0]) : null;
+			$splParts['Кадровику'] = trim($matches[3][0]);
+			$splParts['Юристу'] = trim($matches[4][0]);
+			return $splParts;
 		}
 	}
 
@@ -293,7 +293,7 @@ class normativkaDigestParser extends Parser {
 			if($this->isMarkedParagraph($matches[0][$i])) {
 				$j = $i;
 				$splText[$j][] = trim($this->deleteMarker($matches[0][$i]));
-				while($this->isMarkedParagraph($matches[0][$i+1])) {
+				while(isset($matches[0][$i+1]) ? $this->isMarkedParagraph($matches[0][$i+1]) : false) {
 					$splText[$j][] = trim($this->deleteMarker($matches[0][$i+1]));
 					$i++;
 					if(!isset($matches[0][$i+1]))break;
