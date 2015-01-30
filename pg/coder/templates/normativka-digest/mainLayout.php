@@ -44,7 +44,7 @@
 							<!-- padding -->
 						</td>
 					</tr>
-					<?php
+					<?php if(isset($this->parsed['Семинары Prof.by'])):
 						$templatePath = "templates/normativka-digest/seminars.php";
 						file_exists($templatePath) ? require_once $templatePath : die("Шаблон '$templatePath' отсутсвует");
-					?>
+					endif; ?>

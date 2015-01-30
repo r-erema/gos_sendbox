@@ -10,7 +10,7 @@ function __autoload($className) {
 	if (file_exists($path)) {
 		require_once $path;
 	} else {
-		die("The file {$className}.php could not be found!");
+		die("The file {$className}.class.php could not be found!");
 	}
 }
 ?>
@@ -20,6 +20,13 @@ function __autoload($className) {
 
 		protected $parsed = [];
 		protected $texts;
+
+		private $typographOptions = [
+			'Text.paragraphs' => 'off',
+			'Text.auto_links' => 'off',
+			'Space.autospace_after' => 'off'
+		];
+
 		const TEMPLATES_DIR = 'templates/';
 
 		public function __construct($texts) {
@@ -30,4 +37,12 @@ function __autoload($className) {
 			$path = self::TEMPLATES_DIR . $templatePath;
 			file_exists($path) ? require_once $path : die("Шаблон '$path' отсутсвует");
 		}
+
+		protected function typographParsed() {
+			array_walk_recursive($this->parsed, function(&$text) {
+				$text = EMTypograph::fast_apply($text, $this->typographOptions);
+			});
+		}
+
+
 	}

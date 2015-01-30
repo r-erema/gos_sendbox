@@ -87,6 +87,7 @@ class normativkaDigestParser extends Parser {
 		'Е.И. Мельникова' => "melnikova.png",
 		'Р.А. Верменков' => "veremenkov.png",
 		'Е.А. Недоступ' => "nedostup_ea.png",
+		'И.А. Гаврильчик' => "gavrilchik.png",
 	);
 
 	public function __construct($text, $params) {
@@ -157,6 +158,7 @@ class normativkaDigestParser extends Parser {
 				}
 			}
 		}
+		$this->typographParsed();
 		$this->renderLayout("normativka-digest/mainLayout.php");
 	}
 
@@ -321,11 +323,7 @@ class normativkaDigestParser extends Parser {
 
 	private function fetchSeminarsMonth($text) {
 		preg_match_all('#Семинары на ([а-я]+?)\r\n#u', $text, $matches);
-		if(empty($matches[1][0])) {
-			die("Не удалось извлечь месяц семинаров");
-		} else {
-			return $matches[1][0];
-		}
+		return isset($matches[1][0]) ? $matches[1][0] : null;
 	}
 
 	private function normalizeLink($link) {
