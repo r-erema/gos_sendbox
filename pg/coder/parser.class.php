@@ -24,7 +24,9 @@ function __autoload($className) {
 		private $typographOptions = [
 			'Text.paragraphs' => 'off',
 			'Text.auto_links' => 'off',
-			'Space.autospace_after' => 'off'
+			'Space.autospace_after' => 'off',
+			'Abbr.nobr_vtch_itd_itp' => 'off',
+			'Nobr.spaces_nobr_in_surname_abbr' => 'off'
 		];
 
 		const TEMPLATES_DIR = 'templates/';
@@ -43,6 +45,5 @@ function __autoload($className) {
 				$text = EMTypograph::fast_apply($text, $this->typographOptions);
 			});
 		}
-
 
 	}

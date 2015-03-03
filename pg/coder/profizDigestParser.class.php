@@ -142,7 +142,7 @@ class profizDigestParser extends Parser {
 	}
 
 	/**
-	 * Вытягиваеттекст рубрик из всего текста
+	 * Вытягивает текст рубрик из всего текста
 	 * @return array
 	 */
 	private function fetchRubrics($text) {
@@ -150,7 +150,7 @@ class profizDigestParser extends Parser {
 			switch($this->context) {
 				case 'super' : $pattern = '#^_{5,}([A-ZА-ЯЁ —\-\.]{3,})?\s(.*)(?:(?=\s^Подробно о журнале))#msu'; $matches[1] = 'Костыль'; break;
 				case 'eco' : $pattern = '#(^[А-Я\—., ]{7,}?)(\r\n.*?)?(?:(?=^[А-Я\—., ]{7,}\r\n|_{7,}))#msu'; $matches[1] = 'Костыль'; break;
-				default : $pattern = '#^([A-ZА-ЯЁ —\-\,.]{7,})\s(.+?)(?:(?=\s^[A-ZА-ЯЁ —\-\.]{7,}\s|Подробно о журнале))#msu'; break;
+				default : $pattern = '#^([A-ZА-ЯЁ —\-\,.]{7,})\s(.+?)(?:(?=\s^[A-ZА-ЯЁ —\-\.]{7,}\s|Подробно о журнале|(?!.+)))#msu'; break;
 			}
 			preg_match_all($pattern, $text, $matches);
 			if(!empty($matches[1]) && !empty($matches[2])) {
