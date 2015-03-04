@@ -20,6 +20,7 @@ function __autoload($className) {
 
 		protected $parsed = [];
 		protected $texts;
+		protected $params;
 
 		private $typographOptions = [
 			'Text.paragraphs' => 'off',
@@ -31,8 +32,9 @@ function __autoload($className) {
 
 		const TEMPLATES_DIR = 'templates/';
 
-		public function __construct($texts) {
+		public function __construct($texts, $params) {
 			$this->texts = $texts;
+			$this->params = $params;
 		}
 
 		public function renderLayout($templatePath) {

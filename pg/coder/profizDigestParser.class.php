@@ -4,6 +4,7 @@ class profizDigestParser extends Parser {
 	private $context;
 	private $currRubric;
 	protected $currAddresseeForum;
+	protected $googleStatUri;
 
 	/**
 	 * @var array
@@ -103,7 +104,7 @@ class profizDigestParser extends Parser {
 	 * @param $params
 	 */
 	public function __construct($text, $params) {
-		parent::__construct($text);
+		parent::__construct($text, $params);
 		$this->currAddresseeForum = $params['addresseeForum'];
 	}
 
@@ -111,13 +112,13 @@ class profizDigestParser extends Parser {
 	 *
 	 */
 	public function run() {
+		$this->googleStatUri = $this->getGoogleStatUtm();
 		foreach($this->texts as $context => $text) {
 			$this->context = $context;
 			//Разбиваем весь текст по журналам
 			foreach ($this->fetchMagsTexts($text) as $this->context => $mag_text) {
 				$this->parsed[$this->context]['params']['signature'] = $this->getMagSignature($mag_text);
-				$this->parsed[$this->context]['params']['month'] = $this->getMagNumber($mag_text);
-				$this->parsed[$this->context]['params']['google_stat_utm'] = $this->getGoogleStatUtm($this->parsed[$this->context]['params']['month']);
+				$this->parsed[$this->context]['params']['magNumber'] = $this->getMagNumber($this->params['mailingMonth']);
 				//Разбиваем текст журналов на рубрики
 				$fetchedRubrics = $this->fetchRubrics($mag_text);
 				//Разбиваем каждую рубрику на статьи
@@ -315,99 +316,29 @@ class profizDigestParser extends Parser {
 	 * @param $text
 	 * @return mixed
 	 */
-	private function getMagNumber($text) {
-
-		$months = [
-			'январском' => 1,
-			'февральском' => 2,
-			'мартовском' => 3,
-			'апрельском' => 4,
-			'майском' => 5,
-			'июньском' => 6,
-			'июльском' => 7,
-			'августовском' => 8,
-			'сентябрьском' => 9,
-			'октябрьском' => 10,
-			'ноябрьском' => 11,
-			'декабрьском' => 12
+	private function getMagNumber($month) {
+		$magNums = [
+			'January' => 1,
+			'February' => 2,
+			'March' => 3,
+			'April' => 4,
+			'May' => 5,
+			'June' => 6,
+			'July' => 7,
+			'August' => 8,
+			'September' => 9,
+			'October' => 10,
+			'November' => 11,
+			'December' => 12
 		];
-
-		switch($this->context) {
-			case 'peo' :
-				$pattern = '#Тема (.+?) номера: \r\n.*?#mu';
-				$months = [
-					'январского' => 1,
-					'февральского' => 2,
-					'мартовского' => 3,
-					'апрельского' => 4,
-					'майского' => 5,
-					'июньского' => 6,
-					'июльского' => 7,
-					'августовского' => 8,
-					'сентябрьского' => 9,
-					'октябрьского' => 10,
-					'ноябрьского' => 11,
-					'декабрьского' => 12
-				];
-				break;
-			case 'sr' :
-				$pattern = '#Читайте в (.+?) номере?#mu'; break;
-			case 'kr' : $pattern = '#Читайте в (.+?) номере?#mu'; break;
-			case 'super' : $months = []; $pattern = null; break;
-			case 'se' : $pattern = '#Читайте в (.+?) номере?#mu'; break;
-			case 'eco' : $pattern = '#Читайте в (.+?) номере?#mu'; break;
-			case 'sec' : $pattern = '#Читайте в № [0-9] ([а-я]+\/[а-я]+)?#mu';
-				$months = [
-					'январь/февраль' => 1,
-					'март/апрель' => 2,
-					'май/июнь' => 3,
-					'июль/август' => 4,
-					'сентябрь/октябрь' => 5,
-					'ноябрь/декабрь' => 6,
-				];break;
-			default : die("Не удалось извлечь номер журнала. Метод: ".__METHOD__.". Низвестный контекст: $this->context"); break;
-
-		}
-		if($this->context == 'super') {
-			return $this->parsed['kr']['params']['month'];
-		} else {
-			preg_match_all($pattern, $text, $matches);
-			if(empty($matches[1][0])) {
-				die("Не удалось извлечь месяц журнала, не найдено совпадений. Метод: ".__METHOD__.". Контекст: $this->context");
-			}
-			return $months[$matches[1][0]];
-		}
+		return $magNums[$month];
 	}
 
 	/**
 	 * @param $monthNumber
 	 * @return string
 	 */
-	private function getGoogleStatUtm($monthNumber) {
-		$months = [
-			'January',
-			'February',
-			'March',
-			'April',
-			'May',
-			'June',
-			'July',
-			'August',
-			'September',
-			'October',
-			'November',
-			'December'
-		];
-		if($this->context == 'sec') {
-			$months = [
-				'January',
-				'March',
-				'May',
-				'July',
-				'September',
-				'November',
-			];
-		}
-		return $months[$monthNumber - 1] . "-" . date('Y');
+	private function getGoogleStatUtm() {
+		return "?utm_source={$this->addrForumsParams[$this->currAddresseeForum]['name']}&utm_medium=email&utm_campaign=monthly-announce-{$this->params['mailingMonth']}-" . date('Y');
 	}
 }

@@ -15,6 +15,20 @@ $(function () {
 			{'name' : 'economist-info.ru'},
 			{'name' : 'sekretar-info.ru'},
 			{'name' : 'ecolog-info.ru'}
+		],
+		'monthes' : [
+			'January',
+			'February',
+			'March',
+			'April',
+			'May',
+			'June',
+			'July',
+			'August',
+			'September',
+			'October',
+			'November',
+			'December'
 		]
 	};
 
@@ -60,6 +74,7 @@ $(function () {
 	$.prototype.apppendProfizMagsDigestControls = function () {
 		$(this).append(createProfizMagsButtonsPanel());
 		parseForm.prepend(createAddresseeForumsPanel());
+		parseForm.prepend(createMonthSelectorPanel());
 		formWrapper.show('fast');
 		return this;
 	};
@@ -81,6 +96,15 @@ $(function () {
 		var list = $('<ul></ul>').appendTo(wrapper);
 		$.each(config.addresseeForums, function () {
 			list.append($('<li><input type="radio" name="params[addresseeForum]" id = ' + this.name + ' value="' + this.name + '" required="required"><label for="' + this.name + '">' + this.name + '</label></li>'));
+		});
+		return wrapper;
+	};
+
+	var createMonthSelectorPanel = function () {
+		var wrapper = $('<div><h3>Выберите месяц рассылки*</h3></div>');
+		var select = $('<select name="params[mailingMonth]"></select>').appendTo(wrapper);
+		$.each(config.monthes, function () {
+			select.append($('<option value="' + this + '">' + this + '</option>'))
 		});
 		return wrapper;
 	};

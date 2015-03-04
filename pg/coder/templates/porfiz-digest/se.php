@@ -1,40 +1,65 @@
-<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<table cellpadding="0" cellspacing="0" border="0" style="font-family: Arial, Helvetica sans-serif; font-size: 10.5pt; color: #000000;">
 	<tr>
-		<td width="145" ><img src="http://www.profiz.ru/pictures/cover/se/m_<?php echo $this->parsed['se']['params']['month']; ?>_2015.jpg" alt="" width="118" height="164" /></td>
-		<td>
-			<h2 style="color:#365f91">Вышел новый  номер<br />журнала «Справочник экономиста»!</h2>
-			<br />
-			<h3 style="color:#943634"><i><?php echo $this->parsed['se']['params']['signature']; ?></i></h3>
+		<td width="220" style="padding-right: 21px; padding-bottom: 34px; padding-left: 39px; background: url('http://profiz.ru/pictures/mailsub/common/2.0/shelf.png') center 277px no-repeat;" valign="top">
+			<a href="http://www.profiz.ru/se/<?php echo $data['params']['magNumber']; ?>_2015/<?php echo $this->googleStatUri; ?>" target="_blank" style="display: block; line-height: 1;">
+				<!-- SE COVER -->								<img src="http://www.profiz.ru/pictures/cover/se/m_<?php echo $data['params']['magNumber']; ?>_2015.jpg" style="border: 1px solid #e2e2e2;" alt=""/>
+			</a>
 		</td>
-		<td width="260" valign="top" align="right">
-			<p><small>Подробно о журнале: <a href="http://profiz.ru/se/?utm_source=<?php echo $this->addrForumsParams[$this->currAddresseeForum]['name'] ?>&utm_medium=email&utm_campaign=monthly-announce-<?php echo $this->parsed[$context]['params']['google_stat_utm']; ?>">«Справочник экономиста»</a></small></p>
-			<p><small>Подписаться на журнал можно<br />по тел. (495) 258-08-15 <br />или <a href="http://profiz.ru/subscribe/?utm_source=<?php echo $this->addrForumsParams[$this->currAddresseeForum]['name'] ?>&utm_medium=email&utm_campaign=monthly-announce-<?php echo $this->parsed[$context]['params']['google_stat_utm']; ?>">на сайте</a></small></p>
+		<td valign="top" style="padding-left: 18px;">
+			<p style="color: #00447c; font-size: 18pt; line-height: 1.2; font-weight: bold; margin-top: 0; margin-bottom: 12px;">Вышел новый  номер журнала «Справочник экономиста»!</p>
+			<table width="100%" cellpadding="0" cellspacing="0" border="0" style="font-family: Arial, Helvetica sans-serif; font-size: 10.5pt; color: #000000;">
+				<tr>
+					<td valign="top">
+						<p style="font-size: 13.5pt; margin-top: 0; margin-bottom: 0;">№ <?php echo $data['params']['magNumber']; ?>, <?php echo date('Y'); ?> г.</p>
+					</td>
+					<td style="text-align: right; padding-top: 3px;" valign="top">
+						<table cellpadding="0" cellspacing="0" border="0" align="right" style="font-family: Arial, Helvetica sans-serif; font-size: 10.5pt; color: #000000; text-align: left;">
+							<tr>
+								<td style="padding-top: 2px;">
+									<a href="http://www.profiz.ru/se/<?php echo $data['params']['magNumber']; ?>_2015/<?php echo $this->googleStatUri; ?>" target="_blank"><img src="http://profiz.ru/pictures/mailsub/common/2.0/icon__content_green.png" alt="" width="18" height="11" border="0" /></a>
+								</td>
+								<td>
+									<a href="http://www.profiz.ru/se/<?php echo $data['params']['magNumber']; ?>_2015/<?php echo $this->googleStatUri; ?>" style="color: #6a9c00;" target="_blank">Содержание номера</a>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+
+			<div style="border-bottom: 1px solid #e0e0e0; margin-bottom: 18px; margin-top: 20px;">&nbsp;</div>
+
+			<p style="margin-top: 0; margin-bottom: 5px;"><a href="http://profiz.ru/se/<?php echo $this->googleStatUri; ?>" style="color: #6a9c00;" target="_blank">Подробнее о журнале</a></p>
+			<p style="margin-top: 0; margin-bottom: 0;">Подписаться на&nbsp;журнал можно по&nbsp;тел.<br /> (495) 258-08-15 или <a href="http://www.profiz.ru/subscribe/<?php echo $this->googleStatUri; ?>" style="color: #6a9c00;" target="_blank">на&nbsp;сайте</a></p>
 		</td>
 	</tr>
 </table>
-
-<?php foreach($this->parsed['se']['content'] as $rubricName => $rubricArticles): ?>
-	<h3 style="margin:1.7em 0;"><?php echo $rubricName; ?></h3>
-	<?php if($rubricArticles !== null): ?>
-		<?php foreach($rubricArticles as $article): ?>
-			<b><?php echo $article['author']; ?></b>
-			<h2 style="margin:0.15em 0 0 0;color:#365f91">
-				<?php if($article['link'] !== null):?>
-					<a href="<?php echo $article['link']?>?utm_source=<?php echo $this->addrForumsParams[$this->currAddresseeForum]['name'] ?>&utm_medium=email&utm_campaign=monthly-announce-<?php echo $this->parsed[$context]['params']['google_stat_utm']; ?>" style="color:#365f91">
-				<?php endif; ?>
+<?php foreach($data['content'] as $sectionName => $sectionContent): ?>
+	<!-- separator section -->
+	<div style="border-top: 1px solid #e0e0e0; margin-bottom: 30px; margin-top: 48px;">&nbsp;</div>
+	<!-- title section -->
+	<p style="color: #00447c; font-size: 12pt; font-weight: bold; text-transform: uppercase; letter-spacing: 0.096em; margin-top: 0; margin-bottom: 30px;"><?php echo $sectionName; ?></p>
+	<?php if(is_array($sectionContent)): ?>
+		<?php foreach($sectionContent as $article): ?>
+			<!-- article -->
+			<!-- title -->
+			<p style="font-size: 12pt; font-weight: bold; margin-top: 30px; margin-bottom: 7px;">
+				<?php if($article['link'] !== null): ?><a href="<?php echo $article['link'].$this->googleStatUri; ?>" style="color: #6a9c00;" target="_blank"><?php endif; ?>
 					<?php echo $article['title']; ?>
-				<?php if($article['link'] !== null): ?>
-					</a>
-				<?php endif; ?>
-			</h2>
+					<?php if($article['link'] !== null): ?></a><?php endif; ?>
+			</p>
+			<!-- author -->
+			<p style="color: #939393; margin-top: 0; margin-bottom: 15px;"><?php echo $article['author']; ?></p>
+			<!-- intro -->
 			<?php if($article['text'] !== null): ?>
 				<?php foreach($article['text'] as $paragraph): ?>
-					<p style="font:11pt Arial;margin:0.4em 0 0 1.7em;color:#666;"><?php echo $paragraph; ?></p>
+					<p style="margin-top: 0; margin-bottom: 20px;"><?php echo $paragraph; ?></p>
 				<?php endforeach; ?>
 			<?php endif; ?>
-			<p style="font:11pt Arial;margin:0.4em 0 0 1.7em;color:#666;">&nbsp;</p>
+			<!-- /article -->
+
+			<!-- separator article -->
+			<table width="82" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 0; margin-top: 20px; font-size: 0;"><tr><td height="1" style="border-top: 2px solid #00447c;">&nbsp;</td></tr></table>
 		<?php endforeach; ?>
 	<?php endif; ?>
 <?php endforeach; ?>
-<p style="font:11pt Arial;margin:0.4em 0 0 1.7em;color:#666;">&nbsp;</p>
-<p style="font:11pt Arial;margin:0.4em 0 0 1.7em;color:#666;">&nbsp;</p>
