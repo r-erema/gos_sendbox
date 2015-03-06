@@ -27,12 +27,13 @@ function __autoload($className) {
 			'Text.auto_links' => 'off',
 			'Space.autospace_after' => 'off',
 			'Abbr.nobr_vtch_itd_itp' => 'off',
-			'Nobr.spaces_nobr_in_surname_abbr' => 'off'
+			'Nobr.spaces_nobr_in_surname_abbr' => 'off',
+			'Space.clear_percent' => 'off'
 		];
 
 		const TEMPLATES_DIR = 'templates/';
 
-		public function __construct($texts, $params) {
+		public function __construct($texts, $params = []) {
 			$this->texts = $texts;
 			$this->params = $params;
 		}
