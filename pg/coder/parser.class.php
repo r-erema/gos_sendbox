@@ -28,7 +28,9 @@ function __autoload($className) {
 			'Space.autospace_after' => 'off',
 			'Abbr.nobr_vtch_itd_itp' => 'off',
 			'Nobr.spaces_nobr_in_surname_abbr' => 'off',
-			'Space.clear_percent' => 'off'
+			'Space.clear_percent' => 'off',
+			'Number.minus_between_nums' => 'off',
+			'Number.minus_in_numbers_range' => 'off'
 		];
 
 		const TEMPLATES_DIR = 'templates/';
