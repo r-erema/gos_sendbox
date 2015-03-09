@@ -331,6 +331,16 @@ class profizDigestParser extends Parser {
 			'November' => 11,
 			'December' => 12
 		];
+		if($this->context == 'sec') {
+			$magNums = [
+				'January' => 1,
+				'March' => 2,
+				'May' => 3,
+				'July' => 4,
+				'September' => 5,
+				'November' => 6,
+			];
+		}
 		return $magNums[$month];
 	}
 

@@ -17,8 +17,10 @@
 			<table width="100%" cellpadding="0" cellspacing="0" border="0" style="font-family: Arial, Helvetica sans-serif; font-size: 10.5pt; color: #000000;">
 				<tr>
 					<td valign="top">
-						<p style="font-size: 13.5pt; margin-top: 0; margin-bottom: 0;">№ <?php echo $data['params']['magNumber']; ?>, <?php echo date('Y'); ?> г.</p>
+						<p style="font-size: 13.5pt; margin-top: 0; margin-bottom: 12px;">№ <?php echo $data['params']['magNumber']; ?>, <?php echo date('Y'); ?> г. <?php echo $this->parsed['peo']['params']['signature']; ?></p>
 					</td>
+				</tr>
+				<tr>
 					<td style="text-align: right; padding-top: 3px;" valign="top">
 						<table cellpadding="0" cellspacing="0" border="0" align="right" style="font-family: Arial, Helvetica sans-serif; font-size: 10.5pt; color: #000000; text-align: left;">
 							<tr>
