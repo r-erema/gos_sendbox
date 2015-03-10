@@ -9,7 +9,7 @@
 		<td valign="top" style="padding-left: 20px;">
 			<p style="margin-top: 0; margin-bottom: 15px; color: #9e9e9e; font-size: 12pt; font-weight: bold; text-transform: uppercase; letter-spacing: 0.096em;">Тематические страницы</p>
 			<p style="font-size: 18pt; font-weight: bold; line-height: 1.2; color: #c41c17; margin-top: 15px; margin-bottom: 30px;">«Современные технологии управления персоналом»</p>
-			<p style="font-size: 13.5pt; text-transform: uppercase; margin-bottom: 15px;">№ <?php echo $data['params']['magNumber']; ?>, <?php echo date('Y'); ?> г.<br />
+			<p style="font-size: 13.5pt; margin-bottom: 15px;">№ <?php echo $data['params']['magNumber']; ?>, <?php echo date('Y'); ?> г.<br />
 				<?php echo $this->parsed['super']['params']['signature']; ?></p>
 			<?php /* <p style="margin-top: 15px;">Мы поговорили о жизненном цикле HR-а        и карьерных перспективах, пообщались         с бывшими HR-ми о том, чего им стоило вырваться из объятий профессии.</p> */ ?>
 		</td>
