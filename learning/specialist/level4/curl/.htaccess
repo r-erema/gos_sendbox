@@ -1,3 +1,3 @@
 #Options Indexes FollowSymLinks
 #RewriteEngine On
-#RewriteRule ^(.*)$ put.php?url=$1 [L]
+#RewriteRulKe ^(.*)$ put.php?url=$1 [L]
