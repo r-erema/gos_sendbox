@@ -40,6 +40,9 @@
 				<li><a href="learning/other/lateStaticBinding">Late Static Binding</a></li>
 			</ul>
 		</li>
+		<li>
+			<a href="learning/zf2/public">zf2</a>
+		</li>
 	</ul>
 </div>
 </body>
