@@ -92,6 +92,8 @@ class normativkaDigestParser extends Parser {
 		'В.В. Филиппенков' => "filippenkov.png",
 		'М.В. Бенсман' => "bensman.png",
 		'Н.Т. Непевная' => "nepevnaya.png",
+		'О.Ю. Бируля' => "birulya.png",
+		'С.В. Кулакевич' => "kulakevich.png"
 	);
 
 	public function __construct($text, $params) {
@@ -298,14 +300,14 @@ class normativkaDigestParser extends Parser {
 		for($i = 0; $i < count($matches[0]); $i++) {
 			if($this->isMarkedParagraph($matches[0][$i])) {
 				$j = $i;
-				$splText[$j][] = trim($this->deleteMarker($matches[0][$i]));
+				$splText[$j][] = $this->makeLinks(trim($this->deleteMarker($matches[0][$i])));
 				while(isset($matches[0][$i+1]) ? $this->isMarkedParagraph($matches[0][$i+1]) : false) {
-					$splText[$j][] = trim($this->deleteMarker($matches[0][$i+1]));
+					$splText[$j][] = $this->makeLinks(trim($this->deleteMarker($matches[0][$i+1])));
 					$i++;
 					if(!isset($matches[0][$i+1]))break;
 				}
 			} else {
-				$splText[$i] = trim($matches[0][$i]);
+				$splText[$i] = $this->makeLinks(trim($matches[0][$i]));
 			}
 		}
 
@@ -351,5 +353,14 @@ class normativkaDigestParser extends Parser {
 			if(count($article['authors']) > 1) return true;
 		}
 		return false;
+	}
+
+	private function makeLinks($text) {
+		//return preg_replace('#<a href=(?:” ? ? |" )(http.+?)(?: ?”|")>(.+?)<\/a>#u', '<a href="$1' . $this->getGoogleStat() . '" style="color:#134c95;" target="_blank">$2</a>', $text);
+		return preg_replace('#<a href=” ?(http.+?)”>(.+?)<\/a>#u', '<a href="$1' . $this->getGoogleStat() . '" style="color:#134c95;" target="_blank">$2</a>', $text);
+	}
+
+	private function getGoogleStat() {
+		return "?utm_source=digest-$this->digestNumber&utm_medium=email&utm_campaign=digest";
 	}
 }
