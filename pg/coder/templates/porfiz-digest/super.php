@@ -3,7 +3,7 @@
 	<tr>
 		<td valign="top">
 			<a href="http://www.profiz.ru/stup/2_2015/" target="_blank" style="display: block; line-height: 1;">
-				<!-- STUP COVER -->								<img src="http://www.profiz.ru/pictures/cover/stup/m_2_2015.jpg" alt="Современные технологии управления персоналом" border="0" />
+				<!-- STUP COVER -->								<img src="http://www.profiz.ru/pictures/cover/stup/m_<?php echo $data['params']['magNumber']; ?>_2015.jpg" alt="Современные технологии управления персоналом" border="0" />
 			</a>
 		</td>
 		<td valign="top" style="padding-left: 20px;">

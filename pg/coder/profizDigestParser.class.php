@@ -120,6 +120,10 @@ class profizDigestParser extends Parser {
 				$this->parsed[$this->context]['params']['signature'] = $this->getMagSignature($mag_text);
 				$this->parsed[$this->context]['params']['magNumber'] = $this->getMagNumber($this->params['mailingMonth']);
 				//Разбиваем текст журналов на рубрики
+
+				if ($this->context == 'super') {
+					$g = 1;
+				}
 				$fetchedRubrics = $this->fetchRubrics($mag_text);
 				//Разбиваем каждую рубрику на статьи
 				$fetchedArticles = $this->fetchArticlesFromRubrics($fetchedRubrics);
