@@ -37,6 +37,20 @@
 								<?php foreach($this->parsed as $context => $content): ?><?php $counter++; if($context != 'super'): ?><?php if($counter == 1): ?> <?php elseif($counter == $total): ?> и <?php else: ?>, <?php endif; ?>
 <a href="http://www.profiz.ru/<?php echo $context; ?>/<?php echo $this->googleStatUri; ?>" style="color: #1c5ec2;" target="_blank">«<?php echo $this->magsParams[$context]['name']?>»</a><?php endif; ?><?php endforeach; ?>
 							</p>
+							<?php
+								$vkGroupsCount = 0;
+								foreach ($this->parsed as $context => $content) {
+									if (isset($this->magsParams[$context]['vk_link'])) {
+										$vkGroupsCount++;
+									}
+								}
+								$total = count($this->parsed);
+								$counter = 0;
+							?>
+							<?php if($vkGroupsCount): ?><p>Наш<?php echo $vkGroupsCount > 1 ? 'и' : 'а';?> групп<?php echo $vkGroupsCount > 1 ? 'ы' : 'а';?> ВКонтакте:
+								<?php foreach($this->parsed as $context => $content): ?><?php if (isset($this->magsParams[$context]['vk_link'])): ?><?php $counter++; if($context != 'super'): ?><?php if($counter == 1): ?> <?php elseif($counter == $total): ?> и <?php else: ?>, <?php endif; ?>
+								<a href="<?php echo $this->magsParams[$context]['vk_link'].$this->googleStatUri; ?>" style="color: #1c5ec2;" target="_blank"><?php echo $this->magsParams[$context]['vk_link']?></a><?php endif; ?><?php endif; ?><?php endforeach; ?>
+							</p><?php endif; ?>
 							<p style="margin-top: 3px; margin-bottom: 0;">Подписаться на журналы можно по тел. <b>(495) 258-08-15</b> или <a href="http://www.profiz.ru/subscribe/<?php echo $this->googleStatUri; ?>" style="color: #1c5ec2;" target="_blank">на сайте</a></p>
 						</td>
 					</tr>

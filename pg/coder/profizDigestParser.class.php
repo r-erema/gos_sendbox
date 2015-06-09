@@ -52,23 +52,28 @@ class profizDigestParser extends Parser {
 		],
 		'kr' => [
 			'name' => 'Кадровые решения',
-			'link' => 'http://www.profiz.ru/kr/'
+			'link' => 'http://www.profiz.ru/kr/',
+			'vk_link' => 'http://vk.com/profiz.ru_kr'
 		],
 		'sr' => [
 			'name' => 'Секретарь-референт',
-			'link' => 'http://www.profiz.ru/sr/'
+			'link' => 'http://www.profiz.ru/sr/',
+			'vk_link' => 'http://vk.com/profiz.ru_sr'
 		],
 		'sec' => [
 			'name' => 'СанЭпидемКонтроль',
-			'link' => 'http://www.profiz.ru/sec/'
+			'link' => 'http://www.profiz.ru/sec/',
+			'vk_link' => 'http://vk.com/profiz.ru_sec'
 		],
 		'eco' => [
 			'name' => 'Справочник эколога',
-			'link' => 'http://www.profiz.ru/eco/'
+			'link' => 'http://www.profiz.ru/eco/',
+			'vk_link' => 'http://vk.com/profiz.ru_eco'
 		],
 		'se' => [
 			'name' => 'Справочник экономиста',
-			'link' => 'http://www.profiz.ru/se/'
+			'link' => 'http://www.profiz.ru/se/',
+			'vk_link' => 'http://vk.com/profiz.ru_se'
 		]
 	];
 
