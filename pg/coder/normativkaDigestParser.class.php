@@ -96,7 +96,8 @@ class normativkaDigestParser extends Parser {
 		'С.В. Кулакевич' => "kulakevich.png",
 		'Н.В. Борисенко' => "borisenko.png",
 		'О.И. Сапего' => "sapego.png",
-		'А.П. Сергеев' => "no-photo.jpg"
+		'А.П. Сергеев' => "no-photo.jpg",
+		'В.И. Матохин' => 'matohin.png'
 	);
 
 	public function __construct($text, $params) {
@@ -174,8 +175,8 @@ class normativkaDigestParser extends Parser {
 	private function splitDigestOnParts($text) {
 		$splitParts = [];
 		$requirePartsPatterns = [
-			'Анонс аналитических материалов' => '#Анонс аналитических материалов\r\n_*(.+?)_*\r\nНормативно-правовая информация#su',
-			'Нормативно-правовая информация' => '#Последние изменения в законодательстве Республики Беларусь\r\n(?:_+\r\n)?(.+?)\r\nЧитайте на следующей неделе#su',
+			'Анонс аналитических материалов' => '#Анонс аналитических материалов\r\n_*(.+?)_*\r\nНормативная правовая информация#su',
+			'Нормативная правовая информация' => '#Последние изменения в законодательстве Республики Беларусь\r\n(?:_+\r\n)?(.+?)\r\nЧитайте на следующей неделе#su',
 			'Читайте на следующей неделе' => '#Читайте на следующей неделе.*?(?:_+)?(.+?)(?:Семинары Prof.by|$)#su',
 		];
 		$notRequirePatterns = [
@@ -227,7 +228,7 @@ class normativkaDigestParser extends Parser {
 		$pattern = null;
 		switch($this->currPart) {
 			case 'Анонс аналитических материалов' : $pattern = '#[А-Я]\.[А-Я]\. [А-Я][а-я]+(?:, [А-Я]\.[А-Я]\. [А-Я][а-я])?.+?(?=(?:[А-Я]\.[А-Я]\. [А-Я][а-я]+(?:, [А-Я]\.[А-Я]\. [А-Я][а-я])?|$))#su'; break;
-			case 'Нормативно-правовая информация' : $pattern = '#^.+$\nhttp.+$(?:(?s).+?)(?=(?:^.+$\nhttp))|(?:(?s).+$)#mu'; break;
+			case 'Нормативная правовая информация' : $pattern = '#^.+$\nhttp.+$(?:(?s).+?)(?=(?:^.+$\nhttp))|(?:(?s).+$)#mu'; break;
 			case 'Читайте на следующей неделе' : $pattern = '#[А-Я]\.[А-Я]\. [А-Я][а-я]+(?:, [А-Я]\.[А-Я]\. [А-Я][а-я])?.+?(?=(?:[А-Я]\.[А-Я]\. [А-Я][а-я]+(?:, [А-Я]\.[А-Я]\. [А-Я][а-я])?|$))#su'; break;
 			case 'Семинары Prof.by' : $pattern = '#[0-9][0-9]? [а-я]+ ?(?:.+?)(?=(?:\r\n[0-9][0-9]? [а-я]+ ?)|$)#su'; break;
 			default : die("Невозможно разбить текст на статьи, неивестная часть дайджеста: $this->currPart, $this->currProf"); break;
@@ -245,7 +246,7 @@ class normativkaDigestParser extends Parser {
 		$splitArticle = [];
 		switch($this->currPart) {
 			case 'Анонс аналитических материалов' : $pattern = '#([А-Я]\.[А-Я]\. [А-Я][а-яё]+.)(?:, ([А-Я]\.[А-Я]\. [А-Я][а-яё]+.))??\r\n(http.+?)?\r\n(.+?)\r\n(.+)#su'; break;
-			case 'Нормативно-правовая информация' : $pattern = '#(.+?)\r\n(http.+?)\r\n(.+)#su'; break;
+			case 'Нормативная правовая информация' : $pattern = '#(.+?)\r\n(http.+?)\r\n(.+)#su'; break;
 			case 'Читайте на следующей неделе' : $pattern = '#([А-Я]\.[А-Я]\. [А-Я][а-яё]+.)(?:, ([А-Я]\.[А-Я]\. [А-Я][а-яё]+.))??\r\nhttp.+?\r\n(.+)#su'; break;
 			case 'Семинары Prof.by' : $pattern = '#(^[0-9][0-9]? [а-я]+ ??)\r\n(http.+?)\r\n(.+?):\r\n(.+)#su'; break;
 			default : die("Невозможно статью на части, неивестная часть дайджеста: $this->currPart, $this->currProf, метод: ".__METHOD__); break;
@@ -263,7 +264,7 @@ class normativkaDigestParser extends Parser {
 				empty($matches[4][0]) ? die ("Не удалось извлечь заголовок из статьи: $article<br> Часть: $this->currPart") : $splitArticle['title'] = trim($matches[4][0]);
 				empty($matches[5][0]) ? die ("Не удалось извлечь основной текст из статьи: $article<br> Часть: $this->currPart") : $splitArticle['text'] = trim($matches[5][0]);
 				break;
-			case 'Нормативно-правовая информация' :
+			case 'Нормативная правовая информация' :
 				empty($matches[1][0]) ?
 					die ("Не удалось извлечь заголовок из статьи: $article<br> Часть: $this->currPart") :
 					$splitArticle['title'] = trim($matches[1][0]);

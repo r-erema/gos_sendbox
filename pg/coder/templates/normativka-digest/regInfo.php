@@ -1,10 +1,10 @@
 <!-- REGULATORY INFORMATION BLOCK START -->
 <tr>
 	<td style="padding-top: 40px; padding-left: 40px; padding-right: 40px;" bgcolor="#ffffff">
-		<h1 style="text-align: center; font-size: 30px; font-family: Arial, Helvetica, sans-serif; margin-top: 0; margin-bottom: 10px;">Нормативно-правовая информация</h1>
+		<h1 style="text-align: center; font-size: 30px; font-family: Arial, Helvetica, sans-serif; margin-top: 0; margin-bottom: 10px;">Нормативная правовая информация</h1>
 		<h2 style="text-align: center; font-size: 18px; font-family: Arial, Helvetica, sans-serif; margin-top: 0; margin-bottom: 35px;">Последние изменения в законодательстве Республики Беларусь</h2>
 
-<?php foreach($this->parsed['Нормативно-правовая информация'] as $profName => $articles): ?>
+<?php foreach($this->parsed['Нормативная правовая информация'] as $profName => $articles): ?>
 	<!-- REGULATORY INFORMATION FOR <?php if ($profName == 'Бухгалтеру'): ?>BUHGALTER<?php elseif ($profName == 'Кадровику'): ?>KADROVIK<?php elseif ($profName == 'Кадровику'): ?>JURISCONSULT<?php endif; ?> TITLE START -->
 	<table width="620" height="34" cellspacing="0" cellpadding="0" border="0">
 		<tr>
