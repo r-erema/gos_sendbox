@@ -34,18 +34,18 @@
 		<!-- REGULATORY INFORMATION FOR <?php if ($profName == 'Бухгалтеру'): ?>BUHGALTER<?php elseif ($profName == 'Кадровику'): ?>KADROVIK<?php elseif ($profName == 'Кадровику'): ?>JURISCONSULT<?php endif; ?> CONTENT START -->
 		<div style="margin-bottom: 10px; font-family: Arial, Helvetica, sans-serif; font-size: 13px;">
 			<?php foreach($articles as $article): ?>
-			<p style="font-size: 15px; margin-top: 0; margin-bottom: 8px;"><a href="<?php echo $article['link']; ?>?utm_source=digest-<?php echo $this->digestNumber; ?>&utm_medium=email&utm_campaign=digest" style="color: #134c95;" target="_blank"><?php echo $article['title']; ?></a></p>
-			<?php foreach($article['text'] as $paragraph): ?>
-				<?php if(is_array($paragraph)): ?>
-					<ul style="margin-top: 0; margin-bottom: 8px; padding-left: 20px;">
-						<?php foreach($paragraph as $markedParagraph): ?>
-						<li style="font-size: 13px; margin-bottom: 5px; margin-top: 0;"><?php echo $markedParagraph; ?></li>
-						<?php endforeach; ?>
-					</ul>
-				<?php else: ?>
-					<p style="margin-top: 0; margin-bottom: 8px;"><?php echo $paragraph; ?></p>
-				<?php endif; ?>
-			<?php endforeach; ?>
+			<p style="font-size: 15px; margin-top: 0; margin-bottom: 8px;"><a href="<?php echo $article['link']; ?>?utm_source=digest-<?php echo $this->digestNumber; ?>&utm_medium=email&utm_campaign=digest" style="color: #134c95; font-weight: bold" target="_blank" ><?php echo $article['title-npa-type']; ?></a> <?php echo $article['title-npa-name']?></p>
+				<?php foreach($article['text'] as $paragraph): ?>
+					<?php if(is_array($paragraph)): ?>
+						<ul style="margin-top: 0; margin-bottom: 8px; padding-left: 20px;">
+							<?php foreach($paragraph as $markedParagraph): ?>
+							<li style="font-size: 13px; margin-bottom: 5px; margin-top: 0;"><?php echo $markedParagraph; ?></li>
+							<?php endforeach; ?>
+						</ul>
+					<?php else: ?>
+						<p style="margin-top: 0; margin-bottom: 8px;"><?php echo $paragraph; ?></p>
+					<?php endif; ?>
+				<?php endforeach; ?>
 				<p style="margin-top: 0; margin-bottom: 0;">&nbsp;</p>
 			<?php endforeach; ?>
 		</div>

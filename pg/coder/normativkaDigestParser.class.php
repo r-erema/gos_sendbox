@@ -97,7 +97,9 @@ class normativkaDigestParser extends Parser {
 		'Н.В. Борисенко' => "borisenko.png",
 		'О.И. Сапего' => "sapego.png",
 		'А.П. Сергеев' => "no-photo.jpg",
-		'В.И. Матохин' => 'matohin.png'
+		'В.И. Матохин' => 'matohin.png',
+		'А.Л. Ксензов' => 'ksenzov.png',
+		'Е.В. Карницкая' => 'karnitskaya.png',
 	);
 
 	public function __construct($text, $params) {
@@ -228,7 +230,9 @@ class normativkaDigestParser extends Parser {
 		$pattern = null;
 		switch($this->currPart) {
 			case 'Анонс аналитических материалов' : $pattern = '#[А-Я]\.[А-Я]\. [А-Я][а-я]+(?:, [А-Я]\.[А-Я]\. [А-Я][а-я])?.+?(?=(?:[А-Я]\.[А-Я]\. [А-Я][а-я]+(?:, [А-Я]\.[А-Я]\. [А-Я][а-я])?|$))#su'; break;
-			case 'Нормативная правовая информация' : $pattern = '#^.+$\nhttp.+$(?:(?s).+?)(?=(?:^.+$\nhttp))|(?:(?s).+$)#mu'; break;
+			//Старая регулярка(до того как надо было делить зголовок НПА на вид документа и его назвение), не удалено чтоб потом опять не разбираться
+			//case 'Нормативная правовая информация' : $pattern = '#^.+$\nhttp.+$(?:(?s).+?)(?=(?:^.+$\nhttp))|(?:(?s).+$)#mu'; break;
+			case 'Нормативная правовая информация' : $pattern = '#^.+\n.+$\nhttp.+$(?:(?s).+?)(?=(?:^.+\n.+$\nhttp))|(?:(?s).+$)#mu'; break;
 			case 'Читайте на следующей неделе' : $pattern = '#[А-Я]\.[А-Я]\. [А-Я][а-я]+(?:, [А-Я]\.[А-Я]\. [А-Я][а-я])?.+?(?=(?:[А-Я]\.[А-Я]\. [А-Я][а-я]+(?:, [А-Я]\.[А-Я]\. [А-Я][а-я])?|$))#su'; break;
 			case 'Семинары Prof.by' : $pattern = '#[0-9][0-9]? [а-я]+ ?(?:.+?)(?=(?:\r\n[0-9][0-9]? [а-я]+ ?)|$)#su'; break;
 			default : die("Невозможно разбить текст на статьи, неивестная часть дайджеста: $this->currPart, $this->currProf"); break;
@@ -246,7 +250,7 @@ class normativkaDigestParser extends Parser {
 		$splitArticle = [];
 		switch($this->currPart) {
 			case 'Анонс аналитических материалов' : $pattern = '#([А-Я]\.[А-Я]\. [А-Я][а-яё]+.)(?:, ([А-Я]\.[А-Я]\. [А-Я][а-яё]+.))??\r\n(http.+?)?\r\n(.+?)\r\n(.+)#su'; break;
-			case 'Нормативная правовая информация' : $pattern = '#(.+?)\r\n(http.+?)\r\n(.+)#su'; break;
+			case 'Нормативная правовая информация' : $pattern = '#(.+?)\r\n(.+?)\r\n(http.+?)\r\n(.+)?#su'; break;
 			case 'Читайте на следующей неделе' : $pattern = '#([А-Я]\.[А-Я]\. [А-Я][а-яё]+.)(?:, ([А-Я]\.[А-Я]\. [А-Я][а-яё]+.))??\r\nhttp.+?\r\n(.+)#su'; break;
 			case 'Семинары Prof.by' : $pattern = '#(^[0-9][0-9]? [а-я]+ ??)\r\n(http.+?)\r\n(.+?):\r\n(.+)#su'; break;
 			default : die("Невозможно статью на части, неивестная часть дайджеста: $this->currPart, $this->currProf, метод: ".__METHOD__); break;
@@ -265,13 +269,15 @@ class normativkaDigestParser extends Parser {
 				empty($matches[5][0]) ? die ("Не удалось извлечь основной текст из статьи: $article<br> Часть: $this->currPart") : $splitArticle['text'] = trim($matches[5][0]);
 				break;
 			case 'Нормативная правовая информация' :
-				empty($matches[1][0]) ?
-					die ("Не удалось извлечь заголовок из статьи: $article<br> Часть: $this->currPart") :
-					$splitArticle['title'] = trim($matches[1][0]);
-				empty($matches[2][0]) ? die ("Не удалось извлечь ссылку из статьи: $article<br> Часть: $this->currPart") : $splitArticle['link'] = trim($this->normalizeLink($matches[2][0]));
-				empty($matches[3][0]) ? die ("Не удалось извлечь основной текст из статьи: $article<br> Часть: $this->currPart") : $splitArticle['text'] = trim($matches[3][0]);
-				break;
-			case 'Читайте на следующей неделе' :
+				if (empty($matches[1][0])) {
+					die ("Не удалось извлечь вид НПА из заголовока из статьи: $article<br> Часть: $this->currPart");
+				} else {
+					$splitArticle['title-npa-type'] = trim($matches[1][0]);
+				}
+				empty($matches[2][0]) ? die ("Не удалось извлечь название НПА из заголовка статьи: $article<br> Часть: $this->currPart") : $splitArticle['title-npa-name'] = trim($matches[2][0]);
+				empty($matches[3][0]) ? die ("Не удалось извлечь ссылку из статьи: $article<br> Часть: $this->currPart") : $splitArticle['link'] = trim($this->normalizeLink($matches[3][0]));
+				empty($matches[4][0]) ? die ("Не удалось извлечь основной текст из статьи: $article<br> Часть: $this->currPart") : $splitArticle['text'] = trim($matches[4][0]);
+				break;			case 'Читайте на следующей неделе' :
 				empty($matches[1][0]) ? die ("Не удалось извлечь автора из статьи: $article<br> Часть: $this->currPart") : $splitArticle['authors'][0]['name'] = trim($matches[1][0]);
 				empty($matches[1][0]) ? die ("Не удалось извлечь автора из статьи: $article<br> Часть: $this->currPart") : $splitArticle['authors'][0]['photo'] = $this->getAuthorPhotoByName($splitArticle['authors'][0]['name']);
 				if(!empty($matches[2][0])) {
