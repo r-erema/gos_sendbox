@@ -30,7 +30,8 @@ function __autoload($className) {
 			'Nobr.spaces_nobr_in_surname_abbr' => 'off',
 			'Space.clear_percent' => 'off',
 			'Number.minus_between_nums' => 'off',
-			'Number.minus_in_numbers_range' => 'off'
+			'Number.minus_in_numbers_range' => 'off',
+			'OptAlign.all' => 'off'
 		];
 
 		const TEMPLATES_DIR = 'templates/';
