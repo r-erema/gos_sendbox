@@ -258,6 +258,6 @@
   'auto_isfolder' => '1',
   'settings_version' => '2.3.3-pl',
   'settings_distro' => 'traditional',
-  'doodles.core_path' => '/home/gutsout/h/doodles/core/components/doodles/',
-  'doodles.assets_url' => '/home/gutsout/h/doodles/assets/',
+  'doodles.core_path' => '/home/gutsout/h/gos_sendbox/learning/modx/components_development/doodles/core/components/doodles/',
+  'doodles.assets_url' => '/learning/modx/components_development/doodles/assets/',
 );

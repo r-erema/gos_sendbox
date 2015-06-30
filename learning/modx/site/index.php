@@ -63,7 +63,7 @@ $modx->startTime= $tstart;
 
 /* Initialize the default 'web' context */
 $modx->initialize('web');
-
+require_once '/home/gutsout/h/gos_sendbox/learning/modx/components_development/doodles/core/components/doodles/elements/snippets/snippet.doodles.php';
 /* execute the request handler */
 if (!MODX_API_MODE) {
     $modx->handleRequest();
