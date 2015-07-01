@@ -236,6 +236,26 @@
         ),
         'controller' => '',
       ),
+      1 => 
+      array (
+        'text' => 'Doodles',
+        'parent' => 'components',
+        'action' => 'index',
+        'description' => 'Doodles описание',
+        'icon' => '',
+        'menuindex' => 1,
+        'params' => '',
+        'handler' => '',
+        'permissions' => '',
+        'namespace' => 'doodles',
+        'action_controller' => NULL,
+        'action_namespace' => NULL,
+        'id' => 'doodles',
+        'children' => 
+        array (
+        ),
+        'controller' => '',
+      ),
     ),
     'controller' => '',
   ),

@@ -17,6 +17,10 @@ $created = $m->createObjectContainer('Doodle');
 $c = $modx->newQuery('Doodle');
 $c->sortby($sort, $dir);
 $doodles = $modx->getCollection('Doodle', $c);
-$output = count($doodles);
+
+foreach ($doodles as $doodle) {
+	$doodleArray = $doodle->toArray();
+	$output .= $dood->getChunk($tpl, $doodleArray);
+}
 
 return $output;

@@ -1,7 +1,13 @@
 <?php
 	class Doodles {
+
+		/**
+		 * @var $modx modX
+		 */
 		public $modx;
 		public $config = array();
+		public $chunks = array();
+
 		function __construct(modX &$modx, array $config = array()) {
 			$config = !is_array($config) ? array() : $config;
 			$this->modx =& $modx;
@@ -18,9 +24,41 @@
 				'jsUrl' => $assetsUrl.'js/',
 				'cssUrl' => $assetsUrl.'css/',
 				'assetsUrl' => $assetsUrl,
-				'connectorUrl' => $assetsUrl.'connector.php'
+				'connectorUrl' => $assetsUrl.'connector.php',
+				'templatesPath' => $basePath . 'templates/'
 			) , $config);
 
 			$this->modx->addPackage('doodles',$this->config['modelPath']);
 		}
+
+		public function getChunk($name, $properties = array()) {
+			$chunk = null;
+			if (!isset($this->chunks[$name])) {
+				$chunk = $this->_getTplChunk($name);
+				if (empty($chunk)) {
+					$chunk = $this->modx->getObject('modChunk', array('name' => $name));
+					if ($chunk == false) return false;
+				}
+				$this->chunks[$name] = $chunk->getContent();
+			} else {
+				$o = $this->chunks[$name];
+				$chunk = $this->modx->newObject('modChunk');
+				$chunk->setContent($o);
+			}
+			$chunk->setCacheable(false);
+			return $chunk->process($properties);
+		}
+
+		private function _getTplChunk($name, $postfix = '.chunk.tpl') {
+			$chunk = false;
+			$f = $this->config['chunksPath'] . strtolower($name) . $postfix;
+			if (file_exists($f)) {
+				$o = file_get_contents($f);
+				$chunk = $this->modx->newObject('modChunk');
+				$chunk->set('name', $name);
+				$chunk->setContent($o);
+			}
+			return $chunk;
+		}
+
 	}
