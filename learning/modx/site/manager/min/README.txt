@@ -47,8 +47,8 @@ the "b" argument to set the base directory for the "f" argument. Do not include
 the leading or trailing "/" characters.
 
 E.g., the following URLs will serve the exact same content:
-  http://example.com/min/?f=scripts/jquery-1.2.6.js,scripts/site.js,scripts/home.js
-  http://example.com/min/?b=scripts&f=jquery-1.2.6.js,site.js,home.js
+  http://example.com/min/?f=scripts/jquery-1.2.6.js,scripts/site.js,scripts/index.js
+  http://example.com/min/?b=scripts&f=jquery-1.2.6.js,site.js,index.js
 
 
 MINIFY URLS IN HTML

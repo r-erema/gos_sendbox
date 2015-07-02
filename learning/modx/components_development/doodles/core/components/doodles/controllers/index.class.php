@@ -1,6 +1,6 @@
 <?php
-require_once dirname(__FILE__) . '/model/doodles/doodles.class.php';
-abstract class DoodlesManagerController extends modExtraManagerController {
+require_once  dirname(dirname(__FILE__)) . '/model/doodles/doodles.class.php';
+class DoodlesManagerController extends modExtraManagerController {
 
 	public $doodles;
 
@@ -17,7 +17,6 @@ abstract class DoodlesManagerController extends modExtraManagerController {
 			</script>
 		');
 		parent::initialize();
-		//return ;
 	}
 
 	public function getLanguageTopics() {
@@ -26,11 +25,23 @@ abstract class DoodlesManagerController extends modExtraManagerController {
 
 	public function checkPermissions() { return true; }
 
+	public function process(array $scriptProperties = array()) {}
+
+	public function getPageTitle() { return $this->modx->lexicon('doodles'); }
+
+	public function loadCustomCssJs() {
+		$this->addJavascript($this->doodles->config['jsUrl'] . 'mgr/widgets/home.panel.js');
+		$this->addLastJavascript($this->doodles->config['jsUrl'] . 'mgr/sections/index.js');
+	}
+
+	public function getTemplateFile() {
+		return $this->doodles->config['templatesPath'] . 'home.tpl';
+	}
+
 }
 
 class DoodlesIndexManagerController extends DoodlesManagerController {
 	public static function getDefaultController() {
-		$g = 1;
 		return 'home';
 	}
 }

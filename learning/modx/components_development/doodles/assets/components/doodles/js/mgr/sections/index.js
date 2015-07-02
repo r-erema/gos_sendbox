@@ -1,6 +1,6 @@
-Ext.onReady(function () {
+/*Ext.onReady(function () {
     MODx.load({ xtype : 'doodles-page-home'});
-});
+});*/
 
 Doodles.page.Home = function (config) {
     config = config || {};
