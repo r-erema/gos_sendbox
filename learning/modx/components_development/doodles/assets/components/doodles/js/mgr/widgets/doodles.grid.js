@@ -9,6 +9,8 @@ Doodles.grid.Doodles = function(config) {
         remoteSort : true,
         anchor : '97%',
         autoExpandColumn : 'name',
+        save_action : 'mgr/doodle/updateFromGrid',
+        autosave : true,
         columns : [
             {
                 header : _('id'),
@@ -58,8 +60,61 @@ Doodles.grid.Doodles = function(config) {
                     },
                     scope : this
                 }
+            },
+            {
+                text : _('doodles.doodles_create'),
+                handler : {
+                    xtype : 'doodles-window-doodle-create',
+                    blankValues : true
+                }
             }
-        ]
+        ],
+        getMenu: function() {
+            return [
+                {
+                    text : _('doodles.doodles_update'),
+                    handler : this.updateDoodle
+                },
+                '-',
+                {
+                    text : _('doodles.doodles_remove'),
+                    handler : this.removeDoodle
+                }
+            ];
+        },
+        updateDoodle : function (btn, e) {
+            if (!this.updateDoodleWindow) {
+                this.updateDoodleWindow = MODx.load({
+                    xtype : 'doodles-window-doodle-update',
+                    record : this.menu.record,
+                    listeners : {
+                        'success' : {
+                            fn : this.refresh,
+                            scope : this
+                        }
+                    }
+                });
+            }
+            this.updateDoodleWindow.setValues(this.menu.record);
+            this.updateDoodleWindow.show(e.target);
+        },
+        removeDoodle : function () {
+            MODx.msg.confirm({
+                title : _('doodles.doodle_remove'),
+                text : _('doodles.doodles_remove_confirm'),
+                url : this.config.url,
+                params : {
+                    action : 'mgr/doodle/remove',
+                    id : this.menu.record.id
+                },
+                listeners : {
+                    'success' : {
+                        fn : this.refresh,
+                        scope : this
+                    }
+                }
+            });
+        }
     });
     Doodles.grid.Doodles.superclass.constructor.call(this, config);
 };
@@ -73,3 +128,63 @@ Ext.extend(Doodles.grid.Doodles,MODx.grid.Grid, {
     }
 });
 Ext.reg('doodles-grid-doodles',Doodles.grid.Doodles);
+
+Doodles.window.UpdateDoodle = function (config) {
+    config = config || {};
+    Ext.applyIf(config, {
+        title : _('doodles.doodles_update'),
+        url : Doodles.config.connectorUrl,
+        baseParams : {
+            action : 'mgr/doodle/update'
+        },
+        fields : [
+            {
+                xtype : 'hidden',
+                name : 'id'
+            },
+            {
+                xtype : 'textfield',
+                fieldLabel : _('doodles.name'),
+                name : 'name',
+                anchor : '100%'
+            },
+            {
+                xtype : 'textarea',
+                fieldLabel : _('doodles.description'),
+                name : 'description',
+                anchor : '100%'
+            }
+        ]
+    });
+    Doodles.window.UpdateDoodle.superclass.constructor.call(this,config);
+};
+Ext.extend(Doodles.window.UpdateDoodle, MODx.Window);
+Ext.reg('doodles-window-doodle-update', Doodles.window.UpdateDoodle);
+
+Doodles.window.CreateDoodle = function (config) {
+    config = config || {};
+    Ext.applyIf(config, {
+        title : _('doodles.doodles_create'),
+        url : Doodles.config.connectorUrl,
+        baseParams : {
+            action : 'mgr/doodle/create'
+        },
+        fields : [
+            {
+                xtype : 'textfield',
+                fieldLabel : _('doodles.name'),
+                name : 'name',
+                anchor : '100%'
+            },
+            {
+                xtype : 'textarea',
+                fieldLabel : _('doodles.description'),
+                name : 'description',
+                anchor : '100%'
+            }
+        ]
+    });
+    Doodles.window.CreateDoodle.superclass.constructor.call(this, config);
+};
+Ext.extend(Doodles.window.CreateDoodle, MODx.Window);
+Ext.reg('doodles-window-doodle-create', Doodles.window.CreateDoodle);
