@@ -40,6 +40,13 @@
 				<li><a href="learning/other/lateStaticBinding">Late Static Binding</a></li>
 			</ul>
 		</li>
+        <li>
+            <a href="learning/modx">modx</a>
+            <ul>
+                <li><a href="learning/modx/site">Site</a></li>
+                <li><a href="learning/modx/components_development">Components development</a></li>
+            </ul>
+        </li>
 		<li>
 			<a href="learning/zf2/public">zf2</a>
 		</li>
