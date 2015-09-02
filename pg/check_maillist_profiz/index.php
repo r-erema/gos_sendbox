@@ -1,11 +1,13 @@
 <meta charset="utf-8">
 <?php
-define('UNSUBSCRIBERS_LIST', 'D:\dev\server\domains\profiz\maillist\log\un-log.txt');
+define('UNSUBSCRIBERS_LIST', 'http://www.profiz.ru/maillist/log/un-log.txt');
 $unsubscribersFileContent = file_get_contents(UNSUBSCRIBERS_LIST);
 $unEmails = [];
-$unEmails = explode("\r\n", $unsubscribersFileContent);
+$unEmails = explode("\n", $unsubscribersFileContent);
+$unEmails = array_map('trim', $unEmails);
 if(isset($_POST['emails']) && !empty($_POST['emails']) && !empty($unEmails)):
-	$emailsToCheck = explode("\r\n", $_POST['emails']);
+	$emailsToCheck = explode("\n", $_POST['emails']);
+	$emailsToCheck = array_map('trim', $emailsToCheck);
 	$correctEmails = array_diff($emailsToCheck, $unEmails);
 	$unCheckedEmails = array_intersect($emailsToCheck, $unEmails);
 ?>
