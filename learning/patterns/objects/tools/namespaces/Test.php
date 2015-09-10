@@ -1,5 +1,5 @@
 <?php
-namespace firstns {
+namespace namespaces {
     class Test {
         public static function getNS() {
             return __NAMESPACE__;
