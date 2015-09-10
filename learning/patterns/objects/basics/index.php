@@ -18,6 +18,10 @@ require_once 'ConfException.php';
 require_once 'Runner.php';
 require_once 'Person.php';
 require_once 'PersonWriter.php';
+require_once 'Product.php';
+require_once 'ProcessSale.php';
+require_once 'Mailer.php';
+require_once 'Totalizer.php';
 /*
 $product1 = new BookProduct('Sobach\'e serdce', 'Bulgakov', 'Mihail', 5.99, 547);
 $product2 = new CDProduct('Propavshiy bez vesti', 'Gruppa', 'DDT', 10.99, 68);
@@ -56,9 +60,23 @@ echo '</pre>';*/
 $r = new Runner();
 $r->init();*/
 
-$person = new Person(new PersonWriter());
-$person->setAge(34);
-$person2 = clone $person;
+/*$person = new Person(new PersonWriter());
 
-//$person2 = $person;
-var_dump($person, $person2);
+echo strtoupper($person);*/
+//$logger = create_function('$product', 'print "Записываем... ($product->name)\n";');
+$logger = function ($product) {
+    print "Записываем... ($product->name)\n";
+};
+echo get_class($logger);
+$processor = new ProcessSale();
+echo "<pre>";
+try {
+    $processor->registerCallback(array(new Mailer(), 'doMail'));
+    $processor->registerCallback(Totalizer::warnAccount(8));
+    $processor->sale(new Product('Tufli', 6));
+    $processor->sale(new Product('Kofe', 3));
+} catch (Exception $e) {
+    echo $e->getMessage();
+}
+
+echo "</pre>";

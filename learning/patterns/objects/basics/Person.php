@@ -84,4 +84,12 @@ class Person {
     public function getAge() {
         return 44;
     }
+
+    public function __toString() {
+        $desc = $this->getName();
+        $desc .= " (age: {$this->getAge()} years old)";
+        return $desc;
+    }
+
+
 }
