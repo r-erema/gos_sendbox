@@ -37,15 +37,36 @@
 	];
 
 	$errors = [];
+	$result = null;
 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-		foreach ($requiredFields as $field) {
-			if (!isset($_REQUEST[$field['name']]) || empty($_REQUEST[$field['name']])) {
-				$errors[] = "Не введено {$field['label']}";
-			} else {
 
+		foreach ($requiredFields as $field) {
+			if (!isset($_REQUEST[$field['name']]) || $_REQUEST[$field['name']] === '') {
+				$errors[] = "Не введено {$field['label']}";
 			}
 		}
+
+		if (!count($errors)) {
+			switch ($_POST['operation']) {
+				case 'Сложить':
+					$result = $_POST['first-number'] + $_POST['second-number'];
+					break;
+				case 'Вычесть':
+					$result = $_POST['first-number'] - $_POST['second-number'];
+					break;
+				case 'Умножить':
+					$result = $_POST['first-number'] * $_POST['second-number'];
+					break;
+				case 'Делить':
+					$result = $_POST['first-number'] / $_POST['second-number'];
+					break;
+				default :
+					throw new Exception('Unknown operation');
+					break;
+			}
+		}
+
 	}
 ?>
 
@@ -62,28 +83,59 @@
 		.form-field-row {
 			margin: 10px;
 		}
+
+		ul.list {
+			margin: 0;
+		}
+
+		ul.list li {
+			list-style-type: none;
+		}
+
+		.errors {
+			color: #740d11;
+			padding: 10px;
+			border: 1px solid #740d11;
+			border-radius: 3px;
+			margin: 10px 0;
+		}
+
+		.result {
+			color: #007800;
+			border: 1px solid #007800;
+			border-radius: 3px;
+			padding: 10px;
+		}
+
 	</style>
 </head>
 <body>
 	<?php if(count($errors)): ?>
 	<div class="errors">
-		<?php foreach($errors as $error): ?>
-		<p><?php echo $error?></p>
-		<?php endforeach; ?>
+		<ul class="list">
+			<?php foreach($errors as $error): ?>
+			<li><?php echo $error; ?></li>
+			<?php endforeach; ?>
+		</ul>
 	</div>
 	<?php endif; ?>
 	<form class="form" method="post">
 		<?php foreach ($requiredFields as $field) : ?>
 			<div class="form-field-row">
-				<label for="<?php echo $field['name']; ?>"><?php echo ucfirst($field['label']); ?> *:</label>
-				<input name="<?php echo $field['name']; ?>" id="<?php echo $field['name']; ?>" type="text" size="<?php echo $field['max-size']; ?>">
+				<label for="<?php echo $field['name']; ?>"><?php echo $field['label']; ?> *:</label>
+				<input name="<?php echo $field['name']; ?>" id="<?php echo $field['name']; ?>" type="text" size="<?php echo $field['max-size']; ?>" value="<?php echo isset($_POST[$field['name']]) ? $_POST[$field['name']] : null; ?>">
 			</div>
 		<?php endforeach; ?>
 		<div class="form-field-row">
 		<?php foreach ($mathOperations as $mathOperation) : ?>
-			<input type="submit" name="<?php echo $mathOperation['name']; ?>" value="<?php echo $mathOperation['verb']; ?> ">
+			<input type="submit" name="operation" value="<?php echo $mathOperation['verb']; ?>">
 		<?php endforeach; ?>
 		</div>
 	</form>
+	<?php if ($result):?>
+		<div class="result">
+			Результат: <?php echo $result; ?>
+		</div>
+	<?php endif ?>
 </body>
 </html>
