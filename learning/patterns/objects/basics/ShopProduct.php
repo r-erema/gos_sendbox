@@ -1,4 +1,5 @@
 <?php
+
 class ShopProduct implements Chargeable {
     private $id;
     private $title = 'Стандартный товар';
