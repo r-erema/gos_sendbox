@@ -1,0 +1,1 @@
+Function result: {Func x=2 y=8}
