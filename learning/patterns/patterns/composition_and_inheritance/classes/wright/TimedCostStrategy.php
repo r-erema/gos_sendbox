@@ -1,7 +1,8 @@
 <?php
 
-class TimedCostStrategy extends CostStrategy {
+namespace learning\patterns\patterns\composition_and_inheritance\classes\wright;
 
+class TimedCostStrategy extends CostStrategy {
 	public function cost(Lesson $lesson) {
 		return $lesson->getDuration() * 5;
 	}
