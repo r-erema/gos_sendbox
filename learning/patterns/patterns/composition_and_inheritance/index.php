@@ -22,7 +22,10 @@ echo "=========Верная реализация===============" . PHP_EOL;
 $lessons[] = new wright\Seminar(4, new wright\TimedCostStrategy());
 $lessons[] = new wright\Lecture(4, new wright\FixedCostStrategy());
 
+$mgr= new wright\RegistrationManager();
 foreach ($lessons as $lesson) {
 	print "Оплата за занятие {$lesson->cost()}." . PHP_EOL;
 	print "Тип оплаты: {$lesson->chargeType()}." . PHP_EOL;
+	echo $mgr->register($lesson) . PHP_EOL;
+	echo '----------------------------------' . PHP_EOL;
 }
