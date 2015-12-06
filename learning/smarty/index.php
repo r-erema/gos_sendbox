@@ -10,5 +10,4 @@ $smarty->register_function('Func', 'func');
 function func($params) {
 	return $params['x'] * $params['y'];
 }
-
 echo $smarty->fetch('index.tpl');
