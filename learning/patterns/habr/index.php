@@ -58,3 +58,9 @@ $firstProduct = \AbstractFactory\AbstractFactory::getFactory()->getProduct();
 $secondProduct = AbstractFactory\AbstractFactory::getFactory()->getProduct();
 print_r($firstProduct->getName() . PHP_EOL);
 print_r($secondProduct->getName() . PHP_EOL);
+
+echo PHP_EOL . "-------------------Lazy initialization-------------" . PHP_EOL;
+$factory = new \LazyInitialization\Factory();
+print_r($factory->getFirstProduct()->getName() . PHP_EOL);
+print_r($factory->getSecondProduct()->getName() . PHP_EOL);
+print_r($factory->getFirstProduct()->getName() . PHP_EOL);
