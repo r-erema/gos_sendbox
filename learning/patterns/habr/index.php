@@ -73,3 +73,9 @@ $secondProduct = $prototypeFactory->getProduct();
 $secondProduct->name = 'Second product';
 print_r($firstProduct->name . PHP_EOL);
 print_r($secondProduct->name . PHP_EOL);
+
+echo PHP_EOL . "-------------------Builder-------------" . PHP_EOL;
+$firstDirector = new Builder\Factory(new \Builder\FirstBuilder());
+$secondDirector = new \Builder\Factory(new \Builder\SecondBuilder());
+print_r($firstDirector->getProduct()->getName() . PHP_EOL);
+print_r($secondDirector->getProduct()->getName() . PHP_EOL);
