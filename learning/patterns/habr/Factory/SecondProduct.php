@@ -2,5 +2,8 @@
 
 namespace Factory;
 
-class SecondProduct {
+class SecondProduct implements Product{
+    public function getName() {
+        return 'Second product';
+    }
 }

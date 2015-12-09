@@ -46,3 +46,12 @@ print_r(\Multiton\FirstFactory::getInstance('FirstProduct')->attributes);
 print_r(\Multiton\FirstFactory::getInstance('SecondProduct')->attributes);
 print_r(\Multiton\SecondFactory::getInstance('FirstProduct')->attributes);
 print_r(\Multiton\SecondFactory::getInstance('SecondProduct')->attributes);
+
+echo PHP_EOL . "-------------------Factory-------------" . PHP_EOL;
+$firstFactory = new \Factory\FirstFactory();
+$firstProduct = $firstFactory->getProduct();
+$secondFactory = new \Factory\SecondFactory();
+$secondProduct = $secondFactory->getProduct();
+
+print_r($firstProduct->getName() . PHP_EOL);
+print_r($secondProduct->getName() . PHP_EOL);
