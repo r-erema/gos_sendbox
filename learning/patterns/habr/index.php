@@ -24,10 +24,8 @@ print_r($secondProduct->name . PHP_EOL);
 echo PHP_EOL . "-------------------Multiton-------------" . PHP_EOL;
 \Multiton\FirstProduct::getInstance()->attributes[] = 1;
 \Multiton\SecondProduct::getInstance()->attributes[] = 2;
-
 \Multiton\FirstProduct::getInstance()->attributes[] = 3;
 \Multiton\SecondProduct::getInstance()->attributes[] = 4;
-
 var_dump(\Multiton\FirstProduct::getInstance()->attributes);
 var_dump(\Multiton\SecondProduct::getInstance()->attributes);
 
@@ -41,7 +39,6 @@ echo PHP_EOL . "-------------------Multiton Registry Factory-------------" . PHP
 \Multiton\FirstFactory::getInstance('SecondProduct')->attributes[] = 6;
 \Multiton\SecondFactory::getInstance('FirstProduct')->attributes[] = 7;
 \Multiton\SecondFactory::getInstance('SecondProduct')->attributes[] = 8;
-
 print_r(\Multiton\FirstFactory::getInstance('FirstProduct')->attributes);
 print_r(\Multiton\FirstFactory::getInstance('SecondProduct')->attributes);
 print_r(\Multiton\SecondFactory::getInstance('FirstProduct')->attributes);
@@ -52,6 +49,12 @@ $firstFactory = new \Factory\FirstFactory();
 $firstProduct = $firstFactory->getProduct();
 $secondFactory = new \Factory\SecondFactory();
 $secondProduct = $secondFactory->getProduct();
+print_r($firstProduct->getName() . PHP_EOL);
+print_r($secondProduct->getName() . PHP_EOL);
 
+echo PHP_EOL . "-------------------Abstract factory-------------" . PHP_EOL;
+$firstProduct = \AbstractFactory\AbstractFactory::getFactory()->getProduct();
+\AbstractFactory\Config::$factory = 2;
+$secondProduct = AbstractFactory\AbstractFactory::getFactory()->getProduct();
 print_r($firstProduct->getName() . PHP_EOL);
 print_r($secondProduct->getName() . PHP_EOL);
