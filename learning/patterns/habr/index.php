@@ -64,3 +64,12 @@ $factory = new \LazyInitialization\Factory();
 print_r($factory->getFirstProduct()->getName() . PHP_EOL);
 print_r($factory->getSecondProduct()->getName() . PHP_EOL);
 print_r($factory->getFirstProduct()->getName() . PHP_EOL);
+
+echo PHP_EOL . "-------------------Prototype-------------" . PHP_EOL;
+$prototypeFactory = new \Prototype\Factory(new \Prototype\SomeProduct());
+$firstProduct = $prototypeFactory->getProduct();
+$firstProduct->name = 'The first product';
+$secondProduct = $prototypeFactory->getProduct();
+$secondProduct->name = 'Second product';
+print_r($firstProduct->name . PHP_EOL);
+print_r($secondProduct->name . PHP_EOL);
