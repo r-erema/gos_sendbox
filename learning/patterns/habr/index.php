@@ -30,3 +30,19 @@ echo PHP_EOL . "-------------------Multiton-------------" . PHP_EOL;
 
 var_dump(\Multiton\FirstProduct::getInstance()->attributes);
 var_dump(\Multiton\SecondProduct::getInstance()->attributes);
+
+
+echo PHP_EOL . "-------------------Multiton Registry Factory-------------" . PHP_EOL;
+\Multiton\FirstFactory::getInstance('FirstProduct')->attributes[] = 1;
+\Multiton\FirstFactory::getInstance('SecondProduct')->attributes[] = 2;
+\Multiton\SecondFactory::getInstance('FirstProduct')->attributes[] = 3;
+\Multiton\SecondFactory::getInstance('SecondProduct')->attributes[] = 4;
+\Multiton\FirstFactory::getInstance('FirstProduct')->attributes[] = 5;
+\Multiton\FirstFactory::getInstance('SecondProduct')->attributes[] = 6;
+\Multiton\SecondFactory::getInstance('FirstProduct')->attributes[] = 7;
+\Multiton\SecondFactory::getInstance('SecondProduct')->attributes[] = 8;
+
+print_r(\Multiton\FirstFactory::getInstance('FirstProduct')->attributes);
+print_r(\Multiton\FirstFactory::getInstance('SecondProduct')->attributes);
+print_r(\Multiton\SecondFactory::getInstance('FirstProduct')->attributes);
+print_r(\Multiton\SecondFactory::getInstance('SecondProduct')->attributes);
