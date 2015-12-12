@@ -23,7 +23,6 @@ $statement = new \Interpreter\BooleanOrExpression(
     new \Interpreter\EqualsExpression($input, new \Interpreter\LiteralExpression('Четыре')),
     new \Interpreter\EqualsExpression($input, new \Interpreter\LiteralExpression(4))
 );
-
 foreach (['Четыре', 4, 52] as $value) {
     $input->setVal($value);
     print $value . PHP_EOL;
@@ -34,3 +33,24 @@ foreach (['Четыре', 4, 52] as $value) {
         print "Не соответсвует " . PHP_EOL;
     }
 }
+
+echo PHP_EOL . "-------------------Strategy-------------" . PHP_EOL;
+$markers = [
+    new \Strategy\RegexpMarker('/П.ть/'),
+    new \Strategy\MatchMarker('Пять'),
+    new \Strategy\MarkLogicMarker('$inputs equals 5')
+];
+
+foreach ($markers as $marker) {
+    print get_class($marker) . PHP_EOL;
+    $question = new \Strategy\TextQuestion('Сколько лучей у Кремлевской звезды?', $marker);
+    foreach (['Пять', 'Четыре'] as $response) {
+        print "Response: ";
+        if ($question->mark($response)) {
+            print 'Правильно' . PHP_EOL;
+        } else {
+            print 'Неверно' . PHP_EOL;
+        }
+    }
+}
+
