@@ -2,5 +2,9 @@
 
 namespace Visitor;
 
-class Cavalry {
+class Cavalry extends Unit{
+    public function bombardStrength() {
+        return 11;
+    }
+
 }

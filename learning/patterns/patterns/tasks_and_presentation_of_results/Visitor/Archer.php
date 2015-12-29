@@ -2,5 +2,8 @@
 
 namespace Visitor;
 
-class Archer {
+class Archer extends Unit {
+    function bombardStrength() {
+        return 4;
+    }
 }

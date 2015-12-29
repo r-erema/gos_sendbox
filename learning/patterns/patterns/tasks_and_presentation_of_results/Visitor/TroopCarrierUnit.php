@@ -2,5 +2,8 @@
 
 namespace Visitor;
 
-class TroopCarrierUnit {
+class TroopCarrierUnit extends Unit{
+    public function bombardStrength() {
+        return 101;
+    }
 }

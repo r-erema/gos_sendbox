@@ -11,6 +11,9 @@ abstract class CompositeUnit extends Unit {
         return $this;
     }
 
+    /**
+     * @return Unit[]
+     */
     protected function units() {
         return $this->units;
     }
@@ -28,4 +31,11 @@ abstract class CompositeUnit extends Unit {
         $this->units[] = $unit;
     }
 
+    public function textDump($num = 0) {
+        $txtOut = parent::textDump($num);
+        foreach ($this->units() as $unit) {
+            $txtOut .= $unit->textDump($num + 1);
+        }
+        return $txtOut;
+    }
 }

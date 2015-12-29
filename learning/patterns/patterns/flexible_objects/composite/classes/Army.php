@@ -1,6 +1,6 @@
 <?php
 
-class Army extends Unit {
+class Army extends CompositeUnit {
 
     /**
      * @var Unit[]

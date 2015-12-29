@@ -2,5 +2,8 @@
 
 namespace Visitor;
 
-class LaserCannonUnit {
+class LaserCannonUnit extends Unit{
+    function bombardStrength() {
+        return 44;
+    }
 }

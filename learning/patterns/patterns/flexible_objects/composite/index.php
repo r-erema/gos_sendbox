@@ -14,7 +14,8 @@ $subArmy->addUnit(new Archer());
 
 
 $mainArmy->addUnit($subArmy);
-print 'Aтакующая сила: ' . $mainArmy->bombardStrength();
+print 'Aтакующая сила: ' . $mainArmy->bombardStrength() . PHP_EOL;
+print $mainArmy->textDump();
 print '-------------------------------' . PHP_EOL;
 
 

@@ -62,3 +62,16 @@ new \Observer\SecurityMonitor($login);
 new \Observer\PartnershipTool($login);*/
 $login->handleLogin('Vasya', 123, '192.168.0.1');
 
+echo PHP_EOL . "-------------------Visitor-------------" . PHP_EOL;
+$mainArmy = new \Visitor\Army();
+$mainArmy->addUnit(new \Visitor\Archer());
+$mainArmy->addUnit(new \Visitor\LaserCannonUnit());
+$mainArmy->addUnit(new \Visitor\Cavalry());
+$mainArmy->addUnit(new \Visitor\TroopCarrierUnit());
+$textDump = new \Visitor\TextDumpArmyVisitor();
+$mainArmy->accept($textDump);
+$taxCollector = new \Visitor\TaxCollectionVisitor();
+$mainArmy->accept($taxCollector);
+print $textDump->getText() . PHP_EOL;
+print $taxCollector->getReport() . PHP_EOL;
+print "Итого: " . $taxCollector->getDue() . PHP_EOL;
