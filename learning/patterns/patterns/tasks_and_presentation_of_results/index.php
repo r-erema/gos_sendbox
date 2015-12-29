@@ -75,3 +75,17 @@ $mainArmy->accept($taxCollector);
 print $textDump->getText() . PHP_EOL;
 print $taxCollector->getReport() . PHP_EOL;
 print "Итого: " . $taxCollector->getDue() . PHP_EOL;
+
+
+echo PHP_EOL . "-------------------Command-------------" . PHP_EOL;
+$controller = new \Command\Controller();
+$context = $controller->getContext();
+$context->addParam('action', 'login');
+$context->addParam('userName', 'Bob');
+$context->addParam('pass', 'sdpof');
+var_dump($controller->process());
+
+$context->addParam('action', 'feedback');
+$context->addParam('userName', 'Bob');
+$context->addParam('pass', 'sdpof');
+var_dump($controller->process());
