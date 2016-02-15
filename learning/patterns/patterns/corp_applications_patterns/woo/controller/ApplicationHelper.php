@@ -13,7 +13,7 @@ class ApplicationHelper {
 
         $options = simplexml_load_file(self::OPTION_FILE_PATH);
 
-        $dsn = (string) $options->dsn;
+        //$dsn = (string) $options->dsn;
         // do something...
     }
 
