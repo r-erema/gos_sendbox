@@ -1,20 +1,61 @@
 <?php
 
 
+namespace woo\controller;
+
+use woo\base\AppException;
+use woo\base\ApplicationRegistry;
+
 class ApplicationHelper {
 
-    const OPTION_FILE_PATH = 'data/woo_options.xml';
 
-    public function getOptions() {
-        if (!file_exists(self::OPTION_FILE_PATH)) {
-            throw new \woo\base\AppException('Файл с параметрами не найден');
+    private static $instance;
+    private $config = 'data/woo_options.xml';
+
+    /**
+     * ApplicationHelper constructor.
+     */
+    private function __construct() {}
+
+    /**
+     * @return ApplicationHelper
+     */
+    private static function instance() {
+        if (self::$instance === null) {
+            self::$instance = new self();
         }
+        return self::$instance;
+    }
 
+    public function init() {
+        $dsn = ApplicationRegistry::getDSN();
+        if ($dsn !== null) {
+            return;
+        }
+        $this->getOptions();
+    }
 
-        $options = simplexml_load_file(self::OPTION_FILE_PATH);
+    /**
+     * @throws AppException
+     */
+    private function getOptions() {
+        $this->ensure(file_exists($this->config), 'Файл конфигурации не найден');
+        $options = @simplexml_load_file($this->config);
+        $dsn = (string) $options->dsn;
+        $this->ensure($options instanceof \SimpleXMLElement, 'Файл конфигурции непригоден');
+        $this->ensure($dsn, 'DSN не найден');
+        ApplicationRegistry::setDSN($dsn);
+    }
 
-        //$dsn = (string) $options->dsn;
-        // do something...
+    /**
+     * @param $expr
+     * @param $message
+     * @throws AppException
+     */
+    private function ensure($expr, $message) {
+        if (!$expr) {
+            throw new AppException($message);
+        }
     }
 
 }

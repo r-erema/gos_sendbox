@@ -88,6 +88,7 @@ class ApplicationRegistry extends Registry {
     /**
      * @param $dsn
      * @return mixed|void
+     * @throws ApplicationRegistryException
      */
     public static function setDSN($dsn) {
         return self::instance()->set('dsn', $dsn);
@@ -95,6 +96,7 @@ class ApplicationRegistry extends Registry {
 
     /**
      * @return Request
+     * @throws ApplicationRegistryException
      */
     public static function getRequest() {
         $inst = self::instance();
