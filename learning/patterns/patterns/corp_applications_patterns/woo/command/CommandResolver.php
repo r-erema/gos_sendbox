@@ -22,7 +22,7 @@ class CommandResolver {
     /**
      * CommandResolver constructor.
      */
-    private function __construct() {
+    public function __construct() {
         if (self::$base_cmd === null) {
             self::$base_cmd = new \ReflectionClass('\woo\command\Command');
             self::$default_cmd = new DefaultCommand();
@@ -51,11 +51,11 @@ class CommandResolver {
                 if ($cmd_class->isSubclassOf(self::$base_cmd)) {
                     return $cmd_class->newInstance();
                 } else {
-                    $request->addFeedback("Объект Command команды '{$cmd}' не найден");
+                    $request->addFeedback("пїЅпїЅпїЅпїЅпїЅпїЅ Command пїЅпїЅпїЅпїЅпїЅпїЅпїЅ '{$cmd}' пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ");
                 }
             }
         }
-        $request->addFeedback("Команда '{$cmd}' не найдена");
+        $request->addFeedback("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ '{$cmd}' пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
         return clone self::$default_cmd;
     }
 

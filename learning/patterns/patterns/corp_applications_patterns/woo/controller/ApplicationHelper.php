@@ -5,6 +5,7 @@ namespace woo\controller;
 
 use woo\base\AppException;
 use woo\base\ApplicationRegistry;
+use woo\command\Command;
 
 class ApplicationHelper {
 
@@ -20,7 +21,7 @@ class ApplicationHelper {
     /**
      * @return ApplicationHelper
      */
-    private static function instance() {
+    public static function instance() {
         if (self::$instance === null) {
             self::$instance = new self();
         }
@@ -45,6 +46,17 @@ class ApplicationHelper {
         $this->ensure($options instanceof \SimpleXMLElement, 'Файл конфигурции непригоден');
         $this->ensure($dsn, 'DSN не найден');
         ApplicationRegistry::setDSN($dsn);
+
+        $map = new ControllerMap();
+
+        foreach ($options->control->view as $defaultView) {
+            $statStr = trim($defaultView['status']);
+            $status = Command::statuses($statStr);
+            $map->addView((string) $defaultView, 'default', $status);
+        }
+
+        ApplicationRegistry::setControllerMap($map);
+
     }
 
     /**

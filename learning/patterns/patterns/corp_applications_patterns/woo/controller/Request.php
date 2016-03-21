@@ -1,6 +1,7 @@
 <?php
 
 namespace woo\controller;
+use woo\command\Command;
 
 /**
  * Class Request
@@ -16,10 +17,30 @@ class Request {
         return $cmd;
     }
 
+    public function setProperty($cmd, $s) {
+        
+    }
+
     /**
      * @param $message
      */
     public function addFeedback($message) {
 
     }
+
+    /**
+     * @return Command
+     */
+    public function getLastCommand() {
+        
+    }
+
+    public function setCommand(Command $cmd) {
+        
+    }
+
+    public function setObject($name, $object) {
+        
+    }
+
 }

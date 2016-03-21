@@ -1,6 +1,7 @@
 <?php
 
 namespace woo\base;
+use woo\controller\ApplicationController;
 use woo\controller\Request;
 
 class ApplicationRegistry extends Registry {
@@ -25,7 +26,7 @@ class ApplicationRegistry extends Registry {
         $dir = __DIR__ . '/../';
         $this->freezeDir = realpath($dir) . '/data';
         if (!@mkdir($this->freezeDir) && !is_dir($this->freezeDir)) {
-            throw new ApplicationRegistryException('Не удалось создать директорию');
+            throw new ApplicationRegistryException('пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ');
         }
 
     }
@@ -105,4 +106,14 @@ class ApplicationRegistry extends Registry {
         }
         return $inst->request;
     }
+
+    /**
+     * @return \woo\controller\ApplicationController
+     */
+    public static function appController() {
+        return new ApplicationController();
+    }
+
+    public static function setControllerMap($map) {}
+
 }
