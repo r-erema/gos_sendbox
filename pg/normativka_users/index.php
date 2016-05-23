@@ -50,7 +50,8 @@ const READY_FILES_DIR = '/home/gutsout/h/gos_sendbox/pg/normativka_users/files/'
 ini_set('memory_limit', '-1');
 $usersByTypes = [
     'paid' => require_once PAID_USERS_ARRAY_PATH,
-    'unpaid' => require_once UNPAID_USERS_ARRAY_PATH,
+    //'unpaid' => require_once UNPAID_USERS_ARRAY_PATH,
+    'unpaid' => [],
 ];
 
 $emails = [];
@@ -59,12 +60,17 @@ foreach ($usersByTypes as $typeOfUsers => $users) {
         foreach ($users as $user) {
                 $emails[$typeOfUsers][] = $user['user_login'];
                 $signature = getSignature($user['user_id'], $user['user_code']);
-                $string = "{$user['user_login']}\t{$signature}" . PHP_EOL;
+                $string = "{$user['user_login']}\t\t{$signature}" . PHP_EOL;
                 fwrite($file, $string);
         }
         fclose($file);
 }
-$doubles = array_intersect($emails['paid'], $emails['unpaid']);
+
+$doubles = [];
+if (isset($emails['paid']) && isset($emails['unpaid'])) {
+    $doubles = array_intersect($emails['paid'], $emails['unpaid']);
+}
+
 if ($doubles) {
         echo '<img src="http://risovach.ru/upload/2014/06/mem/spanch-bob_53402241_orig_.jpg">';
         echo '<p style="color: #EF0113">Дубли e-mail-ов платных и бесплатных пользователей<p>';
