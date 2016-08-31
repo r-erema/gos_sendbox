@@ -32,9 +32,9 @@
 			return $pdo->quote( $order['order_id'] );
 		}, $orders ) );
 		$stmt = $pdo->query( "SELECT payment_id FROM nr_payments
-						 LEFT JOIN nr_invoices ON invoice_id = payment_invoice_id
-						 LEFT JOIN nr_orders ON order_id = invoice_order_id
-						 WHERE order_id IN ({$ordersIdsString}); " );
+							  LEFT JOIN nr_invoices ON invoice_id = payment_invoice_id
+							  LEFT JOIN nr_orders ON order_id = invoice_order_id
+							  WHERE order_id IN ({$ordersIdsString}); " );
 		$stmt->execute();
 		$payments = $stmt->fetchAll();
 
