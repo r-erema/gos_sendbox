@@ -12,7 +12,7 @@
 	$userId = $stmt->fetchColumn();
 
 
-	$count = $pdo->exec("UPDATE nr_codes SET code_is_active = 0, code_deactivation_time = DATE_SUB(NOW(), INTERVAL 5 MINUTE)
+	$count = $pdo->exec("UPDATE nr_codes SET code_deactivation_time = DATE_SUB(NOW(), INTERVAL 5 MINUTE)
 						 WHERE code_activated_user_id = {$pdo->quote($userId)} AND code_is_active = 1");
 	$result[] = "Дективировано кодов: {$count}";
 
