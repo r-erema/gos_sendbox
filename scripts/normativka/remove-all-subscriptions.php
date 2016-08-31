@@ -12,12 +12,13 @@
 	$userId = $stmt->fetchColumn();
 
 
-	$count = $pdo->exec("UPDATE nr_codes SET code_is_active = 0 WHERE code_activated_user_id = {$pdo->quote($userId)} AND code_is_active = 1");
+	$count = $pdo->exec("UPDATE nr_codes SET code_is_active = 0, code_deactivation_time = DATE_SUB(NOW(), INTERVAL 5 MINUTE)
+						 WHERE code_activated_user_id = {$pdo->quote($userId)} AND code_is_active = 1");
 	$result[] = "Дективировано кодов: {$count}";
 
 	$shellCommands = require __DIR__ . '/normativka-cli-init.php';
 	$shellCommands .= "/usr/bin/php5.6 {$config['normativka_portal_path']}/cli.php http://\${DOMAIN_NORMATIVKA}/services/deactivate/ --cwd=\${PORTAL_ROOT_PATH}". PHP_EOL;
-	shell_exec($shellCommands);
+	$result[] = 'Результат деактивации cli: ' . shell_exec($shellCommands);
 
 	$stmt = $pdo->query("UPDATE nr_codes SET code_activated_user_id = NULL
 						 WHERE code_activated_user_id = {$pdo->quote($userId)}");
