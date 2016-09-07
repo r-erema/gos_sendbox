@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Скрипт удаляет все подписки у юзера(ключ -l) если ключ не передан берется логин из конфига my_login
+ */
 	$config = require __DIR__ . '/config.php';
 	/** @var PDO $pdo */
 	$pdo = require __DIR__ . '/db.php';

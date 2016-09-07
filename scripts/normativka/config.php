@@ -14,4 +14,5 @@ return [
 	'normativka_path' => NORMATIVKA_PATH,
 	'normativka_cron_path' => NORMATIVKA_PATH . '/cron',
 	'normativka_portal_path' => NORMATIVKA_PATH . '/portal',
+	'sudo_pass' => 'mmm_beer11'
 ];
