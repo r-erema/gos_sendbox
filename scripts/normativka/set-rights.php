@@ -68,10 +68,10 @@
 		$userAlreadyInGroup = (bool) $stmt->fetchColumn();
 		if (!$userAlreadyInGroup) {
 			$groupAdded = (bool) $pdo->exec("INSERT INTO fn_users_groups (ug_user_id, ug_group_id)
-						VALUES (
-							{$pdo->quote($userId)},
-							(SELECT group_id FROM fn_groups WHERE group_name = {$pdo->quote($groupToAdd)})
-						)");
+											 VALUES (
+												{$pdo->quote($userId)},
+												(SELECT group_id FROM fn_groups WHERE group_name = {$pdo->quote($groupToAdd)})
+											 )");
 			if ($groupAdded) {
 				$result[] = $groupToAdd;
 			}
@@ -79,7 +79,7 @@
 	}
 
 	if (count($result)) {
-		echo 'Пользователь добавлен в группу:' . PHP_EOL;
+		echo 'Пользователь добавлен в группы:' . PHP_EOL;
 		echo implode(PHP_EOL, $result) . PHP_EOL;
 		echo 'Сбросим memcached' . PHP_EOL;
 		shell_exec('sudo service memcached restart');
