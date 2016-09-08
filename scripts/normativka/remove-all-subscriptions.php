@@ -19,7 +19,7 @@
 	$result[] = "Дективировано кодов: {$count}";
 
 	$shellCommands = require __DIR__ . '/normativka-cli-init.php';
-	$shellCommands .= "/usr/bin/php5.6 {$config['normativka_portal_path']}/cli.php http://\${DOMAIN_NORMATIVKA}/services/deactivate/ --cwd=\${PORTAL_ROOT_PATH}". PHP_EOL;
+	$shellCommands .= "{$config['php']} {$config['normativka_portal_path']}/cli.php http://\${DOMAIN_NORMATIVKA}/services/deactivate/ --cwd=\${PORTAL_ROOT_PATH}". PHP_EOL;
 	$result[] = 'Результат деактивации cli: ' . shell_exec($shellCommands);
 
 	$stmt = $pdo->query("UPDATE nr_codes SET code_activated_user_id = NULL
