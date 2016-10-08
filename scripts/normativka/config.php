@@ -1,6 +1,6 @@
 <?php
 //const NORMATIVKA_PATH = '/home/gutsout/h/normativka';
-const NORMATIVKA_PATH = '/h/normativka/repo';
+const NORMATIVKA_PATH = '/home/gutsout/h/normativka';
 return [
 	'db' => [
 		'host' => 'mysql.web',
