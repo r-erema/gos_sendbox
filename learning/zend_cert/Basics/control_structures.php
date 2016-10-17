@@ -8,4 +8,4 @@ $b = include 'tmp/inc.php';
 $b = include_once 'tmp/inc.php';
 /*$c = require_once 'tmp/inc.php';
 $d = require_once 'tmp/inc.php';*/
-EXIT;
+class Another {}
