@@ -24,5 +24,7 @@ return [
 	//'normativka_domain' => 'normativka.nr-test2.web',
 	'normativka_path' => NORMATIVKA_PATH,
 	'normativka_cron_path' => NORMATIVKA_PATH . '/cron',
-	'normativka_portal_path' => NORMATIVKA_PATH . '/portal'
+	'normativka_portal_path' => NORMATIVKA_PATH . '/portal',
+	'salt' => 'fhGg46dksksfhj',
+	'subscribers_file' => '/home/gutsout/h/sandbox/scripts/normativka/subscribers'
 ];
