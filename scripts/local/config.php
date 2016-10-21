@@ -30,19 +30,19 @@ const NGINX_TPL =
 }' . PHP_EOL . PHP_EOL;
 
 const APACHE_TPL =
-    '<VirtualHost *:8080>
+'<VirtualHost *:8080>
 
     ServerAdmin %%server_admin%%
     DocumentRoot %%document_root%%
     ServerName %%server_name%%
     ServerAlias %%server_aliases%%
-
+    
     <Directory "%%document_root%%" >
             Options Indexes FollowSymLinks
             AllowOverride All
             Require all granted
     </Directory>
-
+    
     ErrorLog /var/log/apache2/' . MAIN_NAME . '/error.log
     CustomLog /var/log/apache2/' . MAIN_NAME . '/access.log combined
     LogLevel warn
