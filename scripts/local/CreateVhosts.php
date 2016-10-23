@@ -18,6 +18,12 @@ foreach ($servers as $server) {
         case NGINX :
             /** @var array $domains */
             $domains = $server['domains'];
+            $allDomains = array_merge(...array_map(function ($domain) {return $domain['names'];}, $domains));
+            $nginxText .= str_replace(
+                ['%%all_domains%%'],
+                [implode(' ', $allDomains)],
+                $server['tpl_http_to_https']
+            );
             foreach ($domains as $domain) {
                 $domainNamesString = implode(' ', $domain['names']);
                 $nginxText .= str_replace(
