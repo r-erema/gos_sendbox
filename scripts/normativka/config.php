@@ -2,13 +2,13 @@
 //const NORMATIVKA_PATH = '/home/gutsout/h/normativka';
 const NORMATIVKA_PATH = '/home/gutsout/h/normativka';
 return [
-	/*'db' => [
+	'db' => [
 		'host' => 'mysql.web',
 		'user' => 'sites_db_access',
 		'password' => 'bRNqWmZSn9e8wEZV',
 		'db_name' => 'normativkaby',
 		'charset' => 'utf8'
-	],*/
+	],
 	/*'db' => [
 		'host' => 'localhost',
 		'user' => 'sites_db_access',
@@ -16,7 +16,7 @@ return [
 		'db_name' => 'normativkaby',
 		'charset' => 'utf8'
 	],*/
-	'db' => [
+	/*'db' => [
 		'host' => 'localhost',
 		'user' => 'root',
 		'password' => '3kozERu93xCoh',
@@ -26,7 +26,7 @@ return [
 		//'db_name' => 'ekonomistby',
 		'db_name' => 'jurisconsultby',
 		'charset' => 'utf8'
-	],
+	],*/
 	'my_login' => 'r.yaroma@normativka.by',
 	'php' => '/usr/bin/php5.6',
 	//'php' => 'php',
