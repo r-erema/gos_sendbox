@@ -4,6 +4,6 @@ const React = require('react');
 let NewsApp = require('./components/NewsApp.jsx');
 
 ReactDOM.render(
-    <NewsApp news={news} />,
+    <NewsApp />,
     document.getElementById('mount-point')
 );
