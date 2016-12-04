@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello world!</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+    <div id="content"></div>
+
+    <script type="text/babel">
+
+        var contacts = [
+            {
+                id : 1,
+                name : 'SpongeBob SquarePants',
+                phoneNumber : '+1235445897',
+                image : 'https://upload.wikimedia.org/wikipedia/en/thumb/4/47/Spongebob-squarepants.svg/175px-Spongebob-squarepants.svg.png',
+                address : 'Pineapple',
+                email : 'SpongeBob@BikiniBottom.com'
+            },
+            {
+                id : 2,
+                name : 'Patrick Star',
+                phoneNumber : '+9856963265',
+                image : 'https://upload.wikimedia.org/wikipedia/en/thumb/7/7e/Patrick_Star.png/220px-Patrick_Star.png',
+                address : 'Rock',
+                email : 'PatrickStar@BikiniBottom.com'
+            },
+            {
+                id : 3,
+                name : 'Squidward Tentacles',
+                phoneNumber : '+2553611599',
+                image : 'https://upload.wikimedia.org/wikipedia/en/thumb/a/ac/Squidward.png/100px-Squidward.png',
+                address : 'Totem',
+                email : 'SquidwardTentacles@BikiniBottom.com'
+            },
+            {
+                id : 4,
+                name : 'Mr. Krabs',
+                phoneNumber : '+8545963258',
+                image : 'https://upload.wikimedia.org/wikipedia/en/6/63/MrKrabs.png',
+                address : 'Anchor',
+                email : 'Krabs@BikiniBottom.com'
+            },
+            {
+                id : 5,
+                name : 'Sandy Cheeks',
+                phoneNumber : '+5635221343',
+                image : 'https://upload.wikimedia.org/wikipedia/en/e/e6/Sandy_Cheeks.png',
+                address : 'Flask',
+                email : 'SandyCheeks@BikiniBottom.com'
+            },
+            {
+                id : 6,
+                name : 'Plankton',
+                phoneNumber : '+4576204725',
+                image : 'https://upload.wikimedia.org/wikipedia/en/d/da/Sheldon_Plankton.png',
+                address : 'Chum Bucket',
+                email : 'Plankton@BikiniBottom.com'
+            }
+        ];
+
+        var Contact = React.createClass({
+
+            getInitialState : function () {
+                return {isOpened : false}
+            },
+
+            toggleAdditional : function () {
+                this.setState({
+                    isOpened : !this.state.isOpened
+                });
+            },
+
+            render : function () {
+                var additional = null;
+                if (this.state.isOpened) {
+                    additional = <div><div>{this.props.address}</div><div>{this.props.email}</div></div>;
+                }
+                return <li className="contact" onClick={this.toggleAdditional} >
+                        <img className="contact-image" src={this.props.image} alt={this.props.name} height="100px" />
+                        <div className="contacts-info">
+                            <div className="contact-name">{this.props.name}</div>
+                            <div className="contact-number">{this.props.phoneNumber}</div>
+                            {additional}
+                        </div>
+                    </li>
+            }
+        });
+
+        var ContactsList = React.createClass({
+
+            getInitialState :function () {
+                return {displayedContacts : contacts};
+            },
+
+            handleSearch : function (event) {
+                var searchQuery = event.target.value.toLowerCase();
+                var displayedContacts = contacts.filter(function (element) {
+                    var searchValue = element.name.toLowerCase();
+                    return searchValue.indexOf(searchQuery) !== -1;
+                });
+
+                this.setState({
+                    displayedContacts : displayedContacts
+                });
+
+            },
+
+            render : function () {
+                return (
+                    <div className="contacts">
+                        <input type="text" className="search-field" onChange={this.handleSearch} />
+                        <ul className="contacts-list">
+                            {
+                                this.state.displayedContacts.map(function (element) {
+                                    return <Contact
+                                            key={element.id}
+                                            name={element.name}
+                                            phoneNumber={element.phoneNumber}
+                                            image={element.image}
+                                            address={element.address}
+                                            email={element.email}
+                                    />
+                                })
+                            }
+                        </ul>
+                    </div>
+                );
+            }
+        });
+
+        ReactDOM.render(
+            <ContactsList />,
+            document.getElementById('content')
+        );
+
+    </script>
+</body>
+</html>
