@@ -34,7 +34,7 @@ SELECT `type`,`contentType`,`pagetitle`,`longtitle`,`description`,`alias`,`link_
 `privateweb`,`privatemgr`,`content_dispo`,`hidemenu`,`class_key`,`context_key`,`content_type`,`uri`,`uri_override`,
 `hide_children_in_tree`,`show_in_tree`,`properties`
 FROM  `modx_site_content`
-WHERE  `parent` = 254
+WHERE  `parent` = 1380
 UNION
 /*Статьи*/
 SELECT `type`,`contentType`,`pagetitle`,`longtitle`,`description`,`alias`,`link_attributes`,`published`,`pub_date`,
@@ -43,7 +43,7 @@ SELECT `type`,`contentType`,`pagetitle`,`longtitle`,`description`,`alias`,`link_
 `privateweb`,`privatemgr`,`content_dispo`,`hidemenu`,`class_key`,`context_key`,`content_type`,`uri`,`uri_override`,
 `hide_children_in_tree`,`show_in_tree`,`properties`
 FROM  `modx_site_content`
-WHERE  `parent` = 255
+WHERE  `parent` = 1381
 UNION
 /*Исследования*/
 SELECT `type`,`contentType`,`pagetitle`,`longtitle`,`description`,`alias`,`link_attributes`,`published`,`pub_date`,
@@ -52,4 +52,4 @@ SELECT `type`,`contentType`,`pagetitle`,`longtitle`,`description`,`alias`,`link_
 `privateweb`,`privatemgr`,`content_dispo`,`hidemenu`,`class_key`,`context_key`,`content_type`,`uri`,`uri_override`,
 `hide_children_in_tree`,`show_in_tree`,`properties`
 FROM  `modx_site_content`
-WHERE  `parent` = 256
+WHERE  `parent` = 1382
