@@ -13,7 +13,11 @@ var IncomeOutcomeInput = React.createClass({
     },
 
     handleChange : function (event) {
-        this.state[event.target.name] = event.target.value;
+        if (event.target.name == 'value') {
+            this.state.value = parseFloat(event.target.value);
+        } else {
+            this.state[event.target.name] = event.target.value;
+        }
         this.props.onChange(this.state);
     },
 

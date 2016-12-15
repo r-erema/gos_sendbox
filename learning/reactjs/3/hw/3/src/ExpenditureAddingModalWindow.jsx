@@ -11,17 +11,20 @@ var ExpenditureAddingModalWindow = React.createClass({
             IO : {
                 value : 0,
                 IOType : 'Outcome'
-            }
+            },
+            disableAddButton : true
         }
     },
 
     handleIOAdd : function() {
         this.setState({open: false});
         this.props.onIOAdd(this.state.IO);
+        this.props.onModalWindowClose();
     },
 
     handleCancel : function () {
-
+        this.setState({open: false});
+        this.props.onModalWindowClose();
     },
 
     componentWillReceiveProps : function (nextProps) {
@@ -29,13 +32,18 @@ var ExpenditureAddingModalWindow = React.createClass({
     },
 
     handleIOChange : function (IO) {
-        this.setState({IO : IO});
+        if (IO.value > 0) {
+            this.setState({IO : IO, disableAddButton : false});
+        } else {
+            this.setState({disableAddButton : true});
+        }
     },
 
     render : function () {
         const actions = [
             <FlatButton
                 label="Ok"
+                disabled={this.state.disableAddButton}
                 primary={true}
                 keyboardFocused={true}
                 onTouchTap={this.handleIOAdd}

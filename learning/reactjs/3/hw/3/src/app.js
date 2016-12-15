@@ -28,9 +28,16 @@ var App = React.createClass({
     },
 
     handleAddIO : function (IO) {
-        var IOs = JSON.parse(localStorage.getItem('IO')) || [];
+        var IOs = this.getIOFromDb();
         IOs.push(IO);
         localStorage.setItem('IO', JSON.stringify(IOs));
+    },
+
+    getIOFromDb : function () {
+        return JSON.parse(localStorage.getItem('IO')) || [];
+    },
+
+    handleCloseWindow : function () {
         this.setState({
             disableAddButton : false
         });
@@ -38,23 +45,48 @@ var App = React.createClass({
 
     render : function () {
         var tStyle = {width : '90%'};
+        var incomeStyle = {color : '#357b18'};
+        var outcometyle = {color : '#92281c'};
+        var total = 0;
         return (
             <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)} >
                 <div>
                     <AppBar title="Provident" />
 
                     <Table style={tStyle} >
-                        <TableHeader>
+                        <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                           <TableRow>
-                            <TableHeaderColumn>ID</TableHeaderColumn>
-                            <TableHeaderColumn>Name</TableHeaderColumn>
-                            <TableHeaderColumn>Status</TableHeaderColumn>
+                            <TableHeaderColumn>IO Comment</TableHeaderColumn>
+                            <TableHeaderColumn>IO value</TableHeaderColumn>
                           </TableRow>
                         </TableHeader>
+                        <TableBody displayRowCheckbox={false} >
+                            {
+                                this.getIOFromDb().map(function (IO) {
+                                    if (IO.IOType == 'Outcome') {
+                                        var value = <span style={outcometyle} >-{IO.value}</span>;
+                                        total -= IO.value;
+                                    } else {
+                                        value = <span style={incomeStyle} >+{IO.value}</span>
+                                        total += IO.value;
+                                    }
+                                    return (
+                                        <TableRow key={Math.random()}>
+                                            <TableRowColumn>{IO.IOComment}</TableRowColumn>
+                                            <TableRowColumn>{value}</TableRowColumn>
+                                        </TableRow>
+                                    );
+                                })
+                            }
+                            <TableRow>
+                                <TableRowColumn>Total:</TableRowColumn>
+                                <TableRowColumn style={total > 0 ? incomeStyle : outcometyle} >{total}</TableRowColumn>
+                             </TableRow>
+                        </TableBody>
                     </Table>
 
                     <AddExpenditureButton onOpenWindow={this.handleOpenWindow} disable={this.state.disableAddButton} />
-                    <ExpenditureAddingModalWindow open={this.state.openModalWindow} onIOAdd={this.handleAddIO}/>
+                    <ExpenditureAddingModalWindow open={this.state.openModalWindow} onIOAdd={this.handleAddIO} onModalWindowClose={this.handleCloseWindow} />
                 </div>
             </MuiThemeProvider>
         );
