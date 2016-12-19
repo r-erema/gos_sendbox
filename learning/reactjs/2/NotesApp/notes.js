@@ -1,7 +1,9 @@
-
-var Note = React.createClass({
+let Note = React.createClass({
+    propTypes: {
+        color : React.PropTypes.string.isRequired
+    },
     render : function () {
-        var style = {backgroundColor: this.props.color};
+        let style = {backgroundColor: this.props.color};
         return (
             <div style={style} className="note">
                 <span className="delete-note" onClick={this.props.onDelete}>×</span>
@@ -11,7 +13,7 @@ var Note = React.createClass({
     }
 });
 
-var ColorSelector = React.createClass({
+let ColorSelector = React.createClass({
 
     getInitialState : function () {
         return {
@@ -40,7 +42,7 @@ var ColorSelector = React.createClass({
     },
 
     setColor : function (event) {
-        var _color = event.target.getAttribute('data');
+        let _color = event.target.getAttribute('data');
         this.state.colors.map(function (color) {
             color.active = color.value === _color;
         });
@@ -50,12 +52,12 @@ var ColorSelector = React.createClass({
     },
 
     render : function () {
-        var _this = this;
+        let _this = this;
         return <div className="colors-panel">
             {
                 this.state.colors.map(function (color) {
-                    var style = {backgroundColor: color.value};
-                    var classes = 'color-item';
+                    let style = {backgroundColor: color.value};
+                    let classes = 'color-item';
                     if (color.active) {
                         classes += ' active';
                     }
@@ -111,10 +113,14 @@ var NoteEditor = React.createClass({
     }
 });
 
-var NotesGrid = React.createClass({
+let NotesGrid = React.createClass({
+
+    propTypes: {
+        notes: React.PropTypes.array.isRequired
+    },
 
     componentDidMount : function () {
-        var grid = this.refs.grid;
+        let grid = this.refs.grid;
         this.masonry = new Masonry(grid, {
             itemSelector : '.note',
             columnWidth : 200,
@@ -130,7 +136,7 @@ var NotesGrid = React.createClass({
     },
 
     render : function () {
-        var onNoteDelete = this.props.onNoteDelete;
+        let onNoteDelete = this.props.onNoteDelete;
         return (
             <div className="notes-grid" ref="grid">
                 {
@@ -150,7 +156,7 @@ var NotesGrid = React.createClass({
     }
 });
 
-var NotesSearch = React.createClass({
+let NotesSearch = React.createClass({
 
     handleSearch : function (event) {
         this.props.onSearch(event.target.value.toLowerCase());
@@ -162,8 +168,7 @@ var NotesSearch = React.createClass({
     }
 });
 
-var NoteApp = React.createClass({
-
+let NoteApp = React.createClass({
 
     getInitialState : function () {
         return {notes : [], disableStorage : false}
@@ -171,13 +176,13 @@ var NoteApp = React.createClass({
 
     handleNoteAdd : function (newNote) {
         this.handleSearch(null);
-        var newNotes = JSON.parse(localStorage.getItem('notes')).slice();
+        let newNotes = JSON.parse(localStorage.getItem('notes')).slice();
         newNotes.unshift(newNote);
         this.setState({notes : newNotes});
     },
 
     componentDidMount : function () {
-        var localNotes = JSON.parse(localStorage.getItem('notes'));
+        let localNotes = JSON.parse(localStorage.getItem('notes')) || [];
         if (localNotes) {
             this.setState({notes : localNotes});
         }
@@ -190,8 +195,8 @@ var NoteApp = React.createClass({
     },
 
     handleNoteDelete : function (note) {
-        var noteId = note.id;
-        var newNotes = this.state.notes.filter(function (note) {
+        let noteId = note.id;
+        let newNotes = this.state.notes.filter(function (note) {
             return note.id !== noteId;
         });
         this.setState({notes : newNotes});
@@ -199,9 +204,8 @@ var NoteApp = React.createClass({
 
     handleSearch : function (searchQuery) {
         if (searchQuery) {
-            console.log(searchQuery);
-            var notes = this.state.notes.filter(function (element) {
-                var searchValue = element.text.toLowerCase();
+            let notes = this.state.notes.filter(function (element) {
+                let searchValue = element.text.toLowerCase();
                 return searchValue.indexOf(searchQuery) !== -1;
             });
             this.setState({notes : notes, disableStorage : true});
@@ -222,7 +226,7 @@ var NoteApp = React.createClass({
     },
 
     _updateLocalStorage : function () {
-        var notes = JSON.stringify(this.state.notes);
+        let notes = JSON.stringify(this.state.notes);
         localStorage.setItem('notes', notes);
     }
 
