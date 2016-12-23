@@ -13,7 +13,7 @@ dijit._Widget.prototype,
 		this.context = context || this.context;
 		this.postMixInProperties();
 		dojo.query("*", this.domNode).orphan();
-		this.domNode.innerHTML = this.template.render(this.context);
+		this.domNode.innerHTML = ArticlesGrid.render(this.context);
 	},
 	declaredClass: "dojox.dtl.Inline",
 	buildRendering: function(){

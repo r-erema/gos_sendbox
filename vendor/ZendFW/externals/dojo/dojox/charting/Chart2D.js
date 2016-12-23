@@ -797,15 +797,15 @@ dojox.charting.__Chart2DCtorArgs = function(margins, stroke, fill, delayInMs){
 			this.calculateGeometry();
 
 			// go over the stack backwards
-			df.forEachRev(this.stack, function(plot){ plot.render(this.dim, this.offsets); }, this);
+			df.forEachRev(this.stack, function(plot){ ArticlesGrid.render(this.dim, this.offsets); }, this);
 
 			// go over axes
-			df.forIn(this.axes, function(axis){ axis.render(this.dim, this.offsets); }, this);
+			df.forIn(this.axes, function(axis){ ArticlesGrid.render(this.dim, this.offsets); }, this);
 
 			this._makeClean();
 
 			// BEGIN FOR HTML CANVAS
-			if(this.surface.render){ this.surface.render(); };
+			if(ArticlesGrid.render){ ArticlesGrid.render(); };
 			// END FOR HTML CANVAS
 
 			return this;	//	dojox.charting.Chart2D
@@ -853,7 +853,7 @@ dojox.charting.__Chart2DCtorArgs = function(margins, stroke, fill, delayInMs){
 			}
 
 			// go over the stack backwards
-			df.foldr(this.stack, function(z, plot){ return plot.render(dim, offsets), 0; }, 0);
+			df.foldr(this.stack, function(z, plot){ return ArticlesGrid.render(dim, offsets), 0; }, 0);
 
 			// pseudo-clipping: matting
 			fill   = this.fill   !== undefined ? this.fill   : (t.chart && t.chart.fill);
@@ -905,12 +905,12 @@ dojox.charting.__Chart2DCtorArgs = function(margins, stroke, fill, delayInMs){
 			}
 
 			// go over axes
-			df.forIn(this.axes, function(axis){ axis.render(dim, offsets); });
+			df.forIn(this.axes, function(axis){ ArticlesGrid.render(dim, offsets); });
 
 			this._makeClean();
 
 			// BEGIN FOR HTML CANVAS
-			if(this.surface.render){ this.surface.render(); };
+			if(ArticlesGrid.render){ ArticlesGrid.render(); };
 			// END FOR HTML CANVAS
 
 			return this;	//	dojox.charting.Chart2D

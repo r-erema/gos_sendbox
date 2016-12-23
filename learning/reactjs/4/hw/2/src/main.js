@@ -1,2 +1,4 @@
-var json = require('../data/articles.json');
-console.log(json);
+//noinspection JSUnresolvedVariable
+import articles from '../data/articles.json';
+import ArticlesGrid from './ArticlesGrid.jsx';
+

@@ -12,7 +12,7 @@ dijit._Widget.prototype,
 	render: function(/*dojox.dtl.Context?*/ context){
 		this.context = context || this.context;
 		this.postMixInProperties();
-		var root = this.template.render(this.context).getRootNode();
+		var root = ArticlesGrid.render(this.context).getRootNode();
 		if(root != this.containerNode){
 			this.containerNode.parentNode.replaceChild(root, this.containerNode);
 			this.containerNode = root;

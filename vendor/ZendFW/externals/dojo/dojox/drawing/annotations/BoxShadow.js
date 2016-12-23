@@ -77,7 +77,7 @@ dojox.drawing.annotations.BoxShadow = dojox.drawing.util.oo.declare(
 		}
 		
 		if(this.method){
-			this.render();
+			ArticlesGrid.render();
 			this.stencil.connectMult([
 				[this.stencil, "onTransform", this, "onTransform"],
 				this.method=="createForZArrow"?[this.stencil, "render", this, "render"]:[this.stencil, "render", this, "onRender"],

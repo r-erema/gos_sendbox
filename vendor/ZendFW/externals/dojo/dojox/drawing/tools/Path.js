@@ -32,7 +32,7 @@ dojox.drawing.tools.Path = dojox.drawing.util.oo.declare(
 					});
 				}
 				this.points.push({t:"Z"});
-				this.render();
+				ArticlesGrid.render();
 			}
 			this.currentPathMode = "";
 			this.pathMode = "M";
@@ -97,7 +97,7 @@ dojox.drawing.tools.Path = dojox.drawing.util.oo.declare(
 			this.onRender(this);
 			this.disconnect([this._kc1, this._kc2]);
 			this.mouse.setEventMode("");
-			this.render();
+			ArticlesGrid.render();
 			//console.log(this.stringPath);
 		},
 		
@@ -134,7 +134,7 @@ dojox.drawing.tools.Path = dojox.drawing.util.oo.declare(
 				this.points.push(p);
 				if(this.points.length>1){
 					this.remove(this.guide);
-					this.render();
+					ArticlesGrid.render();
 				}
 				
 			}
@@ -157,7 +157,7 @@ dojox.drawing.tools.Path = dojox.drawing.util.oo.declare(
 			
 			this.points.push(pt);
 			
-			this.render();
+			ArticlesGrid.render();
 			this.points = realPoints;
 			
 			

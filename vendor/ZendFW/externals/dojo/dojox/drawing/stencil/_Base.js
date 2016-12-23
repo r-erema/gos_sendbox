@@ -242,7 +242,7 @@ dojox.drawing.stencil._Base = dojox.drawing.util.oo.declare(
 			}
 			this.setPoints(options.points);
 			this.connect(this, "render", this, "onRender", true);
-			this.baseRender && this.enabled && this.render();
+			this.baseRender && this.enabled && ArticlesGrid.render();
 			options.label && this.setLabel(options.label);
 			options.shadow && this.addShadow(options.shadow);
 
@@ -252,7 +252,7 @@ dojox.drawing.stencil._Base = dojox.drawing.util.oo.declare(
 			options.data.height = options.data.height ? options.data.height : this._lineHeight;
 			this.setData(options.data);
 			this.connect(this, "render", this, "onRender", true);
-			this.baseRender && this.enabled && this.render(options.data.text);
+			this.baseRender && this.enabled && ArticlesGrid.render(options.data.text);
 			this.baseRender && options.label && this.setLabel(options.label);
 			this.baseRender && options.shadow && this.addShadow(options.shadow);
 
@@ -271,7 +271,7 @@ dojox.drawing.stencil._Base = dojox.drawing.util.oo.declare(
 			this.disable();
 			this.moveToBack();
 			// some things render some don't...
-			this.render(options.data.text);
+			ArticlesGrid.render(options.data.text);
 		}
 
 	},

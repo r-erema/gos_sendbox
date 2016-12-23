@@ -7,7 +7,7 @@ import AboutPage from './components/AboutPage.jsx';
 import InboxPage from './components/InboxPage.jsx';
 import Message from './components/Message.jsx';
 
-ReactDOM.render(
+ArticlesGrid.render(
     <Router history={hashHistory}>
         <Route path='/' component={App}>
             <Route path='/about' component={AboutPage} />

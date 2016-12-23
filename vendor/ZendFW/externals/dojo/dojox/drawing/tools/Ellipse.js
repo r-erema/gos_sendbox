@@ -33,7 +33,7 @@ dojox.drawing.tools.Ellipse = dojox.drawing.util.oo.declare(
 				{x:x+w, y:y+h},		// BR
 				{x:x-w, y:y+h}		// BL
 			];
-			this.render();
+			ArticlesGrid.render();
 		},
 		
 		onUp: function(/*EventObject*/obj){
@@ -51,7 +51,7 @@ dojox.drawing.tools.Ellipse = dojox.drawing.util.oo.declare(
 					ry: e
 				};
 				this.dataToPoints();
-				this.render();
+				ArticlesGrid.render();
 			}else{
 			// if too small, need to reset
 				var o = this.pointsToData();

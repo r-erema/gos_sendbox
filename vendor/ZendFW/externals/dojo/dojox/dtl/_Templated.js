@@ -29,7 +29,7 @@ dojo.declare("dojox.dtl._Templated", dijit._Templated, {
 				delete context._getter;
 			}
 			var nodes = dojo._toDom(
-				this._template.render(context)
+				ArticlesGrid.render(context)
 			);
 			// TODO: is it really necessary to look for the first node?
 			if(nodes.nodeType !== 1 && nodes.nodeType !== 3){

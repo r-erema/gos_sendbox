@@ -218,7 +218,7 @@ dojox.drawing.manager.Anchor = dojox.drawing.util.oo.declare(
 			this.anchorConstrain = dojo.hitch(this.stencil, this.stencil.anchorConstrain);
 		}
 		this._zCon = dojo.connect(this.mouse, "setZoom", this, "render");
-		this.render();
+		ArticlesGrid.render();
 		this.connectMouse();
 	},
 	{

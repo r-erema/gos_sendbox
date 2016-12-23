@@ -68,7 +68,7 @@ dojox.drawing.tools.Line = dojox.drawing.util.oo.declare(
 				{x:x1, y:y1},
 				{x:x2, y:y2}
 			]);
-			this.render();
+			ArticlesGrid.render();
 		},
 		
 		onUp: function(/*EventObject*/obj){
@@ -83,7 +83,7 @@ dojox.drawing.tools.Line = dojox.drawing.util.oo.declare(
 					{x:s.x, y:s.y+e},
 					{x:s.x, y:s.y}
 				]);
-				this.render();
+				ArticlesGrid.render();
 				
 			}else{
 				// if too small, need to reset

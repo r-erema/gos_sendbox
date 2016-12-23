@@ -29,7 +29,7 @@ dojo.require("dojox.gfx3d");
 			return this;
 		},
 		render: function(){
-			this.view.render();
+			ArticlesGrid.render();
 			return this;
 		},
 		addPlot: function(plot){

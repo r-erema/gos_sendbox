@@ -821,7 +821,7 @@ dojo.require("dojo.data.ItemFileWriteStore");
 			//      called whenever a chart widget is created or
 			//      configured, and may be connected to.
 			if(this.chartWidget){
-				this.chartWidget.render();
+				ArticlesGrid.render();
 			}
 		},
 		
@@ -831,7 +831,7 @@ dojo.require("dojo.data.ItemFileWriteStore");
 			//      called whenever a grid widget is created or
 			//      configured, and may be connected to.
 			if(this.gridWidget){
-				this.gridWidget.render();
+				ArticlesGrid.render();
 			}
 		},
 		

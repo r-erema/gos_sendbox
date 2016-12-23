@@ -107,7 +107,7 @@ dojo.require("dojox.dtl._base");
 			if(!parent){
 				throw new Error("Invalid template name in 'extends' tag.");
 			}
-			if(parent.render){
+			if(ArticlesGrid.render){
 				return parent;
 			}
 			if(this.parents[parent]){
@@ -141,7 +141,7 @@ dojo.require("dojox.dtl._base");
 			}
 
 			this.rendered = parent;
-			return parent.nodelist.render(context, buffer, this);
+			return ArticlesGrid.render(context, buffer, this);
 		},
 		unrender: function(context, buffer){
 			return this.rendered.unrender(context, buffer, this);
@@ -181,14 +181,14 @@ dojo.require("dojox.dtl._base");
 					var template = this.getTemplate(cache[location]);
 					this.rendered = template.nodelist;
 				}
-				return this.rendered.render(context, buffer, this);
+				return ArticlesGrid.render(context, buffer, this);
 			}else{
 				if(this.text instanceof dd._TextNode){
 					if(dirty){
 						this.rendered = this.text;
 						this.rendered.set(dd.text._resolveTemplateArg(location, true));
 					}
-					return this.rendered.render(context, buffer);
+					return ArticlesGrid.render(context, buffer);
 				}else{
 					if(!cache[location]){
 						var nodelist = [];

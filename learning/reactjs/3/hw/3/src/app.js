@@ -93,7 +93,7 @@ var App = React.createClass({
     }
 });
 
-ReactDOM.render(
+ArticlesGrid.render(
   <App />,
   document.getElementById('mount-point')
 );

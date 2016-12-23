@@ -15,7 +15,7 @@ dojox.drawing.tools.Arrow = dojox.drawing.util.oo.declare(
 			this.endArrow = new dojox.drawing.annotations.Arrow({stencil:this, idx1:1, idx2:0});
 		}
 		if(this.points.length){
-			this.render();
+			ArticlesGrid.render();
 		}
 	},
 	{

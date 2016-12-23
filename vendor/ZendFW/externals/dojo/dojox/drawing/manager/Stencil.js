@@ -157,7 +157,7 @@ dojo.provide("dojox.drawing.manager.Stencil");
 				//
 				console.log("unDelete:", stencils);
 				for(var s in stencils){
-					stencils[s].render();
+					ArticlesGrid.render();
 					this.onSelect(stencils[s]);
 				}
 			},

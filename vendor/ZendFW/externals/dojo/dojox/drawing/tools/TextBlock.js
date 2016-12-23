@@ -82,7 +82,7 @@ dojo.require("dojox.drawing.stencil.Text");
 						this._text = "";
 						this.edit();
 					}else if(text){
-						this.render(text);
+						ArticlesGrid.render(text);
 					}
 					setTimeout(dojo.hitch(this, function(){
 						this.editMode = false;	
@@ -349,7 +349,7 @@ StencilData: {
 					this._text = "";
 					this._textArray = [];
 				}
-				this.render(o.text);
+				ArticlesGrid.render(o.text);
 				// Only for Combo objects (vectors, rectangle, or ellipse).
 				this.onChangeText(this.getText());
 			},

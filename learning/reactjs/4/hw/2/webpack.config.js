@@ -1,4 +1,5 @@
 module.exports = {
+
   entry: './src/main.js',
   output: {
     filename: 'bundle.js',
@@ -11,7 +12,12 @@ module.exports = {
       loaders: [
           {
               test: /\.json$/,
-              loader: "json-loader"
+              loader: 'json-loader'
+          },
+          {
+              test: /(?:\.js|\.jsx)$/,
+              exclude: /node_modules/,
+              loader: 'babel-loader'
           }
       ]
   }
