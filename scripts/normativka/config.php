@@ -2,20 +2,20 @@
 //const NORMATIVKA_PATH = '/home/gutsout/h/normativka';
 const NORMATIVKA_PATH = '/home/gutsout/h/normativka';
 return [
-    'db' => [
+    /*'db' => [
 		'host' => 'localhost',
 		'user' => 'root',
 		'password' => 'mmm_beer11',
 		'db_name' => 'normativkaby',
 		'charset' => 'utf8'
-	],
-	/*'db' => [
+	],*/
+	'db' => [
 		'host' => 'mysql.web',
 		'user' => 'sites_db_access',
 		'password' => 'bRNqWmZSn9e8wEZV',
 		'db_name' => 'normativkaby',
 		'charset' => 'utf8'
-	],*/
+	],
 	/*'db' => [
 		'host' => 'localhost',
 		'user' => 'sites_db_access',
