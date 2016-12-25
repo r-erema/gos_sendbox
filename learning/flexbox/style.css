@@ -1,0 +1,98 @@
+.parent {
+    border: 1px solid black;
+    height: 300px;
+    display: flex;
+}
+
+.child {
+    border: 1px solid black;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+}
+
+.flex-container {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+     -webkit-flex-flow: row wrap;
+}
+
+.flex-item {
+    width: 200px;
+    height: 150px;
+    padding: 5px;
+    background: tomato;
+    line-height: 150px;
+    margin-top: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 3em;
+    text-align: center;
+}
+
+.navigation {
+    list-style: none;
+    margin: 0;
+    background: deepskyblue;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+}
+
+/* Экраны среднего размера */
+@media all and (max-width: 800px) {
+  .navigation {
+    /* Для экранов среднего размера мы выравниваем навигацию по центру,
+    равномерно распредляя свободное место между элементами */
+    justify-content: space-around;
+  }
+}
+
+/* Маленькие экраны */
+@media all and (max-width: 500px) {
+  .navigation {
+    /* На маленьких экранах вместо строки мы располагаем элементы в столбце */
+    flex-direction: column;
+  }
+}
+
+.navigation a {
+  text-decoration: none;
+  display: block;
+  padding: 1em;
+  color: white;
+}
+
+.navigation a:hover {
+  background: darkblue;
+}
+
+.wrapper {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.header, .main, .nav, .aside, .footer {
+  flex: 1 100%;
+}
+
+/* Экраны среднего размера */
+@media all and (min-width: 600px) {
+  /* Оба сайдбара располагаются в одной строке */
+  .aside { flex: 1 auto; }
+}
+
+@media all and (min-width: 800px) {
+  /* Мы меняем местами элементы .aside-1 и .main, а также сообщаем
+   * элементу .main забирать в два раза больше места, чем сайдбары.
+   */
+  .main { flex: 2 0px; }
+
+  .aside-1 { order: 1; }
+  .main    { order: 2; }
+  .aside-2 { order: 3; }
+  .footer  { order: 4; }
+}
