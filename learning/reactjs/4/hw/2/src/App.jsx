@@ -11,7 +11,9 @@ class App extends React.Component {
 
     render() {
         return (
-            <ArticlesGrid articles={articles} />
+            <ArticlesGrid articles={articles} >
+                {this.props.children}
+            </ArticlesGrid>
         );
     }
 }
