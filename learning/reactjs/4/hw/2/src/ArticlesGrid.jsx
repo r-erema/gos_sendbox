@@ -15,6 +15,10 @@ class ArticlesGrid extends React.Component {
           }
     }
 
+    handleClick(e) {
+        console.log(e);
+    };
+
     render() {
         return (
             <MuiThemeProvider>
@@ -25,13 +29,13 @@ class ArticlesGrid extends React.Component {
                                 <GridTile
                                     title={article.title}
                                     key={article.id}
-                                    actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+                                    actionIcon={<IconButton href={`#${article.id}`} onClick={this.handleClick} ><StarBorder color="white" /></IconButton>}
                                     actionPosition="left"
                                 >
                                     <img src={`img/${article.img}`} alt={article.title} />
                                 </GridTile>
                          )
-                     })
+                     }, this)
                  }
                 </GridList>
             </MuiThemeProvider>

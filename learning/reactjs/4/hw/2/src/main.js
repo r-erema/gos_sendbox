@@ -1,12 +1,16 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-//noinspection JSUnresolvedVariable
-import articles from '../data/articles.json';
-import ArticlesGrid from './ArticlesGrid.jsx';
+import { Router, Route, hashHistory } from 'react-router';
+import App from './App.jsx';
+import Article from './Article.jsx';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
 ReactDOM.render(
-    <ArticlesGrid articles={articles} />,
+    <Router history={hashHistory}>
+        <Route path='/' component={App} >
+            <Route path='/:messageId' component={Article} />
+        </Route>
+    </Router>,
     document.getElementById('mount-point')
 );
