@@ -9,7 +9,7 @@ injectTapEventPlugin();
 ReactDOM.render(
     <Router history={hashHistory}>
         <Route path='/' component={App} >
-            <Route path='/:messageId' component={Article} />
+            <Route path='/message/:messageId' component={Article} />
         </Route>
     </Router>,
     document.getElementById('mount-point')

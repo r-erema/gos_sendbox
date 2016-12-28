@@ -3,10 +3,12 @@ import React from 'react';
 class Article extends React.Component {
 
     constructor() {
+        console.log(1);
         super();
     }
 
-    static render() {
+    render() {
+        console.log(1111);
         return (
             <div>123</div>
         );
