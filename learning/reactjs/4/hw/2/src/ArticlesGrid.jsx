@@ -15,9 +15,10 @@ class ArticlesGrid extends React.Component {
           }
     }
 
-    handleClick(e) {
-        console.log(e);
-    };
+/*    handleClick(e) {
+        let artId = e.target;
+        console.log(this.router);
+    };*/
 
     render() {
         return (
@@ -25,11 +26,12 @@ class ArticlesGrid extends React.Component {
                 <GridList cols={2} cellHeight={200} padding={1} style={this.styleList} >
                  {
                      this.props.articles.map(function (article) {
+                         let link = <Link/>
                          return (
                                 <GridTile
                                     title={article.title}
                                     key={article.id}
-                                    actionIcon={<IconButton href={`#${article.id}`} onClick={this.handleClick} ><StarBorder color="white" /></IconButton>}
+                                    actionIcon={<IconButton href={`#${article.id}`} onClick={this.handleClick.bind(null, article.id)} ><StarBorder color="white" /></IconButton>}
                                     actionPosition="left"
                                 >
                                     <img src={`img/${article.img}`} alt={article.title} />
