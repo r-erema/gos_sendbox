@@ -1,0 +1,38 @@
+[
+  {
+    "id" : 1,
+    "title" : "Apple iPhone 7 32GB Black",
+    "description" : "Apple iOS, экран 4.7\" IPS (750x1334), ОЗУ 2 ГБ, флэш-память 32 ГБ, камера 12 Мп, аккумулятор 1960 мАч, цвет черный",
+    "img" : "iphone7.jpeg"
+  },
+  {
+    "id" : 2,
+    "title" : "Xiaomi Redmi 3 Pro 32GB Gray",
+    "description" : "Android, экран 5\" IPS (720x1280), ОЗУ 3 ГБ, флэш-память 32 ГБ, карты памяти, камера 13 Мп, аккумулятор 4100 мАч, Dual SIM, цвет серый",
+    "img" : "redmi3.jpeg"
+  },
+  {
+    "id" : 3,
+    "title" : "Xiaomi Redmi 4 32GB Silver",
+    "description" : "Android, экран 5\" IPS (1080x1920), ОЗУ 3 ГБ, флэш-память 32 ГБ, карты памяти, камера 13 Мп, аккумулятор 4100 мАч, Dual SIM, цвет серебристый",
+    "img" : "redmi4.jpeg"
+  },
+  {
+    "id" : 4,
+    "title" : "Apple iPhone 5s 16GB Space Gray",
+    "description" : "Apple iOS, экран 4\" IPS (640x1136), ОЗУ 1 ГБ, флэш-память 16 ГБ, камера 8 Мп, аккумулятор 1560 мАч, цвет темно-серый",
+    "img" : "iphone5s.jpeg"
+  },
+  {
+    "id" : 5,
+    "title" : "Huawei P9 Lite Black [VNS-L21]",
+    "description" : "Android, экран 5.2\" IPS (1080x1920), ОЗУ 2 ГБ, флэш-память 16 ГБ, карты памяти, камера 13 Мп, аккумулятор 3000 мАч, Dual SIM, цвет черный",
+    "img" : "huawei_p9.jpeg"
+  },
+  {
+    "id" : 6,
+    "title" : "Samsung Galaxy S7 Edge 32GB Black Onyx",
+    "description" : "Android, экран 5.5\" AMOLED (1440x2560), ОЗУ 4 ГБ, флэш-память 32 ГБ, карты памяти, камера 12 Мп, аккумулятор 3600 мАч, цвет черный",
+    "img" : "galaxy_s7.jpeg"
+  }
+]

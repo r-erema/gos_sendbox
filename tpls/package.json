@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "react": "*",
+    "react-dom": "*",
+    "react-router": "*"
+  },
+  "devDependencies": {
+    "babel-core": "*",
+    "babel-loader": "*",
+    "babel-plugin-transform-react-jsx": "*",
+    "babel-preset-env": "*",
+    "webpack": "*"
+  }
+}
