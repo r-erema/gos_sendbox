@@ -3,7 +3,7 @@ import {GridList, GridTile} from 'material-ui/GridList';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import IconButton from 'material-ui/IconButton';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
-import {browserHistory} from 'react-router';
+import {Link} from 'react-router';
 
 
 class ArticlesGrid extends React.Component {
@@ -15,12 +15,12 @@ class ArticlesGrid extends React.Component {
             height: 450,
             overflowY: 'auto',
         };
-        context.router
+        /*context.router*/
     }
 
-    handleClick(artId) {
+/*    handleClick(artId) {
         browserHistory.push(`/message/${artId}`);
-    };
+    };*/
 
     render() {
         return (
@@ -32,7 +32,8 @@ class ArticlesGrid extends React.Component {
                                 <GridTile
                                     title={article.title}
                                     key={article.id}
-                                    actionIcon={<IconButton href={`message/#${article.id}`} onClick={this.handleClick.bind(this, article.id)} ><StarBorder color="white" /></IconButton>}
+                                    /*actionIcon={<IconButton href={`message/#${article.id}`} onClick={this.handleClick.bind(this, article.id)} ><StarBorder color="white" /></IconButton>}*/
+                                    actionIcon={<Link to={`/${article.id}`}><IconButton><StarBorder color="white" /></IconButton></Link>}
                                     actionPosition="left"
                                 >
                                     <img src={`img/${article.img}`} alt={article.title} />
@@ -47,8 +48,8 @@ class ArticlesGrid extends React.Component {
 
 }
 
-ArticlesGrid.contextTypes = {
+/*ArticlesGrid.contextTypes = {
     router: React.PropTypes.object.isRequired
-};
+};*/
 
 export default ArticlesGrid;
