@@ -44,18 +44,21 @@
 		$paymentsIdsString = implode( ',', array_map( function ( $payment ) use ( $pdo ) {
 			return $pdo->quote( $payment['payment_id'] );
 		}, $payments ) );
-		$count = $pdo->exec("DELETE FROM nr_payments WHERE payment_id IN ({$paymentsIdsString});");
+
+		$count = $paymentsIdsString ? $pdo->exec("DELETE FROM nr_payments WHERE payment_id IN ({$paymentsIdsString});") : 0;
 		$result[] = "Удалено оплат: {$count}";
 
-		$count = $pdo->exec("DELETE FROM nr_invoices WHERE invoice_order_id IN ({$ordersIdsString});");
+		$count = $ordersIdsString ? $pdo->exec("DELETE FROM nr_invoices WHERE invoice_order_id IN ({$ordersIdsString});") : 0;
 		$result[] = "Удалено счетов: {$count}";
 
-		$count = $pdo->exec("DELETE FROM nr_codes WHERE code_order_id IN ({$ordersIdsString});");
+		$count = $ordersIdsString ? $pdo->exec("DELETE FROM nr_codes WHERE code_order_id IN ({$ordersIdsString});") : 0;
 		$result[] = "Удалено кодов: {$count}";
 
-		$count = $pdo->exec("DELETE FROM nr_orders WHERE order_id IN ({$ordersIdsString});");
+		$count = $paymentsIdsString ? $pdo->exec("DELETE FROM nr_orders WHERE order_id IN ({$ordersIdsString});") : 0;
 		$result[] = "Удалено заказов: {$count}";
-		$pdo->exec("DELETE FROM nr_package_order WHERE po_or_id IN ({$ordersIdsString});");
+		if ($paymentsIdsString) {
+			$pdo->exec("DELETE FROM nr_package_order WHERE po_or_id IN ({$ordersIdsString});");
+		}
 	}
 	echo implode(PHP_EOL, $result) . PHP_EOL;
 	exit(0);
