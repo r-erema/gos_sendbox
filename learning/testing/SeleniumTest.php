@@ -16,7 +16,7 @@ class SeleniumTest extends PHPUnit_Framework_TestCase {
 	}
 
 	public function testAddVenue() {
-		$this->driver->get('http://gutsout/learning/testing/');
+		$this->driver->get('http://gutsout.web:8080/learning/testing/');
 	}
 
 	public function setAddVenue() {}
