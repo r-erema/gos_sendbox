@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<project name="megaquiz" default="main" description="Project engine">
+
+    <property name="dbname" value="megaquiz" />
+    <property name="dbhost" value="localhost" />
+
+    <target name="runFirst" description="First task" hidden="true">
+        <echo>Run first</echo>
+    </target>
+    <target name="runSecond" depends="runFirst" description="Second task"/>
+    <target name="main" depends="runSecond" description="Third task" if="dbpass">
+        <echo>Database: ${dbname}</echo>
+        <echo>Pass: ${dbpass}</echo>
+        <echo>Host: ${dbhost}</echo>
+    </target>
+</project>
