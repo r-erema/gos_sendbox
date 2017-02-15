@@ -1,0 +1,16 @@
+{
+    "name": "root/tdd",
+    "authors": [
+        {
+            "name": "gutsout",
+            "email": "r.yaroma@corp.profigroup.by"
+        }
+    ],
+    "require": {
+        "phpunit/phpunit": "^6.0",
+        "mikey179/vfsStream": "~1"
+    },
+    "autoload": {
+        "psr-4": {"src\\": "src/"}
+    }
+}
