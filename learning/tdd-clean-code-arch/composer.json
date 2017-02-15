@@ -1,0 +1,15 @@
+{
+    "name": "root/tdd-clean-code-arch",
+    "authors": [
+        {
+            "name": "gutsout",
+            "email": "eratut@mail.ru"
+        }
+    ],
+    "require": {
+        "phpunit/phpunit": "^6.0"
+    },
+    "autoload": {
+        "psr-4": {"src\\": "src/"}
+    }
+}
