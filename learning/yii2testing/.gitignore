@@ -1,0 +1,6 @@
+
+/vendor/
+/config/db.php
+/data/*
+
+tests/_output/*
