@@ -1,0 +1,14 @@
+{
+    "name": "root/codeception-official",
+    "authors": [
+        {
+            "name": "gutsout",
+            "email": "r.yaroma@corp.profigroup.by"
+        }
+    ],
+    "require": {
+        "codeception/codeception": "^2.2",
+        "se/selenium-server-standalone": "^3.0",
+        "enm1989/chromedriver": "^2.27"
+    }
+}
