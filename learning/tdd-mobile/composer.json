@@ -1,0 +1,12 @@
+{
+    "name": "root/tdd-mobile",
+    "authors": [
+        {
+            "name": "gutsout",
+            "email": "r.yaroma@corp.profigroup.by"
+        }
+    ],
+    "require": {
+        "codeception/codeception": "^2.2"
+    }
+}
