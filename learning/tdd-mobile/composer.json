@@ -7,6 +7,14 @@
         }
     ],
     "require": {
-        "codeception/codeception": "^2.2"
+        "codeception/codeception": "^2.2",
+        "yiisoft/yii2-app-basic": "^2.0",
+        "mobiledetect/mobiledetectlib": "^2.8"
+    },
+    "autoload": {
+        "psr-4": {"src\\": "src/"},
+        "classmap": [
+            "vendor/yiisoft/yii2/Yii.php"
+        ]
     }
 }

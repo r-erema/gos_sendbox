@@ -8,5 +8,5 @@ class_name: FunctionalTester
 modules:
     enabled:
         - PhpBrowser:
-            url: http://gutsout.web:8080/learning/tdd-mobile/web/
+            url: http://gutsout.web/learning/tdd-mobile/web/
         - \Helper\Functional

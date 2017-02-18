@@ -2,22 +2,43 @@
 namespace themes\detector;
 
 
+use Detection\MobileDetect;
+use src\DeviceMode;
+
 class DeviceModeTest extends \Codeception\Test\Unit
 {
+
     /**
-     * @var \UnitTester
+     * @dataProvider modeProvider
+     * @param $isMobile
+     * @param $isTablet
+     * @param $result
      */
-    protected $tester;
-
-    protected function _before()
-    {
+    public function testMode($isMobile, $isTablet, $result) {
+        $detect = $this->mockMobileDetect($isMobile, $isTablet);
+        $deviceMode = new DeviceMode($detect);
+        $this->assertEquals($result, $deviceMode->isMobile());
     }
 
-    protected function _after()
-    {
+    public function modeProvider() {
+        return [
+            'Mobile' => [true, false, true],
+            'Tablet' => [false, true, true],
+            'Desktop' => [false, false, false]
+        ];
     }
 
-    public function testMobile() { $this->markTestIncomplete(); }
-    public function testTablet() { $this->markTestIncomplete(); }
-    public function testDesktop() { $this->markTestIncomplete(); }
+    /**
+     * @param $isMobile
+     * @param $isTablet
+     * @return MobileDetect|\PHPUnit_Framework_MockObject_MockObject
+     */
+    private function mockMobileDetect($isMobile, $isTablet) {
+        $detect = $this->getMockBuilder(MobileDetect::class)->getMock();
+        $detect->method('isMobile')->willReturn($isMobile);
+        $detect->method('isTablet')->willReturn($isTablet);
+        return $detect;
+    }
+
+
 }
