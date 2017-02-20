@@ -4,7 +4,7 @@ namespace FileManager;
 
 use PHPUnit\Framework\Exception;
 
-class FileManager {
+class FileManager implements IFileManager {
 
     /**
      * @var IFileDataObject
@@ -13,11 +13,19 @@ class FileManager {
 
     /**
      * FileManager constructor.
+     */
+/*    public function __construct() {
+        $this->fileDataObject = FactoryClass::CreateDataAccessObject();
+    }*/
+
+    /**
+     * FileManager constructor.
      * @param IFileDataObject $fileDataObject
      */
-/*    public function __construct(IFileDataObject $fileDataObject) {
+    public function __construct(IFileDataObject $fileDataObject) {
         $this->fileDataObject = $fileDataObject;
-    }*/
+    }
+
 
     /**
      * @return IFileDataObject
@@ -51,9 +59,9 @@ class FileManager {
      * @return bool
      */
     public function findLogFile(string $fileName/*, IFileDataObject $fdo*/): bool {
-        //$files = $this->fileDataObject->getFiles();
-        $fdo = static::localFactoryMethod();
-        $files = $fdo->getFiles();
+        $files = $this->fileDataObject->getFiles();
+        //$fdo = static::localFactoryMethod();
+        //$files = $fdo->getFiles();
         return in_array($fileName, $files);
     }
 

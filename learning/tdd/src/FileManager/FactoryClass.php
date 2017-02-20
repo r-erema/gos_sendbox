@@ -20,7 +20,7 @@ class FactoryClass {
     /**
      * @param IFileDataObject $fdo
      */
-    public function SetFDO(IFileDataObject $fdo): void {
+    public static function SetFDO(IFileDataObject $fdo): void {
         static::$fdo = $fdo;
     }
 
