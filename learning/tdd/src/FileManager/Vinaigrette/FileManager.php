@@ -1,6 +1,6 @@
 <?php
 
-namespace FileManager;
+namespace FileManager\Vinaigrette;
 
 use PHPUnit\Framework\Exception;
 

@@ -1,5 +1,5 @@
 <?php
-namespace FileManager;
+namespace FileManager\Vinaigrette;
 
 interface IFileDataObjectAbstractFactory {
     public function CreateDataObject();
