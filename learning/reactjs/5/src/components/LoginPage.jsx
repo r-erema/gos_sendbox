@@ -3,9 +3,9 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 import './LoginPage.less';
 
-class App extends React.Component {
+class LoginPage extends React.Component {
 
-    static handleLogin() {
+    handleLogin() {
         console.log('login clicked');
     };
 
@@ -25,4 +25,4 @@ class App extends React.Component {
     };
 }
 
-export default App;
+export default LoginPage;
