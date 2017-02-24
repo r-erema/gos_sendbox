@@ -3,8 +3,8 @@ const NGINX = 'nginx';
 const APACHE = 'apache2';
 
 const DOMAIN_POSTFIX = '.ryaroma.web';
-const MAIN_NAME = 'magby';
-const DOCUMENT_ROOT = '/home/gutsout/h/magby';
+const MAIN_NAME = 'texode';
+const DOCUMENT_ROOT = '/home/gutsout/h/texode';
 
 const NGINX_TPL_HTTP_TO_HTTPS =
 'server {
@@ -60,11 +60,11 @@ return [
             'domains' => [
                 [
                     'names' => [
-                        'ok' . DOMAIN_POSTFIX,
-                        'www.ok' . DOMAIN_POSTFIX
+                        'texode' . DOMAIN_POSTFIX,
+                        'www.texode' . DOMAIN_POSTFIX
                     ]
                 ],
-                [
+                /*[
                     'names' => [
                         'zp' . DOMAIN_POSTFIX,
                         'www.zp' . DOMAIN_POSTFIX
@@ -81,7 +81,7 @@ return [
                         'eco' . DOMAIN_POSTFIX,
                         'www.eco' . DOMAIN_POSTFIX
                     ]
-                ],
+                ],*/
             ],
             'tpl' => NGINX_TPL,
             'tpl_http_to_https' => NGINX_TPL_HTTP_TO_HTTPS
@@ -91,14 +91,14 @@ return [
             'file_name' => MAIN_NAME . DOMAIN_POSTFIX . '.conf',
             'domain' => [
                 'names' => [
-                    'ok' . DOMAIN_POSTFIX,
-                    'www.ok' . DOMAIN_POSTFIX,
-                    'zp' . DOMAIN_POSTFIX,
+                    'texode' . DOMAIN_POSTFIX,
+                    'www.texode' . DOMAIN_POSTFIX,
+                    /*'zp' . DOMAIN_POSTFIX,
                     'www.zp' . DOMAIN_POSTFIX,
                     'peo' . DOMAIN_POSTFIX,
                     'www.peo' . DOMAIN_POSTFIX,
                     'eco' . DOMAIN_POSTFIX,
-                    'www.eco' . DOMAIN_POSTFIX,
+                    'www.eco' . DOMAIN_POSTFIX,*/
                     //'fgru-new' . DOMAIN_POSTFIX,
                     //'www.fgru-new' . DOMAIN_POSTFIX
                 ]
