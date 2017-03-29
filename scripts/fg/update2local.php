@@ -20,7 +20,7 @@ $configText = str_replace(
     ],
     $configText
 );
-$f= file_put_contents("{$config['absolute_root_path']}/core/config/config.inc.php", $configText);
+file_put_contents("{$config['absolute_root_path']}/core/config/config.inc.php", $configText);
 
 /*echo "2.{$config['db_dump_path']}/core/config/config.inc.php dump uploading..." . PHP_EOL;
 `mysql -u{$config['db_user']} -p{$config['db_pass']} {$config['db_name']} < "{$config['db_dump_path']}"`;*/
