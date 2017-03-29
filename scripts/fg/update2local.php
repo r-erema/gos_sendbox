@@ -22,7 +22,7 @@ $configText = str_replace(
 );
 file_put_contents("{$config['absolute_root_path']}/core/config/config.inc.php", $configText);
 
-/*echo "2.{$config['db_dump_path']}/core/config/config.inc.php dump uploading..." . PHP_EOL;
+/*echo "2.{$config['db_dump_path']} dump uploading..." . PHP_EOL;
 `mysql -u{$config['db_user']} -p{$config['db_pass']} {$config['db_name']} < "{$config['db_dump_path']}"`;*/
 
 echo "3.{$config['absolute_root_path']}/.htaccess generating..." . PHP_EOL;
@@ -54,11 +54,10 @@ echo '5.DB config updating...' . PHP_EOL;
 $db = require_once 'db.php';
 $db->prepare('UPDATE `modx_context_setting` SET `value` = ? WHERE `context_key` = "web" AND `key` = "site_url"')->execute(["https://{$config['domain_ru']}/"]);
 $db->prepare('UPDATE `modx_context_setting` SET `value` = ? WHERE `context_key` = "en" AND `key` = "site_url"')->execute(["https://{$config['domain_com']}/"]);
-
 $db->prepare('UPDATE `modx_system_settings` SET `value` = ? WHERE `key` = "mail_smtp_auth"')->execute([1]);
 $db->prepare('UPDATE `modx_system_settings` SET `value` = ? WHERE `key` = "mail_smtp_hosts"')->execute([$config['mail_smtp_hosts']]);
 $db->prepare('UPDATE `modx_system_settings` SET `value` = ? WHERE `key` = "mail_smtp_pass"')->execute([$config['mail_smtp_pass']]);
-$stmt = $db->prepare('UPDATE `modx_system_settings` SET `value` = ? WHERE `key` = "mail_smtp_port"')->execute([$config['mail_smtp_port']]);
-$stmt = $db->prepare('UPDATE `modx_system_settings` SET `value` = ? WHERE `key` = "mail_smtp_user"')->execute([$config['mail_smtp_user']]);
+$db->prepare('UPDATE `modx_system_settings` SET `value` = ? WHERE `key` = "mail_smtp_port"')->execute([$config['mail_smtp_port']]);
+$db->prepare('UPDATE `modx_system_settings` SET `value` = ? WHERE `key` = "mail_smtp_user"')->execute([$config['mail_smtp_user']]);
 
 echo 'done' . PHP_EOL;
