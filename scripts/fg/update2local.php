@@ -22,8 +22,8 @@ $configText = str_replace(
 );
 file_put_contents("{$config['absolute_root_path']}/core/config/config.inc.php", $configText);
 
-/*echo "2.{$config['db_dump_path']} dump uploading..." . PHP_EOL;
-`mysql -u{$config['db_user']} -p{$config['db_pass']} {$config['db_name']} < "{$config['db_dump_path']}"`;*/
+echo "2.{$config['db_dump_path']} dump uploading..." . PHP_EOL;
+`mysql -u{$config['db_user']} -p{$config['db_pass']} {$config['db_name']} < "{$config['db_dump_path']}"`;
 
 echo "3.{$config['absolute_root_path']}/.htaccess generating..." . PHP_EOL;
 $htaccessTxt = file_get_contents('htaccess.tpl');
