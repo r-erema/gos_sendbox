@@ -2,7 +2,7 @@
 
 $config = [
     'server_name' => 'gutsout.web',
-    'root_path' => '/home/gutsout/h/gos_sendbox/htdocs'
+    'root_path' => '/home/gutsout/h/gos_sendbox'
 ];
 
 $nginxFileName = $config['server_name'];
@@ -21,7 +21,8 @@ server {
     }
 
     location ~ \\.php$ {
-        fastcgi_pass 127.0.0.1:9000;
+        #fastcgi_pass 127.0.0.1:9000;
+        fastcgi_pass unix:/run/php/php7.1-fpm.sock;
         fastcgi_index index.php;
         fastcgi_param SCRIPT_FILENAME \\\$document_root\\\$fastcgi_script_name;
         include fastcgi_params;
