@@ -25,6 +25,7 @@ server {
         fastcgi_pass unix:/run/php/php7.1-fpm.sock;
         fastcgi_index index.php;
         fastcgi_param SCRIPT_FILENAME \\\$document_root\\\$fastcgi_script_name;
+        #add_header Debug-header \\\$document_root\\\$fastcgi_script_name always;
         include fastcgi_params;
     }
 }";
