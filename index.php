@@ -8,7 +8,7 @@
 <body>
 <ul>
 	<li><a href="phpinfo.php"><?php echo 'PHP '.phpversion(); ?></a></li>
-	<li><?php echo 'Apache '.apache_get_version(); ?></li>
+	<?php if (function_exists('apache_get_version')): ?><li><?php echo 'Apache '. apache_get_version(); ?></li><?php endif; ?>
 </ul>
 <div>
 	<h1>pg</h1>
@@ -18,6 +18,12 @@
 	</ul>
 </div>
 <div>
+    <h1>machine control</h1>
+    <ul>
+        <li>
+            <a href="machine_control">enter</a>
+        </li>
+    </ul>
 	<h1>learning</h1>
 	<ul>
 		<li><a href="learning/specialist">specialist</a>
