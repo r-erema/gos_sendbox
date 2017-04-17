@@ -5,15 +5,8 @@ $filePath = __DIR__ . '/../library.xml';
 $xmlParser = xml_parser_create();
 
 xml_set_element_handler($xmlParser,
-    function ($parser, $name, $attributes) {
-        $parser = $parser;
-        $name = $name;
-        $attributes = $attributes;
-    },
-    function ($parser, $name) {
-        $parser = $parser;
-        $name = $name;
-    }
+    function ($parser, $name, $attributes) {},
+    function ($parser, $name) {}
 );
 
 $fgc = file_get_contents($filePath);
