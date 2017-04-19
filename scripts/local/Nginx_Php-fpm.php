@@ -2,7 +2,7 @@
 
 $config = [
     'server_name' => 'gutsout.web',
-    'root_path' => '/home/gutsout/h/gos_sendbox/htdocs'
+    'root_path' => '/home/gutsout/h/gos_sendbox'
 ];
 
 $nginxFileName = $config['server_name'];
@@ -10,7 +10,7 @@ $nginxFileName = $config['server_name'];
 $configText = "
 server {
     listen 80;
-    server_name {$config['server_name']};
+    server_name {$config['server_name']} 192.168.0.105;
     root {$config['root_path']};
 
     access_log /var/log/nginx/$nginxFileName/access.log;
@@ -21,10 +21,13 @@ server {
     }
 
     location ~ \\.php$ {
-        fastcgi_pass 127.0.0.1:9000;
+        fastcgi_pass unix:/run/php/php7.1-fpm.sock;
         fastcgi_index index.php;
         fastcgi_param SCRIPT_FILENAME \\\$document_root\\\$fastcgi_script_name;
         include fastcgi_params;
+
+        #fastcgi_pass 127.0.0.1:9000;
+        #add_header Debug-header \\\$document_root\\\$fastcgi_script_name always;
     }
 }";
 
