@@ -3,9 +3,9 @@ const NGINX = 'nginx';
 const APACHE = 'apache2';
 
 const DOMAIN_POSTFIX = '.ryaroma.web';
-const MAIN_NAME = 'securenews';
+const MAIN_NAME = 'profiz';
 //const DOCUMENT_ROOT = '/home/gutsout/h/texode';
-const DOCUMENT_ROOT = '/home/gutsout/h/securenews';
+const DOCUMENT_ROOT = '/home/gutsout/h/profiz';
 
 const NGINX_TPL_HTTP_TO_HTTPS =
 'server {
@@ -65,10 +65,16 @@ return [
                         'www.texode' . DOMAIN_POSTFIX
                     ]
                 ],*/
-                [
+                /*[
                     'names' => [
                         'securenews' . DOMAIN_POSTFIX,
                         'www.securenews' . DOMAIN_POSTFIX
+                    ]
+                ],*/
+                [
+                    'names' => [
+                        'profiz' . DOMAIN_POSTFIX,
+                        'www.profiz' . DOMAIN_POSTFIX
                     ]
                 ],
                 /*[
@@ -100,8 +106,8 @@ return [
                 'names' => [
                     /*'texode' . DOMAIN_POSTFIX,
                     'www.texode' . DOMAIN_POSTFIX,*/
-                    'securenews' . DOMAIN_POSTFIX,
-                    'www.securenews' . DOMAIN_POSTFIX,
+                    'profiz' . DOMAIN_POSTFIX,
+                    'www.profiz' . DOMAIN_POSTFIX,
                     /*'zp' . DOMAIN_POSTFIX,
                     'www.zp' . DOMAIN_POSTFIX,
                     'peo' . DOMAIN_POSTFIX,
