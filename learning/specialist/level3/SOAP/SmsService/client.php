@@ -39,7 +39,7 @@ $req->messageList->message->date = '2015-01-01T15:00:00.26';
 $req->messageList->message->phone = 11;
 
 try {
-	$client = new SoapClient('http://localhost/learning/specialist/level3/SOAP/SmsService/service.wsdl', ['soap_version' => SOAP_1_2]);
+	$client = new SoapClient('http://gutsout.web:8080/learning/specialist/level3/SOAP/SmsService/service.wsdl', ['soap_version' => SOAP_1_2]);
 	var_dump($client->__getFunctions());
 	var_dump($client->sendSms());
 } catch (SoapFault $e) {
