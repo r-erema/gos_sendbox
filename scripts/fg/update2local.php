@@ -54,6 +54,8 @@ echo '5.DB config updating...' . PHP_EOL;
 $db = require_once 'db.php';
 $db->prepare('UPDATE `modx_context_setting` SET `value` = ? WHERE `context_key` = "web" AND `key` = "site_url"')->execute(["https://{$config['domain_ru']}/"]);
 $db->prepare('UPDATE `modx_context_setting` SET `value` = ? WHERE `context_key` = "en" AND `key` = "site_url"')->execute(["https://{$config['domain_com']}/"]);
+$db->prepare('UPDATE `modx_context_setting` SET `value` = ? WHERE `context_key` = "web" AND `key` = "http_host"')->execute([$config['domain_ru']]);
+$db->prepare('UPDATE `modx_context_setting` SET `value` = ? WHERE `context_key` = "en" AND `key` = "http_host"')->execute([$config['domain_com']]);
 $db->prepare('UPDATE `modx_system_settings` SET `value` = ? WHERE `key` = "mail_smtp_auth"')->execute([1]);
 $db->prepare('UPDATE `modx_system_settings` SET `value` = ? WHERE `key` = "mail_smtp_hosts"')->execute([$config['mail_smtp_hosts']]);
 $db->prepare('UPDATE `modx_system_settings` SET `value` = ? WHERE `key` = "mail_smtp_pass"')->execute([$config['mail_smtp_pass']]);
