@@ -1,6 +1,6 @@
 <?php
 
-$dom = new DOMDocument();
+/*$dom = new DOMDocument();
 $dom->load(__DIR__ . '/../library.xml');
 
 $ch = $dom->firstChild;
@@ -27,29 +27,53 @@ $result = $xpath->query('//book');
 $result->item(1)->parentNode->insertBefore(
     $result->item(1), $result->item(0)
 );
+$r = 1;
+$dom->saveHTMLFile('library.html');*/
+/*
+$dom = new DOMDocument();
+$node = $dom->createElement('ns1:someNode');
+$node->setAttribute('ns2:someAttribute', 'someValue');
 
-$result->item(1)->parentNode->appendChild($result->item(0));
-
-foreach ($dom->getElementsByTagName('author') as $node) {
-    $node->nodeValue = mb_strtoupper($node->nodeValue);
-}
-
-$result->item(0)->parentNode->removeChild($result->item(0));
-$result->item(1)->removeAttribute('isbn');
-
-
-$result = $xpath->query('text()', $result->item(2));
-$result->item(0)->deleteData(0, $result->item(0)->length);
-
-$node = $dom->createElement('ns1:somenode');
-$node->setAttribute('ns2:somenode', 'somevalue');
-$node2 = $dom->createElement('ns3:anothernode');
+$node2 = $dom->createElement('ns3:anotherNode');
 $node->appendChild($node2);
 
-$node->setAttribute('xmlns:ns1', 'http://example.org/ns1');
-$node->setAttribute('xmlns:ns2', 'http://example.org/ns2');
-$node->setAttribute('xmlns:ns3', 'http://example.org/ns3');
+$node->setAttribute('xmlns:ns1', 'http://gutsout.web/ns1');
+$node->setAttribute('xmlns:ns2', 'http://gutsout.web/ns2');
+$node->setAttribute('xmlns:ns3', 'http://gutsout.web/ns3');
 
-$node->appendChild($node);
-echo $dom->saveXML();
-//$dom->save(__DIR__ .'/library.html');
+$dom->appendChild($node);
+
+echo $dom->saveXML();*/
+
+/*$dom = new DOMDocument();
+$node = $dom->createElementNS('http://gutsout.web/ns1', 'ns1:someNode');
+$node->setAttributeNS(
+    'http://gutsout.web/ns2',
+    'ns2:someAttribute',
+    'someValue'
+);
+
+$node2 = $dom->createElementNS(
+    'http://gutsout.web/ns3',
+    'ns3:anotherNode'
+);
+$node3 = $dom->createElementNS(
+    'http://gutsout.web/ns1',
+    'ns1:anotherNode'
+);
+
+$node->appendChild($node2);
+$node->appendChild($node3);
+$dom->appendChild($node);
+$dom->formatOutput = true;
+echo $dom->saveXML();*/
+/*
+$simpleXML= simplexml_load_file(__DIR__ . '/../library.xml');
+$node = dom_import_simplexml($simpleXML);
+$dom = new DOMDocument();
+$dom->appendChild($dom->importNode($node, true));
+echo $dom->saveXML();*/
+
+$dom = new DOMDocument();
+$dom->load(__DIR__ . '/../library.xml');
+echo (simplexml_import_dom($dom))->book[0]->author;
