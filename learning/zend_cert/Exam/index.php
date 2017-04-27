@@ -3,7 +3,9 @@
 $excludedFiles = [
     '.',
     '..',
-    'index.php'
+    'index.php',
+    '27_test.php',
+    '27_MyString.php'
 ];
 
 $filesToInclude = array_filter(scandir(__DIR__), function ($dir) use ($excludedFiles) {
