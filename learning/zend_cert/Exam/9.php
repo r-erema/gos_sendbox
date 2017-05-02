@@ -26,4 +26,4 @@ Answer PHP 7: A
 */
 
 echo '9. What is the output of the following code? echo "1" + 2 * "0x02"; :' . PHP_EOL;
-echo "1" + 2 * "0x02";
+echo @("1" + 2 * "0x02");
