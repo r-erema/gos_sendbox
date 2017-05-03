@@ -10,7 +10,7 @@ A.
 A,
 
 B.
-A,A,
+
 
 C.
 A,A,A,
@@ -19,7 +19,7 @@ D.
 PHP Warning: call_user_func_array() expects parameter 1 to be a valid callback
 
 Answer: B
-Use caller class information provided in static method call
+A,A
 
 */
 
@@ -49,7 +49,7 @@ class Test2 extends Test
     public function testS($l)
     {
         echo "$l,$l,";
-}
+    }
 }
 $test = new Test2();
 $test->S('A');
