@@ -6,7 +6,7 @@ transactions. What is the outcome? Table data (table name "users" with primary k
 name email ——- ———– ——————- 1 anna alpha@example.com 2 betty
 beta@example.org 3 clara gamma@example.net 5 sue sigma@example.info PHP code
 (assume the PDO connection is correctly established): $dsn =
-'mysql:host=localhost;dbname=exam'; $user = 'username'; $pass = '********'; $pdo = new
+'mysql:host=localhost;dbname=exam'; $user = 'root'; $pass = '8810029011Yaroma'; $pdo = new
 PDO($dsn, $user, $pass); try { $pdo->exec("INSERT INTO users (id, name, email)
 VALUES (6, 'bill', 'delta@example.com')"); $pdo->begin(); $pdo->exec("INSERT INTO users
 (id, name, email) VALUES (7, 'john', 'epsilon@example.com')"); throw new Exception(); }
@@ -39,15 +39,15 @@ id name email
 
 info PHP code
 (assume the PDO connection is correctly established): $dsn =
-\'mysql:host=localhost;dbname=exam\'; $user = \'username\'; $pass = \'********\'; $pdo = new
+\'mysql:host=localhost;dbname=exam\'; $user = \'root\'; $pass = \'8810029011Yaroma\'; $pdo = new
 PDO($dsn, $user, $pass); try { $pdo->exec("INSERT INTO users (id, name, email)
 VALUES (6, \'bill\', \'delta@example.com\')"); $pdo->begin(); $pdo->exec("INSERT INTO users
 (id, name, email) VALUES (7, \'john\', \'epsilon@example.com\')"); throw new Exception(); }
 catch (Exception $e) { $pdo->rollBack(); }' . PHP_EOL;
 
 $dsn = 'mysql:host=localhost;dbname=exam';
-$user = 'username';
-$pass = '********';
+$user = 'root';
+$pass = '8810029011Yaroma';
 $pdo = new PDO($dsn, $user, $pass);
 try {
     $pdo->exec("INSERT INTO users (id, name, email) VALUES (6, 'bill', 'delta@example.com')");

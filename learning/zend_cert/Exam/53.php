@@ -5,7 +5,7 @@ Consider the following table data and PHP code. What is a possible outcome? Tabl
 (table name "users" with primary key "id"): id name email ——- ———– ——————- 1
 anna alpha@example.com 2 betty beta@example.org 3 clara gamma@example.net 5 sue
 sigma@example.info PHP code (assume the PDO connection is correctly established):
-$dsn = 'mysql:host=localhost;dbname=exam'; $user = 'username'; $pass = '********'; $pdo =
+$dsn = 'mysql:host=localhost;dbname=exam'; $user = 'root'; $pass = '8810029011Yaroma'; $pdo =
 new PDO($dsn, $user, $pass); $cmd = "SELECT name, email FROM users LIMIT 1"; $stmt
 = $pdo->prepare($cmd); $stmt->execute(); $result = $stmt->fetchAll(PDO::FETCH_BOTH);
 $row = $result[0];
@@ -38,14 +38,14 @@ id name email
 5 sue sigma@example.
 
 info PHP code (assume the PDO connection is correctly established):
-$dsn = \'mysql:host=localhost;dbname=exam\'; $user = \'username\'; $pass = \'********\'; $pdo =
+$dsn = \'mysql:host=localhost;dbname=exam\'; $user = \'root\'; $pass = \'8810029011Yaroma\'; $pdo =
 new PDO($dsn, $user, $pass); $cmd = "SELECT name, email FROM users LIMIT 1"; $stmt
 = $pdo->prepare($cmd); $stmt->execute(); $result = $stmt->fetchAll(PDO::FETCH_BOTH);
 $row = $result[0];' . PHP_EOL;
 
 $dsn = 'mysql:host=localhost;dbname=exam';
-$user = 'username';
-$pass = '********';
+$user = 'root';
+$pass = '8810029011Yaroma';
 $pdo = new PDO($dsn, $user, $pass);
 $cmd = "SELECT name, email FROM users LIMIT 1";
 $stmt = $pdo->prepare($cmd);

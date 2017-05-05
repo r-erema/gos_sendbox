@@ -6,7 +6,7 @@ name "users" with primary key "id"): id name email ——- ———– ——�
 alpha@example.com 2 betty beta@example.org 3 clara gamma@example.net 5 sue
 sigma@example.info PHP code (assume the PDO connection is correctly established):
 
-$dsn = 'mysql:host=localhost;dbname=exam'; $user = 'username'; $pass = '********'; $pdo =
+$dsn = 'mysql:host=localhost;dbname=exam'; $user = 'root'; $pass = '8810029011Yaroma'; $pdo =
 new PDO($dsn, $user, $pass); $cmd = "SELECT * FROM users WHERE id = :id"; $stmt =
 $pdo->prepare($cmd); $id = 3; $stmt->bindParam('id', $id); $stmt->execute();
 $stmt->bindColumn(3, $result); $row = $stmt->fetch(PDO::FETCH_BOUND);
@@ -37,14 +37,14 @@ id name email
 5 sue sigma@example.
 
 info PHP code (assume the PDO connection is correctly established):
-$dsn = \'mysql:host=localhost;dbname=exam\'; $user = \'username\'; $pass = \'********\'; $pdo =
+$dsn = \'mysql:host=localhost;dbname=exam\'; $user = \'root\'; $pass = \'8810029011Yaroma\'; $pdo =
 new PDO($dsn, $user, $pass); $cmd = "SELECT * FROM users WHERE id = :id"; $stmt =
 $pdo->prepare($cmd); $id = 3; $stmt->bindParam(\'id\', $id); $stmt->execute();
 $stmt->bindColumn(3, $result); $row = $stmt->fetch(PDO::FETCH_BOUND);' . PHP_EOL;
 
 $dsn = 'mysql:host=localhost;dbname=exam';
-$user = 'username';
-$pass = '********';
+$user = 'root';
+$pass = '8810029011Yaroma';
 $pdo = new PDO($dsn, $user, $pass);
 $cmd = "SELECT * FROM users WHERE id = :id";
 $stmt = $pdo->prepare($cmd);

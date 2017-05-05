@@ -5,7 +5,7 @@ Consider the following table data and PHP code. What is the outcome? Table data 
 name “users” with primary key “id”): id name email ——- ———– ——————- 1 anna
 alpha@example.com 2 betty beta@example.org 3 clara gamma@example.net 5 sue
 sigma@example.info PHP code (assume the PDO connection is correctly established):
-$dsn = ‘mysql:host=localhost;dbname=exam’; $user = ‘username’; $pass = ‘********’; $pdo =
+$dsn = ‘mysql:host=localhost;dbname=exam’; $user = ‘root’; $pass = ‘8810029011Yaroma’; $pdo =
 new PDO($dsn, $user, $pass); try { $cmd = “INSERT INTO users (id, name, email)
 VALUES (:id, :name, :email)”; $stmt = $pdo->prepare($cmd); $stmt->bindValue(‘id’, 1);
 $stmt->bindValue(‘name’, ‘anna’); $stmt->bindValue(’email’, ‘alpha@example.com’);
@@ -39,15 +39,15 @@ id name email
 5 sue sigma@example
 
 info PHP code (assume the PDO connection is correctly established):
-$dsn = \'mysql:host=localhost;dbname=exam\'; $user = \'username\'; $pass = \'********\'; $pdo =
+$dsn = \'mysql:host=localhost;dbname=exam\'; $user = \'root\'; $pass = \'8810029011Yaroma\'; $pdo =
 new PDO($dsn, $user, $pass); try { $cmd = "INSERT INTO users (id, name, email)
 VALUES (:id, :name, :email)"; $stmt = $pdo->prepare($cmd); $stmt->bindValue(\'id\', 1);
 $stmt->bindValue(\'name\', \'anna\'); $stmt->bindValue(\'email\', \'alpha@example.com\');
 $stmt->execute(); echo "Success!"; } catch (PDOException $e) { echo "Failure!"; throw $e; }' . PHP_EOL;
 
 $dsn = 'mysql:host=localhost;dbname=exam';
-$user = 'username';
-$pass = '********';
+$user = 'root';
+$pass = '8810029011Yaroma';
 $pdo = new PDO($dsn, $user, $pass);
 
 try {

@@ -1,38 +1,27 @@
 
 <?php
-
 /*
-What is the output of the following code? function append($str) { $str = $str.'append'; }
-function prepend(&$str) { $str = 'prepend'.$str; } $string = 'zce'; append(prepend($string));
-echo $string;
+An HTML form has two submit buttons. After submitting the form, how can you determine
+with PHP which button was clicked?
 
 A.
-zceappend
+Put the two buttons in different forms, but make sure they have the same name.
 
 B.
-prependzceappend
+You cannot determine this with PHP only. You must use JavaScript to add a value to the
+URL depending on which button has been clicked.
 
 C.
-prependzce
+An HTML form may only have one button.
 
 D.
-zce
+Assign name and value attributes to each button and use $_GET or $_POST to find out
+which button has been clicked.
 
 Answer: C.
-prependzce
+Use the headers_sent() function
 
 */
-echo '81. What is the output of the following code? function append($str) { $str = $str.\'append\'; }
-function prepend(&$str) { $str = \'prepend\'.$str; } $string = \'zce\'; append(prepend($string));
-echo $string;' . PHP_EOL;
+echo '81. An HTML form has two submit buttons. After submitting the form, how can you determine with PHP which button was clicked?' . PHP_EOL;
+echo 'Assign name and value attributes to each button and use $_GET or $_POST to find out which button has been clicked.' . PHP_EOL;
 
-function append($str) {
-    $str = $str.'append';
-}
-
-function prepend(&$str) {
-    $str = 'prepend'.$str;
-}
-$string = 'zce';
-append(prepend($string));
-echo $string;
