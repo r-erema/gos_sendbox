@@ -2,31 +2,37 @@
 <?php
 
 /*
-What will be the result of the following operation? $a = array_merge([1,2,3] + [4=>1,5,6]);
-echo $a[2];
+What is the output of the following code? class Number { private $v = 0; public function
+__construct($v) { $this->v = $v; } public function mul() { return function ($x) { return $this->v
+* $x; }; } } $one = new Number(1); $two = new Number(2); $double =
+$two->mul()->bindTo($one); echo $double(5);
 
 A.
-3
-
-B.
-Parse error
-
-C.
-4
-
-D.
-false
-
-E.
-2
+5
 
 Answer: A.
-3
+5
 
 */
-echo '109. What will be the result of the following operation? $a = array_merge([1,2,3] + [4=>1,5,6]);
-echo $a[2];' . PHP_EOL;
+echo '109. What is the output of the following code? class Number { private $v = 0; public function
+__construct($v) { $this->v = $v; } public function mul() { return function ($x) { return $this->v
+* $x; }; } } $one = new Number(1); $two = new Number(2); $double =
+$two->mul()->bindTo($one); echo $double(5);' . PHP_EOL;
 
-$f = [1,2,3] + [4=>1,5,6];
-$a = array_merge([1,2,3] + [4=>1,5,6]);
-echo $a[2];
+class Number109 {
+private $v = 0;
+public function __construct($v) {
+$this->v = $v;
+}
+public function mul() {
+return function ($x) {
+return $this->v * $x;
+};
+}
+}
+
+$one = new Number109(1);
+$two = new Number109(2);
+$double = $two->mul()->bindTo($one);
+
+echo $double(5);

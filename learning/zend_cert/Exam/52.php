@@ -48,7 +48,7 @@ $stmt->execute(); echo "Success!"; } catch (PDOException $e) { echo "Failure!"; 
 $dsn = 'mysql:host=localhost;dbname=exam';
 $user = 'root';
 $pass = '8810029011Yaroma';
-$pdo = new PDO($dsn, $user, $pass);
+/*$pdo = new PDO($dsn, $user, $pass);
 
 try {
     $cmd = "INSERT INTO users (id, name, email) VALUES (:id, :name, :email)";
@@ -60,4 +60,4 @@ try {
     echo "Success!";
 } catch (PDOException $e) {
     echo "Failure!"; throw $e;
-}
+}*/

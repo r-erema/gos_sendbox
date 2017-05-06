@@ -48,7 +48,7 @@ catch (Exception $e) { $pdo->rollBack(); }' . PHP_EOL;
 $dsn = 'mysql:host=localhost;dbname=exam';
 $user = 'root';
 $pass = '8810029011Yaroma';
-$pdo = new PDO($dsn, $user, $pass);
+/*$pdo = new PDO($dsn, $user, $pass);
 try {
     $pdo->exec("INSERT INTO users (id, name, email) VALUES (6, 'bill', 'delta@example.com')");
     $pdo->beginTransaction();
@@ -56,4 +56,4 @@ try {
     throw new Exception();
 } catch (Exception $e) {
     $pdo->rollBack();
-}
+}*/

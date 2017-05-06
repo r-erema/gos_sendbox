@@ -46,9 +46,9 @@ $row = $result[0];' . PHP_EOL;
 $dsn = 'mysql:host=localhost;dbname=exam';
 $user = 'root';
 $pass = '8810029011Yaroma';
-$pdo = new PDO($dsn, $user, $pass);
+/*$pdo = new PDO($dsn, $user, $pass);
 $cmd = "SELECT name, email FROM users LIMIT 1";
 $stmt = $pdo->prepare($cmd);
 $stmt->execute();
 $result = $stmt->fetchAll(PDO::FETCH_BOTH);
-$row = $result[0];
+$row = $result[0];*/

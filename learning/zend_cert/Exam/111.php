@@ -2,25 +2,28 @@
 <?php
 
 /*
-When using password_hash() with the PASSWORD_DEFAULT algorithm constant, which
-of the following is true? (Choose 2)
+Which of the following statements about anonymous functions in PHP are NOT true?
+(Choose 2)
 
 A.
-The algorithm that is used for hashing passwords can change when PHP is upgraded.
+Anonymous functions can be bound to objects
 
 B.
-The salt option should always be set to a longer value to account for future algorithm
-requirements.
+Anonymous functions created within object context are always bound to that object
 
 C.
-The string length of the returned hash can change over time.
+Assigning closure to a property of an object binds it to that object
 
 D.
-The hash algorithm that’s used will always be compatible with crypt() .
+Methods bind() and bindTo() of the Closure object provide means to create closures with
+different binding and scope
 
-Answer: A,C.
-The algorithm that is used for hashing passwords can change when PHP is upgraded, The string length of the returned hash can change over time.
+E.
+Binding defines the value of $this and the scope for a closure
+
+Answer: B,C.
+Anonymous functions created within object context are always bound to that object, Assigning closure to a property of an object binds it to that object
 
 */
-echo '111. When using password_hash() with the PASSWORD_DEFAULT algorithm constant, which of the following is true? (Choose 2)' . PHP_EOL;
-echo 'The algorithm that is used for hashing passwords can change when PHP is upgraded, The string length of the returned hash can change over time.' . PHP_EOL;
+echo '111. Which of the following statements about anonymous functions in PHP are NOT true? (Choose 2)' . PHP_EOL;
+echo 'Anonymous functions created within object context are always bound to that object, Assigning closure to a property of an object binds it to that object' . PHP_EOL;

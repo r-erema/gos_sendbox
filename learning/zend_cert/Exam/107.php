@@ -2,37 +2,40 @@
 <?php
 
 /*
-What is the output of the following code? class Number { private $v = 0; public function
-__construct($v) { $this->v = $v; } public function mul() { return function ($x) { return $this->v
-* $x; }; } } $one = new Number(1); $two = new Number(2); $double =
-$two->mul()->bindTo($one); echo $double(5);
+In the following code, which line should be changed so it outputs the number 2
 
 A.
-5
+No changes needed, the code would output 2 as is
 
-Answer: A.
-5
+B.
+Line A, to: protected &$x = array();
+
+C.
+Line B, to: public function &getX() {
+
+D.
+Line C, to: return &$this->x;
+
+E.
+Line D, to: $a =& new A();
+
+Answer: C.
+Line B, to: public function &getX() {
 
 */
-echo '107. What is the output of the following code? class Number { private $v = 0; public function
-__construct($v) { $this->v = $v; } public function mul() { return function ($x) { return $this->v
-* $x; }; } } $one = new Number(1); $two = new Number(2); $double =
-$two->mul()->bindTo($one); echo $double(5);' . PHP_EOL;
+echo '107. In the following code, which line should be changed so it outputs the number 2' . PHP_EOL;
 
-class Number {
-    private $v = 0;
-    public function __construct($v) {
-        $this->v = $v;
-    }
-    public function mul() {
-        return function ($x) {
-            return $this->v * $x;
-        };
+class A3 {
+    protected $x = array();
+    /* A */
+    public function &getX() {
+        /* B */
+        return $this->x;
+        /* C */
     }
 }
-
-$one = new Number(1);
-$two = new Number(2);
-$double = $two->mul()->bindTo($one);
-
-echo $double(5);
+$a = new A3();
+/* D */
+array_push($a->getX(), "one");
+array_push($a->getX(), "two");
+echo count($a->getX());

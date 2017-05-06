@@ -42,7 +42,7 @@ new PDO($dsn, $user, $pass); $cmd = "SELECT * FROM users WHERE id = :id"; $stmt 
 $pdo->prepare($cmd); $id = 3; $stmt->bindParam(\'id\', $id); $stmt->execute();
 $stmt->bindColumn(3, $result); $row = $stmt->fetch(PDO::FETCH_BOUND);' . PHP_EOL;
 
-$dsn = 'mysql:host=localhost;dbname=exam';
+/*$dsn = 'mysql:host=localhost;dbname=exam';
 $user = 'root';
 $pass = '8810029011Yaroma';
 $pdo = new PDO($dsn, $user, $pass);
@@ -52,4 +52,4 @@ $id = 3;
 $stmt->bindParam('id', $id);
 $stmt->execute();
 $stmt->bindColumn(3, $result);
-$row = $stmt->fetch(PDO::FETCH_BOUND);
+$row = $stmt->fetch(PDO::FETCH_BOUND);*/
