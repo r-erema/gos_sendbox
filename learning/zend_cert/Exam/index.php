@@ -1,18 +1,10 @@
 <?php
+$text = 'This is text';
+$text1 = <<<'TEXT'
+$text
+TEXT;
+$text2 = <<<TEXT
+$text1
+TEXT;
+echo "$text2";
 
-$excludedFiles = [
-    '.',
-    '..',
-    'index.php',
-    '27_test.php',
-    '27_MyString.php'
-];
-
-$filesToInclude = array_filter(scandir(__DIR__), function ($dir) use ($excludedFiles) {
-    return !in_array($dir, $excludedFiles);
-});
-natsort($filesToInclude);
-foreach ($filesToInclude as $file) {
-    require_once __DIR__ . "/{$file}";
-    echo PHP_EOL . PHP_EOL;
-}
