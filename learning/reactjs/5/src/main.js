@@ -1,16 +1,19 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
+import {Router, Route, hashHistory} from 'react-router';
+import SessionActions from './actions/SessionAction'
+
+
 import App from './App.jsx';
 
-import api from './api';
 
 window.handleGoogleApiLoaded = () => {
-    console.log('login...');
-    api.authorize({immediate: false});
+    SessionActions.authorize(true, renderApp);
 };
 
-
-ReactDOM.render(
-    <App />,
-    document.getElementById('mount-point')
-);
+function renderApp() {
+    ReactDOM.render(
+        <App />,
+        document.getElementById('mount-point')
+    );
+}

@@ -13,8 +13,10 @@
     "material-ui": "*",
     "react": "*",
     "react-dom": "*",
-    "react-router": "^2.0.0",
-    "react-tap-event-plugin": "*"
+    "react-router": "*",
+    "react-tap-event-plugin": "*",
+    "keymirror": "*",
+    "flux": "*"
   },
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",
