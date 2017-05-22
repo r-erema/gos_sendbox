@@ -5,18 +5,25 @@ import api from '../api';
 
 const SessionActions = {
     authorize(immediate = false, callback) {
-        api.authorize({immediate})
+        api.authorize({ immediate })
             .then(() => {
                 AppDispatcher.dispatch({
                     type: AppConstants.SESSION_AUTHORIZE_SUCCESS
                 });
-                callback();
+
+                if (callback) {
+                    callback();
+                }
             })
             .catch((err) => {
                 AppDispatcher.dispatch({
-                    type: AppConstants.SESSION_AUTHORIZE_FAIL
+                    type: AppConstants.SESSION_AUTHORIZE_FAIL,
+                    error: err
                 });
-                callback();
+
+                if (callback) {
+                    callback();
+                }
             });
     }
 };

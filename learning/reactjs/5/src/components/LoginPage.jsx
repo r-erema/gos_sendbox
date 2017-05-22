@@ -55,4 +55,8 @@ class LoginPage extends React.Component {
     };
 }
 
+LoginPage.contextTypes = {
+    router: React.PropTypes.object.isRequired
+};
+
 export default LoginPage;
