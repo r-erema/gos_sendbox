@@ -1,0 +1,1 @@
+CRON_DIR_PATH=/h/normativka/repo/cron bash cron/tasks/billing-deactivate-codes/task.sh
