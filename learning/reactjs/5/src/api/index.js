@@ -13,6 +13,11 @@ export default {
                 },
                 authResult => {
                     console.log(authResult);
+                    if (authResult.error) {
+                        return reject(authResult.error);
+                    }
+
+                    return gapi.client.load('tasks', 'v1', () => gapi.client.load('plus', 'v1', () => resolve() ) );
                 }
             );
         });

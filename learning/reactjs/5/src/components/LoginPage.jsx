@@ -1,12 +1,42 @@
 import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
+import SessionActions from '../actions/SessionAction';
+import SessionStore from '../stores/SessionStore';
 
 import './LoginPage.less';
 
+function getStateFromFlux() {
+    return {
+        isLoggedIn: SessionStore.isLoggedIn()
+    };
+}
+
 class LoginPage extends React.Component {
 
-    handleLogin() {
-        console.log('login clicked');
+    _onChange() {
+        this.setState(getStateFromFlux());
+    }
+
+    static getInitialState() {
+        return getStateFromFlux();
+    };
+
+    componentDidMount() {
+        SessionStore.addChangeListener(this._onChange.bind(this));
+    }
+
+    componentWillUpdate(nextPros, nextState) {
+        if (nextState.isLoggedIn) {
+            this.context.router.replace('/about');
+        }
+    }
+
+    componentWillUnmount() {
+        SessionStore.removeChangeListener(this._onChange.bind(this))
+    }
+
+    static handleLogin() {
+        SessionActions.authorize();
     };
 
     render () {
@@ -16,7 +46,7 @@ class LoginPage extends React.Component {
                     <div className="LoginPage_text">
                         <h1>Almost Google tasks</h1>
                         <p>Organise your life!</p>
-                        <RaisedButton className='login-button' label='Log in with Google' onClick={this.handleLogin} />
+                        <RaisedButton className='login-button' label='Log in with Google' onClick={this.constructor.handleLogin} />
                     </div>
                     <img src="img/desk.png" alt="Desk" className="LoginPage__image"/>
                 </div>
@@ -24,5 +54,9 @@ class LoginPage extends React.Component {
         );
     };
 }
+
+LoginPage.contextTypes = {
+    router: React.PropTypes.object.isRequired
+};
 
 export default LoginPage;
