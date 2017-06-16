@@ -3,9 +3,9 @@ const NGINX = 'nginx';
 const APACHE = 'apache2';
 
 const DOMAIN_POSTFIX = '.ryaroma.web';
-const MAIN_NAME = 'profiz';
+const MAIN_NAME = 'ru-forums';
 //const DOCUMENT_ROOT = '/home/gutsout/h/texode';
-const DOCUMENT_ROOT = '/home/gutsout/h/profiz';
+const DOCUMENT_ROOT = '/home/gutsout/h/forums-ru';
 
 const NGINX_TPL_HTTP_TO_HTTPS =
 'server {
@@ -71,12 +71,12 @@ return [
                         'www.securenews' . DOMAIN_POSTFIX
                     ]
                 ],*/
-                [
+                /*[
                     'names' => [
                         'profiz' . DOMAIN_POSTFIX,
                         'www.profiz' . DOMAIN_POSTFIX
                     ]
-                ],
+                ],*/
                 /*[
                     'names' => [
                         'zp' . DOMAIN_POSTFIX,
@@ -95,6 +95,15 @@ return [
                         'www.eco' . DOMAIN_POSTFIX
                     ]
                 ],*/
+                [
+                    'names' => [
+                        'sekretar-info' . DOMAIN_POSTFIX,
+                        'kadrovik-info' . DOMAIN_POSTFIX,
+                        'economist-info' . DOMAIN_POSTFIX,
+                        'ecolog-info' . DOMAIN_POSTFIX,
+                        'buhgalter-info' . DOMAIN_POSTFIX
+                    ]
+                ],
             ],
             'tpl' => NGINX_TPL,
             'tpl_http_to_https' => NGINX_TPL_HTTP_TO_HTTPS
@@ -106,8 +115,8 @@ return [
                 'names' => [
                     /*'texode' . DOMAIN_POSTFIX,
                     'www.texode' . DOMAIN_POSTFIX,*/
-                    'profiz' . DOMAIN_POSTFIX,
-                    'www.profiz' . DOMAIN_POSTFIX,
+                    /*'profiz' . DOMAIN_POSTFIX,
+                    'www.profiz' . DOMAIN_POSTFIX,*/
                     /*'zp' . DOMAIN_POSTFIX,
                     'www.zp' . DOMAIN_POSTFIX,
                     'peo' . DOMAIN_POSTFIX,
@@ -116,6 +125,11 @@ return [
                     'www.eco' . DOMAIN_POSTFIX,*/
                     //'fgru-new' . DOMAIN_POSTFIX,
                     //'www.fgru-new' . DOMAIN_POSTFIX
+                    'sekretar-info' . DOMAIN_POSTFIX,
+                    'kadrovik-info' . DOMAIN_POSTFIX,
+                    'economist-info' . DOMAIN_POSTFIX,
+                    'ecolog-info' . DOMAIN_POSTFIX,
+                    'buhgalter-info' . DOMAIN_POSTFIX
                 ]
             ],
             'tpl' => APACHE_TPL
