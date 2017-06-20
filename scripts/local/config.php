@@ -98,10 +98,10 @@ return [
                 [
                     'names' => [
                         'sekretar-info' . DOMAIN_POSTFIX,
+                        'buhgalter-info' . DOMAIN_POSTFIX,
                         'kadrovik-info' . DOMAIN_POSTFIX,
                         'economist-info' . DOMAIN_POSTFIX,
                         'ecolog-info' . DOMAIN_POSTFIX,
-                        'buhgalter-info' . DOMAIN_POSTFIX
                     ]
                 ],
             ],
@@ -126,10 +126,10 @@ return [
                     //'fgru-new' . DOMAIN_POSTFIX,
                     //'www.fgru-new' . DOMAIN_POSTFIX
                     'sekretar-info' . DOMAIN_POSTFIX,
+                    'buhgalter-info' . DOMAIN_POSTFIX,
                     'kadrovik-info' . DOMAIN_POSTFIX,
                     'economist-info' . DOMAIN_POSTFIX,
                     'ecolog-info' . DOMAIN_POSTFIX,
-                    'buhgalter-info' . DOMAIN_POSTFIX
                 ]
             ],
             'tpl' => APACHE_TPL
