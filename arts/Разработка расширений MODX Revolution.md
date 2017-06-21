@@ -14,8 +14,8 @@
   * [Скрипт парсинга схемы](#Скрипт-парсинга-схемы)
   * [Статический сниппет](#Статический-сниппет)
   * [Построение запроса](#Построение-запроса)
-  * Метод getChunk класса Doodles
-* Резюме
+  * [Метод getChunk класса Doodles](#Метод-getChunk-класса-Doodles)
+* [Резюме](#Резюме)
 
 ##Обзор
 
@@ -272,3 +272,118 @@ return $output;
 Теперь мы можем редактировать наш сниппет в нашей IDE и заниматься своим делом.
 
 ###Построение запроса
+
+> **Внимание:** Предыдущее создание объекта, которое было расположено здесь, перемещается в файл _build/build.schema.php, как вы можете видеть в этом разделе. Поскольку создание таблицы хранения должно выполняться внутри сниппетв, но оно относится к процессу сборки вашего пакета.
+
+Хорошо, давайте добавим это в наш сниппет перед оператором return:
+```
+$doodles = $modx->getCollection('Doodle');
+$output = count($doodles);
+```
+
+Знайте свои объекты!
+В этом примере мы извлекаем коллекцию объектов «Doodle». В большинстве случаев при использовании xPDO.getCollection вы будете извлекать встроенные объекты MODX (например, страницы являются «modResource», шаблоны - «modTemplate»), поэтому вам может показаться весьма удобным, чтобы открыть core/model/schema/modx.mysql.schema.xml, чтобы вы могли просматривать имена объектов.
+
+Это позволит захватить массив объектов Doodle или в терминах, отличных от xPDO, кучу строк из базы данных. Продолжайте и сохраните свой фрагмент, затем запустите его в браузере по адресу http: //localhost/modx/doodles.html (или везде, где был ресурс). Вы должны получить следующее:
+
+0
+
+ В действительности, в первый раз, когда он работает, он ничего не поймает, так как у нас нет данных в таблице. Давайте поместим какие-нибудь данные в таблицу.
+ 
+ Используйте любое программное обеспечение для редактирования DB (например, phpMyAdmin), которое вы хотите, и найдите таблицу «modx_doodles» в своей базе данных. Добавьте несколько строк к нему (просто добавьте значения имени / описания на данный момент). Это должно дать вам некоторые данные. Предположим, вы добавили 2 строки. Идите вперед и запустите свой фрагмент, и вы должны получить:
+ 
+ 2
+ 
+ Ваш пользовательский запрос базы данных работает! Давайте сделаем это более сложным. Мы можем использовать xPDOQuery xPDO для создания довольно сложных запросов. Теперь давайте просто добавим к нему команду sort:
+ 
+```
+$c = $modx->newQuery('Doodle');
+$c->sortby($sort,$dir);
+$doodles = $modx->getCollection('Doodle',$c);
+```
+
+Во многих моих компонентов я добавляю несколько вспомогательных методов в мой базовый класс, называемый getChunk. То, что они позволяют мне сделать, это использовать файловые куски для разработки. Итак, давайте сделаем это. Идите вперед и откройте свой класс Doodles и добавьте эти два метода в:
+
+```
+public function getChunk($name,$properties = array()) {
+    $chunk = null;
+    if (!isset($this->chunks[$name])) {
+        $chunk = $this->modx->getObject('modChunk',array('name' => $name));
+        if (empty($chunk) || !is_object($chunk)) {
+            $chunk = $this->_getTplChunk($name);
+            if ($chunk == false) return false;
+        }
+        $this->chunks[$name] = $chunk->getContent();
+    } else {
+        $o = $this->chunks[$name];
+        $chunk = $this->modx->newObject('modChunk');
+        $chunk->setContent($o);
+    }
+    $chunk->setCacheable(false);
+    return $chunk->process($properties);
+}
+private function _getTplChunk($name,$postfix = '.chunk.tpl') {
+    $chunk = false;
+    $f = $this->config['chunksPath'].strtolower($name).$postfix;
+    if (file_exists($f)) {
+        $o = file_get_contents($f);
+        $chunk = $this->modx->newObject('modChunk');
+        $chunk->set('name',$name);
+        $chunk->setContent($o);
+    }
+    return $chunk;
+}
+```
+> Пока все, что вам нужно знать, это то, что эти методы будут искать чанки в каталоге /www/doodles/core/components/doodles/elements/chunks , с пометкой «.chunk.tpl» и все в нижнем регистре. Если он не находит их в файловой системе, он ищет их в MODX. Итак, если мы вызвали:
+```
+$o = $dood->getChunk('hello',array('name' => 'Joe'));
+```
+
+Он вытянул бы в $o содержимое /www/doodles/core/components/doodles/elements/chunks/hello.chunk.tpl, в котором свойство [[+ name]] проанализировано как Joe. Это позволит вам редактировать свои куски в вашей среде IDE, а не в MODX. Он также позволит вам упаковать ваш компонент без установки блоков по умолчанию в пользовательскую установку MODX (которую у них возникнет соблазн перезаписать, что будет стерто при обновлении вашего компонента).
+
+Итак, вернемся к нашему сниппету. Создайте файл Chunk в /www/doodles/core/components/doodles/elements/chunks/rowtpl.chunk.tpl и поместите в него:
+```
+<li><strong>[[+name]]</strong> - [[+description]]</li>
+```
+Теперь добавьте это ниже своего запроса, но над линией возврата в своем сниппете:
+```
+foreach ($doodles as $doodle) {
+    $doodleArray = $doodle->toArray();
+    $output .= $dood->getChunk($tpl,$doodleArray);
+}
+```
+
+Итак, что это делает, это итерации по всем объектам Doodle, которые мы получили с вызовом getCollection, и создает массив PHP из их значений с помощью метода toArray. Затем он использует getChunk и этот массив для установки значений в Chunk для каждой строки и добавляет это к переменной $output. Итак, мы получаем кучу тегов (столько, сколько вы добавили в базу данных). Он должен выглядеть примерно так:
+![](https://docs.modx.com/download/attachments/33587481/doodleoutput1.png?version=1&modificationDate=1295645209000)
+
+Вы можете, очевидно, изменить этот Chunk на все, что захотите, и люди могут передать имя Chunk в &tpl в своем вызове сниппета, чтобы использовать любой Chunk, который они хотят. Templatability в вашем сниппете! Ура!
+
+Сейчас наш сниппет выглядит так:
+```
+<?php
+$dood = $modx->getService('doodles','Doodles',$modx->getOption('doodles.core_path',null,$modx->getOption('core_path').'components/doodles/').'model/doodles/',$scriptProperties);
+if (!($dood instanceof Doodles)) return '';
+/* setup default properties */
+$tpl = $modx->getOption('tpl',$scriptProperties,'rowTpl');
+$sort = $modx->getOption('sort',$scriptProperties,'name');
+$dir = $modx->getOption('dir',$scriptProperties,'ASC');
+/* build query */
+$c = $modx->newQuery('Doodle');
+$c->sortby($sort,$dir);
+$doodles = $modx->getCollection('Doodle',$c);
+/* iterate */
+$output = '';
+foreach ($doodles as $doodle) {
+    $doodleArray = $doodle->toArray();
+    $output .= $dood->getChunk($tpl,$doodleArray);
+}
+return $output;
+```
+
+И мы загрузили наш пользовательский базовый класс из наших системных установочных путей, добавив наш пользовательский пакет xPDO db, вытащив из нашей таблицы пользовательских баз данных и выведя его через чанк.
+
+##Резюме
+
+У нас есть хорошая пользовательская модель базы данных, которую наш Doodles сниппет использует для захвата записей Doodles из нашей базы данных. Мы также рассмотрели базовую структуру для всеобъемлющего MODX компонента.
+
+Но мы хотим каким-то образом отредактировать эти данные в адмнке MODX, верно? Ну, вот куда входят КСА. Переходите к следующей части этого руководства.
