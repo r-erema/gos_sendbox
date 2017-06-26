@@ -60,3 +60,11 @@
 </div>
 </body>
 </html>
+<?php
+class A {
+    public static function func(): void {
+        echo __FUNCTION__;
+    }
+}
+
+A::func();

@@ -10,7 +10,7 @@ $nginxFileName = $config['server_name'];
 $configText = "
 server {
     listen 80;
-    server_name {$config['server_name']} 192.168.0.105;
+    server_name {$config['server_name']};
     root {$config['root_path']};
 
     access_log /var/log/nginx/$nginxFileName/access.log;
@@ -21,7 +21,7 @@ server {
     }
 
     location ~ \\.php$ {
-        fastcgi_pass unix:/run/php/php7.1-fpm.sock;
+        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
         fastcgi_index index.php;
         fastcgi_param SCRIPT_FILENAME \\\$document_root\\\$fastcgi_script_name;
         include fastcgi_params;
