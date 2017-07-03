@@ -1,18 +1,15 @@
-import {createStore} from 'redux';
+import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import todoApp from './reducers/reducers';
+import App from './components/App';
 
-let userReducer = (state, action) => {
-    if (state === undefined) {
-        state = [];
-    }
-    if (state.type === 'ADD_USER') {
-        state.push(action.user);
-    }
-    return state;
-};
+let store = createStore(todoApp);
 
-let store = createStore(userReducer);
-
-store.dispatch({
-    type : 'ADD_USER',
-    user : {name : 'Dan'}
-});
+render(
+    <Provider store={store} >
+        <App />
+    </Provider>,
+    document.getElementById('mount-point')
+);
