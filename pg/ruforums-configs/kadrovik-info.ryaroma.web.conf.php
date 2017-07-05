@@ -37,7 +37,7 @@ define('LOAD_UPLOADED_FILES', 1); // подгружать ли библиоте�
 define("DEBUG_LEVEL", 1);
 define("ANTISPAM", true);
 define("LAST_TOPICS_STOP_RUBRIC_ID", 56);
-define("SEARCH_SERVICE_URL", "https://pi.commontools.net/ProfInfo/WebServices/ForumsWebService.asmx?wsdl");
+define("SEARCH_SERVICE_URL", "http://pi.commontools.net/ProfInfo/WebServices/ForumsWebService.asmx?wsdl");
 
 include("system.conf.php");
 
