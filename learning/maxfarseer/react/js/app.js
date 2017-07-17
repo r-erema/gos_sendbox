@@ -103,14 +103,31 @@ var Quotes = React.createClass({
 });
 
 var Add = React.createClass({
+    getInitialState: function() {
+        return {
+            agreeNotChecked : true,
+            authorIsEmpty : true,
+            textIsEmpty : true
+        };
+    },
     onCheckRuleClick: function(e) {
-        ReactDOM.findDOMNode(this.refs.alert_button).disabled = !e.target.checked;
+        this.setState({agreeNotChecked: !this.state.agreeNotChecked});
     },
     componentDidMount : function () {
         ReactDOM.findDOMNode(this.refs.author).focus();
     },
     onClickHandler : function (e) {
         e.preventDefault();
+        var author = ReactDOM.findDOMNode(this.refs.author).value;
+        var text = ReactDOM.findDOMNode(this.refs.text).value;
+        alert(author + '\n' + text);
+    },
+    onFieldChange : function (fieldName, e) {
+        if (e.target.value.trim().length) {
+            this.setState({[fieldName] : false});
+        } else {
+            this.setState({[fieldName] : true});
+        }
     },
     render : function () {
         return (
@@ -121,12 +138,14 @@ var Add = React.createClass({
                     defaultValue=""
                     placeholder="Author"
                     ref="author"
+                    onChange={this.onFieldChange.bind(this, 'textIsEmpty')}
                 />
                 <textarea
                     className="add_etxt"
                     defaultValue=""
                     placeholder="Quote text"
                     ref="text"
+                    onChange={this.onFieldChange.bind(this, 'authorIsEmpty')}
                 ></textarea>
                 <label className="add_checkrule">
                     <input type="checkbox" defaultChecked={false} ref="checkrule" onChange={this.onCheckRuleClick}/>
@@ -136,7 +155,7 @@ var Add = React.createClass({
                     className="add_btn"
                     onClick={this.onClickHandler}
                     ref="alert_button"
-                    disabled
+                    disabled={this.state.agreeNotChecked || this.state.authorIsEmpty || this.state.textIsEmpty}
                 >
                     show alert
                 </button>
