@@ -1,3 +1,5 @@
+window.ee = new EventEmitter();
+
 var quotes = [
     {
         author : 'Vito Corleone',
@@ -22,10 +24,24 @@ var Comments = React.createClass({
 });*/
 
 var App = React.createClass({
+    getInitialState : function () {
+        return {quotes : quotes}
+    },
+    componentDidMount : function () {
+        var self = this;
+        window.ee.addListener('Quotes.add', function (item) {
+            var nextQuotes = item.concat(self.state.quotes);
+            self.setState({quotes : nextQuotes});
+        });
+    },
+    componentWillUnmount : function () {
+        window.ee.removeListener('Quotes.add');
+    },
     render : function () {
         return (
             <div className="app">
-                <Quotes data={quotes} /> {/*data={quotes}*/}
+                <Add />
+                {<Quotes data={this.state.quotes} />}
                 {/*<Comments />*/}
             </div>
         );
@@ -94,7 +110,7 @@ var Quotes = React.createClass({
         return (
             <div className="quotes">
                 <h1>Quotes</h1>
-                <Add />
+                {/*<Add />*/}
                 {newsTemplate}
                 {totalCountComponent}
             </div>
@@ -119,8 +135,17 @@ var Add = React.createClass({
     onClickHandler : function (e) {
         e.preventDefault();
         var author = ReactDOM.findDOMNode(this.refs.author).value;
-        var text = ReactDOM.findDOMNode(this.refs.text).value;
-        alert(author + '\n' + text);
+        var textEl = ReactDOM.findDOMNode(this.refs.text);
+        var text = textEl.value;
+        var item = [{
+            author : author,
+            text : text,
+            bigText : '...'
+        }];
+        window.ee.emit('Quotes.add', item);
+        textEl.value = '';
+        this.setState({textIsEmpty: true});
+        //alert(author + '\n' + text);
     },
     onFieldChange : function (fieldName, e) {
         if (e.target.value.trim().length) {
@@ -157,7 +182,7 @@ var Add = React.createClass({
                     ref="alert_button"
                     disabled={this.state.agreeNotChecked || this.state.authorIsEmpty || this.state.textIsEmpty}
                 >
-                    show alert
+                    add quote
                 </button>
             </form>
         );
