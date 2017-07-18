@@ -1,2 +1,9 @@
-document.getElementById('root').innerHTML = 'Прvиvвет, я готов.';
-module.hot.accept();
+import 'babel-polyfill';
+import React from 'react';
+import { render } from 'react-dom';
+import App from './container/App';
+
+render(
+    <App />,
+    document.getElementById('root')
+);
