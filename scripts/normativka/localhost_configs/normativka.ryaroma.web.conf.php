@@ -65,7 +65,6 @@ define("TOPIC_COUNTRIES", false); // атавизм
 define("LAST_TOPICS_STOP_RUBRIC_ID", '${settings.normativka.last_topics_stop_rubric_id}'); // не показывать сообщения из данных рубрик в списке на главной форума (можно через запятую, например: '11,12,33')
 
 $profInfoServerPrefix = 'http://pi-test2.web';
-//$profInfoServerPrefix = 'http://yukhnevich.web';
 define("PROFINFO_SERVICE_URL", "$profInfoServerPrefix/ProfInfo/ProfInfoService/ProfInfoService.asmx?wsdl");
 define("PROFINFO_USERS_SERVICE_URL", "$profInfoServerPrefix/ProfInfo/ProfInfoService/UserEditor.asmx?wsdl");
 define("PROFINFO_WEB_API_URL", "$profInfoServerPrefix/ProfInfo/Normativka.WebApi/api/");
