@@ -26,7 +26,7 @@ define("DB_BLOG_USER", "root");
 define("DB_BLOG_PASS", "mmm_beer11");
 define("DB_BLOG_NAME", "blog");
 define("BLOG_API_URL", "http://normativka.ryaroma.web:80/blog/api/auth/");
-define("HAS_BLOG", (bool)'1');
+define("HAS_BLOG", (bool)'0');
 
 define("MEMCACHE_SERVER", "localhost");
 define("MEMCACHE_PORT", '11211');
@@ -68,6 +68,7 @@ $profInfoServerPrefix = 'http://pi-test2.web';
 //$profInfoServerPrefix = 'http://yukhnevich.web';
 define("PROFINFO_SERVICE_URL", "$profInfoServerPrefix/ProfInfo/ProfInfoService/ProfInfoService.asmx?wsdl");
 define("PROFINFO_USERS_SERVICE_URL", "$profInfoServerPrefix/ProfInfo/ProfInfoService/UserEditor.asmx?wsdl");
+define("PROFINFO_WEB_API_URL", "$profInfoServerPrefix/ProfInfo/Normativka.WebApi/api/");
 define("FORUM_SEARCH_SERVICE_URL", "$profInfoServerPrefix/ProfInfo/WebServices/ForumsWebService.asmx?wsdl");
 define("FORUM_SEARCH_SERVICE_NAMESPACE", DB_XNAME);
 define("PROFINFO_SERVICE_CONNECTION_TIMEOUT", (int)'20000');
@@ -77,11 +78,20 @@ define("SEMINARS_SERVICE_URL", 'http://prof.by/upcoming-events.js');
 
 define("INFO_SERVICE_URL", "http://nr.commontools.net/data-center/infoservice/service.xml-rpc");
 
-define("PDF_SERVICE_URL", "http://pdf-srv.commontools.net/pdf.php");
+define("PDF_SERVICE_URL", "http://pi.commontools.net/AsposeWordConvertService/api/Converter");
 
 define('QA_SERVICE_URL', 'http://pgfb.profigroup.by:22385/QaService.asmx?wsdl');
 
-define("SMS_URL_TEMPLATE", 'https://cp.smsp.by?r=api/msg_send&user=webdev@commontools.net&apikey=061d9e3x4r&recipients=%%phone_number%%&message=%%message%%&sender=Normativka&urgent=1');
+const SMS_SMS_GATEWAY = 'info-bip';
+const SMS_CONFIG = [
+	'smsp' => [
+		'url' => 'https://cp.smsp.by?r=api/msg_send&user=webdev@commontools.net&apikey=061d9e3x4r&recipients=%%phone_number%%&message=%%message%%&sender=Normativka&urgent=1',
+	],
+	'info-bip' => [
+		'sender-name' => 'Normativka',
+		'api-key' => '9387d934add82d3a2deac321dfb68426-b54e3348-971e-4480-899b-67c805b08341',
+	],
+];
 
 define("EXCHANGE_RATES_DB", 'mysql://sites_db_access:bRNqWmZSn9e8wEZV@mysql.web/buhgalterby');
 
