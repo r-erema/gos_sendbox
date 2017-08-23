@@ -5,11 +5,10 @@ $portalConfigsPath = "{$root}/portal/__core/Configurations";
 $sourcesConfigsPath = "{$root}/localhost_configs";
 $portalConfigs = [
     'normativka.ryaroma.web.conf.php',
-    /*'buhgalter.ryaroma.web.conf.php',
+    'buhgalter.ryaroma.web.conf.php',
     'jurisconsult.ryaroma.web.conf.php',
     'ekonomist.ryaroma.web.conf.php',
-
-    'kadrovik.ryaroma.web.conf.php',*/
+    'kadrovik.ryaroma.web.conf.php',
 ];
 
 $phinxSourceConfig = "{$sourcesConfigsPath}/phinx_normativka.yml";

@@ -3,9 +3,9 @@ const NGINX = 'nginx';
 const APACHE = 'apache2';
 
 const DOMAIN_POSTFIX = '.ryaroma.web';
-const MAIN_NAME = 'ru-forums';
+const MAIN_NAME = 'pgdc';
 //const DOCUMENT_ROOT = '/home/gutsout/h/texode';
-const DOCUMENT_ROOT = '/home/gutsout/h/forums-ru';
+const DOCUMENT_ROOT = '/home/gutsout/h/pg-datacenter/public';
 
 const NGINX_TPL_HTTP_TO_HTTPS =
 'server {
@@ -97,11 +97,7 @@ return [
                 ],*/
                 [
                     'names' => [
-                        'sekretar-info' . DOMAIN_POSTFIX,
-                        'buhgalter-info' . DOMAIN_POSTFIX,
-                        'kadrovik-info' . DOMAIN_POSTFIX,
-                        'economist-info' . DOMAIN_POSTFIX,
-                        'ecolog-info' . DOMAIN_POSTFIX,
+                        'pgdc' . DOMAIN_POSTFIX
                     ]
                 ],
             ],
@@ -125,11 +121,7 @@ return [
                     'www.eco' . DOMAIN_POSTFIX,*/
                     //'fgru-new' . DOMAIN_POSTFIX,
                     //'www.fgru-new' . DOMAIN_POSTFIX
-                    'sekretar-info' . DOMAIN_POSTFIX,
-                    'buhgalter-info' . DOMAIN_POSTFIX,
-                    'kadrovik-info' . DOMAIN_POSTFIX,
-                    'economist-info' . DOMAIN_POSTFIX,
-                    'ecolog-info' . DOMAIN_POSTFIX,
+                    'pgdc' . DOMAIN_POSTFIX
                 ]
             ],
             'tpl' => APACHE_TPL

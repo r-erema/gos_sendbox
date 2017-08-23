@@ -24,12 +24,10 @@ CREATE FUNCTION fn_get_invoice_actually_paid_date(`inv_id` INT)
             BEGIN
                 DECLARE paidDate DATE;
                 DECLARE invoiceEndDate DATE;
-                SET @precision = (SELECT IF(NOW() < '2016-07-01', 0, 2));
+                SET @precision = (SELECT IF(NOW() < '2016-07-01', 0, 2)); /* Окгругляем по разному в зависимости от старых и новых тем(деноминация) */
                 SET @allDaysInclusively = (SELECT DATEDIFF(invoice_term_end, invoice_term_begin) + 1 FROM nr_invoices  WHERE invoice_id = inv_id);
-                IF @allDaysInclusively = 0 THEN SET @allDaysInclusively = NULL; END IF;
                 SET @sumOfDay = (SELECT ROUND(invoice_price / @allDaysInclusively, @`precision`) FROM nr_invoices  WHERE invoice_id = inv_id);
-                IF @sumOfDay = 0 THEN SET @sumOfDay = NULL; END IF;
-              SELECT
+                SELECT
                   DATE_ADD(invoice_term_begin, INTERVAL CEIL(SUM(payment_value) / @sumOfDay) DAY), invoice_term_end
                 INTO paidDate, invoiceEndDate
                 FROM nr_invoices
@@ -42,10 +40,10 @@ DELIMITER ;
 
 DELIMITER $$
 CREATE FUNCTION fn_get_invoice_payments_receivables(`inv_id` INT)
-            RETURNS DECIMAL(12,2)
+            RETURNS DECIMAL(16,2)
             LANGUAGE SQL
             BEGIN
-                DECLARE receivables DECIMAL(12,2);
+                DECLARE receivables DECIMAL(16,2);
                 SELECT
                   invoice_price - IFNULL(SUM(payment_value), 0)
                 INTO receivables

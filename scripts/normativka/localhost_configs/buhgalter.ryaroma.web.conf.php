@@ -22,7 +22,7 @@ define("HAS_BLOG", (bool)'0');
 define("MEMCACHE_SERVER", "localhost");
 define("MEMCACHE_PORT", '11211');
 define("MEMCACHE_NAMESPACE", 'buhgalter.by');
-define("MEMCACHE_ACTIVE", (bool)'1');
+define("MEMCACHE_ACTIVE", (bool)'0');
 
 define("SITE_ALIAS", "buhgalter.ryaroma.web");
 define("ABSOLUTE_PATH", '/home/gutsout/h/normativka/portal/');
@@ -55,10 +55,10 @@ define("ANTISPAM", (bool)'1');
 define("TOPIC_COUNTRIES", false); // атавизм
 define("LAST_TOPICS_STOP_RUBRIC_ID", '11'); // не показывать сообщения из данных рубрик в списке на главной форума (можно через запятую, например: '11,12,33')
 
-
 $profInfoServerPrefix = 'http://pi-test2.web';
 define("PROFINFO_SERVICE_URL", "$profInfoServerPrefix/ProfInfo/ProfInfoService/ProfInfoService.asmx?wsdl");
 define("PROFINFO_USERS_SERVICE_URL", "$profInfoServerPrefix/ProfInfo/ProfInfoService/UserEditor.asmx?wsdl");
+define("PROFINFO_WEB_API_URL", "$profInfoServerPrefix/ProfInfo/Normativka.WebApi/api/");
 define("FORUM_SEARCH_SERVICE_URL", "$profInfoServerPrefix/ProfInfo/WebServices/ForumsWebService.asmx?wsdl");
 define("FORUM_SEARCH_SERVICE_NAMESPACE", DB_XNAME);
 define("PROFINFO_SERVICE_CONNECTION_TIMEOUT", (int)'20000');
@@ -68,16 +68,33 @@ define("SEMINARS_SERVICE_URL", 'http://prof.by/upcoming-events.js');
 
 define("INFO_SERVICE_URL", "http://nr.commontools.net/data-center/infoservice/service.xml-rpc");
 
-define("PDF_SERVICE_URL", "http://pdf-srv.commontools.net/pdf.php");
+define("PDF_SERVICE_URL", "http://pi.commontools.net/AsposeWordConvertService/api/Converter");
 
 define('QA_SERVICE_URL', 'http://pgfb.profigroup.by:22385/QaService.asmx?wsdl');
 
-define("SMS_URL_TEMPLATE", 'https://cp.smsp.by?r=api/msg_send&user=webdev@commontools.net&apikey=061d9e3x4r&recipients=%%phone_number%%&message=%%message%%&sender=Normativka&urgent=1');
+const SMS_SMS_GATEWAY = 'info-bip';
+const SMS_CONFIG = [
+	'smsp' => [
+		'url' => 'https://cp.smsp.by?r=api/msg_send&user=webdev@commontools.net&apikey=061d9e3x4r&recipients=%%phone_number%%&message=%%message%%&sender=Normativka&urgent=1',
+	],
+	'info-bip' => [
+		'sender-name' => 'Normativka',
+		'api-key' => '9387d934add82d3a2deac321dfb68426-b54e3348-971e-4480-899b-67c805b08341',
+	],
+];
 
 define("EXCHANGE_RATES_DB", 'mysql://sites_db_access:bRNqWmZSn9e8wEZV@mysql.web/buhgalterby');
 
 define("WEBPAY_STORE_ID", '446660537');
 define("WEBPAY_STORE_NAME", 'Бухгалтер.by');
+
+define("SMTP_EMAIL", "box@normativka.by");
+define("SMTP_HOST_PORT", "smtp.yandex.com:465");
+define("SMTP_LOGIN", "nr-test-srv@commontools.net");
+define("SMTP_PASSWORD", "gwJKd3ghlb");
+define("SMTP_AUTH", "login");
+define("SMTP_SSL", "login");
+define("SMTP_USE_BOUNCE", "0");
 
 if (isset($_SERVER['HTTP_HTTPS']) && $_SERVER['HTTP_HTTPS'] == 'on'
 	|| isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on'
