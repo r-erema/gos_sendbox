@@ -6,7 +6,7 @@ define("DB_XPASS", "bRNqWmZSn9e8wEZV");*/
 define("DB_XHOST", "localhost");
 define("DB_XUSER", "root");
 define("DB_XPASS", "mmm_beer11");
-define("DB_XNAME", "buhgalterby");
+define("DB_XNAME", "ekonomistby");
 define("DB_XPREFIX", "fn_");
 define("SET_NAMES", "utf8");
 
@@ -103,7 +103,17 @@ define("SMTP_LOGIN", "nr-test-srv@commontools.net");
 define("SMTP_PASSWORD", "gwJKd3ghlb");
 define("SMTP_AUTH", "login");
 define("SMTP_SSL", "login");
-define("SMTP_USE_BOUNCE", "0");
+define("f", "0");
+
+if (isset($_SERVER['HTTP_HTTPS']) && $_SERVER['HTTP_HTTPS'] == 'on'
+	|| isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on'
+) {
+	define("WWW_URL", "https://ekonomist.ryaroma.web");
+	define("PROTOCOL", "https://");
+} else {
+	define("WWW_URL", "https://ekonomist.ryaroma.web");
+	define("PROTOCOL", "http://");
+}
 
 $nSites = array(
 	'0' => array(

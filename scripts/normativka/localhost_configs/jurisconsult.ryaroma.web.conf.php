@@ -6,7 +6,7 @@ define("DB_XPASS", "bRNqWmZSn9e8wEZV");*/
 define("DB_XHOST", "localhost");
 define("DB_XUSER", "root");
 define("DB_XPASS", "mmm_beer11");
-define("DB_XNAME", "buhgalterby");
+define("DB_XNAME", "jurisconsultby");
 define("DB_XPREFIX", "fn_");
 define("SET_NAMES", "utf8");
 
@@ -92,7 +92,7 @@ const SMS_CONFIG = [
 	],
 ];
 
-define("EXCHANGE_RATES_DB", 'mysql://sites_db_access:bRNqWmZSn9e8wEZV@mysql.web/buhgalterby');
+define("EXCHANGE_RATES_DB", 'mysql://sites_db_access:bRNqWmZSn9e8wEZV@mysql.web/jurisconsultby');
 
 define("WEBPAY_STORE_ID", '426272014');
 define("WEBPAY_STORE_NAME", 'Юрисконсульт.by');

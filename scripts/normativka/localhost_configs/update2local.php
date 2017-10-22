@@ -2,7 +2,7 @@
 
 $root = '/home/gutsout/h/normativka';
 $portalConfigsPath = "{$root}/portal/__core/Configurations";
-$sourcesConfigsPath = "{$root}/localhost_configs";
+$sourcesConfigsPath = __DIR__;
 $portalConfigs = [
     'normativka.ryaroma.web.conf.php',
     'buhgalter.ryaroma.web.conf.php',
@@ -22,5 +22,6 @@ file_put_contents($profinfoTargetConfig, file_get_contents($profinfoSourceConfig
 foreach ($portalConfigs as $config) {
     $sourceConfig = "{$sourcesConfigsPath}/{$config}";
     $targetConfig = "{$portalConfigsPath}/{$config}";
+    $t = file_get_contents($sourceConfig);
     file_put_contents($targetConfig, file_get_contents($sourceConfig));
 }

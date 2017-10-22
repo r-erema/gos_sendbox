@@ -6,7 +6,7 @@ define("DB_XPASS", "bRNqWmZSn9e8wEZV");*/
 define("DB_XHOST", "localhost");
 define("DB_XUSER", "root");
 define("DB_XPASS", "mmm_beer11");
-define("DB_XNAME", "buhgalterby");
+define("DB_XNAME", "kadrovikrby");
 define("DB_XPREFIX", "fn_");
 define("SET_NAMES", "utf8");
 
