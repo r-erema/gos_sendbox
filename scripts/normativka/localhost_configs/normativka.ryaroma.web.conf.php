@@ -105,13 +105,16 @@ define("SMTP_AUTH", "login");
 define("SMTP_SSL", "login");
 define("SMTP_USE_BOUNCE", "0");
 
+define("WWW_PORT", "80");
 if (isset($_SERVER['HTTP_HTTPS']) && $_SERVER['HTTP_HTTPS'] == 'on'
 	|| isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on'
 ) {
-	define("WWW_URL", "https://normativka.ryaroma.web");
+    $port = defined('WWW_PORT') && WWW_PORT != 80 ? ':' . WWW_PORT : '';
+	define("WWW_URL", "https://normativka.ryaroma.web{$port}");
 	define("PROTOCOL", "https://");
 } else {
-	define("WWW_URL", "http://normativka.ryaroma.web");
+    $port = defined('WWW_PORT') && WWW_PORT != 80 ? ':' . WWW_PORT : '';
+	define("WWW_URL", "http://normativka.ryaroma.web{$port}");
 	define("PROTOCOL", "http://");
 }
 
