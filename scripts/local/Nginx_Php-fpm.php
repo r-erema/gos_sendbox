@@ -1,8 +1,10 @@
 <?php
 
 $config = [
-    'server_name' => 'gutsout.web',
-    'root_path' => '/home/gutsout/h/gos_sendbox'
+    'server_name' => 'public-games.web',
+    //'root_path' => '/home/gutsout/h/gos_sendbox'
+    'root_path' => '/home/gutsout/h/public-games/public',
+    'php-fpm-name' => 'php7.1-fpm'
 ];
 
 $nginxFileName = $config['server_name'];
@@ -21,7 +23,7 @@ server {
     }
 
     location ~ \\.php$ {
-        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+        fastcgi_pass unix:/run/php/{$config['php-fpm-name']}.sock;
         fastcgi_index index.php;
         fastcgi_param SCRIPT_FILENAME \\\$document_root\\\$fastcgi_script_name;
         include fastcgi_params;
@@ -57,7 +59,7 @@ server {
 //nginx
 `touch /etc/nginx/sites-available/{$nginxFileName}`;
 `ln -s /etc/nginx/sites-available/{$nginxFileName} /etc/nginx/sites-enabled/{$nginxFileName}`;
-`echo "$configText" >> /etc/nginx/sites-available/{$nginxFileName}`;
+`echo "{$configText}" >> /etc/nginx/sites-available/{$nginxFileName}`;
 `mkdir /var/log/nginx/{$nginxFileName}`;
-`service php7.1-fpm reload`;
+`service {$config['php-fpm-name']} reload`;
 `service nginx reload`;
