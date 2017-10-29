@@ -1,1 +1,0 @@
-https://habrahabr.ru/company/mailru/blog/325492/#imagehttpshabrastorageorgfiles1d6a22eff1d6a22eff4b047e691417f69f37647f5png-dekorator
