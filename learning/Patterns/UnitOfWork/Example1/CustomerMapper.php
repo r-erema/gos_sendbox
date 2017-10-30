@@ -40,7 +40,8 @@ class CustomerMapper {
      * @return bool
      */
     public function insert(Customer $customer): bool {
-        return $this->dao->prepare('INSERT INTO customers (id, email) VALUES (?, ?);')->execute([$customer->id, $customer->email]);
+        return $this->dao->prepare('INSERT INTO customers (id, email) VALUES (?, ?);')
+                         ->execute([$customer->id, $customer->email]);
     }
 
     /**
@@ -48,7 +49,7 @@ class CustomerMapper {
      * @return int
      */
     public function update(Customer $customer): int {
-        //dummy
+        //dummy //todo: it's necessary to finish
         return 1;
     }
 
@@ -57,7 +58,7 @@ class CustomerMapper {
      * @return int
      */
     public function delete(Customer $customer): int {
-        //dummy
+        //dummy //todo: it's necessary to finish
         return 1;
     }
 
