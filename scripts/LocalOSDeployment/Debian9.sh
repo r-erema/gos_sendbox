@@ -14,9 +14,8 @@ cd ${userDir};
 #Add user to sudoers
 echo "${user}    ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
-echo "Enter PHPSTORM version to download";
+echo "Enter PHPSTORM version to download:";
 read phpstormVersion;
-
 phpStormArchive=PhpStorm-${phpstormVersion}.tar.gz
 
 #Configure bash
@@ -26,6 +25,9 @@ echo "force_color_prompt=yes" >> /root/.bashrc;
 
 #sudo
 apt-get install sudo -y;
+
+#apt-transport-https
+apt-get install apt-transport-https -y;
 
 #htop
 apt-get install htop -y;
@@ -42,9 +44,12 @@ apt-get install zip -y;
 #net-tools
 apt-get install net-tools -y;
 
+#gparted
+apt-get install gparted -y;
+
 #Google Chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb;
-gdebi google-chrome-stable_current_amd64.deb -y;
+gdebi google-chrome-stable_current_amd64.deb;
 rm google-chrome-stable_current_amd64.deb;
 
 #Nginx
@@ -66,7 +71,7 @@ php -r "unlink('composer-setup.php');"
 apt-get install git -y;
 
 #Make dir 'ide'
-mkdir ${ideDir};
+runuser -l ${user} -c "mkdir ${ideDir}";
 
 #PHPSTORM
 runuser -l ${user} -c "wget -P ${ideDir} https://download-cf.jetbrains.com/webide/${phpStormArchive}";
@@ -80,7 +85,6 @@ runuser -l ${user} -c "echo '-javaagent:${userDir}/${ideDir}/LinuxJavaFixes-mast
 
 #Sublime
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add -
-apt-get install apt-transport-https
 echo "deb https://download.sublimetext.com/ apt/stable/" | tee /etc/apt/sources.list.d/sublime-text.list
 sudo apt-get update
 sudo apt-get install sublime-text
