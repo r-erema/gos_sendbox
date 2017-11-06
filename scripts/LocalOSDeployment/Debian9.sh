@@ -1,47 +1,118 @@
 #!/usr/bin/env bash
 
 #Config
+user=gutsout
 ideDir=ide;
-userDir=/home/gutsout;
+userDir=/home/${user};
+#WARNING!!! Need to wright driver for specific video card.
+nvidiaDriverName=nvidia-legacy-340xx-driver;
+#Install apps for home, media server, etc.
+homeEditionFlag=1;
+
+cd ${userDir};
+
+#Add user to sudoers
+echo "${user}    ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 echo "Enter PHPSTORM version to download";
 read phpstormVersion;
 
 phpStormArchive=PhpStorm-${phpstormVersion}.tar.gz
 
-cd ${userDir};
+#Configure bash
+echo "force_color_prompt=yes" >> ${userDir}/.bashrc;
+echo "PS1='\${debian_chroot:+(\$debian_chroot)}\[\033[01;31m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '" >> /root/.bashrc;
+echo "force_color_prompt=yes" >> /root/.bashrc;
+
+#sudo
+apt-get install sudo -y;
+
+#aptitude
+apt-get install aptitude -y;
 
 #gdebi
 apt-get install gdebi -y;
 
-#Sudo
-apt-get install sudo -y;
+#zip
+apt-get install zip -y;
+
+#net-tools
+apt-get install net-tools -y;
 
 #Google Chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb;
-gdebi google-chrome-stable_current_amd64.deb;
+gdebi google-chrome-stable_current_amd64.deb -y;
 rm google-chrome-stable_current_amd64.deb;
 
 #Nginx
 apt-get install nginx -y;
 
 #PHP7.1
-sudo wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg;
-sudo sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list';
-sudo apt update;
-sudo apt install php7.1-common  php7.1-readline php7.1-fpm php7.1-cli php7.1-gd php7.1-mysql php7.1-mcrypt php7.1-curl php7.1-mbstring php7.1-opcache php7.1-json;
+wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg;
+sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list';
+apt update;
+apt install php7.1-common  php7.1-readline php7.1-fpm php7.1-cli php7.1-gd php7.1-mysql php7.1-mcrypt php7.1-curl php7.1-mbstring php7.1-opcache php7.1-json php7.1-xdebug -y;
 
 #Git
-apt-get install git;
+apt-get install git -y;
 
 #Make dir 'ide'
 mkdir ${ideDir};
 
 #PHPSTORM
-sudo wget -O ${ideDir} https://download-cf.jetbrains.com/webide/${phpStormArchive}
-tar xfz ${ideDir}/${phpStormArchive} -C ${ideDir}
-rm ${phpStormArchive}
-export PhpStormDir="$(find ${ideDir} -type d -name "PhpStorm-*")"
-sudo wget -O ${ideDir} https://github.com/zheludkovm/LinuxJavaFixes/archive/master.zip
-zip -r master.zip ${ideDir}
-echo "${userDir}/${ideDir}/LinuxJavaFixes-master/build/LinuxJavaFixes-1.0.0-SNAPSHOT.jar" >> ${userDir}/${PhpStormDir}/bin/phpstorm64.vmoptions
+runuser -l ${user} -c "wget -P ${ideDir} https://download-cf.jetbrains.com/webide/${phpStormArchive}";
+runuser -l ${user} -c "tar xfz ${ideDir}/${phpStormArchive} -C ${ideDir}";
+rm ${ideDir}/${phpStormArchive};
+export PhpStormDir="$(find ${ideDir} -type d -name 'PhpStorm-*')";
+runuser -l ${user} -c "wget -P ${ideDir} https://github.com/zheludkovm/LinuxJavaFixes/archive/master.zip";
+runuser -l ${user} -c "unzip ${ideDir}/master.zip -d ${ideDir}";
+rm ${ideDir}/master.zip;
+runuser -l ${user} -c "echo '-javaagent:${userDir}/${ideDir}/LinuxJavaFixes-master/build/LinuxJavaFixes-1.0.0-SNAPSHOT.jar' >> ${userDir}/${PhpStormDir}/bin/phpstorm64.vmoptions";
+
+#Sublime
+wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add -
+apt-get install apt-transport-https
+echo "deb https://download.sublimetext.com/ apt/stable/" | tee /etc/apt/sources.list.d/sublime-text.list
+sudo apt-get update
+sudo apt-get install sublime-text
+
+#Virtualbox
+wget http://download.virtualbox.org/virtualbox/5.2.0/virtualbox-5.2_5.2.0-118431~Debian~stretch_amd64.deb;
+gdebi virtualbox-5.2_5.2.0-118431~Debian~stretch_amd64.deb;
+rm virtualbox-5.2_5.2.0-118431~Debian~stretch_amd64.deb;
+
+#VLC
+add-apt-repository ppa:videolan/stable-daily -y;
+apt-get update;
+apt-get install vlc -y;
+
+#Nvidia drivers
+echo "deb http://ftp.us.debian.org/debian/ stretch main contrib non-free" >> /etc/apt/sources.list;
+apt update;
+apt install linux-headers-$(uname -r|sed 's/[^-]*-[^-]*-//') ${nvidiaDriverName} -y;
+
+if [ ${homeEditionFlag} -eq 1 ] ; then
+
+    #LinuxDC++
+    #
+    #In client:
+    #
+    #Hub settings:
+    #Encoding: CP1251(Cyrillic)
+    #
+    #Preferences:
+    #Connection:
+    #Manual port forwarding: 1
+    #Public IP Address: example 10.70.8.144 or https://flynet.by/ip.php
+    #TCP: 3559
+    #UDP: 3559
+    #TLS: 2005
+    #
+    apt install linuxdcpp -y;
+
+    #Plex media server
+    wget https://downloads.plex.tv/plex-media-server/1.8.4.4249-3497d6779/plexmediaserver_1.8.4.4249-3497d6779_amd64.deb;
+    gdebi plexmediaserver_1.8.4.4249-3497d6779_amd64.deb;
+    rm plexmediaserver_1.8.4.4249-3497d6779_amd64.deb;
+
+fi
