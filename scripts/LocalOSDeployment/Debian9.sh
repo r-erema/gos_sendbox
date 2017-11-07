@@ -59,7 +59,7 @@ apt-get install nginx -y;
 wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg;
 sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list';
 apt update;
-apt install php7.1-common  php7.1-readline php7.1-fpm php7.1-cli php7.1-gd php7.1-mysql php7.1-mcrypt php7.1-curl php7.1-mbstring php7.1-opcache php7.1-json php7.1-xdebug -y;
+apt install php7.1-common php7.1-readline php7.1-fpm php7.1-cli php7.1-gd php7.1-mysql php7.1-mcrypt php7.1-curl php7.1-mbstring php7.1-opcache php7.1-json с php7.1-xdebug -y;
 
 #Composer
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
