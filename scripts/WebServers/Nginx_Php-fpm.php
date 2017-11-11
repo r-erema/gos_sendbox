@@ -5,10 +5,10 @@
  */
 
 $config = [
-    'server_name' => 'gutsout.web',
+    'server_name' => 'gutsout.ryaroma.web',
     'root_path' => '/home/gutsout/h/gos_sendbox',
     //'root_path' => '/home/gutsout/h/public-games/public',
-    'php-fpm-name' => 'php7.2-fpm'
+    'php-fpm-name' => 'php7.1-fpm'
 ];
 
 $nginxFileName = $config['server_name'];
@@ -65,5 +65,5 @@ server {
 `ln -s /etc/nginx/sites-available/{$nginxFileName} /etc/nginx/sites-enabled/{$nginxFileName}`;
 `echo "{$configText}" >> /etc/nginx/sites-available/{$nginxFileName}`;
 `mkdir /var/log/nginx/{$nginxFileName}`;
-`service {$config['php-fpm-name']} reload`;
-`service nginx reload`;
+`/etc/init.d/{$config['php-fpm-name']} reload`;
+`/etc/init.d/nginx reload`;
