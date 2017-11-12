@@ -64,12 +64,12 @@ if ($nginxFileName && $apacheFileName) {
     `ln -s /etc/nginx/sites-available/{$nginxFileName} /etc/nginx/sites-enabled/{$nginxFileName}`;
     `echo "$nginxText" >> /etc/nginx/sites-available/{$nginxFileName}`;
     `mkdir /var/log/nginx/{$config['main_name']}`;
-    `service nginx reload`;
+    `/etc/init.d/nginx reload`;
     //apache
     `touch /etc/apache2/sites-available/{$apacheFileName}`;
     `echo "$apacheText" >> /etc/apache2/sites-available/{$apacheFileName}`;
     `mkdir /var/log/apache2/{$config['main_name']}`;
     `a2ensite {$apacheFileName}`;
-    `service apache2 reload`;
+    `/etc/init.d/apache2 reload`;
 
 }
