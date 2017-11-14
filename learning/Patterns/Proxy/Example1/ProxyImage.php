@@ -21,15 +21,6 @@ final class ProxyImage extends Image
     private $imageResult;
 
     /**
-     * ProxyImage constructor.
-     * @param string $fileName
-     */
-    /*public function __construct(string $fileName)
-    {
-        $this->fileName = $fileName;
-    }*/
-
-    /**
      * @return bool|string
      */
     public function getImageContents()
