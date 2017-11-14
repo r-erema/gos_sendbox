@@ -8,7 +8,7 @@ class Image
     /**
      * @var string
      */
-    private $fileName;
+    protected $fileName;
 
     /**
      * @var int

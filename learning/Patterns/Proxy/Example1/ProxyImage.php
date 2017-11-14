@@ -2,13 +2,13 @@
 
 namespace learning\Patterns\Proxy\Example1;
 
-class ProxyImage extends Image
+final class ProxyImage extends Image
 {
 
     /**
      * @var string
      */
-    private $fileName;
+    protected $fileName;
 
     /**
      * @var Image
@@ -24,10 +24,10 @@ class ProxyImage extends Image
      * ProxyImage constructor.
      * @param string $fileName
      */
-    public function __construct(string $fileName)
+    /*public function __construct(string $fileName)
     {
         $this->fileName = $fileName;
-    }
+    }*/
 
     /**
      * @return bool|string
