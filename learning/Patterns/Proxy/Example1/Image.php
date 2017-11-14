@@ -30,7 +30,6 @@ class Image
     private function loadImage()
     {
         //image creation imitation
-        sleep(1);
         $this->loadsCount++;
         return "Image {$this->fileName} created";
     }
