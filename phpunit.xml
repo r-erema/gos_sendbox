@@ -1,2 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit></phpunit>
+<phpunit>
+    <testsuites>
+        <testsuite name="Patterns tests">
+            <directory>./learning/Patterns/</directory>
+        </testsuite>
+        <testsuite name="Symfony tests">
+            <directory>./learning/Symfony/</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

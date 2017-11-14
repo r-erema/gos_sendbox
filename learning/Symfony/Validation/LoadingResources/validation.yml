@@ -1,0 +1,9 @@
+learning\Symfony\Validation\LoadingResources\User:
+    properties:
+        name:
+            - NotBlank: ~
+            - Length:
+                min: 5
+                max: 20
+        password:
+            - NotBlank: ~

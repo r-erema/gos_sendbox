@@ -3,9 +3,9 @@ const NGINX = 'nginx';
 const APACHE = 'apache2';
 
 const DOMAIN_POSTFIX = '.ryaroma.web';
-const MAIN_NAME = 'pgdc';
+const MAIN_NAME = 'securenews';
 //const DOCUMENT_ROOT = '/home/gutsout/h/texode';
-const DOCUMENT_ROOT = '/home/gutsout/h/pg-datacenter/public';
+const DOCUMENT_ROOT = '/home/gutsout/h/securenews';
 
 const NGINX_TPL_HTTP_TO_HTTPS =
 'server {
@@ -26,7 +26,7 @@ const NGINX_TPL =
     }
 
     ssl on;
-    ssl_certificate /etc/ssl/cert.pem;
+    ssl_certificate /etc/ssl/cert.crt;
     ssl_certificate_key /etc/ssl/cert.key;
 }' . PHP_EOL . PHP_EOL;
 
@@ -65,12 +65,12 @@ return [
                         'www.texode' . DOMAIN_POSTFIX
                     ]
                 ],*/
-                /*[
+                [
                     'names' => [
                         'securenews' . DOMAIN_POSTFIX,
                         'www.securenews' . DOMAIN_POSTFIX
                     ]
-                ],*/
+                ],
                 /*[
                     'names' => [
                         'profiz' . DOMAIN_POSTFIX,
@@ -95,11 +95,10 @@ return [
                         'www.eco' . DOMAIN_POSTFIX
                     ]
                 ],*/
-                [
+                /*[
                     'names' => [
                         'pgdc' . DOMAIN_POSTFIX
-                    ]
-                ],
+                   ]*/
             ],
             'tpl' => NGINX_TPL,
             'tpl_http_to_https' => NGINX_TPL_HTTP_TO_HTTPS
@@ -111,6 +110,8 @@ return [
                 'names' => [
                     /*'texode' . DOMAIN_POSTFIX,
                     'www.texode' . DOMAIN_POSTFIX,*/
+                    'securenews' . DOMAIN_POSTFIX,
+                    'www.securenews' . DOMAIN_POSTFIX,
                     /*'profiz' . DOMAIN_POSTFIX,
                     'www.profiz' . DOMAIN_POSTFIX,*/
                     /*'zp' . DOMAIN_POSTFIX,
@@ -121,7 +122,7 @@ return [
                     'www.eco' . DOMAIN_POSTFIX,*/
                     //'fgru-new' . DOMAIN_POSTFIX,
                     //'www.fgru-new' . DOMAIN_POSTFIX
-                    'pgdc' . DOMAIN_POSTFIX
+                    //'pgdc' . DOMAIN_POSTFIX
                 ]
             ],
             'tpl' => APACHE_TPL
