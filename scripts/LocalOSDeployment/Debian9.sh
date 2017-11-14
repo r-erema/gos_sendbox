@@ -73,6 +73,9 @@ php -r "if (hash_file('SHA384', 'composer-setup.php') === '544e09ee996cdf60ece38
 php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 php -r "unlink('composer-setup.php');"
 
+#PostgresSQL
+apt-get install postgresql postgresql-client -y;
+
 #Git
 apt-get install git -y;
 
