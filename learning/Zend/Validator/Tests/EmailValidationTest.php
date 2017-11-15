@@ -100,6 +100,7 @@ class EmailValidationTest extends TestCase
     }
 
     public function testCustomValidators() {
+
         $validator = new FloatValidator();
         $this->assertTrue($validator->isValid(3.14));
         $this->assertFalse($validator->isValid(3));
