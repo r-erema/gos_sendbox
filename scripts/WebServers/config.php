@@ -3,9 +3,9 @@ const NGINX = 'nginx';
 const APACHE = 'apache2';
 
 const DOMAIN_POSTFIX = '.ryaroma.web';
-const MAIN_NAME = 'securenews';
+const MAIN_NAME = 'normativka';
 //const DOCUMENT_ROOT = '/home/gutsout/h/texode';
-const DOCUMENT_ROOT = '/home/gutsout/h/securenews';
+const DOCUMENT_ROOT = '/home/gutsout/h/normativka';
 
 const NGINX_TPL_HTTP_TO_HTTPS =
 'server {
@@ -59,18 +59,24 @@ return [
             'name' => NGINX,
             'file_name' => MAIN_NAME,
             'domains' => [
+                [
+                    'names' => [
+                        'normativka' . DOMAIN_POSTFIX,
+                        'www.normativka' . DOMAIN_POSTFIX
+                    ]
+                ],
                 /*[
                     'names' => [
                         'texode' . DOMAIN_POSTFIX,
                         'www.texode' . DOMAIN_POSTFIX
                     ]
                 ],*/
-                [
+                /*[
                     'names' => [
                         'securenews' . DOMAIN_POSTFIX,
                         'www.securenews' . DOMAIN_POSTFIX
                     ]
-                ],
+                ],*/
                 /*[
                     'names' => [
                         'profiz' . DOMAIN_POSTFIX,
@@ -108,10 +114,12 @@ return [
             'file_name' => MAIN_NAME . DOMAIN_POSTFIX . '.conf',
             'domain' => [
                 'names' => [
+                    'normativka' . DOMAIN_POSTFIX,
+                    'www.normativka' . DOMAIN_POSTFIX,
                     /*'texode' . DOMAIN_POSTFIX,
                     'www.texode' . DOMAIN_POSTFIX,*/
-                    'securenews' . DOMAIN_POSTFIX,
-                    'www.securenews' . DOMAIN_POSTFIX,
+                    /*'securenews' . DOMAIN_POSTFIX,
+                    'www.securenews' . DOMAIN_POSTFIX,*/
                     /*'profiz' . DOMAIN_POSTFIX,
                     'www.profiz' . DOMAIN_POSTFIX,*/
                     /*'zp' . DOMAIN_POSTFIX,
@@ -120,8 +128,8 @@ return [
                     'www.peo' . DOMAIN_POSTFIX,
                     'eco' . DOMAIN_POSTFIX,
                     'www.eco' . DOMAIN_POSTFIX,*/
-                    //'fgru-new' . DOMAIN_POSTFIX,
-                    //'www.fgru-new' . DOMAIN_POSTFIX
+                    /*'fgru-new' . DOMAIN_POSTFIX,
+                    'www.fgru-new' . DOMAIN_POSTFIX*/
                     //'pgdc' . DOMAIN_POSTFIX
                 ]
             ],
