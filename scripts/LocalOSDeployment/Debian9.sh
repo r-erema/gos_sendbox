@@ -148,3 +148,14 @@ if [ ${homeEditionFlag} -eq 1 ] ; then
     rm plexmediaserver_1.8.4.4249-3497d6779_amd64.deb;
 
 fi
+
+#Manual configure
+#
+#In Tweak Tool install extension Dash to Dock(https://extensions.gnome.org/extension/307/dash-to-dock/)
+#Set:
+#Appearence->Global Dark Theme: on
+#Extensions:
+#   install extension Dash to Dock https://extensions.gnome.org/extension/307/dash-to-dock, logout then login
+#   Set: Dash to dock: on
+#        Settings:
+#            Position on screen: bottom
