@@ -129,6 +129,7 @@ if [ ${homeEditionFlag} -eq 1 ] ; then
     #In client:
     #
     #Hub settings:
+    #Hub address: dc.flynet.by
     #Encoding: CP1251(Cyrillic)
     #
     #Preferences:
