@@ -146,7 +146,7 @@ if [ ${homeEditionFlag} -eq 1 ] ; then
     apt install linuxdcpp -y;
 
     #Plex media server
-    wget https://downloads.plex.tv/plex-media-server/1.8.4.4249-3497d6779/plexmediaserver_1.8.4.4249-3497d6779_amd64.deb;
+    wget https://downloads.plex.tv/plex-media-server/1.9.7.4460-a39b25852/plexmediaserver_1.9.7.4460-a39b25852_amd64.deb;
     gdebi plexmediaserver_1.8.4.4249-3497d6779_amd64.deb;
     rm plexmediaserver_1.8.4.4249-3497d6779_amd64.deb;
 
