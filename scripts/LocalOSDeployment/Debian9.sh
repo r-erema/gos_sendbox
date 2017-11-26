@@ -56,7 +56,6 @@ rm google-chrome-stable_current_amd64.deb;
 apt-get install nginx -y;
 apt-get install nginx-extras -y;
 
-
 #PHP7.1
 wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg;
 sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list';
@@ -69,6 +68,10 @@ echo 'xdebug.remote_handler="dbgp"' >> /etc/php/7.1/mods-available/xdebug.ini;
 echo 'xdebug.remote_host="localhost"' >> /etc/php/7.1/mods-available/xdebug.ini;
 echo 'xdebug.remote_port=9000' >> /etc/php/7.1/mods-available/xdebug.ini;
 echo 'xdebug.idekey="PHPSTORM"' >> /etc/php/7.1/mods-available/xdebug.ini;
+wget http://ftp.us.debian.org/debian/pool/main/g/glibc/libc-bin_2.24-11+deb9u1_amd64.deb
+gdebi libc-bin_2.24-11+deb9u1_amd64.deb
+apt install php7.1-intl
+rm libc-bin_2.24-11+deb9u1_amd64.deb
 
 #MySql
 apt install mysql-server mysql-client -y;
@@ -80,7 +83,7 @@ apt install phpmyadmin -y;
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 php -r "if (hash_file('SHA384', 'composer-setup.php') === '544e09ee996cdf60ece3804abc52599c22b1f40f4323403c44d44fdfdd586475ca9813a858088ffbc1f233e9b180f061') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
 php composer-setup.php --install-dir=/usr/local/bin --filename=composer
-php -r "unlink('composer-setup.php');"
+php -r "unlink('composer-setup.php');"Dansk
 
 #PostgresSQL
 apt-get install postgresql postgresql-client -y;
@@ -155,7 +158,7 @@ fi
 #Set:
 #Appearence->Global Dark Theme: on
 #Extensions:
-#   install extension Dash to Dock https://extensions.gnome.org/extension/307/dash-to-dock, logout then login
+#   install extension Dash to Dock(https://extensions.gnome.org/extension/307/dash-to-dock), logout then login
 #   Set: Dash to dock: on
 #        Settings:
 #            Position on screen: bottom
