@@ -86,7 +86,7 @@ php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 php -r "unlink('composer-setup.php');"Dansk
 
 #PostgresSQL
-apt-get install postgresql postgresql-client -y;
+apt-get install postgresql postgresql-client postgresql-contrib -y;
 
 #Git
 apt-get install git -y;
