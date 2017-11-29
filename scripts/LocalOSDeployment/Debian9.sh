@@ -88,6 +88,15 @@ php -r "unlink('composer-setup.php');"Dansk
 #PostgresSQL
 apt-get install postgresql postgresql-client postgresql-contrib -y;
 
+#sqlite3
+apt-get install libsqlite3-dev -y;
+
+#gem
+apt-get install gem rubygems -y;
+
+#mailcatcher
+gem install mailcatcher;
+
 #Git
 apt-get install git -y;
 
