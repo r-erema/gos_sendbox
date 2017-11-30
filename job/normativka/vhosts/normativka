@@ -1,0 +1,96 @@
+server {
+    listen 80;
+    server_name
+        normativka.ryaroma.web www.normativka.ryaroma.web
+        buhgalter.ryaroma.web www.buhgalter.ryaroma.web
+        kadrovik.ryaroma.web www.kadrovik.ryaroma.web
+        ekonomist.ryaroma.web www.ekonomist.ryaroma.web
+        jurisconsult.ryaroma.web www.jurisconsult.ryaroma.web;
+
+    return 301 https://$server_name$request_uri;
+}
+
+server {
+    listen 443;
+    server_name normativka.ryaroma.web www.normativka.ryaroma.web;
+    access_log  /var/log/nginx/normativka/access.log;
+    error_log  /var/log/nginx/normativka/access.log;
+
+    include /home/gutsout/h/normativka/serv-conf/application.nginx.conf;
+
+    #location / {
+    #    proxy_pass http://normativka.ryaroma.web:8080;
+    #}
+
+    ssl on;
+    ssl_certificate /etc/ssl/cert.crt;
+    ssl_certificate_key /etc/ssl/cert.key;
+}
+
+server {
+    listen 443;
+    server_name buhgalter.ryaroma.web www.buhgalter.ryaroma.web;
+    access_log  /var/log/nginx/normativka/access.log;
+    error_log  /var/log/nginx/normativka/access.log;
+
+    include /home/gutsout/h/normativka/serv-conf/application.nginx.conf;
+
+    #location / {
+    #    proxy_pass http://normativka.ryaroma.web:8080;
+    #}
+
+    ssl on;
+    ssl_certificate /etc/ssl/cert.crt;
+    ssl_certificate_key /etc/ssl/cert.key;
+}
+
+server {
+    listen 443;
+    server_name kadrovik.ryaroma.web www.kadrovik.ryaroma.web;
+    access_log  /var/log/nginx/normativka/access.log;
+    error_log  /var/log/nginx/normativka/access.log;
+
+    include /home/gutsout/h/normativka/serv-conf/application.nginx.conf;
+
+    #location / {
+    #    proxy_pass http://normativka.ryaroma.web:8080;
+    #}
+
+    ssl on;
+    ssl_certificate /etc/ssl/cert.crt;
+    ssl_certificate_key /etc/ssl/cert.key;
+}
+
+server {
+    listen 443;
+    server_name ekonomist.ryaroma.web www.ekonomist.ryaroma.web;
+    access_log  /var/log/nginx/normativka/access.log;
+    error_log  /var/log/nginx/normativka/access.log;
+
+    include /home/gutsout/h/normativka/serv-conf/application.nginx.conf;
+
+    #location / {
+    #    proxy_pass http://normativka.ryaroma.web:8080;
+    #}
+
+    ssl on;
+    ssl_certificate /etc/ssl/cert.crt;
+    ssl_certificate_key /etc/ssl/cert.key;
+}
+
+server {
+    listen 443;
+    server_name jurisconsult.ryaroma.web www.jurisconsult.ryaroma.web;
+    access_log  /var/log/nginx/normativka/access.log;
+    error_log  /var/log/nginx/normativka/access.log;
+
+    include /home/gutsout/h/normativka/serv-conf/application.nginx.conf;
+
+    #location / {
+    #    proxy_pass http://normativka.ryaroma.web:8080;
+    #}
+
+    ssl on;
+    ssl_certificate /etc/ssl/cert.crt;
+    ssl_certificate_key /etc/ssl/cert.key;
+}
