@@ -6,7 +6,7 @@
 
 $config = [
     'server_name' => 'mailingmaker.ryaroma.web',
-    //'root_path' => '/home/gutsout/h/gos_sendbox',
+    ///'root_path' => '/home/gutsout/h/gos_sendbox',
     //'root_path' => '/home/gutsout/h/gos_sendbox',
     'root_path' => '/home/gutsout/h/pg-mailing-maker',
     'php-fpm-name' => 'php7.1-fpm'
