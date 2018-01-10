@@ -27,7 +27,7 @@ class ServiceLocator
      * @param $service
      * @param bool $share
      */
-    public function addInstance(string $class, $service,  bool $share = true)
+    public function addInstance(string $class, $service, bool $share = true)
     {
         $this->services[$class] = $service;
         $this->instantiated[$class] = $service;
