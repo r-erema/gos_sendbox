@@ -1,4 +1,4 @@
-#DependencyInjection
+#Dependency Injection
 
 Source:  
 http://designpatternsphp.readthedocs.io/ru/latest/Structural/DependencyInjection/README.html?highlight=Dependency%20Injection
