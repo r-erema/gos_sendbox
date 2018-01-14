@@ -6,7 +6,10 @@
         "symfony/validator": "^3.3",
         "zendframework/zend-validator": "^2.10",
         "zendframework/zend-i18n": "^2.7",
-        "zendframework/zend-filter": "^2.7"
+        "zendframework/zend-filter": "^2.7",
+        "zendframework/zend-servicemanager": "^3.3",
+        "zendframework/zend-eventmanager": "^3.2",
+        "ocramius/proxy-manager": "^2.1"
     },
     "autoload": {
         "psr-0": {"":""}
