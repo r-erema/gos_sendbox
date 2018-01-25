@@ -1,5 +1,8 @@
 <?php
 
+
+namespace learning\Patterns\Observer\Example1\Tests;
+
 use PHPUnit\Framework\TestCase;
 
 class ObserverTest extends TestCase
