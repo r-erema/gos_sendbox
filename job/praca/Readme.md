@@ -19,6 +19,15 @@ Cache-Control: no-cache
 XDEBUG_SESSION: PHPSTORM  
 Content-Type: application/json  
 Keep-Alive: timeout=120000  
-Authorization: token 56UFKHfVz1ADRAuWpcexNEzLYZIXF9UWJUXPxVSEPgWRgeaBZ06d2vRFyaXppQ00
+Authorization: token 0l10gZKkiexZy3PHs4vr1mKCE1q5Q9O3BCxWw0BelkE36FOAQ6y5gaztdK09Yw00 (токен берется из базы: praca-test-api.user_tokens.token, если токена для конкретного юзера нет, то надо авторизоваться на портале)  
 **Text**  
-`{"jsonrpc":"2.0","method":"applicant.createContacts","params":[[{"__type":"Praca.Api.Layer0.Objects.Applicant.Contact","type":"email","identifier":"#*st@example.com","isPublic":true,"applicant":{"__type":"Praca.Api.Layer0.Objects.Applicant.Applicant","id":1194}}]],"id":33}`
+>1. Редактирование вакансии:  
+`
+{"jsonrpc":"2.0","method":"employer.updateVacancy","params":[{
+      "__type" : "Praca.Api.Layer0.Objects.Employer.Vacancy",
+      "type" : "standardDisposable",
+      "id" : 777
+ }]}
+ `
+
+
