@@ -45,9 +45,9 @@ $htaccessTxt = str_replace(
 file_put_contents("{$config['absolute_root_path']}/.htaccess", $htaccessTxt);
 
 
-/*echo "4.{$config['absolute_root_path']}/core/cache updating..." . PHP_EOL;
+echo "4.{$config['absolute_root_path']}/core/cache updating..." . PHP_EOL;
 `rm -rf {$config['absolute_root_path']}/core/cache/*`;
-`chown www-data:www-data {$config['absolute_root_path']}/core/cache`;*/
+`chown www-data:www-data {$config['absolute_root_path']}/core/cache`;
 
 echo '5.DB config updating...' . PHP_EOL;
 /** @var PDO $db */
