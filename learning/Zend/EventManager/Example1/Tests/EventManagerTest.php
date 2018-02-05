@@ -2,36 +2,28 @@
 namespace learning\Zend\EventManager\Example1\Tests;
 
 use PHPUnit\Framework\TestCase,
-    Zend\Log\Logger,
     learning\Zend\EventManager\Example1\ExperimentalClass,
     Zend\EventManager\Event,
     Zend\EventManager\EventManager,
-    Zend\EventManager\SharedEventManager;
+    Zend\EventManager\SharedEventManager,
+    learning\Zend\EventManager\Helpers\Logger;
 
 class EventManagerTest extends TestCase
 {
 
-    /**
-     * @var string
-     */
-    private $logFile;
+    use Logger;
 
     /**
-     * @var Logger
+     * @throws \ReflectionException
      */
-    private $logger;
-
     public function setUp()
     {
-        $this->logFile =  __DIR__ . '/test.log';
-        $logger = new Logger();
-        $logger->addWriter('stream', null, ['stream' => $this->logFile]);
-        $this->logger =  $logger;
+        $this->initLogger();
     }
 
     public function tearDown()
     {
-        unlink($this->logFile);
+        unlink($this->logFilePath);
     }
 
     public function testEventManager()
@@ -50,7 +42,7 @@ class EventManagerTest extends TestCase
             ));
         });
         $experimentalClass->experimentalMethod('param1', 'param2');
-        $logContent = file_get_contents($this->logFile);
+        $logContent = $this->readLog();
         $this->assertContains(
             'experimentalMethod called on learning\Zend\EventManager\Example1\ExperimentalClass, using params {"arg1":"param1","arg2":"param2"}',
             $logContent
@@ -75,7 +67,7 @@ class EventManagerTest extends TestCase
         $experimentalClass = new ExperimentalClass();
         $experimentalClass->setEventManager(new EventManager($sharedManager));
         $experimentalClass->experimentalMethod('param1', 'param2');
-        $logContent = file_get_contents($this->logFile);
+        $logContent = $this->readLog();;
         $this->assertContains(
             'experimentalMethod called on learning\Zend\EventManager\Example1\ExperimentalClass, using params {"arg1":"param1","arg2":"param2"}',
             $logContent
@@ -85,8 +77,6 @@ class EventManagerTest extends TestCase
     public function testEventManager2()
     {
         $events = new EventManager();
-        $logger = new Logger();
-        $logger->addWriter('stream', null, ['stream' => $this->logFile]);
         $events->attach('do', function (Event $e) {
             $eventName = $e->getName();
             $target = get_class($e->getTarget());
@@ -99,7 +89,7 @@ class EventManagerTest extends TestCase
             ));
         });
         $events->trigger('do', null, ['param1' => 'param1Value', 'param2' => 'param2Value']);
-        $logContent = file_get_contents($this->logFile);
+        $logContent = $this->readLog();
         $this->assertContains(
             'do called on learning\Zend\EventManager\Example1\Tests\EventManagerTest, using params {"param1":"param1Value","param2":"param2Value"}',
             $logContent
