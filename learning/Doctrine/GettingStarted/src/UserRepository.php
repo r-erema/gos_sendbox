@@ -1,6 +1,6 @@
 <?php
 
-namespace learning\Doctrine\src;
+namespace learning\Doctrine\GettingStarted\src;
 
 use Doctrine\ORM\EntityRepository;
 

@@ -6,7 +6,7 @@
  * Time: 11.43
  */
 
-namespace learning\Doctrine\src;
+namespace learning\Doctrine\GettingStarted\src;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping\Column;
@@ -17,7 +17,7 @@ use Doctrine\ORM\Mapping\ManyToOne;
 
 /**
  * Class Bug
- * @package learning\Doctrine\src
+ * @package learning\Doctrine\GettingStarted\src
  * @Entity(repositoryClass="BugRepository") @Table(name="bugs")
  */
 class Bug {

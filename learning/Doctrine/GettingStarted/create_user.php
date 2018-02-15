@@ -10,7 +10,7 @@ require_once 'bootstrap.php';
 
 $newUsername = $argv[1];
 
-$user = new \learning\Doctrine\src\User();
+$user = new \learning\Doctrine\GettingStarted\src\User();
 $user->setName($newUsername);
 
 $entityManager->persist($user);

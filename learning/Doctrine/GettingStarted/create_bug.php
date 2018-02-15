@@ -13,21 +13,21 @@ $engineerId = $argv[2];
 $productIds = explode(', ', $argv[3]);
 
 
-$reporter = $entityManager->find('learning\Doctrine\src\User', $reportedId); /** @var \learning\Doctrine\src\User $reporter */
-$engineer = $entityManager->find('learning\Doctrine\src\User', $engineerId); /** @var \learning\Doctrine\src\User $engineer */
+$reporter = $entityManager->find('learning\Doctrine\GettingStarted\src\User', $reportedId); /** @var \learning\Doctrine\GettingStarted\src\User $reporter */
+$engineer = $entityManager->find('learning\Doctrine\GettingStarted\src\User', $engineerId); /** @var \learning\Doctrine\GettingStarted\src\User $engineer */
 
 if (!$reporter || !$engineer) {
     echo 'No reporter and/or engineer found for the given id(s)' . PHP_EOL;
     exit(1);
 }
 
-$bug = new \learning\Doctrine\src\Bug();
+$bug = new \learning\Doctrine\GettingStarted\src\Bug();
 $bug->setDescription("Something does not work!");
 $bug->setCreated(new DateTime());
 $bug->setStatus('OPEN');
 
 foreach ($productIds as $productId) {
-    $product = $entityManager->find('learning\Doctrine\src\Product', $productId); /** @var \learning\Doctrine\src\Product $product */
+    $product = $entityManager->find('learning\Doctrine\GettingStarted\src\Product', $productId); /** @var \learning\Doctrine\GettingStarted\src\Product $product */
     $bug->assignToProduct($product);
 }
 

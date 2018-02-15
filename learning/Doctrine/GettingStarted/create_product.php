@@ -10,7 +10,7 @@ require_once 'bootstrap.php';
 
 $newProductName = $argv[1];
 
-$product = new \learning\Doctrine\src\Product();
+$product = new \learning\Doctrine\GettingStarted\src\Product();
 $product->setName($newProductName);
 
 $entityManager->persist($product);

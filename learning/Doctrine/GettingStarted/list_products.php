@@ -8,9 +8,9 @@
 
 require_once 'bootstrap.php';
 
-$productRepository = $entityManager->getRepository('learning\Doctrine\src\Product');
+$productRepository = $entityManager->getRepository('learning\Doctrine\GettingStarted\src\Product');
 $products = $productRepository->findAll();
 
-foreach ($products as $product) { /** @var \learning\Doctrine\src\Product $product */
+foreach ($products as $product) { /** @var \learning\Doctrine\GettingStarted\src\Product $product */
     echo sprintf('-%s' . PHP_EOL, $product->getName());
 }

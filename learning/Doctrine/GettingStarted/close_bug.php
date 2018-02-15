@@ -10,7 +10,7 @@ require_once 'bootstrap.php';
 
 $theBugId = $argv[1];
 
-$bug = $entityManager->find('learning\Doctrine\src\Bug', (int)$theBugId);
+$bug = $entityManager->find('learning\Doctrine\GettingStarted\src\Bug', (int)$theBugId);
 $bug->close();
 
 $entityManager->flush();

@@ -6,7 +6,7 @@
  * Time: 11.23
  */
 
-namespace learning\Doctrine\src;
+namespace learning\Doctrine\GettingStarted\src;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\Id;

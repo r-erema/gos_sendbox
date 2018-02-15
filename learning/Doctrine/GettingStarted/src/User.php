@@ -6,7 +6,7 @@
  * Time: 11.48
  */
 
-namespace learning\Doctrine\src;
+namespace learning\Doctrine\GettingStarted\src;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -17,7 +17,7 @@ use Doctrine\ORM\Mapping\OneToMany;
 
 /**
  * Class User
- * @package learning\Doctrine\src
+ * @package learning\Doctrine\GettingStarted\src
  * @Entity(repositoryClass="UserRepository") @Table(name="users")
  */
 class User {

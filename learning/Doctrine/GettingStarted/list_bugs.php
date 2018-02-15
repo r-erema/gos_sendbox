@@ -8,17 +8,17 @@
 
 require_once 'bootstrap.php';
 
-$dql = 'SELECT b, e, r, p FROM learning\Doctrine\src\Bug b JOIN b.engineer e JOIN b.reporter r JOIN b.products p ORDER BY b.created DESC';
+$dql = 'SELECT b, e, r, p FROM learning\Doctrine\GettingStarted\src\Bug b JOIN b.engineer e JOIN b.reporter r JOIN b.products p ORDER BY b.created DESC';
 
 $query = $entityManager->createQuery($dql);
 $query->setMaxResults(30);
 $bugs = $query->getResult();
 
-foreach ($bugs as $bug) {/** @var \learning\Doctrine\src\Bug $bug */
+foreach ($bugs as $bug) {/** @var \learning\Doctrine\GettingStarted\src\Bug $bug */
     echo "{$bug->getDescription()} - {$bug->getCreated()->format('d.m.Y')}" . PHP_EOL;
     echo "Reported by: {$bug->getReporter()->getName()}" . PHP_EOL;
     echo "Assigned by: {$bug->getEngineer()->getName()}" . PHP_EOL;
-    foreach ($bug->getProducts() as $product) {/** @var \learning\Doctrine\src\Product $product */
+    foreach ($bug->getProducts() as $product) {/** @var \learning\Doctrine\GettingStarted\src\Product $product */
         echo "Platform: {$product->getName()}" . PHP_EOL;
     }
     echo PHP_EOL;

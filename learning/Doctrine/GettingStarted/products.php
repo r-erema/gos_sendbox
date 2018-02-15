@@ -8,7 +8,7 @@
 
 require_once 'bootstrap.php';
 
-$dql = "SELECT p.id, p.name, count(b.id) AS openBugs FROM learning\Doctrine\src\Bug b ".
+$dql = "SELECT p.id, p.name, count(b.id) AS openBugs FROM learning\Doctrine\GettingStarted\src\Bug b ".
        "JOIN b.products p WHERE b.status = 'OPEN' GROUP BY p.id";
 $productBugs = $entityManager->createQuery($dql)->getScalarResult();
 

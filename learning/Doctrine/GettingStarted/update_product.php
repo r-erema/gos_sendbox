@@ -11,7 +11,7 @@ require_once 'bootstrap.php';
 $id = $argv[1];
 $newName = $argv[2];
 
-$product = $entityManager->find('\learning\Doctrine\src\Product', $id); /** @var \learning\Doctrine\src\Product $product */
+$product = $entityManager->find('\learning\Doctrine\GettingStarted\src\Product', $id); /** @var \learning\Doctrine\GettingStarted\src\Product $product */
 
 if ($product === null) {
     echo "Product {$id} does not exist" . PHP_EOL;
