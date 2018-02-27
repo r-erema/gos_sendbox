@@ -5,14 +5,15 @@
  */
 
 $config = [
-    'server_name' => 'mailingmaker.ryaroma.web',
+    'server_name' => 'padelzoom.ryaroma.web',
     ///'root_path' => '/home/gutsout/h/gos_sendbox',
     //'root_path' => '/home/gutsout/h/gos_sendbox',
-    'root_path' => '/home/gutsout/h/pg-mailing-maker',
+    //'root_path' => '/home/gutsout/h/pg-mailing-maker',
+    'root_path' => '/home/gutsout/h/padelzoom.es',
     'php-fpm-name' => 'php7.1-fpm'
 ];
 
-$nginxFileName = $config['server_name'];
+$nginxFileName = "{$config['server_name']}.conf";
 
 $configText = "
 server {
@@ -20,8 +21,8 @@ server {
     server_name {$config['server_name']};
     root {$config['root_path']};
 
-    access_log /var/log/nginx/{$nginxFileName}/access.log;
-    error_log /var/log/nginx/{$nginxFileName}/error.log;
+    access_log /var/log/nginx/{$config['server_name']}/access.log;
+    error_log /var/log/nginx/{$config['server_name']}/error.log;
 
     location / {
         index index.php index.html index.htm;

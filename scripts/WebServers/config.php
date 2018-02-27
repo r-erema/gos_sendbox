@@ -3,9 +3,9 @@ const NGINX = 'nginx';
 const APACHE = 'apache2';
 
 const DOMAIN_POSTFIX = '.ryaroma.web';
-const MAIN_NAME = 'normativka';
+const MAIN_NAME = 'padelzoom';
 //const DOCUMENT_ROOT = '/home/gutsout/h/texode';
-const DOCUMENT_ROOT = '/home/gutsout/h/normativka';
+const DOCUMENT_ROOT = '/home/gutsout/h/padelzoom.es';
 
 const NGINX_TPL_HTTP_TO_HTTPS =
 'server {
@@ -57,14 +57,20 @@ return [
     'servers' => [
         [
             'name' => NGINX,
-            'file_name' => MAIN_NAME,
+            'file_name' => MAIN_NAME . DOMAIN_POSTFIX . '.conf',
             'domains' => [
                 [
+                    'names' => [
+                        'padelzoom' . DOMAIN_POSTFIX,
+                        'www.padelzoom' . DOMAIN_POSTFIX
+                    ]
+                ],
+                /*[
                     'names' => [
                         'normativka' . DOMAIN_POSTFIX,
                         'www.normativka' . DOMAIN_POSTFIX
                     ]
-                ],
+                ],*/
                 /*[
                     'names' => [
                         'texode' . DOMAIN_POSTFIX,
@@ -114,8 +120,10 @@ return [
             'file_name' => MAIN_NAME . DOMAIN_POSTFIX . '.conf',
             'domain' => [
                 'names' => [
-                    'normativka' . DOMAIN_POSTFIX,
-                    'www.normativka' . DOMAIN_POSTFIX,
+                    'padelzoom' . DOMAIN_POSTFIX,
+                    'www.padelzoom' . DOMAIN_POSTFIX,
+                    /*'normativka' . DOMAIN_POSTFIX,
+                    'www.normativka' . DOMAIN_POSTFIX,*/
                     /*'texode' . DOMAIN_POSTFIX,
                     'www.texode' . DOMAIN_POSTFIX,*/
                     /*'securenews' . DOMAIN_POSTFIX,
