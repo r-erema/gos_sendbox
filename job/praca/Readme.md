@@ -30,4 +30,5 @@ Authorization: token 0l10gZKkiexZy3PHs4vr1mKCE1q5Q9O3BCxWw0BelkE36FOAQ6y5gaztdK0
  }]}
  `
 
-
+##Production deploy
+`cd /h/pracaby/praca-deployer/ && php deployer.phar deploy production -vv`
