@@ -37,10 +37,10 @@
 
 	$queueOptions = array(
 		'enabled' => true,
-		'broker_host' => 'localhost',
+		'broker_host' => '127.0.0.1',
 		'vhost' => 'praca',
-		'login' => 'praca',
-		'password' => 'praca',
+		'login' => 'guest',
+		'password' => 'guest',
 	);
 
 	$fileServerClient = array(

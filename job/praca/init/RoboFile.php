@@ -18,6 +18,7 @@ class RoboFile extends Tasks
 		$this->initNginxConfigs();
 		$this->initPhpConfigs();
 		$this->initSphinxConf();
+		$this->initSupervisor();
 	}
 
 	public function initNginxConfigs()
@@ -48,7 +49,14 @@ class RoboFile extends Tasks
 	public function initSphinxConf()
 	{
 		$this->_copy(__DIR__ . '/sphinx.conf', '/etc/sphinxsearch/sphinx.conf');
-		$this->_exec("searchd -c '/etc/sphinxsearch/sphinx.conf'");
+		//$this->_exec("searchd -c '/etc/sphinxsearch/sphinx.conf'");
+	}
+
+	public function initSupervisor()
+	{
+		$this->_copy(__DIR__ . '/supervisor.conf', '/etc/supervisor/conf.d/pracaby.conf');
+		$this->_exec('rabbitmqctl add_vhost praca');
+		$this->_exec('rabbitmqctl set_permissions -p praca guest ".*" ".*" ".*"');
 	}
 
 }
