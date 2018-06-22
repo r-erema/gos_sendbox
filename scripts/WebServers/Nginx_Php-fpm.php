@@ -5,11 +5,11 @@
  */
 
 $config = [
-    'server_name' => 'market-music.com.ru.web',
-    ///'root_path' => '/home/gutsout/h/gos_sendbox',
-    //'root_path' => '/home/gutsout/h/gos_sendbox',
+    //'server_name' => 'market-music.com.ru.web',
+    'server_name' => 'gos_sendbox.web',
+    'root_path' => '/home/gutsout/h/gos_sendbox',
     //'root_path' => '/home/gutsout/h/pg-mailing-maker',
-    'root_path' => '/home/gutsout/h/market-music.com.ru',
+    //'root_path' => '/home/gutsout/h/market-music.com.ru',
     'php-fpm-name' => 'php7.1-fpm'
 ];
 
@@ -21,8 +21,13 @@ server {
     server_name {$config['server_name']};
     root {$config['root_path']};
 
+    listen 443 ssl;
+
     access_log /var/log/nginx/{$config['server_name']}/access.log;
     error_log /var/log/nginx/{$config['server_name']}/error.log;
+
+    ssl_certificate /etc/ssl/cert.crt;
+    ssl_certificate_key /etc/ssl/cert.key;
 
     location / {
         index index.php index.html index.htm;
