@@ -5,11 +5,11 @@
  */
 
 $config = [
-    'server_name' => 'padelzoom.ryaroma.web',
+    'server_name' => 'market-music.com.ru.web',
     ///'root_path' => '/home/gutsout/h/gos_sendbox',
     //'root_path' => '/home/gutsout/h/gos_sendbox',
     //'root_path' => '/home/gutsout/h/pg-mailing-maker',
-    'root_path' => '/home/gutsout/h/padelzoom.es',
+    'root_path' => '/home/gutsout/h/market-music.com.ru',
     'php-fpm-name' => 'php7.1-fpm'
 ];
 
@@ -38,34 +38,18 @@ server {
         #add_header Debug-header \\\$document_root\\\$fastcgi_script_name always;
     }
 
-    location /phpmyadmin {
-           root /usr/share/;
-           index index.php index.html index.htm;
-           location ~ ^/phpmyadmin/(.+\.php)$ {
-                   try_files \\\$uri =404;
-                   root /usr/share/;
-                   fastcgi_pass unix:/run/php/php7.1-fpm.sock;
-                   fastcgi_index index.php;
-                   fastcgi_param SCRIPT_FILENAME \\\$document_root\\\$fastcgi_script_name;
-                   include /etc/nginx/fastcgi_params;
-           }
-           location ~* ^/phpmyadmin/(.+\.(jpg|jpeg|gif|css|png|js|ico|html|xml|txt))$ {
-                   root /usr/share/;
-           }
-    }
-
 }";
 
 
 //Удаляем старое...
 `rm /etc/nginx/sites-enabled/{$nginxFileName} /etc/nginx/sites-available/{$nginxFileName}`;
-`rm -rf /var/log/nginx/{$nginxFileName}`;
+`rm -rf /var/log/nginx/{$config['server_name']}`;
 
 //Создаём новое
 //nginx
 `touch /etc/nginx/sites-available/{$nginxFileName}`;
 `ln -s /etc/nginx/sites-available/{$nginxFileName} /etc/nginx/sites-enabled/{$nginxFileName}`;
 `echo "{$configText}" >> /etc/nginx/sites-available/{$nginxFileName}`;
-`mkdir /var/log/nginx/{$nginxFileName}`;
-`/etc/init.d/{$config['php-fpm-name']} reload`;
-`/etc/init.d/nginx reload`;
+`mkdir /var/log/nginx/{$config['server_name']}`;
+`/etc/init.d/{$config['php-fpm-name']} restart`;
+`/etc/init.d/nginx restart`;
