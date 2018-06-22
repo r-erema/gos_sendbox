@@ -1,0 +1,1 @@
+`vendor/bin/robo init:praca --load-from /home/gutsout/h/gos_sendbox/job/praca/init`
