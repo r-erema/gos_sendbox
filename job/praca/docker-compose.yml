@@ -1,0 +1,171 @@
+version: '3'
+
+services:
+
+    ### Mongo ##################################
+
+    mongo:
+        image: mongo:3.4
+        environment:
+            MONGO_INITDB_DATABASE: praca
+        volumes:
+            - ./server/data/mongo:/data/db
+
+    ### Sphinx ##################################
+
+    sphinx:
+        build: ./server/docker/sphinx
+        image: praca_sphinx
+        volumes:
+            - ./server/docker/sphinx/sphinx.conf:/etc/sphinxsearch/sphinx.conf
+            - ./server/data/sphinx:/var/sphinx/data
+            - ./backend/data/wordforms.txt:/var/sphinx/wordforms.txt
+
+    ### Mysql ###############################
+
+    mysql_portal:
+        image: mysql:5.7
+        volumes:
+            - ./server/data/mysql_portal:/var/lib/mysql
+        environment:
+            - MYSQL_ROOT_PASSWORD=111
+            - MYSQL_DATABASE=praca_portal
+        ports:
+            - 3307:3306
+
+    ### Mysql ###############################
+
+    mysql:
+        image: mysql:5.7
+        volumes:
+            - ./server/data/mysql:/var/lib/mysql
+        environment:
+            - MYSQL_ROOT_PASSWORD=111
+            - MYSQL_DATABASE=praca-test-api
+        ports:
+            - 3306:3306
+
+    ### Nginx api ###############################
+
+    nginx_web:
+        build: ./server/docker/nginx
+        image: praca_nginx_api
+        volumes:
+            - ./server/docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+            - ./server/docker/nginx/dev_web_nginx.conf:/etc/nginx/conf.d/nginx.conf
+            - ./:/var/www/html
+        environment:
+            - VIRTUAL_HOST=praca.ryaroma.web
+
+    ### Nginx json rpc ###############################
+
+    nginx_json_rpc:
+        build: ./server/docker/nginx
+        image: praca_nginx_json_rpc
+        volumes:
+            - ./server/docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+            - ./server/docker/nginx/dev_json_rpc_nginx.conf:/etc/nginx/conf.d/nginx.conf
+            - ./:/var/www/html
+        environment:
+            - VIRTUAL_HOST=api.praca.ryaroma.web
+
+    ### Nginx proxy #############################
+
+    nginx_proxy:
+        build: ./server/docker/nginx-proxy
+        image: praca_nginx_proxy
+        ports:
+            - 80:80
+            - 443:443
+        volumes:
+            - /var/run/docker.sock:/tmp/docker.sock:ro
+            #rmq
+            - ./server/docker/nginx-proxy/cert/host.crt:/etc/nginx/certs/rmq.praca.ryaroma.web.www.crt
+            - ./server/docker/nginx-proxy/cert/host.key:/etc/nginx/certs/rmq.praca.ryaroma.web.www.key
+            - ./server/docker/nginx-proxy/cert/host.crt:/etc/nginx/certs/rmq.praca.ryaroma.web.crt
+            - ./server/docker/nginx-proxy/cert/host.key:/etc/nginx/certs/rmq.praca.ryaroma.web.key
+            #web
+            - ./server/docker/nginx-proxy/cert/host.crt:/etc/nginx/certs/praca.ryaroma.web.www.crt
+            - ./server/docker/nginx-proxy/cert/host.key:/etc/nginx/certs/praca.ryaroma.web.www.key
+            - ./server/docker/nginx-proxy/cert/host.crt:/etc/nginx/certs/praca.ryaroma.web.crt
+            - ./server/docker/nginx-proxy/cert/host.key:/etc/nginx/certs/praca.ryaroma.web.key
+            #json-rpc
+            - ./server/docker/nginx-proxy/cert/host.crt:/etc/nginx/certs/api.praca.ryaroma.web.www.crt
+            - ./server/docker/nginx-proxy/cert/host.key:/etc/nginx/certs/api.praca.ryaroma.web.www.key
+            - ./server/docker/nginx-proxy/cert/host.crt:/etc/nginx/certs/api.praca.ryaroma.web.crt
+            - ./server/docker/nginx-proxy/cert/host.key:/etc/nginx/certs/api.praca.ryaroma.web.key
+
+    ### PHP #####################################
+
+    php:
+        build:
+            context: ./server/docker/php7-fpm
+            args:
+                - INSTALL_XDEBUG=true
+        image: praca_php
+        volumes:
+            - ./server/docker/php7-fpm/dev_php.ini:/usr/local/etc/php/php.ini
+            - ./server/docker/php7-fpm/php.pool.conf:/usr/local/etc/php-fpm.d/php.pool.conf
+            - ./:/var/www/html
+        environment:
+            - APPLICATION_ENV=development
+            - PHP_IDE_CONFIG=serverName=Praca_Docker_Local
+            - XDEBUG_CONFIG=remote_host=192.168.7.255 idekey=PHPSTORM remote_port=9005 remote_enable=1
+
+    ### Rabbitmq ################################
+
+    rabbitmq:
+        image: rabbitmq:3-management
+        environment:
+            - RABBITMQ_DEFAULT_USER=praca
+            - RABBITMQ_DEFAULT_PASS=111
+            - RABBITMQ_DEFAULT_VHOST=praca
+            - VIRTUAL_HOST=rmq.praca.ryaroma.web
+            - VIRTUAL_PORT=15672
+
+    ### Cron ####################################
+
+    cron:
+        build: ./server/docker/cron
+        image: praca_cron
+        depends_on:
+            - php
+        volumes:
+            - ./server/docker/cron/cron_jobs:/etc/cron.d/cron_jobs
+            - ./server/docker/php7-fpm/dev_php.ini:/usr/local/etc/php/php.ini
+            - ./:/var/www/html
+        environment:
+            - LOCK_FILES_LOCATION=/var/www/html/var/locks/*
+            - APPLICATION_ENV=development
+
+    ### App workspace ###########################
+
+    app:
+        build: ./server/docker/app
+        image: praca_app
+        depends_on:
+            - php
+        environment:
+            - APPLICATION_ENV=development
+            - PHP_IDE_CONFIG=serverName=Praca_Docker_Local
+            - XDEBUG_CONFIG=remote_host=192.168.2.162 idekey=PHPSTORM remote_port=9005 remote_enable=1
+        volumes:
+            - ./server/docker/php7-fpm/dev_php.ini:/usr/local/etc/php/php.ini
+            - /home/erema/.ssh/id_rsa.pub:/home/app/.ssh/id_rsa.pub
+            - /home/erema/.ssh/id_rsa:/home/app/.ssh/id_rsa
+            - ./:/var/www/html
+        tty: true
+
+    ### Supervisor ##############################
+
+    supervisor:
+        build: ./server/docker/supervisor
+        image: praca_supervisor
+        depends_on:
+            - php
+        volumes:
+            - ./server/docker/supervisor/supervisord.conf:/etc/supervisord/supervisord.conf
+            - ./server/docker/php7-fpm/dev_php.ini:/usr/local/etc/php/php.ini
+            - ./:/var/www/html
+
+
