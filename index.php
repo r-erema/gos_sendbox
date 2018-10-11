@@ -10,3 +10,4 @@
 	<?php if (function_exists('apache_get_version')): ?><li><?php echo 'Apache '. apache_get_version(); ?></li><?php endif; ?>
 </ul>
 <?php /* test update */ ?>
+<?php /* other update */ ?>
