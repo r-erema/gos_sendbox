@@ -56,4 +56,5 @@ APPLICATION_ENV=development php vendor/pgby/query-correction/dictionaries/insert
 Set creation_time of proposal to NOW() - 30 days
 `APPLICATION_ENV=development php backend/cli/cli-no-auth.php praca-api:expire-proposals`
 
-
+##Spinx client
+mysql -h 127.0.0.1 -P9306
