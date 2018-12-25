@@ -1,5 +1,7 @@
 <?php
 
+namespace learning\Patterns\Proxy\Example1\Tests;
+
 class ProxyTest extends \PHPUnit\Framework\TestCase
 {
 

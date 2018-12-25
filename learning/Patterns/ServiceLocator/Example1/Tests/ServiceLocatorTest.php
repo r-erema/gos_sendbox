@@ -1,9 +1,7 @@
 <?php
 
-namespace learning\Patterns\DependencyInjection\Example1\Tests;
+namespace learning\Patterns\ServiceLocator\Example1\Tests;
 
-use learning\Patterns\DependencyInjection\Example1\DatabaseConfiguration;
-use learning\Patterns\DependencyInjection\Example1\DatabaseConnection;
 use learning\Patterns\ServiceLocator\Example1\LogService;
 use learning\Patterns\ServiceLocator\Example1\ServiceLocator;
 use PHPUnit\Framework\TestCase;

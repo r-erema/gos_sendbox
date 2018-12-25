@@ -1,6 +1,6 @@
 <?php
 
-namespace Patterns\UnitOfWork\Example1\Tests;
+namespace learning\Patterns\UnitOfWork\Example1\Tests;
 use learning\Patterns\UnitOfWork\Example1\Customer;
 use learning\Patterns\UnitOfWork\Example1\CustomerMapper;
 use learning\Patterns\UnitOfWork\Example1\DataAccessObject;

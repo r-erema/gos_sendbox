@@ -1,13 +1,13 @@
 <?php
 
-namespace learning\Patterns\DependencyInjection\Example2\Tests;
+namespace learning\Patterns\ServiceLocator\Example2\Tests;
 
 use learning\Patterns\ServiceLocator\Example2\FileStorage;
 use learning\Patterns\ServiceLocator\Example2\Serializer;
 use learning\Patterns\ServiceLocator\Example2\ServiceLocator;
 use PHPUnit\Framework\TestCase;
 
-class Test extends TestCase
+class ServiceLocatorTest extends TestCase
 {
 
     /**
