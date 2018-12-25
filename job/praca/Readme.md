@@ -19,7 +19,7 @@ Cache-Control: no-cache
 XDEBUG_SESSION: PHPSTORM  
 Content-Type: application/json  
 Keep-Alive: timeout=120000  
-Authorization: token 0l10gZKkiexZy3PHs4vr1mKCE1q5Q9O3BCxWw0BelkE36FOAQ6y5gaztdK09Yw00 (токен берется из базы: praca-test-api.user_tokens.token, если токена для конкретного юзера нет, то надо авторизоваться на портале)  
+Authorization: Token 0l10gZKkiexZy3PHs4vr1mKCE1q5Q9O3BCxWw0BelkE36FOAQ6y5gaztdK09Yw00 (токен берется из базы: praca-test-api.user_tokens.token, если токена для конкретного юзера нет, то надо авторизоваться на портале)  
 **Text**  
 >1. Редактирование вакансии:  
 `
@@ -48,3 +48,13 @@ Authorization: token 0l10gZKkiexZy3PHs4vr1mKCE1q5Q9O3BCxWw0BelkE36FOAQ6y5gaztdK0
 `
 cd ~/code/current/backend
 APPLICATION_ENV=development ./cli/index-all.sh`
+
+`cd ~/code/current/
+APPLICATION_ENV=development php vendor/pgby/query-correction/dictionaries/insert.php`,
+
+#Proposals expiring
+Set creation_time of proposal to NOW() - 30 days
+`APPLICATION_ENV=development php backend/cli/cli-no-auth.php praca-api:expire-proposals`
+
+##Spinx client
+mysql -h 127.0.0.1 -P9306
