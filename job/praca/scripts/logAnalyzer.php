@@ -11,9 +11,10 @@
 	}
 	print(tojson(records));
 
+	// Find vacancy(id: 261065<) actions
 	records = [];
 	var cursor = db.getCollection('action-log7').find({
-		"params.vacancy": "Praca\\BusinessLogic\\Entities\\Employer\\Vacancy[#185207]"
+		"params.vacancy": "Praca\\BusinessLogic\\Entities\\Employer\\Vacancy[#261065]"
 	});
 
 	while(cursor.hasNext()) {
@@ -38,327 +39,41 @@ require_once __DIR__ . '/../../../vendor/autoload.php';
 
 $log = '[
 	{
-		"_id" : ObjectId("598b16a066638e5d1715441e"),
+		"_id" : ObjectId("5c3f0f6c66638e3cb94662ae"),
 		"method" : "Praca\\Api\\Impl\\Employer::publicateVacancy",
 		"params" : {
-			"vacancy" : "Praca\\BusinessLogic\\Entities\\Employer\\Vacancy[#185207]",
+			"vacancy" : "Praca\\BusinessLogic\\Entities\\Employer\\Vacancy[#261065]",
 			"type" : "free"
 		},
-		"user" : 386899,
-		"ip" : "46.56.187.66",
-		"request" : "d5b20bef-21ec-035c-c6f6-ce24ff7445eb",
-		"__time" : ISODate("2017-08-09T14:05:20.033Z"),
+		"user" : 8192,
+		"ip" : "37.215.38.78",
+		"request" : "949e1039-6756-b06b-f617-178ff6e6b8c1",
+		"__time" : ISODate("2019-01-16T11:03:08.591Z"),
 		"__namespace" : "logger"
 	},
 	{
-		"_id" : ObjectId("598b16a066638e5d17154423"),
+		"_id" : ObjectId("5c3f0f6d66638e3cb94662b3"),
 		"method" : "Praca\\Api\\Impl\\Employer::changeVacancyAutoUp",
 		"params" : {
-			"vacancy" : "Praca\\BusinessLogic\\Entities\\Employer\\Vacancy[#185207]",
+			"vacancy" : "Praca\\BusinessLogic\\Entities\\Employer\\Vacancy[#261065]",
 			"enabled" : false
 		},
-		"user" : 386899,
-		"ip" : "46.56.187.66",
-		"request" : "d5b20bef-21ec-035c-c6f6-ce24ff7445eb",
-		"__time" : ISODate("2017-08-09T14:05:20.313Z"),
+		"user" : 8192,
+		"ip" : "37.215.38.78",
+		"request" : "949e1039-6756-b06b-f617-178ff6e6b8c1",
+		"__time" : ISODate("2019-01-16T11:03:09.072Z"),
 		"__namespace" : "logger"
 	},
 	{
-		"_id" : ObjectId("599ab4a066638e645c4fb396"),
-		"method" : "Praca\\Api\\Impl\\Employer::updateVacancy",
-		"params" : {
-			"vacancy" : "Praca\\BusinessLogic\\Entities\\Employer\\Vacancy[#185207]"
-		},
-		"user" : 386899,
-		"ip" : "46.56.190.164",
-		"request" : "812c89be-c3d7-a1c4-bdb2-0380fd7c9a27",
-		"__time" : ISODate("2017-08-21T10:23:28.113Z"),
-		"__namespace" : "logger"
-	},
-	{
-		"_id" : ObjectId("59afbe2866638e6f0a2eef0b"),
-		"method" : "Praca\\Api\\Impl\\Employer::updateVacancy",
-		"params" : {
-			"vacancy" : "Praca\\BusinessLogic\\Entities\\Employer\\Vacancy[#185207]"
-		},
-		"user" : 386899,
-		"ip" : "46.56.191.185",
-		"request" : "59d8d64b-9a39-2d3f-14be-68a81d7ed9d8",
-		"__time" : ISODate("2017-09-06T09:21:44.108Z"),
-		"__namespace" : "logger"
-	},
-	{
-		"_id" : ObjectId("59afbf3a66638e6dee7d2de9"),
-		"method" : "Praca\\Api\\Impl\\Employer::updateVacancy",
-		"params" : {
-			"vacancy" : "Praca\\BusinessLogic\\Entities\\Employer\\Vacancy[#185207]"
-		},
-		"user" : 413822,
-		"ip" : "134.17.24.214",
-		"request" : "43beffb4-e286-d1bb-025c-a7ed04486883",
-		"__time" : ISODate("2017-09-06T09:26:18.232Z"),
-		"__namespace" : "logger"
-	},
-	{
-		"_id" : ObjectId("59b138e366638e51787ecb84"),
+		"_id" : ObjectId("5c48490466638e11d231a940"),
 		"method" : "Praca\\Api\\Impl\\Employer::unpublicateVacancy",
 		"params" : {
-			"vacancy" : "Praca\\BusinessLogic\\Entities\\Employer\\Vacancy[#185207]"
+			"vacancy" : "Praca\\BusinessLogic\\Entities\\Employer\\Vacancy[#261065]"
 		},
-		"user" : 386899,
-		"ip" : "46.56.191.185",
-		"request" : "e147c519-9a7a-ba9c-c083-5b80d1997117",
-		"__time" : ISODate("2017-09-07T12:17:39.580Z"),
-		"__namespace" : "logger"
-	},
-	{
-		"_id" : ObjectId("59e07dce66638e757711a7e6"),
-		"method" : "Praca\\Api\\Impl\\Employer::updateVacancy",
-		"params" : {
-			"vacancy" : "Praca\\BusinessLogic\\Entities\\Employer\\Vacancy[#185207]"
-		},
-		"user" : 386899,
-		"ip" : "46.56.188.237",
-		"request" : "e3d95f58-ca49-c59f-ed60-03a89d35cf70",
-		"__time" : ISODate("2017-10-13T08:48:14.815Z"),
-		"__namespace" : "logger"
-	},
-	{
-		"_id" : ObjectId("59e07ed266638e0b400df00d"),
-		"method" : "Praca\\Api\\Impl\\Employer::publicateVacancy",
-		"params" : {
-			"vacancy" : "Praca\\BusinessLogic\\Entities\\Employer\\Vacancy[#185207]",
-			"type" : "free"
-		},
-		"user" : 386899,
-		"ip" : "46.56.188.237",
-		"request" : "6f418bad-646b-f823-74d4-98f827c07e53",
-		"__time" : ISODate("2017-10-13T08:52:34.714Z"),
-		"__namespace" : "logger"
-	},
-	{
-		"_id" : ObjectId("59e07ed266638e0b400df00f"),
-		"method" : "Praca\\Api\\Impl\\Employer::upVacancy",
-		"params" : {
-			"vacancy" : "Praca\\BusinessLogic\\Entities\\Employer\\Vacancy[#185207]"
-		},
-		"user" : 386899,
-		"ip" : "46.56.188.237",
-		"request" : "6f418bad-646b-f823-74d4-98f827c07e53",
-		"__time" : ISODate("2017-10-13T08:52:34.826Z"),
-		"__namespace" : "logger"
-	},
-	{
-		"_id" : ObjectId("59e07ed266638e0b400df011"),
-		"method" : "Praca\\Api\\Impl\\Employer::changeVacancyAutoUp",
-		"params" : {
-			"vacancy" : "Praca\\BusinessLogic\\Entities\\Employer\\Vacancy[#185207]",
-			"enabled" : false
-		},
-		"user" : 386899,
-		"ip" : "46.56.188.237",
-		"request" : "6f418bad-646b-f823-74d4-98f827c07e53",
-		"__time" : ISODate("2017-10-13T08:52:34.931Z"),
-		"__namespace" : "logger"
-	},
-	{
-		"_id" : ObjectId("59edd64066638e3cf404dabf"),
-		"method" : "Praca\\Api\\Impl\\Employer::unpublicateVacancy",
-		"params" : {
-			"vacancy" : "Praca\\BusinessLogic\\Entities\\Employer\\Vacancy[#185207]"
-		},
-		"user" : 386899,
-		"ip" : "46.56.188.200",
-		"request" : "7c868774-fefa-7b80-549a-9b1abaf0e0a8",
-		"__time" : ISODate("2017-10-23T11:45:04.064Z"),
-		"__namespace" : "logger"
-	},
-	{
-		"_id" : ObjectId("59f6ef0266638e4c1e465c80"),
-		"method" : "Praca\\Api\\Impl\\Employer::publicateVacancy",
-		"params" : {
-			"vacancy" : "Praca\\BusinessLogic\\Entities\\Employer\\Vacancy[#185207]",
-			"type" : "free"
-		},
-		"user" : 386899,
-		"ip" : "46.56.196.108",
-		"request" : "baee3ff9-9ad7-a346-6ec9-e7c0fbba2cd8",
-		"__time" : ISODate("2017-10-30T09:21:06.109Z"),
-		"__namespace" : "logger"
-	},
-	{
-		"_id" : ObjectId("59f6ef0266638e4c1e465c82"),
-		"method" : "Praca\\Api\\Impl\\Employer::upVacancy",
-		"params" : {
-			"vacancy" : "Praca\\BusinessLogic\\Entities\\Employer\\Vacancy[#185207]"
-		},
-		"user" : 386899,
-		"ip" : "46.56.196.108",
-		"request" : "baee3ff9-9ad7-a346-6ec9-e7c0fbba2cd8",
-		"__time" : ISODate("2017-10-30T09:21:06.249Z"),
-		"__namespace" : "logger"
-	},
-	{
-		"_id" : ObjectId("59f6ef0266638e4c1e465c83"),
-		"method" : "Praca\\Api\\Impl\\Employer::changeVacancyAutoUp",
-		"params" : {
-			"vacancy" : "Praca\\BusinessLogic\\Entities\\Employer\\Vacancy[#185207]",
-			"enabled" : false
-		},
-		"user" : 386899,
-		"ip" : "46.56.196.108",
-		"request" : "baee3ff9-9ad7-a346-6ec9-e7c0fbba2cd8",
-		"__time" : ISODate("2017-10-30T09:21:06.326Z"),
-		"__namespace" : "logger"
-	},
-	{
-		"_id" : ObjectId("5a02f8f966638e03dd0207db"),
-		"method" : "Praca\\Api\\Impl\\Employer::unpublicateVacancy",
-		"params" : {
-			"vacancy" : "Praca\\BusinessLogic\\Entities\\Employer\\Vacancy[#185207]"
-		},
-		"user" : 386899,
-		"ip" : "46.56.196.108",
-		"request" : "3a3fa381-d1bb-3022-5cac-1efaf04eb44b",
-		"__time" : ISODate("2017-11-08T12:30:49.175Z"),
-		"__namespace" : "logger"
-	},
-	{
-		"_id" : ObjectId("5a0d55c866638e3dd366ddd0"),
-		"method" : "Praca\\Api\\Impl\\Employer::publicateVacancy",
-		"params" : {
-			"vacancy" : "Praca\\BusinessLogic\\Entities\\Employer\\Vacancy[#185207]",
-			"type" : "free"
-		},
-		"user" : 386899,
-		"ip" : "46.56.226.92",
-		"request" : "73655761-f3b4-c905-fd3b-0d83eb4b1c38",
-		"__time" : ISODate("2017-11-16T09:09:28.900Z"),
-		"__namespace" : "logger"
-	},
-	{
-		"_id" : ObjectId("5a0d55c966638e3dd366ddd2"),
-		"method" : "Praca\\Api\\Impl\\Employer::upVacancy",
-		"params" : {
-			"vacancy" : "Praca\\BusinessLogic\\Entities\\Employer\\Vacancy[#185207]"
-		},
-		"user" : 386899,
-		"ip" : "46.56.226.92",
-		"request" : "73655761-f3b4-c905-fd3b-0d83eb4b1c38",
-		"__time" : ISODate("2017-11-16T09:09:29.038Z"),
-		"__namespace" : "logger"
-	},
-	{
-		"_id" : ObjectId("5a0d55c966638e3dd366ddd5"),
-		"method" : "Praca\\Api\\Impl\\Employer::changeVacancyAutoUp",
-		"params" : {
-			"vacancy" : "Praca\\BusinessLogic\\Entities\\Employer\\Vacancy[#185207]",
-			"enabled" : false
-		},
-		"user" : 386899,
-		"ip" : "46.56.226.92",
-		"request" : "73655761-f3b4-c905-fd3b-0d83eb4b1c38",
-		"__time" : ISODate("2017-11-16T09:09:29.165Z"),
-		"__namespace" : "logger"
-	},
-	{
-		"_id" : ObjectId("5a1728fb66638e3a71602548"),
-		"method" : "Praca\\Api\\Impl\\Employer::unpublicateVacancy",
-		"params" : {
-			"vacancy" : "Praca\\BusinessLogic\\Entities\\Employer\\Vacancy[#185207]"
-		},
-		"user" : 386899,
-		"ip" : "46.56.194.156",
-		"request" : "1e2797f6-a413-ad7f-5c4f-0e7202fe8b7c",
-		"__time" : ISODate("2017-11-23T20:00:59.494Z"),
-		"__namespace" : "logger"
-	},
-	{
-		"_id" : ObjectId("5a96491866638e4af33c9d71"),
-		"method" : "Praca\\Api\\Impl\\Employer::publicateVacancy",
-		"params" : {
-			"vacancy" : "Praca\\BusinessLogic\\Entities\\Employer\\Vacancy[#185207]",
-			"type" : "free"
-		},
-		"user" : 386899,
-		"ip" : "46.56.199.254",
-		"request" : "90a84c63-ae8a-d4b9-4958-17ef889400eb",
-		"__time" : ISODate("2018-02-28T06:15:52.533Z"),
-		"__namespace" : "logger"
-	},
-	{
-		"_id" : ObjectId("5a96491966638e4af33c9d73"),
-		"method" : "Praca\\Api\\Impl\\Employer::upVacancy",
-		"params" : {
-			"vacancy" : "Praca\\BusinessLogic\\Entities\\Employer\\Vacancy[#185207]"
-		},
-		"user" : 386899,
-		"ip" : "46.56.199.254",
-		"request" : "90a84c63-ae8a-d4b9-4958-17ef889400eb",
-		"__time" : ISODate("2018-02-28T06:15:53.034Z"),
-		"__namespace" : "logger"
-	},
-	{
-		"_id" : ObjectId("5a96491966638e4af33c9d76"),
-		"method" : "Praca\\Api\\Impl\\Employer::changeVacancyAutoUp",
-		"params" : {
-			"vacancy" : "Praca\\BusinessLogic\\Entities\\Employer\\Vacancy[#185207]",
-			"enabled" : false
-		},
-		"user" : 386899,
-		"ip" : "46.56.199.254",
-		"request" : "90a84c63-ae8a-d4b9-4958-17ef889400eb",
-		"__time" : ISODate("2018-02-28T06:15:53.153Z"),
-		"__namespace" : "logger"
-	},
-	{
-		"_id" : ObjectId("5ad71eb566638e176e71ee4b"),
-		"method" : "Praca\\Api\\Impl\\Employer::unpublicateVacancy",
-		"params" : {
-			"vacancy" : "Praca\\BusinessLogic\\Entities\\Employer\\Vacancy[#185207]"
-		},
-		"user" : 386899,
-		"ip" : "46.56.225.245",
-		"request" : "47b32b88-8a21-e102-f9b5-6a17dbc6a4df",
-		"__time" : ISODate("2018-04-18T10:32:21.898Z"),
-		"__namespace" : "logger"
-	},
-	{
-		"_id" : ObjectId("5b17de9b66638e7f6657d220"),
-		"method" : "Praca\\Api\\Impl\\Employer::publicateVacancy",
-		"params" : {
-			"vacancy" : "Praca\\BusinessLogic\\Entities\\Employer\\Vacancy[#185207]",
-			"type" : "free"
-		},
-		"user" : 386899,
-		"ip" : "46.56.230.121",
-		"request" : "9b435bb4-f94a-a358-7278-bfb8152e265c",
-		"__time" : ISODate("2018-06-06T13:16:11.746Z"),
-		"__namespace" : "logger"
-	},
-	{
-		"_id" : ObjectId("5b17de9b66638e7f6657d222"),
-		"method" : "Praca\\Api\\Impl\\Employer::upVacancy",
-		"params" : {
-			"vacancy" : "Praca\\BusinessLogic\\Entities\\Employer\\Vacancy[#185207]"
-		},
-		"user" : 386899,
-		"ip" : "46.56.230.121",
-		"request" : "9b435bb4-f94a-a358-7278-bfb8152e265c",
-		"__time" : ISODate("2018-06-06T13:16:11.950Z"),
-		"__namespace" : "logger"
-	},
-	{
-		"_id" : ObjectId("5b17de9c66638e7f6657d225"),
-		"method" : "Praca\\Api\\Impl\\Employer::changeVacancyAutoUp",
-		"params" : {
-			"vacancy" : "Praca\\BusinessLogic\\Entities\\Employer\\Vacancy[#185207]",
-			"enabled" : false
-		},
-		"user" : 386899,
-		"ip" : "46.56.230.121",
-		"request" : "9b435bb4-f94a-a358-7278-bfb8152e265c",
-		"__time" : ISODate("2018-06-06T13:16:12.089Z"),
+		"user" : 8192,
+		"ip" : "37.215.46.241",
+		"request" : "c9e57b2d-3d53-4eb3-e6df-08d1918f39a5",
+		"__time" : ISODate("2019-01-23T10:59:16.911Z"),
 		"__namespace" : "logger"
 	}
 ]

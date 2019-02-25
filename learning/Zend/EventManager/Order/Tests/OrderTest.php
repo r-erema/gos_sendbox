@@ -40,7 +40,7 @@ class OrderTest extends TestCase
                 json_encode($params)
             )) . PHP_EOL;
         }, 100);
-        $events->trigger('Example');
+        $events->trigger('Example', $this);
         $this->assertEquals(
             'Handled event "Example" on target "learning\Zend\EventManager\Order\Tests\OrderTest", with parameters [], priority: 100' . PHP_EOL .
             'Handled event "Example" on target "learning\Zend\EventManager\Order\Tests\OrderTest", with parameters [], priority: 1' .PHP_EOL,

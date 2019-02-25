@@ -1,0 +1,13 @@
+version: '3'
+services:
+  php-cli:
+    image: erema/php7.3-cli:latest
+    volumes:
+      - ./:/var/www/html
+    tty: true
+  sqlite3:
+    image: nouchka/sqlite3:latest
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./data/sqlite/:/root/db/

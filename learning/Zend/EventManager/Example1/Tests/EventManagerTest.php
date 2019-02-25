@@ -88,7 +88,7 @@ class EventManagerTest extends TestCase
                 $params
             ));
         });
-        $events->trigger('do', null, ['param1' => 'param1Value', 'param2' => 'param2Value']);
+        $events->trigger('do', $this, ['param1' => 'param1Value', 'param2' => 'param2Value']);
         $logContent = $this->readLog();
         $this->assertContains(
             'do called on learning\Zend\EventManager\Example1\Tests\EventManagerTest, using params {"param1":"param1Value","param2":"param2Value"}',
