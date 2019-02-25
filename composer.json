@@ -7,14 +7,15 @@
         "zendframework/zend-validator": "^2.10",
         "zendframework/zend-i18n": "^2.7",
         "zendframework/zend-filter": "^2.7",
-        "zendframework/zend-servicemanager": "^3.3",
+        "zendframework/zend-servicemanager": "^3.4",
         "zendframework/zend-eventmanager": "^3.2",
         "ocramius/proxy-manager": "^2.1",
         "goaop/framework": "^2.1",
         "zendframework/zend-log": "^2.9",
         "zendframework/zend-cache": "^2.7",
         "zendframework/zend-mvc": "^3.1",
-        "consolidation/robo": "^1.3"
+        "consolidation/robo": "^1.3",
+        "zendframework/zend-di": "^3.1"
     },
     "autoload": {
         "psr-0": {"":""}
