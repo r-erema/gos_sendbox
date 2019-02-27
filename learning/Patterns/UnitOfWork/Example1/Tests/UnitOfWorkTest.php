@@ -23,7 +23,7 @@ class UnitOfWorkTest extends TestCase {
     const INSERTED_CUSTOMER_ID = 11;
     const INSERTED_CUSTOMER_EMAIL = 'test@te.st';
 
-    public function setUp() {
+    public function setUp(): void {
         $mapperRegistry = new MapperRegistry();
         $mapperRegistry->setDao(new DataAccessObject('sqlite::memory:', null, null, [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION]));
         $this->customerMapper = $mapperRegistry->getMapperForClassName(Customer::class);

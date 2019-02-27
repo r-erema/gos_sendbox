@@ -16,12 +16,12 @@ class EventManagerTest extends TestCase
     /**
      * @throws \ReflectionException
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->initLogger();
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         unlink($this->logFilePath);
     }
@@ -43,7 +43,7 @@ class EventManagerTest extends TestCase
         });
         $experimentalClass->experimentalMethod('param1', 'param2');
         $logContent = $this->readLog();
-        $this->assertContains(
+        $this->assertStringContainsString(
             'experimentalMethod called on learning\Zend\EventManager\Example1\ExperimentalClass, using params {"arg1":"param1","arg2":"param2"}',
             $logContent
         );
@@ -68,7 +68,7 @@ class EventManagerTest extends TestCase
         $experimentalClass->setEventManager(new EventManager($sharedManager));
         $experimentalClass->experimentalMethod('param1', 'param2');
         $logContent = $this->readLog();;
-        $this->assertContains(
+        $this->assertStringContainsString(
             'experimentalMethod called on learning\Zend\EventManager\Example1\ExperimentalClass, using params {"arg1":"param1","arg2":"param2"}',
             $logContent
         );
@@ -90,7 +90,7 @@ class EventManagerTest extends TestCase
         });
         $events->trigger('do', $this, ['param1' => 'param1Value', 'param2' => 'param2Value']);
         $logContent = $this->readLog();
-        $this->assertContains(
+        $this->assertStringContainsString(
             'do called on learning\Zend\EventManager\Example1\Tests\EventManagerTest, using params {"param1":"param1Value","param2":"param2Value"}',
             $logContent
         );

@@ -21,14 +21,14 @@ class CachingSystemTest extends TestCase
      */
     private $cacheDir = __DIR__ . '/cache';
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->cache = StorageFactory::adapterFactory('filesystem');
         mkdir($this->cacheDir);
         $this->cache->setOptions(['cache_dir' => $this->cacheDir]);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->cache->flush();
         rmdir($this->cacheDir);

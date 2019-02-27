@@ -4,6 +4,7 @@ services:
     image: erema/php7.3-cli:latest
     volumes:
       - ./:/var/www/html
+    working_dir: /var/www/html
     tty: true
   sqlite3:
     image: nouchka/sqlite3:latest
@@ -11,3 +12,4 @@ services:
     tty: true
     volumes:
       - ./data/sqlite/:/root/db/
+    working_dir: /var/www/html

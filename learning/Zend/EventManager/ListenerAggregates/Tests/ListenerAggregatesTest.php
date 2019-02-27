@@ -15,12 +15,12 @@ class ListenerAggregatesTest extends TestCase
     /**
      * @throws \ReflectionException
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->initLogger();
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->destroyLogFile();
     }
@@ -32,7 +32,7 @@ class ListenerAggregatesTest extends TestCase
         $logListener->attach($events);
         $events->trigger('do', null, ['param1', 'param2']);
         $events->trigger('doSomethingElse', null, ['param3', 'param4']);
-        $this->assertContains('do: ["param1","param2"]', $this->readLog());
-        $this->assertContains('doSomethingElse: ["param3","param4"]', $this->readLog());
+        $this->assertStringContainsString('do: ["param1","param2"]', $this->readLog());
+        $this->assertStringContainsString('doSomethingElse: ["param3","param4"]', $this->readLog());
     }
 }

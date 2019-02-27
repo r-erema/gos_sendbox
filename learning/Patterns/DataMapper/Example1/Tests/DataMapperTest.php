@@ -21,14 +21,12 @@ class DataMapperTest extends TestCase
         $this->assertInstanceOf(User::class, $user);
     }
 
-    /**
-     * @expectedException \RuntimeException
-     */
     public function testWillNotMapInvalidData()
     {
         $storage = new StorageAdapter([]);
         $mapper = new UserMapper($storage);
 
+        $this->expectException(\RuntimeException::class);
         $mapper->findById(1);
     }
 }

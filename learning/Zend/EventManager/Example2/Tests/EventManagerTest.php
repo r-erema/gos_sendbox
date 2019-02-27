@@ -14,12 +14,12 @@ class EventManagerTest extends TestCase
 
     use Logger;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->initLogger();
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->destroyLogFile();
     }
@@ -40,7 +40,7 @@ class EventManagerTest extends TestCase
         $params = ['param1' => 'value1', 'param2' => 'value2'];
         $events->trigger('do', null, $params);
         $log = $this->readLog();
-        $this->assertContains('Handled event "do", with parameters {"param1":"value1","param2":"value2"}', $log);
+        $this->assertStringContainsString('Handled event "do", with parameters {"param1":"value1","param2":"value2"}', $log);
     }
 
     public function testEventManager2()
@@ -60,7 +60,7 @@ class EventManagerTest extends TestCase
 
         $example->doIt('value1', 'value2');
         $log = $this->readLog();
-        $this->assertContains('Handled event "doIt" on target "learning\Zend\EventManager\Example2\Example", with parameters {"param1":"value1","param2":"value2"}', $log);
+        $this->assertStringContainsString('Handled event "doIt" on target "learning\Zend\EventManager\Example2\Example", with parameters {"param1":"value1","param2":"value2"}', $log);
     }
 
     public function testSharedEventManager()
@@ -82,7 +82,7 @@ class EventManagerTest extends TestCase
         $example->setEventManager(new EventManager($sharedEvents));
         $example->doIt('value1', 'value2');
         $log = $this->readLog();
-        $this->assertContains('Handled event "doIt" on target "learning\Zend\EventManager\Example2\Example", with parameters {"param1":"value1","param2":"value2"}', $log);
+        $this->assertStringContainsString('Handled event "doIt" on target "learning\Zend\EventManager\Example2\Example", with parameters {"param1":"value1","param2":"value2"}', $log);
 
     }
 
