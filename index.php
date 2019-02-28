@@ -6,6 +6,7 @@
     </head>
     <body>
         <ul>
+	        <li></li>
             <li><a href="phpinfo.php"><?php echo 'PHP '.phpversion(); ?></a></li>
             <?php if (function_exists('apache_get_version')): ?><li><?php echo 'Apache '. apache_get_version(); ?></li><?php endif; ?>
         </ul>
