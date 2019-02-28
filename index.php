@@ -5,6 +5,9 @@
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     </head>
     <body>
+        <span></span>
+        <span></span>
+        <span></span>
         <ul>
 	        <li></li>
 	        <li></li>
