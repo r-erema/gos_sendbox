@@ -1,0 +1,1 @@
+/usr/bin/cc    CMakeFiles/Types.dir/Types.c.o  -o Types -lm 
