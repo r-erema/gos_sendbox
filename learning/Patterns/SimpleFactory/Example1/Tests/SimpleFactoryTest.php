@@ -1,6 +1,8 @@
 <?php
 
-namespace learning\Patterns\SimpleFactory\Example1\Bicycle\Tests;
+declare(strict_types=1);
+
+namespace learning\Patterns\SimpleFactory\Example1\Tests;
 
 use learning\Patterns\SimpleFactory\Example1\Bicycle,
     learning\Patterns\SimpleFactory\Example1\SimpleFactory,
