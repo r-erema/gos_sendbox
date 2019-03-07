@@ -1,0 +1,1 @@
+https://designpatternsphp.readthedocs.io/en/latest/Structural/Adapter/README.html

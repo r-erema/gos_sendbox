@@ -1,6 +1,7 @@
 <?php
+declare(strict_types=1);
 
-namespace learning\Patterns\DataMapper\Builder\Tests;
+namespace learning\Patterns\Builder\Tests;
 
 use learning\Patterns\Builder\Example1\CarBuilder,
     learning\Patterns\Builder\Example1\Director,
