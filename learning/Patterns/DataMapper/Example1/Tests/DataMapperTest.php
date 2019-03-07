@@ -2,15 +2,15 @@
 
 namespace learning\Patterns\DataMapper\Example1\Tests;
 
-use learning\Patterns\DataMapper\Example1\StorageAdapter;
-use learning\Patterns\DataMapper\Example1\User;
-use learning\Patterns\DataMapper\Example1\UserMapper;
-use PHPUnit\Framework\TestCase;
+use learning\Patterns\DataMapper\Example1\StorageAdapter,
+    learning\Patterns\DataMapper\Example1\User,
+    learning\Patterns\DataMapper\Example1\UserMapper,
+    PHPUnit\Framework\TestCase;
 
 class DataMapperTest extends TestCase
 {
 
-    public function testCanMapUserFromStorage()
+    public function testCanMapUserFromStorage(): void
     {
         $storage = new StorageAdapter([
             1 => ['username' => 'fake_usr', 'email' => 'fake_usr@ma.il'],
@@ -18,10 +18,10 @@ class DataMapperTest extends TestCase
         ]);
         $mapper = new UserMapper($storage);
         $user = $mapper->findById(1);
-        $this->assertInstanceOf(User::class, $user);
+        $this->assertEquals(User::class, get_class($user));
     }
 
-    public function testWillNotMapInvalidData()
+    public function testWillNotMapInvalidData(): void
     {
         $storage = new StorageAdapter([]);
         $mapper = new UserMapper($storage);
