@@ -4,17 +4,12 @@ namespace learning\Patterns\DataMapper\Example1;
 
 class UserMapper
 {
-   private $adapter;
-   public function __construct(StorageAdapter $adapter)
+    private $adapter;
+    public function __construct(StorageAdapter $adapter)
     {
         $this->adapter = $adapter;
     }
 
-    /**
-     * @param int $id
-     * @return User
-     * @throws \RuntimeException
-     */
     public function findById(int $id): User
     {
         $result = $this->adapter->find($id);

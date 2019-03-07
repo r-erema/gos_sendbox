@@ -4,7 +4,7 @@ namespace learning\Patterns\DataMapper\Example1;
 
 class StorageAdapter
 {
-    private $data = [];
+    private $data;
     public function __construct(array $data)
     {
         $this->data = $data;
