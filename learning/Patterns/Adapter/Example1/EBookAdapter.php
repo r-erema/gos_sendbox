@@ -6,7 +6,6 @@ namespace learning\Patterns\Adapter\Example1;
 
 class EBookAdapter implements BookInterface
 {
-
     protected $eBook;
 
     public function __construct(EBookInterface $eBook)
@@ -29,6 +28,4 @@ class EBookAdapter implements BookInterface
         $pages = $this->eBook->getPage();
         return $pages[array_key_first($pages)];
     }
-
-
 }
