@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace learning\Patterns\FluentInterface\Example1\Tests2;
+namespace learning\Patterns\FluentInterface\Example1\Tests;
 
 use learning\Patterns\FluentInterface\Example1\Sql,
     PHPUnit\Framework\TestCase;
