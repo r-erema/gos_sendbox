@@ -95,7 +95,7 @@
 				'language_id' => 'russian',
 				'seed' => '',
 				'signature' => '',
-				'test' => 0,
+				'DecoratorTest' => 0,
 			),
 		),
 	);
