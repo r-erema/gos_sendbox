@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace learning\Patterns\FluentInterface\Example1\Tests2;
 
-use learning\Patterns\FluentInterface\Example1\Sql;
-use PHPUnit\Framework\TestCase;
+use learning\Patterns\FluentInterface\Example1\Sql,
+    PHPUnit\Framework\TestCase;
 
 class FluentInterfaceTest extends TestCase
 {
