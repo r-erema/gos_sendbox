@@ -6,10 +6,7 @@ namespace learning\Patterns\FluentInterface\Example1;
 
 class Sql
 {
-
-    private $fields = [];
-    private $from = [];
-    private $where = [];
+    private $fields = [], $from = [], $where = [];
 
     public function select(array $fields): self
     {
