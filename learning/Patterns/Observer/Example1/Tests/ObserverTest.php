@@ -3,20 +3,22 @@
 
 namespace learning\Patterns\Observer\Example1\Tests;
 
-use PHPUnit\Framework\TestCase;
+use learning\Patterns\Observer\Example1\User,
+    learning\Patterns\Observer\Example1\UserObserver,
+    PHPUnit\Framework\TestCase;
 
 class ObserverTest extends TestCase
 {
 
-    public function testChangeInUserLeadsToUserObserverBeingNotified()
+    public function testChangeInUserLeadsToUserObserverBeingNotified(): void
     {
-        $observer = new \learning\Patterns\Observer\Example1\UserObserver();
+        $observer = new UserObserver();
 
-        $user = new \learning\Patterns\Observer\Example1\User();
+        $user = new User();
         $user->attach($observer);
         $user->setEmail('example@ma.il');
 
-        $user2 = new \learning\Patterns\Observer\Example1\User();
+        $user2 = new User();
         $user2->attach($observer);
         $user->setEmail('example2@ma.il');
 
