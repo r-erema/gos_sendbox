@@ -20,7 +20,7 @@ class OrderContext
         $this->state = $state;
     }
 
-    public function proceedToNext()
+    public function proceedToNext(): void
     {
         $this->state->proceedToNext($this);
     }

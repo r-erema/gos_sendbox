@@ -5,20 +5,14 @@ use PHPUnit\Framework\TestCase;
 
 class StateTest extends TestCase {
 
-    /**
-     * @test
-     */
-    public function testIsCreatedWithStateCreated()
+    public function testIsCreatedWithStateCreated(): void
     {
         $orderContext = OrderContext::create();
         $orderContext->toString();
         $this->assertEquals('created', $orderContext->toString());
     }
 
-    /**
-     * @test
-     */
-    public function testCanProceedToStateShipped()
+    public function testCanProceedToStateShipped(): void
     {
         $contextOrder = OrderContext::create();
         $contextOrder->proceedToNext();
@@ -26,10 +20,7 @@ class StateTest extends TestCase {
         $this->assertEquals('shipped', $contextOrder->toString());
     }
 
-    /**
-     * @test
-     */
-    public function testCanProceedToStateDone()
+    public function testCanProceedToStateDone(): void
     {
         $contextOrder = OrderContext::create();
         $contextOrder->proceedToNext();
@@ -38,10 +29,7 @@ class StateTest extends TestCase {
         $this->assertEquals('done', $contextOrder->toString());
     }
 
-    /**
-     * @test
-     */
-    public function testStateDoneIsTheLastPossibleState()
+    public function testStateDoneIsTheLastPossibleState(): void
     {
         $contextOrder = OrderContext::create();
         $contextOrder->proceedToNext();
