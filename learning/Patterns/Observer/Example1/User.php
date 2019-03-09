@@ -9,9 +9,6 @@ class User implements \SplSubject
 
     private $email;
 
-    /***
-     * @var \SplObjectStorage
-     */
     protected $observers;
 
     public function __construct()
