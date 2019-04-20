@@ -19,7 +19,11 @@
         "symfony/cache": "^4.2",
         "ext-pdo": "*",
         "ext-sysvsem": "*",
-        "psr/http-client": "^1.0"
+        "psr/http-client": "^1.0",
+        "ramsey/uuid": "^3.8",
+        "webmozart/assert": "^1.4",
+        "moneyphp/money": "^3.2",
+        "mockery/mockery": "^1.2"
     },
     "autoload": {
         "psr-0": {"":""}

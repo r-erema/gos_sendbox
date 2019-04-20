@@ -13,6 +13,9 @@
         <testsuite name="Zend tests">
             <directory>./learning/Zend/</directory>
         </testsuite>
+        <testsuite name="DDD tests">
+            <directory>./learning/DDD/</directory>
+        </testsuite>
         <testsuite name="Other">
             <directory>./learning/other/</directory>
         </testsuite>
