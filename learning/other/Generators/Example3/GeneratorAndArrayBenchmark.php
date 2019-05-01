@@ -17,7 +17,7 @@ class GeneratorAndArrayBenchmark
             $generatorValuesTimeUsage;
 
 
-    public function __construct(int $size = 200000, int $memoryUsageInterval = 50000)
+    public function __construct(int $size = 1000, int $memoryUsageInterval = 200)
     {
         $this->size = $size;
         $this->memoryUsageInterval = $memoryUsageInterval;
