@@ -1,8 +1,9 @@
 <?php
 
-namespace learning\other\Generators\Example3;
+namespace learning\other\Generators\Example3\Tests;
 
-use PHPUnit\Framework\TestCase;
+use learning\other\Generators\Example3\GeneratorAndArrayBenchmark,
+    PHPUnit\Framework\TestCase;
 
 class GeneratorAndArrayBenchmarkTest extends TestCase
 {

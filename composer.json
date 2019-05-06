@@ -23,7 +23,8 @@
         "ramsey/uuid": "^3.8",
         "webmozart/assert": "^1.4",
         "moneyphp/money": "^3.2",
-        "mockery/mockery": "^1.2"
+        "mockery/mockery": "^1.2",
+        "ext-sockets": "*"
     },
     "autoload": {
         "psr-0": {"":""}
