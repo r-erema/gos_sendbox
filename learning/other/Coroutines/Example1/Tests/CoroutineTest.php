@@ -137,18 +137,4 @@ class CoroutineTest extends TestCase
             $scheduler->schedule($task);
         });
     }
-
-    private static function willForRead($socket): SystemCall
-    {
-        return new SystemCall(static function (Task $task, Scheduler $scheduler) use ($socket) {
-            $scheduler->waitForRead($socket, $task);
-        });
-    }
-
-    private static function willForWrite($socket): SystemCall
-    {
-        return new SystemCall(static function (Task $task, Scheduler $scheduler) use ($socket) {
-            $scheduler->waitForWrite($socket, $task);
-        });
-    }
 }
