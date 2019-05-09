@@ -6,7 +6,6 @@ namespace learning\Patterns\TemplateMethod\Example1;
 
 abstract class Journey
 {
-
     private $thingsTodo = [];
 
     final public function takeATrip(): void
@@ -44,5 +43,4 @@ abstract class Journey
     {
         return $this->thingsTodo;
     }
-
 }

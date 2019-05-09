@@ -8,7 +8,8 @@ final class Multiton
 {
     private static $instances = [];
     private function __construct()
-    {}
+    {
+    }
 
     public static function getInstance(string $instanceName): Multiton
     {
@@ -18,9 +19,11 @@ final class Multiton
         return self::$instances[$instanceName];
     }
     private function __clone()
-    {}
+    {
+    }
     private function __wakeup()
-    {}
+    {
+    }
 }
 $instance1 = Multiton::getInstance('1');
 $instance2 = Multiton::getInstance('2');

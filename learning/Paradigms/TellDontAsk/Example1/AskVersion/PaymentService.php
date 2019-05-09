@@ -4,7 +4,6 @@
 
 class PaymentService
 {
-
     public function debitCustomer(float $amount, string $customerId): void
     {
         $wallet = WalletRepository::GetWalletByCustomerId($customerId);
@@ -31,5 +30,4 @@ class PaymentService
             $wallet->setBalance($wallet->getBalance() + $amount);
         }
     }
-
 }

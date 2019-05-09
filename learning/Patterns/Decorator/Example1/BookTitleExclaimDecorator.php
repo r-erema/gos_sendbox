@@ -22,5 +22,4 @@ class BookTitleExclaimDecorator extends BookTitleDecorator
     {
         $this->bookTitleDecorator->title = "!{$this->bookTitleDecorator->title}!";
     }
-
 }

@@ -4,7 +4,6 @@ namespace learning\Patterns\State\Example1;
 
 class Book
 {
-
     private $author;
 
     private $title;

@@ -36,7 +36,7 @@ define("FILES_PATH", ABSOLUTE_PATH.'files');
 
 define("PICTURE_PATH", ABSOLUTE_PATH.'pictures');
 
-define("GALLERY_01",PICTURE_PATH);
+define("GALLERY_01", PICTURE_PATH);
 define("GALLERY_TEMP", PICTURE_PATH.'/temp');
 define("NEWS_IMAGE_DIR", PICTURE_PATH.'/news/');
 define("NUMBERS_IMAGE_DIR", PICTURE_PATH.'/numbers/');
@@ -54,5 +54,3 @@ define("YANDEX_SERVER_HOST", "srv.commontools.net");
 define("YANDEX_SERVER_PORT", 17000);
 
 include("system.conf.php");
-
-?>

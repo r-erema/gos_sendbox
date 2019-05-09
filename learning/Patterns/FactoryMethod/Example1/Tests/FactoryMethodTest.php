@@ -2,15 +2,14 @@
 
 namespace learning\Patterns\FactoryMethod\Example1\Tests;
 
-use learning\Patterns\FactoryMethod\Example1\FileLogger,
-    learning\Patterns\FactoryMethod\Example1\FileLoggerFactory,
-    learning\Patterns\FactoryMethod\Example1\StdoutLogger,
-    learning\Patterns\FactoryMethod\Example1\StdoutLoggerFactory,
-    PHPUnit\Framework\TestCase;
+use learning\Patterns\FactoryMethod\Example1\FileLogger;
+use learning\Patterns\FactoryMethod\Example1\FileLoggerFactory;
+use learning\Patterns\FactoryMethod\Example1\StdoutLogger;
+use learning\Patterns\FactoryMethod\Example1\StdoutLoggerFactory;
+use PHPUnit\Framework\TestCase;
 
 class FactoryMethodTest extends TestCase
 {
-
     public function testCanCreateStdoutLogging(): void
     {
         $factory = new StdoutLoggerFactory();
@@ -24,5 +23,4 @@ class FactoryMethodTest extends TestCase
         $logger = $factory->createLogger();
         $this->assertInstanceOf(FileLogger::class, $logger);
     }
-
 }

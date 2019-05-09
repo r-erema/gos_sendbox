@@ -10,10 +10,8 @@ use PHPUnit\Framework\TestCase;
 
 class PrototypeTest extends TestCase
 {
-
     public function testCanGetFooBook(): void
     {
-
         $fooPrototype = new FooBookPrototype();
         $barPrototype = new BarBookPrototype();
 
@@ -35,5 +33,4 @@ class PrototypeTest extends TestCase
             $this->assertEquals(BarBookPrototype::CATEGORY, $book->getCategory());
         }
     }
-
 }

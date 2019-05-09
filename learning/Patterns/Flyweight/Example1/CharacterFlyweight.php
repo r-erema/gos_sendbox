@@ -17,5 +17,4 @@ class CharacterFlyweight implements FlyweightInterface
     {
         return sprintf('Character %s with font %s', $this->name, $font);
     }
-
 }

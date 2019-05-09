@@ -83,13 +83,13 @@ define('QA_SERVICE_URL', 'http://pgfb.profigroup.by:22385/QaService.asmx?wsdl');
 
 const SMS_SMS_GATEWAY = 'info-bip';
 const SMS_CONFIG = [
-	'smsp' => [
-		'url' => 'https://cp.smsp.by?r=api/msg_send&user=webdev@commontools.net&apikey=061d9e3x4r&recipients=%%phone_number%%&message=%%message%%&sender=Normativka&urgent=1',
-	],
-	'info-bip' => [
-		'sender-name' => 'Normativka',
-		'api-key' => '9387d934add82d3a2deac321dfb68426-b54e3348-971e-4480-899b-67c805b08341',
-	],
+    'smsp' => [
+        'url' => 'https://cp.smsp.by?r=api/msg_send&user=webdev@commontools.net&apikey=061d9e3x4r&recipients=%%phone_number%%&message=%%message%%&sender=Normativka&urgent=1',
+    ],
+    'info-bip' => [
+        'sender-name' => 'Normativka',
+        'api-key' => '9387d934add82d3a2deac321dfb68426-b54e3348-971e-4480-899b-67c805b08341',
+    ],
 ];
 
 define("EXCHANGE_RATES_DB", 'mysql://sites_db_access:bRNqWmZSn9e8wEZV@mysql.web/buhgalterby');
@@ -106,90 +106,90 @@ define("SMTP_SSL", "login");
 define("f", "0");
 
 if (isset($_SERVER['HTTP_HTTPS']) && $_SERVER['HTTP_HTTPS'] == 'on'
-	|| isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on'
+    || isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on'
 ) {
-	define("WWW_URL", "https://ekonomist.ryaroma.web");
-	define("PROTOCOL", "https://");
+    define("WWW_URL", "https://ekonomist.ryaroma.web");
+    define("PROTOCOL", "https://");
 } else {
-	define("WWW_URL", "https://ekonomist.ryaroma.web");
-	define("PROTOCOL", "http://");
+    define("WWW_URL", "https://ekonomist.ryaroma.web");
+    define("PROTOCOL", "http://");
 }
 
 $nSites = array(
-	'0' => array(
-		"SITE_NAME" => "Нормативка.by",
-		"SITE_URL" => "normativka.by",
-		/*"DB_HOST" => "mysql.web",
-		"DB_USER" => "sites_db_access",
-		"DB_PASS" => "bRNqWmZSn9e8wEZV",*/
-		"DB_HOST" => "localhost",
-		"DB_USER" => "root",
-		"DB_PASS" => "mmm_beer11",
-		"DB_NAME" => "normativkaby",
-		"DB_PREFIX" => "fn_",
-		"SET_NAMES" => "utf8",
-		"PACKAGES" => array(100,101,102,103,110,111,112,113,120,121,122,123,130,131,132,133,140,141,142,143,300,301,302,303,304,400,401,402,403,404,800,900)
-	),
+    '0' => array(
+        "SITE_NAME" => "Нормативка.by",
+        "SITE_URL" => "normativka.by",
+        /*"DB_HOST" => "mysql.web",
+        "DB_USER" => "sites_db_access",
+        "DB_PASS" => "bRNqWmZSn9e8wEZV",*/
+        "DB_HOST" => "localhost",
+        "DB_USER" => "root",
+        "DB_PASS" => "mmm_beer11",
+        "DB_NAME" => "normativkaby",
+        "DB_PREFIX" => "fn_",
+        "SET_NAMES" => "utf8",
+        "PACKAGES" => array(100,101,102,103,110,111,112,113,120,121,122,123,130,131,132,133,140,141,142,143,300,301,302,303,304,400,401,402,403,404,800,900)
+    ),
 
-	'1' => array(
-		"SITE_NAME" => "Бухгалтер.by",
-		"SITE_URL" => "buhgalter.by",
-		/*"DB_HOST" => "mysql.web",
-		"DB_USER" => "sites_db_access",
-		"DB_PASS" => "bRNqWmZSn9e8wEZV",*/
-		"DB_HOST" => "localhost",
-		"DB_USER" => "root",
-		"DB_PASS" => "mmm_beer11",
-		"DB_NAME" => "buhgalterby",
-		"DB_PREFIX" => "fn_",
-		"SET_NAMES" => "utf8",
-		"PACKAGES" => array(100,101,102,103,300,301,302,400,800,900)
-	),
+    '1' => array(
+        "SITE_NAME" => "Бухгалтер.by",
+        "SITE_URL" => "buhgalter.by",
+        /*"DB_HOST" => "mysql.web",
+        "DB_USER" => "sites_db_access",
+        "DB_PASS" => "bRNqWmZSn9e8wEZV",*/
+        "DB_HOST" => "localhost",
+        "DB_USER" => "root",
+        "DB_PASS" => "mmm_beer11",
+        "DB_NAME" => "buhgalterby",
+        "DB_PREFIX" => "fn_",
+        "SET_NAMES" => "utf8",
+        "PACKAGES" => array(100,101,102,103,300,301,302,400,800,900)
+    ),
 
-	'2' => array(
-		"SITE_NAME" => "Кадровик.by",
-		"SITE_URL" => "kadrovik.by",
-		/*"DB_HOST" => "mysql.web",
-		"DB_USER" => "sites_db_access",
-		"DB_PASS" => "bRNqWmZSn9e8wEZV",*/
-		"DB_HOST" => "localhost",
-		"DB_USER" => "root",
-		"DB_PASS" => "mmm_beer11",
-		"DB_NAME" => "kadrovikby",
-		"DB_PREFIX" => "fn_",
-		"SET_NAMES" => "utf8",
-		"PACKAGES" => array(110,111,112,113,300,301,303,400,800,900)
-	),
+    '2' => array(
+        "SITE_NAME" => "Кадровик.by",
+        "SITE_URL" => "kadrovik.by",
+        /*"DB_HOST" => "mysql.web",
+        "DB_USER" => "sites_db_access",
+        "DB_PASS" => "bRNqWmZSn9e8wEZV",*/
+        "DB_HOST" => "localhost",
+        "DB_USER" => "root",
+        "DB_PASS" => "mmm_beer11",
+        "DB_NAME" => "kadrovikby",
+        "DB_PREFIX" => "fn_",
+        "SET_NAMES" => "utf8",
+        "PACKAGES" => array(110,111,112,113,300,301,303,400,800,900)
+    ),
 
-	'3' => array(
-		"SITE_NAME" => "Экономист.by",
-		"SITE_URL" => "ekonomist.by",
-		/*"DB_HOST" => "mysql.web",
-		"DB_USER" => "sites_db_access",
-		"DB_PASS" => "bRNqWmZSn9e8wEZV",*/
-		"DB_HOST" => "localhost",
-		"DB_USER" => "root",
-		"DB_PASS" => "mmm_beer11",
-		"DB_NAME" => "ekonomistby",
-		"DB_PREFIX" => "fn_",
-		"SET_NAMES" => "utf8",
-		"PACKAGES" => array(100,101,102,103,300,301,302,400,800,900)
-	),
+    '3' => array(
+        "SITE_NAME" => "Экономист.by",
+        "SITE_URL" => "ekonomist.by",
+        /*"DB_HOST" => "mysql.web",
+        "DB_USER" => "sites_db_access",
+        "DB_PASS" => "bRNqWmZSn9e8wEZV",*/
+        "DB_HOST" => "localhost",
+        "DB_USER" => "root",
+        "DB_PASS" => "mmm_beer11",
+        "DB_NAME" => "ekonomistby",
+        "DB_PREFIX" => "fn_",
+        "SET_NAMES" => "utf8",
+        "PACKAGES" => array(100,101,102,103,300,301,302,400,800,900)
+    ),
 
-	'4' => array(
-		"SITE_NAME" => "Юрисконсульт.by",
-		"SITE_URL" => "jurisconsult.by",
-		/*"DB_HOST" => "mysql.web",
-		"DB_USER" => "sites_db_access",
-		"DB_PASS" => "bRNqWmZSn9e8wEZV",*/
-		"DB_HOST" => "localhost",
-		"DB_USER" => "root",
-		"DB_PASS" => "mmm_beer11",
-		"DB_NAME" => "jurisconsultby",
-		"DB_PREFIX" => "fn_",
-		"SET_NAMES" => "utf8",
-		"PACKAGES" => array(120,121,122,123,300,301,304,400,800,900)
-	),
+    '4' => array(
+        "SITE_NAME" => "Юрисконсульт.by",
+        "SITE_URL" => "jurisconsult.by",
+        /*"DB_HOST" => "mysql.web",
+        "DB_USER" => "sites_db_access",
+        "DB_PASS" => "bRNqWmZSn9e8wEZV",*/
+        "DB_HOST" => "localhost",
+        "DB_USER" => "root",
+        "DB_PASS" => "mmm_beer11",
+        "DB_NAME" => "jurisconsultby",
+        "DB_PREFIX" => "fn_",
+        "SET_NAMES" => "utf8",
+        "PACKAGES" => array(120,121,122,123,300,301,304,400,800,900)
+    ),
 );
 
 return require("system.conf.php");

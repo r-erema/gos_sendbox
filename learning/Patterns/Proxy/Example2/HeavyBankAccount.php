@@ -6,7 +6,6 @@ namespace learning\Patterns\Proxy\Example2;
 
 class HeavyBankAccount implements BankAccount
 {
-
     private $transactions = [];
 
     public function deposit(int $amount): void
@@ -18,5 +17,4 @@ class HeavyBankAccount implements BankAccount
     {
         return array_sum($this->transactions);
     }
-
 }

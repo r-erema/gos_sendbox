@@ -49,5 +49,4 @@ class ExperimentalClass implements EventManagerAwareInterface
         $params = compact('arg1', 'arg2');
         $this->getEventManager()->trigger(__FUNCTION__, $this, $params);
     }
-
 }

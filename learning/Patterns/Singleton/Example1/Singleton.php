@@ -6,7 +6,6 @@ namespace learning\Patterns\Singleton\Example1;
 
 final class Singleton
 {
-
     private static $instance;
 
     public static function getInstance(): Singleton
@@ -24,5 +23,4 @@ final class Singleton
     private function __clone()
     {
     }
-
 }

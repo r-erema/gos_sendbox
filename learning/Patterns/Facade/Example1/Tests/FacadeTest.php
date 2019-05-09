@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace learning\Patterns\Facade\Example1\Tests;
 
-use learning\Patterns\Facade\Example1\BiosInterface,
-    learning\Patterns\Facade\Example1\Facade,
-    learning\Patterns\Facade\Example1\OsInterface,
-    PHPUnit\Framework\MockObject\MockObject,
-    PHPUnit\Framework\TestCase;
+use learning\Patterns\Facade\Example1\BiosInterface;
+use learning\Patterns\Facade\Example1\Facade;
+use learning\Patterns\Facade\Example1\OsInterface;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 class FacadeTest extends TestCase
 {
@@ -20,7 +20,7 @@ class FacadeTest extends TestCase
         $os = $this->createMock(OsInterface::class);
         $os->method('getName')->willReturn('Linux');
 
-         /** @var BiosInterface|MockObject $bios */
+        /** @var BiosInterface|MockObject $bios */
         $bios = $this->getMockBuilder(BiosInterface::class)
                      ->setMethods(['launch', 'execute', 'waitForKeyPress'])
                      ->disableAutoload()

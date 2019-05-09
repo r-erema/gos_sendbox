@@ -7,7 +7,6 @@ namespace learning\Patterns\Builder\Example1;
 
 class Director
 {
-
     public function build(BuilderInterface $builder): Vehicle
     {
         $builder->createVehicle();

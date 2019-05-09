@@ -8,5 +8,6 @@
 
 namespace learning\Patterns\UnitOfWork\Example1;
 
-
-class DataAccessObject extends \PDO {}
+class DataAccessObject extends \PDO
+{
+}

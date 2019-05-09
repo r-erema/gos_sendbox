@@ -9,7 +9,6 @@ use Zend\EventManager\EventManager;
 
 class ListenerAggregatesTest extends TestCase
 {
-
     use Logger;
 
     /**

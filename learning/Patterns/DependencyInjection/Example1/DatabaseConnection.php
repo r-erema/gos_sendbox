@@ -4,7 +4,6 @@ namespace learning\Patterns\DependencyInjection\Example1;
 
 class DatabaseConnection
 {
-
     private $configuration;
 
     public function __construct(DatabaseConfiguration $configuration)

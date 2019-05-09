@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace learning\Patterns\Mediator\Example1\Tests;
 
-use learning\Patterns\Mediator\Example1\Client,
-    learning\Patterns\Mediator\Example1\Database,
-    learning\Patterns\Mediator\Example1\Mediator,
-    learning\Patterns\Mediator\Example1\Server,
-    PHPUnit\Framework\TestCase;
+use learning\Patterns\Mediator\Example1\Client;
+use learning\Patterns\Mediator\Example1\Database;
+use learning\Patterns\Mediator\Example1\Mediator;
+use learning\Patterns\Mediator\Example1\Server;
+use PHPUnit\Framework\TestCase;
 
 class MediatorTest extends TestCase
 {

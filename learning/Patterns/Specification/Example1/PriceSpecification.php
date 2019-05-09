@@ -6,8 +6,8 @@ namespace learning\Patterns\Specification\Example1;
 
 class PriceSpecification implements SpecificationInterface
 {
-
-    private $maxPrice, $minPrice;
+    private $maxPrice;
+    private $minPrice;
 
     public function __construct(float $minPrice, float $maxPrice)
     {
@@ -26,5 +26,4 @@ class PriceSpecification implements SpecificationInterface
         }
         return true;
     }
-
 }

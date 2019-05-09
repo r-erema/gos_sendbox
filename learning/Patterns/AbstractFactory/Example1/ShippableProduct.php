@@ -6,8 +6,8 @@ namespace learning\Patterns\AbstractFactory\Example1;
 
 class ShippableProduct implements ProductInterface
 {
-
-    private $productPrice, $shippingCost;
+    private $productPrice;
+    private $shippingCost;
 
     public function __construct(float $productPrice, float $shippingCost)
     {
@@ -19,5 +19,4 @@ class ShippableProduct implements ProductInterface
     {
         return $this->productPrice + $this->shippingCost;
     }
-
 }

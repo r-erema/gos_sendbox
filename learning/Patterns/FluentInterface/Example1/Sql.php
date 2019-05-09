@@ -6,7 +6,9 @@ namespace learning\Patterns\FluentInterface\Example1;
 
 class Sql
 {
-    private $fields = [], $from = [], $where = [];
+    private $fields = [];
+    private $from = [];
+    private $where = [];
 
     public function select(array $fields): self
     {
@@ -33,6 +35,6 @@ class Sql
             implode(', ', $this->fields),
             implode(', ', $this->from),
             implode(' AND ', $this->where),
-        );
+            );
     }
 }

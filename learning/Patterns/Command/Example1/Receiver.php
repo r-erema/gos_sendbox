@@ -6,8 +6,8 @@ namespace learning\Patterns\Command\Example1;
 
 class Receiver
 {
-
-    private $enableDate = false, $output = [];
+    private $enableDate = false;
+    private $output = [];
 
     public function write(string $string): void
     {
@@ -31,5 +31,4 @@ class Receiver
     {
         $this->enableDate = false;
     }
-
 }

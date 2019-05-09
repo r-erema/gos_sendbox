@@ -6,7 +6,6 @@ use \Symfony\Component\Validator\Validation;
 
 class MetaDataTest extends TestCase
 {
-
     public function testDataOk()
     {
         $author = new Author('J.Lon', '123');
@@ -36,6 +35,4 @@ class MetaDataTest extends TestCase
         $violations = $validator->validate($author);
         $this->assertNotEmpty($violations);
     }
-
-
 }

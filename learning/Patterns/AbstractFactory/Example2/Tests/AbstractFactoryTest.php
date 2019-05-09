@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 namespace learning\Patterns\AbstractFactory\Example2\Tests;
 
-use learning\Patterns\AbstractFactory\Example2\OReillyBookFactory,
-    PHPUnit\Framework\TestCase,
-    learning\Patterns\AbstractFactory\Example2\SamsBookFactory;
+use learning\Patterns\AbstractFactory\Example2\OReillyBookFactory;
+use PHPUnit\Framework\TestCase;
+use learning\Patterns\AbstractFactory\Example2\SamsBookFactory;
 
 class AbstractFactoryTest extends TestCase
 {
-
     public function testBookFactory(): void
     {
         $OReillyBookFactory = new OReillyBookFactory();
@@ -28,5 +27,4 @@ class AbstractFactoryTest extends TestCase
         $this->assertEquals('George Schlossnagle', $samsBookFactory->makePhpBook()->getAuthor());
         $this->assertEquals('MySQL, 3rd Edition', $samsBookFactory->makeMysqlBook()->getTitle());
     }
-
 }

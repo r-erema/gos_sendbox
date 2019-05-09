@@ -6,7 +6,6 @@ namespace learning\Patterns\Bridge\Example1;
 
 abstract class Service
 {
-
     protected $implementation;
 
     public function __construct(FormatterInterface $implementation)

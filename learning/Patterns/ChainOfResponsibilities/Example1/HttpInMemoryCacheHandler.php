@@ -8,7 +8,6 @@ use Psr\Http\Message\RequestInterface;
 
 class HttpInMemoryCacheHandler extends Handler
 {
-
     private $data;
 
     public function __construct(array $data, Handler $successor =null)
@@ -28,6 +27,4 @@ class HttpInMemoryCacheHandler extends Handler
 
         return null;
     }
-
-
 }

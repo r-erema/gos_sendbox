@@ -10,7 +10,6 @@ use PHPUnit\Framework\TestCase;
 
 class BridgeTest extends TestCase
 {
-
     public function testCanPrintUsingThePlainTextPrinter(): void
     {
         $service = new HelloWorldService(new PlainTextFormatter());
@@ -19,5 +18,4 @@ class BridgeTest extends TestCase
         $service->setImplementation(new HtmlFormatter());
         $this->assertEquals('<p>Hello World</p>', $service->get());
     }
-
 }

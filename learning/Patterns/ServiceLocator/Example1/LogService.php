@@ -2,4 +2,6 @@
 
 namespace learning\Patterns\ServiceLocator\Example1;
 
-class LogService {}
+class LogService
+{
+}

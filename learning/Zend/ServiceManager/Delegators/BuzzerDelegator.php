@@ -65,5 +65,4 @@ class BuzzerDelegator extends Buzzer
     {
         return $this->result;
     }
-
 }

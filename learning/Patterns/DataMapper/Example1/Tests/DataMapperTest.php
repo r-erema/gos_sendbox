@@ -2,14 +2,13 @@
 
 namespace learning\Patterns\DataMapper\Example1\Tests;
 
-use learning\Patterns\DataMapper\Example1\StorageAdapter,
-    learning\Patterns\DataMapper\Example1\User,
-    learning\Patterns\DataMapper\Example1\UserMapper,
-    PHPUnit\Framework\TestCase;
+use learning\Patterns\DataMapper\Example1\StorageAdapter;
+use learning\Patterns\DataMapper\Example1\User;
+use learning\Patterns\DataMapper\Example1\UserMapper;
+use PHPUnit\Framework\TestCase;
 
 class DataMapperTest extends TestCase
 {
-
     public function testCanMapUserFromStorage(): void
     {
         $storage = new StorageAdapter([

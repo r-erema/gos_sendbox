@@ -2,7 +2,8 @@
 
 namespace learning\Patterns\UnitOfWork\Example1;
 
-class MapperRegistry {
+class MapperRegistry
+{
 
     /**
      * @var DataAccessObject
@@ -19,8 +20,8 @@ class MapperRegistry {
      * @return mixed
      * @throws \Exception
      */
-    public function getMapperForClassName(string $className) {
-
+    public function getMapperForClassName(string $className)
+    {
         $mapperClassName = "{$className}Mapper";
 
         if (isset($this->mapperContainer[$mapperClassName])) {
@@ -39,7 +40,8 @@ class MapperRegistry {
     /**
      * @return DataAccessObject
      */
-    public function getDao(): DataAccessObject {
+    public function getDao(): DataAccessObject
+    {
         return $this->dao;
     }
 
@@ -47,9 +49,9 @@ class MapperRegistry {
      * @param DataAccessObject $dao
      * @return $this
      */
-    public function setDao(DataAccessObject $dao) {
+    public function setDao(DataAccessObject $dao)
+    {
         $this->dao = $dao;
         return $this;
     }
-
 }

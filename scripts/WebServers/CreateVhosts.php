@@ -15,10 +15,12 @@ $nginxText = '';
 $apacheText = '';
 foreach ($servers as $server) {
     switch ($server['name']) {
-        case NGINX :
+        case NGINX:
             /** @var array $domains */
             $domains = $server['domains'];
-            $allDomains = array_merge(...array_map(function ($domain) {return $domain['names'];}, $domains));
+            $allDomains = array_merge(...array_map(function ($domain) {
+                return $domain['names'];
+            }, $domains));
             $nginxText .= str_replace(
                 ['%%all_domains%%'],
                 [implode(' ', $allDomains)],
@@ -34,7 +36,7 @@ foreach ($servers as $server) {
             }
             $nginxFileName = $server['file_name'];
             break;
-        case APACHE :
+        case APACHE:
             $domain = $server['domain'];
             $names = $domain['names'];
             $serverName = array_shift($names);
@@ -71,5 +73,4 @@ if ($nginxFileName && $apacheFileName) {
     `mkdir /var/log/apache2/{$config['main_name']}`;
     `a2ensite {$apacheFileName}`;
     `/etc/init.d/apache2 reload`;
-
 }

@@ -8,7 +8,8 @@
 
 namespace learning\Patterns\UnitOfWork\Example1;
 
-class UnitOfWork {
+class UnitOfWork
+{
 
     /**
      * @var MapperRegistry
@@ -34,21 +35,24 @@ class UnitOfWork {
      * UnitOfWork constructor.
      * @param MapperRegistry $mapperRegistry
      */
-    public function __construct(MapperRegistry $mapperRegistry) {
+    public function __construct(MapperRegistry $mapperRegistry)
+    {
         $this->mapperRegistry = $mapperRegistry;
     }
 
     /**
      * @param DomainObject $object
      */
-    public function registerDirty(DomainObject $object) {
+    public function registerDirty(DomainObject $object)
+    {
         $this->dirtyObjects[spl_object_hash($object)] = $object;
     }
 
     /**
      * @param DomainObject $object
      */
-    public function registerToDelete(DomainObject $object) {
+    public function registerToDelete(DomainObject $object)
+    {
         $this->objectsToDelete[spl_object_hash($object)] = $object;
     }
 
@@ -56,7 +60,8 @@ class UnitOfWork {
      * @param DomainObject $object
      * @throws \Exception
      */
-    public function registerNew(DomainObject $object) {
+    public function registerNew(DomainObject $object)
+    {
         if ($this->isDirty($object)) {
             throw new \Exception('Cannot register as new, object is marked for deletion');
         } elseif ($this->isDirty($object)) {
@@ -72,7 +77,8 @@ class UnitOfWork {
      * @param DomainObject $object
      * @return bool
      */
-    public function isNew(DomainObject $object): bool {
+    public function isNew(DomainObject $object): bool
+    {
         return isset($this->newObjects[spl_object_hash($object)]);
     }
 
@@ -80,7 +86,8 @@ class UnitOfWork {
      * @param DomainObject $object
      * @return bool
      */
-    public function isDirty(DomainObject $object): bool {
+    public function isDirty(DomainObject $object): bool
+    {
         return isset($this->dirtyObjects[spl_object_hash($object)]);
     }
 
@@ -88,11 +95,13 @@ class UnitOfWork {
      * @param DomainObject $object
      * @return bool
      */
-    public function isDeleted(DomainObject $object): bool {
+    public function isDeleted(DomainObject $object): bool
+    {
         return isset($this->objectsToDelete[spl_object_hash($object)]);
     }
 
-    public function commit() {
+    public function commit()
+    {
 
         /** @var CustomerMapper $mapper */
         foreach ($this->newObjects as $newObject) {
@@ -110,5 +119,4 @@ class UnitOfWork {
             $mapper->delete($objectToDelete);
         }
     }
-
 }

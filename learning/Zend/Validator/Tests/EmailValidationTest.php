@@ -13,7 +13,6 @@ use Zend\Validator\ValidatorChain;
 
 class EmailValidationTest extends TestCase
 {
-
     public function testEmailValidation()
     {
         $validator = new EmailAddress();
@@ -65,7 +64,8 @@ class EmailValidationTest extends TestCase
     public function testValidatorChain()
     {
         $validatorChain = (new ValidatorChain())
-            ->attach(new StringLength([
+            ->attach(new StringLength(
+                [
                 'min' => 6,
                 'max' => 12]
             ))
@@ -99,8 +99,8 @@ class EmailValidationTest extends TestCase
         $this->assertEquals('The input contains characters which are non alphabetic and no digits', current($errorMessages));
     }
 
-    public function testCustomValidators() {
-
+    public function testCustomValidators()
+    {
         $validator = new FloatValidator();
         $this->assertTrue($validator->isValid(3.14));
         $this->assertFalse($validator->isValid(3));
@@ -112,6 +112,5 @@ class EmailValidationTest extends TestCase
         $validator = new PasswordStrengthValidator();
         $this->assertFalse($validator->isValid('pass'));
         $this->assertEquals(3, count($validator->getMessages()));
-
     }
 }

@@ -3,14 +3,13 @@ declare(strict_types=1);
 
 namespace learning\Patterns\Adapter\Tests;
 
-use learning\Patterns\Adapter\Example1\Book,
-    learning\Patterns\Adapter\Example1\EBookAdapter,
-    learning\Patterns\Adapter\Example1\Kindle,
-    PHPUnit\Framework\TestCase;
+use learning\Patterns\Adapter\Example1\Book;
+use learning\Patterns\Adapter\Example1\EBookAdapter;
+use learning\Patterns\Adapter\Example1\Kindle;
+use PHPUnit\Framework\TestCase;
 
 class AdapterTest extends TestCase
 {
-
     public function testCanTurnPageOnBook(): void
     {
         $book = new Book();
@@ -29,5 +28,4 @@ class AdapterTest extends TestCase
 
         $this->assertEquals(2, $book->getPage());
     }
-
 }

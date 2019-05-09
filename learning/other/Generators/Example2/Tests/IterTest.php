@@ -10,7 +10,6 @@ use PHPUnit\Framework\TestCase;
 
 class IterTest extends TestCase
 {
-
     public function testIter(): void
     {
         $iter = (new MutantIterator())(12);

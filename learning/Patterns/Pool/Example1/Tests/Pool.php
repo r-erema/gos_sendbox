@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace learning\Patterns\WorkerPool\Example1\Tests;
 
-use learning\Patterns\Pool\Example1\WorkerPool,
-    PHPUnit\Framework\TestCase;
+use learning\Patterns\Pool\Example1\WorkerPool;
+use PHPUnit\Framework\TestCase;
 
 class Pool extends TestCase
 {
@@ -32,5 +32,4 @@ class Pool extends TestCase
         $this->assertCount(1, $pool);
         $this->assertSame($worker1, $worker2);
     }
-
 }

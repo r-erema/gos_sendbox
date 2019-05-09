@@ -14,18 +14,18 @@ $opts = getopt('p:');
 
 $file = fopen($config['subscribers_file'], 'w');
 if ($file === false) {
-    echo ("Не удалось создать файл '{$config['subscribers_file']}'" . PHP_EOL);
+    echo("Не удалось создать файл '{$config['subscribers_file']}'" . PHP_EOL);
     exit(2);
 }
 
 $packsNames = [];
 if (isset($opts['p'])) {
-    $packsNames = explode(',',$opts['p']);
+    $packsNames = explode(',', $opts['p']);
     $packsNames = array_map(function ($pack) use ($pdo) {
         return $pdo->quote(trim($pack));
     }, $packsNames);
 }
-$packsNames = implode(',',$packsNames);
+$packsNames = implode(',', $packsNames);
 /*$stmt = $pdo->query('
             SELECT user_id, user_login, user_code, user_name
             FROM nr_packages
@@ -37,7 +37,7 @@ $packsNames = implode(',',$packsNames);
             'code_activated_user_id IS NOT NULL AND
              code_is_active = 1 AND
              user_news_letters = 1 AND
-             user_invalid_email = 0				 
+             user_invalid_email = 0
             GROUP BY user_id'
 );*/
 $stmt = $pdo->query('SELECT user_passport_id, user_login, user_code, user_name FROM fn_users WHERE user_invalid_email = 0 AND user_news_letters = 1');
@@ -47,7 +47,9 @@ $stmt->execute();
 $salt = $config['salt'];
 $rows = '';
 while (false !== ($userData = $stmt->fetch())) {
-    $signature = preg_replace('#[/=+]#', '',
+    $signature = preg_replace(
+        '#[/=+]#',
+        '',
         base64_encode(md5(sprintf('(57f-%s-gh-%s-yy', $userData['user_passport_id'], $userData['user_code']) . $salt, true)) .
         base64_encode(md5(sprintf('%s9s%swl', $userData['user_passport_id'], $userData['user_code']) . $salt, true))
     );
@@ -55,9 +57,9 @@ while (false !== ($userData = $stmt->fetch())) {
 }
 
 if (fwrite($file, $rows)) {
-    echo ("Файл с пользователями '{$config['subscribers_file']}' готов" . PHP_EOL);
+    echo("Файл с пользователями '{$config['subscribers_file']}' готов" . PHP_EOL);
     exit(0);
 } else {
-    echo ("В файл '{$config['subscribers_file']}' ничего не записалось" . PHP_EOL);
+    echo("В файл '{$config['subscribers_file']}' ничего не записалось" . PHP_EOL);
     exit(2);
 }

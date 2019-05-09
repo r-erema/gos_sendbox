@@ -17,5 +17,4 @@ class HelloCommand implements CommandInterface
     {
         $this->output->write('Hello World');
     }
-
 }

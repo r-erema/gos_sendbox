@@ -7,19 +7,22 @@
  */
 
 namespace learning\Doctrine\GettingStarted\src;
+
 use Doctrine\ORM\EntityRepository;
 
 /**
  * Class BugRepository
  * @package learning\Doctrine\GettingStarted\src
  */
-class BugRepository extends EntityRepository {
+class BugRepository extends EntityRepository
+{
 
     /**
      * @param int $number
      * @return array
      */
-    public function getRecentBugs($number = 30) {
+    public function getRecentBugs($number = 30)
+    {
         $dql = 'SELECT b, e, r FROM learning\Doctrine\GettingStarted\src\Bug b JOIN b.engineer e JOIN b.reporter r ORDER BY b.created DESC';
 
         $query = $this->getEntityManager()->createQuery($dql);
@@ -31,7 +34,8 @@ class BugRepository extends EntityRepository {
      * @param int $number
      * @return array
      */
-        public function getRecentBugsArray($number = 30) {
+    public function getRecentBugsArray($number = 30)
+    {
         $dql = "SELECT b, e, r, p FROM learning\Doctrine\GettingStarted\src\Bug b JOIN b.engineer e ".
                "JOIN b.reporter r JOIN b.products p ORDER BY b.created DESC";
         $query = $this->getEntityManager()->createQuery($dql);
@@ -44,7 +48,8 @@ class BugRepository extends EntityRepository {
      * @param int $number
      * @return array
      */
-    public function getUsersBugs($userId, $number = 15) {
+    public function getUsersBugs($userId, $number = 15)
+    {
         $dql = "SELECT b, e, r FROM learning\Doctrine\GettingStarted\src\Bug b JOIN b.engineer e JOIN b.reporter r ".
                "WHERE b.status = 'OPEN' AND e.id = ?1 OR r.id = ?1 ORDER BY b.created DESC";
 
@@ -57,7 +62,8 @@ class BugRepository extends EntityRepository {
     /**
      * @return array
      */
-    public function getOpenBugsByProduct() {
+    public function getOpenBugsByProduct()
+    {
         $dql = "SELECT p.id, p.name, count(b.id) AS openBugs FROM learning\Doctrine\GettingStarted\src\Bug b ".
                "JOIN b.products p WHERE b.status = 'OPEN' GROUP BY p.id";
         return $this->getEntityManager()->createQuery($dql)->getScalarResult();

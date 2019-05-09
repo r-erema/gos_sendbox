@@ -2,7 +2,8 @@
 
 namespace learning\Patterns\UnitOfWork\Example1;
 
-abstract class DomainObject {
+abstract class DomainObject
+{
 
     /**
      * @var UnitOfWork
@@ -12,7 +13,8 @@ abstract class DomainObject {
     /**
      * @return UnitOfWork
      */
-    public function getUnitOfWork(): UnitOfWork {
+    public function getUnitOfWork(): UnitOfWork
+    {
         return $this->unitOfWork;
     }
 
@@ -20,7 +22,8 @@ abstract class DomainObject {
      * @param UnitOfWork $unitOfWork
      * @return $this
      */
-    public function setUnitOfWork(UnitOfWork $unitOfWork) {
+    public function setUnitOfWork(UnitOfWork $unitOfWork)
+    {
         $this->unitOfWork = $unitOfWork;
         return $this;
     }
@@ -28,26 +31,29 @@ abstract class DomainObject {
     /**
      * @return bool
      */
-    public function hasUnitOfWork(): bool {
+    public function hasUnitOfWork(): bool
+    {
         return $this->unitOfWork instanceof UnitOfWork;
     }
 
-    public function markAsNew() {
+    public function markAsNew()
+    {
         if ($this->hasUnitOfWork()) {
             $this->unitOfWork->registerNew($this);
         }
     }
 
-    public function markAsDeleted() {
+    public function markAsDeleted()
+    {
         if ($this->hasUnitOfWork()) {
             $this->unitOfWork->registerToDelete($this);
         }
     }
 
-    public function markAsDirty() {
+    public function markAsDirty()
+    {
         if ($this->hasUnitOfWork()) {
             $this->unitOfWork->registerDirty($this);
         }
     }
-
 }

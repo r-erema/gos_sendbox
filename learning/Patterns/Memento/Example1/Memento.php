@@ -6,7 +6,6 @@ namespace learning\Patterns\Memento\Example1;
 
 class Memento
 {
-
     private $state;
 
     public function __construct(State $state)
@@ -18,5 +17,4 @@ class Memento
     {
         return $this->state;
     }
-
 }

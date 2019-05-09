@@ -6,7 +6,6 @@ use Zend\Validator\AbstractValidator;
 
 class PasswordStrengthValidator extends AbstractValidator
 {
-
     const LENGTH = 'length';
     const UPPER = 'upper';
     const LOWER = 'lower';
@@ -49,5 +48,4 @@ class PasswordStrengthValidator extends AbstractValidator
 
         return $isValid;
     }
-
 }

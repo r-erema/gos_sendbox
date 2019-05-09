@@ -4,7 +4,6 @@ namespace learning\Patterns\Specification\Example1;
 
 class Item
 {
-
     private $price;
 
     public function __construct(float $price)
@@ -16,6 +15,4 @@ class Item
     {
         return $this->price;
     }
-
-
 }

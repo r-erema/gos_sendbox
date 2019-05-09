@@ -8,11 +8,10 @@ use Generator;
 
 class Task
 {
-
-    protected $taskId,
-              $coroutine,
-              $sendValue,
-              $beforeFirstYield = true;
+    protected $taskId;
+    protected $coroutine;
+    protected $sendValue;
+    protected $beforeFirstYield = true;
 
     public function __construct(int $taskId, Generator $coroutine)
     {

@@ -6,7 +6,6 @@ namespace learning\Paradigms\TellDontAsk\Example1\TellVersion;
 
 class PaymentService
 {
-
     public function debitCustomer(float $amount, string $customerId): void
     {
         $wallet = WalletRepository::GetWalletByCustomerId($customerId);
@@ -27,5 +26,4 @@ class PaymentService
 
         $wallet->credit($amount);
     }
-
 }

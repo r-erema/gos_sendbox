@@ -8,6 +8,6 @@ class PrintLogger implements LoggerInterface
 {
     public function log(string $str): void
     {
-       echo $str;
+        echo $str;
     }
 }

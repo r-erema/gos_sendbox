@@ -8,7 +8,6 @@ use \learning\Symfony\Validation\LoadingResources\UserMetadataFactory;
 
 class LoadingResourcesTest extends TestCase
 {
-
     public function testLoadingMethodMapping()
     {
         $validator = Validation::createValidatorBuilder()

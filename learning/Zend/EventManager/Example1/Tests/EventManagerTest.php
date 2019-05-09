@@ -1,16 +1,15 @@
 <?php
 namespace learning\Zend\EventManager\Example1\Tests;
 
-use PHPUnit\Framework\TestCase,
-    learning\Zend\EventManager\Example1\ExperimentalClass,
-    Zend\EventManager\Event,
-    Zend\EventManager\EventManager,
-    Zend\EventManager\SharedEventManager,
-    learning\Zend\EventManager\Helpers\Logger;
+use PHPUnit\Framework\TestCase;
+use learning\Zend\EventManager\Example1\ExperimentalClass;
+use Zend\EventManager\Event;
+use Zend\EventManager\EventManager;
+use Zend\EventManager\SharedEventManager;
+use learning\Zend\EventManager\Helpers\Logger;
 
 class EventManagerTest extends TestCase
 {
-
     use Logger;
 
     /**
@@ -67,7 +66,8 @@ class EventManagerTest extends TestCase
         $experimentalClass = new ExperimentalClass();
         $experimentalClass->setEventManager(new EventManager($sharedManager));
         $experimentalClass->experimentalMethod('param1', 'param2');
-        $logContent = $this->readLog();;
+        $logContent = $this->readLog();
+        ;
         $this->assertStringContainsString(
             'experimentalMethod called on learning\Zend\EventManager\Example1\ExperimentalClass, using params {"arg1":"param1","arg2":"param2"}',
             $logContent

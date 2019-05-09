@@ -9,7 +9,7 @@ class PatternObserver extends AbstractObserver
      * @param AbstractSubject $subjectIn
      * @return array|null
      */
-    function update(AbstractSubject $subjectIn): ?array
+    public function update(AbstractSubject $subjectIn): ?array
     {
         if ($subjectIn instanceof PatternSubject) { /** @var PatternSubject $subjectIn */
             return array_merge($subjectIn->getFavorites(), ['data mapper']);

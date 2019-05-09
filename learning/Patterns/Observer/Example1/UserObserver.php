@@ -6,7 +6,6 @@ use SplSubject;
 
 class UserObserver implements \SplObserver
 {
-
     private $changedUsers = [];
 
     public function update(SplSubject $subject): void
@@ -18,5 +17,4 @@ class UserObserver implements \SplObserver
     {
         return $this->changedUsers;
     }
-
 }

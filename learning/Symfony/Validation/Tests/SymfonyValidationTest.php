@@ -3,7 +3,6 @@ use PHPUnit\Framework\TestCase;
 
 class SymfonyValidationTest extends TestCase
 {
-
     public function testStringLength()
     {
         $validator = \Symfony\Component\Validator\Validation::createValidator();

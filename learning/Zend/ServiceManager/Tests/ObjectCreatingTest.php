@@ -8,7 +8,6 @@ use Zend\ServiceManager\ServiceManager;
 
 class ObjectCreatingTest extends TestCase
 {
-
     public function testGetObject()
     {
         $serviceManager = new ServiceManager([
@@ -45,5 +44,4 @@ class ObjectCreatingTest extends TestCase
             $serviceManager->build(\stdClass::class)
         );
     }
-
 }

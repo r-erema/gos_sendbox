@@ -7,6 +7,7 @@
  */
 
 namespace learning\Doctrine\GettingStarted\src;
+
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\Id;
@@ -14,7 +15,8 @@ use Doctrine\ORM\Mapping\Id;
 /**
  * @Entity @Table(name="products")
  */
-class Product {
+class Product
+{
 
     /**
      * @Id @Column(type="integer") @GeneratedValue
@@ -31,22 +33,24 @@ class Product {
     /**
      * @return int
      */
-    public function getId(): int {
+    public function getId(): int
+    {
         return $this->id;
     }
 
     /**
      * @return string
      */
-    public function getName(): string {
+    public function getName(): string
+    {
         return $this->name;
     }
 
     /**
      * @param string $name
      */
-    public function setName(string $name) {
+    public function setName(string $name)
+    {
         $this->name = $name;
     }
-
 }

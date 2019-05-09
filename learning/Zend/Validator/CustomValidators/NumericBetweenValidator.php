@@ -6,7 +6,6 @@ use Zend\Validator\AbstractValidator;
 
 class NumericBetweenValidator extends AbstractValidator
 {
-
     const MSG_NUMERIC = 'msgNumeric';
     const MSG_MINIMUM = 'msgMinimum';
     const MSG_MAXIMUM = 'msgMaximum';
@@ -56,6 +55,4 @@ class NumericBetweenValidator extends AbstractValidator
 
         return true;
     }
-
-
 }

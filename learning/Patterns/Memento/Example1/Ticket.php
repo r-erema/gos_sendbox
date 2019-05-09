@@ -6,7 +6,6 @@ namespace learning\Patterns\Memento\Example1;
 
 class Ticket
 {
-
     private $currentState;
 
     public function __construct()
@@ -43,5 +42,4 @@ class Ticket
     {
         return $this->currentState;
     }
-
 }

@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 namespace learning\Patterns\Memento\Example1\Tests;
 
-use learning\Patterns\Memento\Example1\State,
-    learning\Patterns\Memento\Example1\Ticket,
-    PHPUnit\Framework\TestCase;
+use learning\Patterns\Memento\Example1\State;
+use learning\Patterns\Memento\Example1\Ticket;
+use PHPUnit\Framework\TestCase;
 
 class MementoTest extends TestCase
 {
-
     public function testOpenTicketAssignAndSetBackToOpen(): void
     {
         $ticket = new Ticket();
@@ -28,5 +27,4 @@ class MementoTest extends TestCase
         $this->assertEquals(State::STATE_OPENED, (string) $ticket->getState());
         $this->assertNotSame($openedState, $ticket->getState());
     }
-
 }

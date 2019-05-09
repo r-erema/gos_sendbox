@@ -9,7 +9,6 @@ use PHPUnit\Framework\TestCase;
 
 class MultitonTest extends TestCase
 {
-
     public function testMultiton(): void
     {
         $instance1 = Multiton::getInstance('1');

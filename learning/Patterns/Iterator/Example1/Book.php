@@ -6,8 +6,8 @@ namespace learning\Patterns\Iterator\Example1;
 
 class Book
 {
-
-    private $author, $title;
+    private $author;
+    private $title;
 
     public function __construct(string $title, string $author)
     {
@@ -29,5 +29,4 @@ class Book
     {
         return "{$this->getTitle()} by {$this->getAuthor()}";
     }
-
 }

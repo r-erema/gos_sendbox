@@ -6,7 +6,6 @@ namespace learning\other\Generators\Example2;
 
 class MutantIterator
 {
-
     public function __invoke(int $length)
     {
         for ($i = 1; $i <= $length; $i++) {
@@ -17,5 +16,4 @@ class MutantIterator
         }
         return $length + $i;
     }
-
 }

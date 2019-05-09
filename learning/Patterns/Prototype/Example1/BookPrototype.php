@@ -6,8 +6,8 @@ namespace learning\Patterns\Prototype\Example1;
 
 abstract class BookPrototype
 {
-
-    protected $title, $category;
+    protected $title;
+    protected $category;
 
     abstract public function __clone();
 
@@ -25,6 +25,4 @@ abstract class BookPrototype
     {
         return $this->category;
     }
-
-
 }

@@ -6,7 +6,6 @@ namespace learning\Patterns\Prototype\Example1;
 
 class FooBookPrototype extends BookPrototype
 {
-
     public const CATEGORY = 'Foo';
 
     protected $category = self::CATEGORY;
@@ -14,5 +13,4 @@ class FooBookPrototype extends BookPrototype
     public function __clone()
     {
     }
-
 }

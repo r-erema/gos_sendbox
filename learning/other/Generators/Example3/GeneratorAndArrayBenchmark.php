@@ -8,13 +8,12 @@ use Generator;
 
 class GeneratorAndArrayBenchmark
 {
-
-    private $size,
-            $memoryUsageInterval,
-            $arrayValuesMemoryUsage,
-            $arrayValuesTimeUsage,
-            $generatorValuesMemoryUsage,
-            $generatorValuesTimeUsage;
+    private $size;
+    private $memoryUsageInterval;
+    private $arrayValuesMemoryUsage;
+    private $arrayValuesTimeUsage;
+    private $generatorValuesMemoryUsage;
+    private $generatorValuesTimeUsage;
 
 
     public function __construct(int $size = 1000, int $memoryUsageInterval = 200)

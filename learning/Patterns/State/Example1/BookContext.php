@@ -29,5 +29,4 @@ class BookContext
     {
         return $this->book;
     }
-
 }

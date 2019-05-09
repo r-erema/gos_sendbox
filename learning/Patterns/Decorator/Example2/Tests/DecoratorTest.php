@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 namespace learning\Patterns\Decorator\Example2\Tests;
-    
+
 use learning\Patterns\Decorator\Example2\DoubleRoomBooking;
 use learning\Patterns\Decorator\Example2\ExtraBed;
 use learning\Patterns\Decorator\Example2\WiFi;
@@ -11,7 +11,6 @@ use PHPUnit\Framework\TestCase;
 
 class DecoratorTest extends TestCase
 {
-
     public function testCanCalculatePriceForBasicDoubleRoomBooking(): void
     {
         $booking = new DoubleRoomBooking();
@@ -37,5 +36,4 @@ class DecoratorTest extends TestCase
         $this->assertEquals(72, $booking->calculatePrice());
         $this->assertEquals('double room with wifi with extra bed', $booking->getDescription());
     }
-
 }

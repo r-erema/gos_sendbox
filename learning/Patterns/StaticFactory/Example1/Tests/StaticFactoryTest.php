@@ -2,14 +2,13 @@
 
 namespace learning\Patterns\StaticFactory\Example1\Tests;
 
-use learning\Patterns\StaticFactory\Example1\FormatNumber,
-    learning\Patterns\StaticFactory\Example1\FormatString,
-    learning\Patterns\StaticFactory\Example1\StaticFactory,
-    PHPUnit\Framework\TestCase;
+use learning\Patterns\StaticFactory\Example1\FormatNumber;
+use learning\Patterns\StaticFactory\Example1\FormatString;
+use learning\Patterns\StaticFactory\Example1\StaticFactory;
+use PHPUnit\Framework\TestCase;
 
 class StaticFactoryTest extends TestCase
 {
-
     public function testCanCreateNumberFormatter(): void
     {
         $this->assertInstanceOf(FormatNumber::class, StaticFactory::factory('number'));
@@ -25,5 +24,4 @@ class StaticFactoryTest extends TestCase
         $this->expectException(\InvalidArgumentException::class);
         StaticFactory::factory('object');
     }
-
 }

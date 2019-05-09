@@ -2,14 +2,13 @@
 
 namespace learning\Patterns\AbstractFactory\Example1\Tests;
 
-use learning\Patterns\AbstractFactory\Example1\DigitalProduct,
-    learning\Patterns\AbstractFactory\Example1\ProductFactory,
-    learning\Patterns\AbstractFactory\Example1\ShippableProduct,
-    PHPUnit\Framework\TestCase;
+use learning\Patterns\AbstractFactory\Example1\DigitalProduct;
+use learning\Patterns\AbstractFactory\Example1\ProductFactory;
+use learning\Patterns\AbstractFactory\Example1\ShippableProduct;
+use PHPUnit\Framework\TestCase;
 
 class AbstractFactoryTest extends TestCase
 {
-
     public function testCanCreateDigitalProduct(): void
     {
         $factory = new ProductFactory();
@@ -38,5 +37,4 @@ class AbstractFactoryTest extends TestCase
 
         $this->assertEquals(164, $product->calculatePrice());
     }
-
 }

@@ -42,6 +42,4 @@ final class ProxyImage extends Image
     {
         return $this->image->getLoadsCount();
     }
-
-
 }

@@ -10,7 +10,6 @@ use PHPUnit\Framework\TestCase;
 
 class DecoratorTest extends TestCase
 {
-
     public function testDecorator()
     {
         $book = new Book('Victor Hugo', 'The Man Who Laughs');
@@ -19,9 +18,9 @@ class DecoratorTest extends TestCase
         $starDecorator = new BookTitleStarDecorator($titleDecorator);
 
         $exclaimDecorator->exclaimTitle();
-        $this->assertEquals('!The Man Who Laughs!' , $titleDecorator->showTitle());
+        $this->assertEquals('!The Man Who Laughs!', $titleDecorator->showTitle());
 
         $starDecorator->starTitle();
-        $this->assertEquals('!The*Man*Who*Laughs!' , $titleDecorator->showTitle());
+        $this->assertEquals('!The*Man*Who*Laughs!', $titleDecorator->showTitle());
     }
 }

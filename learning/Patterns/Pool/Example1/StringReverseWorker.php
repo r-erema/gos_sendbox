@@ -6,7 +6,6 @@ namespace learning\Patterns\Pool\Example1;
 
 class StringReverseWorker
 {
-
     private $createdAt;
 
     /**

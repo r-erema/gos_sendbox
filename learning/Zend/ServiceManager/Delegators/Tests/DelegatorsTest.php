@@ -13,7 +13,6 @@ use Zend\ServiceManager\ServiceManager;
 
 class DelegatorsTest extends TestCase
 {
-
     public function testDelegator()
     {
         $wrappedBuzzer = new Buzzer();
@@ -39,5 +38,4 @@ class DelegatorsTest extends TestCase
         $buzzerDelegator = $serviceManager->get(Buzzer::class); /** @var BuzzerDelegator $buzzerDelegator */
         $this->assertEquals('Stare at the art!' . PHP_EOL . ' Buzz!', $buzzerDelegator->buzz());
     }
-
 }

@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace learning\Patterns\Command\Example1\Tests;
 
-use learning\Patterns\Command\Example1\HelloCommand,
-    learning\Patterns\Command\Example1\Invoker,
-    learning\Patterns\Command\Example1\Receiver,
-    PHPUnit\Framework\TestCase;
+use learning\Patterns\Command\Example1\HelloCommand;
+use learning\Patterns\Command\Example1\Invoker;
+use learning\Patterns\Command\Example1\Receiver;
+use PHPUnit\Framework\TestCase;
 
 class CommandTest extends TestCase
 {

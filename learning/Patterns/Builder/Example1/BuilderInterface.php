@@ -6,7 +6,6 @@ namespace learning\Patterns\Builder\Example1;
 
 interface BuilderInterface
 {
-
     public function createVehicle(): void;
 
     public function addWheel(): void;
@@ -16,5 +15,4 @@ interface BuilderInterface
     public function addDoors(): void;
 
     public function getVehicle(): Vehicle;
-
 }

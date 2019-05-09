@@ -1,15 +1,15 @@
 <?php
 namespace learning\Patterns\Specification\Example1\Tests;
 
-use learning\Patterns\Specification\Example1\AndSpecification,
-    learning\Patterns\Specification\Example1\Item,
-    learning\Patterns\Specification\Example1\NotSpecification,
-    learning\Patterns\Specification\Example1\OrSpecification,
-    learning\Patterns\Specification\Example1\PriceSpecification,
-    PHPUnit\Framework\TestCase;
+use learning\Patterns\Specification\Example1\AndSpecification;
+use learning\Patterns\Specification\Example1\Item;
+use learning\Patterns\Specification\Example1\NotSpecification;
+use learning\Patterns\Specification\Example1\OrSpecification;
+use learning\Patterns\Specification\Example1\PriceSpecification;
+use PHPUnit\Framework\TestCase;
 
-class SpecificationTest extends TestCase {
-
+class SpecificationTest extends TestCase
+{
     public function testCanOr(): void
     {
         $spec1 = new PriceSpecification(50, 99);
@@ -44,5 +44,4 @@ class SpecificationTest extends TestCase {
         $this->assertTrue($notSpec->isSatisfiedBy(new Item(150)));
         $this->assertFalse($notSpec->isSatisfiedBy(new Item(50)));
     }
-
 }

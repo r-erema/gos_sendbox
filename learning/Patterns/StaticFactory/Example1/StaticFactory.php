@@ -6,7 +6,6 @@ namespace learning\Patterns\StaticFactory\Example1;
 
 final class StaticFactory
 {
-
     public static function factory(string $type): FormatterInterface
     {
         switch ($type) {
@@ -19,5 +18,4 @@ final class StaticFactory
             default: throw new \InvalidArgumentException('Unknown format given');
         }
     }
-
 }

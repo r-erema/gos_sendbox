@@ -6,7 +6,6 @@ namespace learning\Patterns\Proxy\Example2;
 
 class HeavyBankAccountProxy extends HeavyBankAccount
 {
-
     private $balance;
 
     public function getBalance(): int

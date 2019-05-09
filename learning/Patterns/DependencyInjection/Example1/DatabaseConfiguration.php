@@ -4,8 +4,10 @@ namespace learning\Patterns\DependencyInjection\Example1;
 
 class DatabaseConfiguration
 {
-
-    private $host, $port, $username, $password;
+    private $host;
+    private $port;
+    private $username;
+    private $password;
 
     public function __construct(string $host, int $port, string $username, string $password)
     {
@@ -34,6 +36,4 @@ class DatabaseConfiguration
     {
         return $this->password;
     }
-
-
 }

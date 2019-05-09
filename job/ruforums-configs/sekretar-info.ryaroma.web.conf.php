@@ -19,15 +19,15 @@ define("TPL_DIR_ADMIN", "Acp/");
 define("TPL_DIR_SITE", "sekretar-info.ru/");
 define("TEMP_DIR", "../temp/");
 define("TIME_ZONE", "Europe/Moscow");
-define("EMAIL_VALIDATION" , true);
+define("EMAIL_VALIDATION", true);
 
-define("TEMPLATE_COMPILE_DIR" , ABSOLUTE_PATH . 'templates_compiled/');
+define("TEMPLATE_COMPILE_DIR", ABSOLUTE_PATH . 'templates_compiled/');
 
 define("GALLERY_01", "/pictures");
 define("GALLERY_TEMP", ABSOLUTE_PATH.'/pictures/temp');
 define("NEWS_IMAGE_DIR", ABSOLUTE_PATH.'pictures/news/');
-define("MAGARTICLES_IMAGE_DIR" , ABSOLUTE_PATH.'pictures/magazine-articles/');
-define("PHOTOGALLERY_DIR" , ABSOLUTE_PATH.'photo/');
+define("MAGARTICLES_IMAGE_DIR", ABSOLUTE_PATH.'pictures/magazine-articles/');
+define("PHOTOGALLERY_DIR", ABSOLUTE_PATH.'photo/');
 
 define("WWW_URL", "https://sekretar-info.ryaroma.web");
 define('COMPANY_NAME', 'журнала «Секретарь-референт»');
@@ -41,5 +41,3 @@ define("LAST_TOPICS_STOP_RUBRIC_ID", 56);
 define("SEARCH_SERVICE_URL", "http://pi.commontools.net/ProfInfo/WebServices/ForumsWebService.asmx?wsdl");
 
 include("system.conf.php");
-
-?>

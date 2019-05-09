@@ -35,7 +35,7 @@ class ServiceLocator implements ServiceLocatorInterface
         if (!isset($this->services[$name])) {
             throw new \RuntimeException("The service {$name} has not been registered with the locator.");
         } else {
-           return $this->services[$name];
+            return $this->services[$name];
         }
     }
 
@@ -65,5 +65,4 @@ class ServiceLocator implements ServiceLocatorInterface
         $this->services = [];
         return $this;
     }
-
 }

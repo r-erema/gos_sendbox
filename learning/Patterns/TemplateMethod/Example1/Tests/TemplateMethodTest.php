@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 namespace learning\Patterns\TemplateMethod\Example1\Tests;
 
-use learning\Patterns\TemplateMethod\Example1\BeachJourney,
-    learning\Patterns\TemplateMethod\Example1\CityJourney,
-    PHPUnit\Framework\TestCase;
+use learning\Patterns\TemplateMethod\Example1\BeachJourney;
+use learning\Patterns\TemplateMethod\Example1\CityJourney;
+use PHPUnit\Framework\TestCase;
 
 class TemplateMethodTest extends TestCase
 {
-
     public function testCanGetOnVacationOnTheBeach(): void
     {
         $beachJourney = new BeachJourney();

@@ -1,38 +1,38 @@
 <?php
 /* mongo query
 
-	records = [];
-	var cursor = db.getCollection('action-log7').find({
-		user: 386899
-	});
+    records = [];
+    var cursor = db.getCollection('action-log7').find({
+        user: 386899
+    });
 
-	while(cursor.hasNext()) {
-		records.push(cursor.next())
-	}
-	print(tojson(records));
+    while(cursor.hasNext()) {
+        records.push(cursor.next())
+    }
+    print(tojson(records));
 
-	// Find vacancy(id: 261065<) actions
-	records = [];
-	var cursor = db.getCollection('action-log7').find({
-		"params.vacancy": "Praca\\BusinessLogic\\Entities\\Employer\\Vacancy[#261065]"
-	});
+    // Find vacancy(id: 261065<) actions
+    records = [];
+    var cursor = db.getCollection('action-log7').find({
+        "params.vacancy": "Praca\\BusinessLogic\\Entities\\Employer\\Vacancy[#261065]"
+    });
 
-	while(cursor.hasNext()) {
-		records.push(cursor.next())
-	}
-	print(tojson(records));
+    while(cursor.hasNext()) {
+        records.push(cursor.next())
+    }
+    print(tojson(records));
 
 
-	/////////////////////////
-	records = [];
-	var cursor = db.getCollection('vacancies-status-toggling').find({
-		user_id: 386899
-	});
+    /////////////////////////
+    records = [];
+    var cursor = db.getCollection('vacancies-status-toggling').find({
+        user_id: 386899
+    });
 
-	while(cursor.hasNext()) {
-		records.push(cursor.next())
-	}
-	print(tojson(records));
+    while(cursor.hasNext()) {
+        records.push(cursor.next())
+    }
+    print(tojson(records));
 
  */
 require_once __DIR__ . '/../../../vendor/autoload.php';
@@ -85,56 +85,55 @@ $log = preg_replace('#"__time".*?ISODate\("(.*?)T(.*?)?"\)#', '"__time" : "$1 $2
 $log = preg_replace('#"time".*?ISODate\("(.*?)T(.*?)?"\)#', '"__time" : "$1 $2"', $log);
 
 $log = str_replace([
-	'\\',
-	'Praca\Api\Impl\User::approveUser',
-	'Praca\Api\Impl\Employer::approveContact',
-	'Praca\Api\Impl\Employer::updateOrganization',
-	'Praca\Api\Impl\Employer::updateOrganization',
+    '\\',
+    'Praca\Api\Impl\User::approveUser',
+    'Praca\Api\Impl\Employer::approveContact',
+    'Praca\Api\Impl\Employer::updateOrganization',
+    'Praca\Api\Impl\Employer::updateOrganization',
 ], [
-	'_',
-	'Подтверждение юзера',
-	'Подтверждение контакта',
-	'Редактирование организации',
+    '_',
+    'Подтверждение юзера',
+    'Подтверждение контакта',
+    'Редактирование организации',
 ], $log);
 
 $decodedLog = json_decode($log, true);
 
 foreach ($decodedLog as $i => $item) {
+    if (isset($item['__namespace']) && $item['__namespace'] === 'authorize') {
+        echo 'Вход на сайт/переход на страницу/обновление страницы' . PHP_EOL;
+    } elseif (isset($item['method']) && preg_match('#Praca#', $item['method'])) {
+        $item['method'] = preg_replace('#^.*:#', '', $item['method']);
+        echo $item['method'] . PHP_EOL;
+    }
+    //echo 'assolatolena2017@gmail.com.log' . PHP_EOL;
+    $user = 386899;
+    if (isset($item['user_id'])) {
+        echo $item['user_id'] == $user ? "Пользователь: ania.valentinowna@yandex.ru" . PHP_EOL : $item['user_id'] . PHP_EOL;
+    }
+    if ($item['user']) {
+        echo $item['user'] == $user ? "Пользователь: ania.valentinowna@yandex.ru" . PHP_EOL : $item['user'] . PHP_EOL;
+    }
 
-	if (isset($item['__namespace']) && $item['__namespace'] === 'authorize') {
-		echo 'Вход на сайт/переход на страницу/обновление страницы' . PHP_EOL;
-	} elseif (isset($item['method']) && preg_match('#Praca#', $item['method'])) {
-		$item['method'] = preg_replace('#^.*:#', '', $item['method']);
-		echo $item['method'] . PHP_EOL;
-	}
-	//echo 'assolatolena2017@gmail.com.log' . PHP_EOL;
-	$user = 386899;
-	if (isset($item['user_id'])) {
-		echo $item['user_id'] == $user ? "Пользователь: ania.valentinowna@yandex.ru" . PHP_EOL : $item['user_id'] . PHP_EOL;
-	}
-	if ($item['user']) {
-		echo $item['user'] == $user ? "Пользователь: ania.valentinowna@yandex.ru" . PHP_EOL : $item['user'] . PHP_EOL;
-	}
+    if (isset($item['params'])) {
+        foreach ($item['params'] as $k => $v) {
+            if (preg_match('/\[\#([\d]+)\]/', $v, $matches)) {
+                $v = $matches[1] ?? $v;
+                echo "{$k}: {$v}" . PHP_EOL;
+            }
+        }
+    }
+    /*if (isset($item['method']) && $item['method'] === 'changeVacancyAutoUp') {
+        preg_match('/\[#([\d]+)\]/', $item['params']['vacancy'], $matches);
+        echo "Вакансия: {$matches[1]}" . PHP_EOL;
+        echo 'Статус: ' . ($item['params']['enabled'] ? 'включение' : 'выключение') . PHP_EOL;
+    }*/
 
-	if (isset($item['params'])) {
-		foreach ($item['params'] as $k => $v) {
-			if (preg_match('/\[\#([\d]+)\]/', $v, $matches)) {
-				$v = $matches[1] ?? $v;
-				echo "{$k}: {$v}" . PHP_EOL;
-			}
-		}
-	}
-	/*if (isset($item['method']) && $item['method'] === 'changeVacancyAutoUp') {
-		preg_match('/\[#([\d]+)\]/', $item['params']['vacancy'], $matches);
-		echo "Вакансия: {$matches[1]}" . PHP_EOL;
-		echo 'Статус: ' . ($item['params']['enabled'] ? 'включение' : 'выключение') . PHP_EOL;
-	}*/
+    echo isset($item['action']) ? "Действие: {$item['action']}" . PHP_EOL : '';
+    echo isset($item['vacancy_id']) ? "Id вакансии: {$item['vacancy_id']}" . PHP_EOL : '';
+    //echo isset($item['time']) ? $item['time'] . PHP_EOL : '';
+    echo isset($item['__time']) ? $item['__time'] . PHP_EOL : '';
+    echo isset($item['ip']) ? $item['ip'] . PHP_EOL : '';
 
-	echo isset($item['action']) ? "Действие: {$item['action']}" . PHP_EOL : '';
-	echo isset($item['vacancy_id']) ? "Id вакансии: {$item['vacancy_id']}" . PHP_EOL : '';
-	//echo isset($item['time']) ? $item['time'] . PHP_EOL : '';
-	echo isset($item['__time']) ? $item['__time'] . PHP_EOL : '';
-	echo isset($item['ip']) ? $item['ip'] . PHP_EOL : '';
-
-	echo str_repeat('-', 100) . PHP_EOL . PHP_EOL;
+    echo str_repeat('-', 100) . PHP_EOL . PHP_EOL;
 }

@@ -1,10 +1,13 @@
 <?php
-    $pdo = new PDO('mysql:host=localhost;dbname=fg;charset=utf8',
-        'root',
-        'mmm_beer11', [
+    $pdo = new PDO(
+    'mysql:host=localhost;dbname=fg;charset=utf8',
+    'root',
+    'mmm_beer11',
+    [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    ]);
+    ]
+);
 
 
     $stmt = $pdo->query('
@@ -30,17 +33,17 @@
         $publication['content'] = trim(str_replace('<p class="item-date">[[*publishedon:fdate=`d.m.Y`]]</p>', '', $publication['content']));
 
         switch ($publication['parent']) {
-            case '20' : //Новости
+            case '20': //Новости
                 $publication['parent'] = '254';
                 $publication['content'] = trim(str_replace('[[++assets_url]]/images/pics', '[[++assets_url]]/pictures/publications/news', $publication['content']));
                 $publication['uri'] = "pressroom/publications/news/{$publication['alias']}.html";
                 break;
-            case '4359' : //Статьи
+            case '4359': //Статьи
                 $publication['parent'] = '255';
                 $publication['content'] = trim(str_replace('[[++assets_url]]/images/pics', '[[++assets_url]]/pictures/publications/articles', $publication['content']));
                 $publication['uri'] = "pressroom/publications/articles/{$publication['alias']}.html";
                 break;
-            case '4777' : //Исследования
+            case '4777': //Исследования
                 $publication['parent'] = '256';
                 $publication['content'] = trim(str_replace('[[++assets_url]]/images/pics', '[[++assets_url]]/pictures/publications/research', $publication['content']));
                 $publication['uri'] = "pressroom/publications/research/{$publication['alias']}.html";

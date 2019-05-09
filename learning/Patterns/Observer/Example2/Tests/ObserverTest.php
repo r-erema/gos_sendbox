@@ -8,7 +8,6 @@ use PHPUnit\Framework\TestCase;
 
 class ObserverTest extends TestCase
 {
-
     public function testObserver()
     {
         $patternGossiper = new PatternSubject();
@@ -17,5 +16,4 @@ class ObserverTest extends TestCase
         $favorites = $patternGossiper->updateFavorites(['abstract factory', 'decorator', 'visitor']);
         $this->assertEquals(['abstract factory', 'decorator', 'visitor', 'data mapper'], $favorites[0]);
     }
-
 }

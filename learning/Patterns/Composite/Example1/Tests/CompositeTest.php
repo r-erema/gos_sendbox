@@ -3,14 +3,13 @@ declare(strict_types=1);
 
 namespace learning\Patterns\Composite\Tests;
 
-use learning\Patterns\Composite\Example1\Form,
-    learning\Patterns\Composite\Example1\InputElement,
-    learning\Patterns\Composite\Example1\TextElement,
-    PHPUnit\Framework\TestCase;
+use learning\Patterns\Composite\Example1\Form;
+use learning\Patterns\Composite\Example1\InputElement;
+use learning\Patterns\Composite\Example1\TextElement;
+use PHPUnit\Framework\TestCase;
 
 class CompositeTest extends TestCase
 {
-
     public function testRender(): void
     {
         $form = new Form();
@@ -26,5 +25,4 @@ class CompositeTest extends TestCase
             $form->render()
         );
     }
-
 }

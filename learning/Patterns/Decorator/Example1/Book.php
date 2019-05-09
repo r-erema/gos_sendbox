@@ -45,5 +45,4 @@ class Book
     {
         return "{$this->title} by {$this->author}";
     }
-
 }

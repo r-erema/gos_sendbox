@@ -4,7 +4,6 @@ namespace learning\Patterns\State\Example1;
 
 class BookTitleStateExclaim implements BookTitleStateInterface
 {
-
     private $titleCount = 0;
 
     public function showTitle(BookContext $context): string

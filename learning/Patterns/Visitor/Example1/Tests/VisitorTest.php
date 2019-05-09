@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace learning\Patterns\Visitor\Example1\Tests;
 
-use learning\Patterns\Visitor\Example1\Group,
-    learning\Patterns\Visitor\Example1\Role,
-    learning\Patterns\Visitor\Example1\RoleVisitor,
-    learning\Patterns\Visitor\Example1\User,
-    PHPUnit\Framework\TestCase;
+use learning\Patterns\Visitor\Example1\Group;
+use learning\Patterns\Visitor\Example1\Role;
+use learning\Patterns\Visitor\Example1\RoleVisitor;
+use learning\Patterns\Visitor\Example1\User;
+use PHPUnit\Framework\TestCase;
 
 class VisitorTest extends TestCase
 {

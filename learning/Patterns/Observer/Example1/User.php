@@ -6,7 +6,6 @@ use SplObserver;
 
 class User implements \SplSubject
 {
-
     private $email;
 
     protected $observers;
@@ -38,5 +37,4 @@ class User implements \SplSubject
         $this->email = $email;
         $this->notify();
     }
-
 }

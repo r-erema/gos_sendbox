@@ -13,5 +13,4 @@ class StateCreated implements State
     {
         return 'created';
     }
-
 }

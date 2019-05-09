@@ -1,10 +1,11 @@
 <?php
 namespace learning\Patterns\State\Example2\Tests;
+
 use learning\Patterns\State\Example2\OrderContext;
 use PHPUnit\Framework\TestCase;
 
-class StateTest extends TestCase {
-
+class StateTest extends TestCase
+{
     public function testIsCreatedWithStateCreated(): void
     {
         $orderContext = OrderContext::create();

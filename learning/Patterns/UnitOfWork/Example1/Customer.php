@@ -6,7 +6,8 @@ namespace learning\Patterns\UnitOfWork\Example1;
  * Class Customer
  * @package learning\Patterns\UnitOfWork\Example1
  */
-class Customer extends DomainObject {
+class Customer extends DomainObject
+{
 
     /**
      * @var int
@@ -23,7 +24,8 @@ class Customer extends DomainObject {
      * @param array|null $values
      * @param UnitOfWork|null $unitOfWork
      */
-    public function __construct(array $values = null, UnitOfWork $unitOfWork = null) {
+    public function __construct(array $values = null, UnitOfWork $unitOfWork = null)
+    {
         if ($unitOfWork instanceof UnitOfWork) {
             $this->setUnitOfWork($unitOfWork);
         }
@@ -36,5 +38,4 @@ class Customer extends DomainObject {
         }
         $this->markAsNew();
     }
-
 }

@@ -11,7 +11,6 @@ use Zend\EventManager\SharedEventManager;
 
 class EventManagerTest extends TestCase
 {
-
     use Logger;
 
     public function setUp(): void
@@ -83,7 +82,5 @@ class EventManagerTest extends TestCase
         $example->doIt('value1', 'value2');
         $log = $this->readLog();
         $this->assertStringContainsString('Handled event "doIt" on target "learning\Zend\EventManager\Example2\Example", with parameters {"param1":"value1","param2":"value2"}', $log);
-
     }
-
 }

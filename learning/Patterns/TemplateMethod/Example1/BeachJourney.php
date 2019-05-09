@@ -6,10 +6,8 @@ namespace learning\Patterns\TemplateMethod\Example1;
 
 class BeachJourney extends Journey
 {
-
     protected function enjoyVacation(): string
     {
         return 'Swimming and sun-bathing';
     }
-
 }

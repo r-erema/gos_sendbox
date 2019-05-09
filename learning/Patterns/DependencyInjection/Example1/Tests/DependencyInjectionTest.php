@@ -8,12 +8,10 @@ use PHPUnit\Framework\TestCase;
 
 class DependencyInjectionTest extends TestCase
 {
-
     public function testDependencyInjection()
     {
         $config = new DatabaseConfiguration('localhost', 3306, 'root', '123');
         $connection = new DatabaseConnection($config);
         $this->assertEquals('root:123@localhost:3306', $connection->getDsn());
     }
-
 }

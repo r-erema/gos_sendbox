@@ -6,8 +6,8 @@ namespace learning\Patterns\AbstractFactory\Example2;
 
 class OReillyPhpBook extends AbstractPhpBook
 {
-
-    private $author, $title;
+    private $author;
+    private $title;
 
     private static $oddOrEven = 'odd';
 

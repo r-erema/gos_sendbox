@@ -1,6 +1,7 @@
 <?php
 
 namespace learning\Patterns\UnitOfWork\Example1\Tests;
+
 use learning\Patterns\UnitOfWork\Example1\Customer;
 use learning\Patterns\UnitOfWork\Example1\CustomerMapper;
 use learning\Patterns\UnitOfWork\Example1\DataAccessObject;
@@ -8,7 +9,8 @@ use learning\Patterns\UnitOfWork\Example1\MapperRegistry;
 use learning\Patterns\UnitOfWork\Example1\UnitOfWork;
 use PHPUnit\Framework\TestCase;
 
-class UnitOfWorkTest extends TestCase {
+class UnitOfWorkTest extends TestCase
+{
 
     /**
      * @var CustomerMapper
@@ -23,7 +25,8 @@ class UnitOfWorkTest extends TestCase {
     const INSERTED_CUSTOMER_ID = 11;
     const INSERTED_CUSTOMER_EMAIL = 'test@te.st';
 
-    public function setUp(): void {
+    public function setUp(): void
+    {
         $mapperRegistry = new MapperRegistry();
         $mapperRegistry->setDao(new DataAccessObject('sqlite::memory:', null, null, [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION]));
         $this->customerMapper = $mapperRegistry->getMapperForClassName(Customer::class);
@@ -43,7 +46,8 @@ class UnitOfWorkTest extends TestCase {
     /**
      * @test
      */
-    public function SelectCustomerTest() {
+    public function SelectCustomerTest()
+    {
         $customer = $this->customerMapper->findById(self::INSERTED_CUSTOMER_ID);
         $this->assertInstanceOf(Customer::class, $customer);
     }
@@ -51,7 +55,8 @@ class UnitOfWorkTest extends TestCase {
     /**
      * @test
      */
-    public function InsertCustomerTest() {
+    public function InsertCustomerTest()
+    {
         $id = self::INSERTED_CUSTOMER_ID + 1;
         $customer = new Customer([
             'id' => $id,
@@ -63,5 +68,4 @@ class UnitOfWorkTest extends TestCase {
         $customer = $this->customerMapper->findById($id);
         $this->assertInstanceOf(Customer::class, $customer);
     }
-
 }

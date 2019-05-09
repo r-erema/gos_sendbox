@@ -28,7 +28,7 @@ class PatternSubject extends AbstractSubject
      */
     public function detach(AbstractObserver $observerIn): void
     {
-        foreach($this->observers as $observerKey => $observer) {
+        foreach ($this->observers as $observerKey => $observer) {
             if ($observer === $observerIn) {
                 unset($this->observers[$observerKey]);
             }
@@ -41,7 +41,7 @@ class PatternSubject extends AbstractSubject
     public function notify(): array
     {
         $observersAnswers = [];
-        foreach($this->observers as $observer) {
+        foreach ($this->observers as $observer) {
             $observersAnswers[] = $observer->update($this);
         }
         return $observersAnswers;
@@ -51,7 +51,8 @@ class PatternSubject extends AbstractSubject
      * @param array $newFavorites
      * @return array
      */
-    public function updateFavorites(array $newFavorites): array {
+    public function updateFavorites(array $newFavorites): array
+    {
         $this->favourites = $newFavorites;
         return $this->notify();
     }
@@ -63,5 +64,4 @@ class PatternSubject extends AbstractSubject
     {
         return $this->favourites;
     }
-
 }

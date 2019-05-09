@@ -4,7 +4,6 @@ namespace learning\Zend\ServiceManager\LazyServices;
 
 class Buzzer
 {
-
     public function __construct()
     {
         usleep(500);
@@ -17,5 +16,4 @@ class Buzzer
     {
         return 'Buzz!';
     }
-
 }

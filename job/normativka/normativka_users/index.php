@@ -56,14 +56,14 @@ $usersByTypes = [
 
 $emails = [];
 foreach ($usersByTypes as $typeOfUsers => $users) {
-        $file = fopen(READY_FILES_DIR . $typeOfUsers, 'a');
-        foreach ($users as $user) {
-                $emails[$typeOfUsers][] = $user['user_login'];
-                $signature = getSignature($user['user_id'], $user['user_code']);
-                $string = "{$user['user_login']}\t\t{$signature}" . PHP_EOL;
-                fwrite($file, $string);
-        }
-        fclose($file);
+    $file = fopen(READY_FILES_DIR . $typeOfUsers, 'a');
+    foreach ($users as $user) {
+        $emails[$typeOfUsers][] = $user['user_login'];
+        $signature = getSignature($user['user_id'], $user['user_code']);
+        $string = "{$user['user_login']}\t\t{$signature}" . PHP_EOL;
+        fwrite($file, $string);
+    }
+    fclose($file);
 }
 
 $doubles = [];
@@ -72,17 +72,20 @@ if (isset($emails['paid']) && isset($emails['unpaid'])) {
 }
 
 if ($doubles) {
-        echo '<img src="http://risovach.ru/upload/2014/06/mem/spanch-bob_53402241_orig_.jpg">';
-        echo '<p style="color: #EF0113">Дубли e-mail-ов платных и бесплатных пользователей<p>';
-        echo '<pre>'.print_r($doubles, true).'</pre>';
+    echo '<img src="http://risovach.ru/upload/2014/06/mem/spanch-bob_53402241_orig_.jpg">';
+    echo '<p style="color: #EF0113">Дубли e-mail-ов платных и бесплатных пользователей<p>';
+    echo '<pre>'.print_r($doubles, true).'</pre>';
 } else {
-        echo '<img src="http://static02.rupor.sampo.ru/16111/1659577-fuck_yeah_super.jpg">';
-        echo '<p style="color: #117E01"><strong>done</strong><p>';
+    echo '<img src="http://static02.rupor.sampo.ru/16111/1659577-fuck_yeah_super.jpg">';
+    echo '<p style="color: #117E01"><strong>done</strong><p>';
 }
 
-function getSignature($userId, $userCode) {
-        return preg_replace('#[/=+]#',
+function getSignature($userId, $userCode)
+{
+    return preg_replace(
+            '#[/=+]#',
             '',
             base64_encode(md5(sprintf('(57f-%s-gh-%s-yy', $userId, $userCode) . 'fhGg46dksksfhj', true))
-                . base64_encode(md5(sprintf('%s9s%swl', $userId, $userCode) . 'fhGg46dksksfhj', true)));
+                . base64_encode(md5(sprintf('%s9s%swl', $userId, $userCode) . 'fhGg46dksksfhj', true))
+        );
 }

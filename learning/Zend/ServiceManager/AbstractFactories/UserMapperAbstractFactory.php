@@ -30,6 +30,4 @@ class UserMapperAbstractFactory implements AbstractFactoryInterface
             ]
         ];
     }
-
-
 }

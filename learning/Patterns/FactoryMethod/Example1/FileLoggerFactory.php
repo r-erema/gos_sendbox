@@ -6,7 +6,6 @@ namespace learning\Patterns\FactoryMethod\Example1;
 
 class FileLoggerFactory implements LoggerFactory
 {
-
     private $filePath;
 
     public function __construct($filePath)
@@ -18,5 +17,4 @@ class FileLoggerFactory implements LoggerFactory
     {
         return new FileLogger($this->filePath);
     }
-
 }

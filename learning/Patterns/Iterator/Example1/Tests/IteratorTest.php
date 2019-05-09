@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace learning\Patterns\Iterator\Example1\Tests;
 
-use PHPUnit\Framework\TestCase,
-    learning\Patterns\Iterator\Example1\Book,
-    learning\Patterns\Iterator\Example1\BookList;
+use PHPUnit\Framework\TestCase;
+use learning\Patterns\Iterator\Example1\Book;
+use learning\Patterns\Iterator\Example1\BookList;
 
 class IteratorTest extends TestCase
 {
@@ -72,5 +72,4 @@ class IteratorTest extends TestCase
 
         $this->assertCount(0, $bookList);
     }
-
 }

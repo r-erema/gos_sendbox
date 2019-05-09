@@ -6,7 +6,6 @@ namespace learning\Patterns\Command\Example1;
 
 class Invoker
 {
-
     private $command;
 
     public function setCommand(CommandInterface $command): void
@@ -18,5 +17,4 @@ class Invoker
     {
         $this->command->execute();
     }
-
 }

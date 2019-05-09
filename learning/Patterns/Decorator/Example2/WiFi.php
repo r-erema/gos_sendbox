@@ -17,5 +17,4 @@ class WiFi extends BookingDecorator
     {
         return $this->booking->getDescription() . ' with wifi';
     }
-
 }

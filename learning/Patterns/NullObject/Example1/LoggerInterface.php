@@ -6,7 +6,5 @@ namespace learning\Patterns\NullObject\Example1;
 
 interface LoggerInterface
 {
-
     public function log(string $str): void;
-
 }

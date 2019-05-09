@@ -8,7 +8,6 @@ use Psr\Http\Message\RequestInterface;
 
 abstract class Handler
 {
-
     private $successor;
 
     public function __construct(Handler $handler = null)

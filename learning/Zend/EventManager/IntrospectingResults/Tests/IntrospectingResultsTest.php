@@ -9,7 +9,6 @@ use Zend\EventManager\EventManager;
 
 class IntrospectingResultsTest extends TestCase
 {
-
     use Logger;
 
     public function testIntrospectingResults()
@@ -34,7 +33,5 @@ class IntrospectingResultsTest extends TestCase
         $this->assertEquals('Callable1: do', $responseCollection->first());
         $this->assertEquals('Callable2: do', $responseCollection->last());
         $this->assertTrue($responseCollection->contains($stdClass));
-
     }
-
 }

@@ -9,7 +9,6 @@ use Zend\EventManager\EventManager;
 
 class CustomEventTest extends TestCase
 {
-
     public function testCustomEvent()
     {
         $customEvent = new CustomEvent();
@@ -23,5 +22,4 @@ class CustomEventTest extends TestCase
         $result = $events->triggerEvent($customEvent);
         $this->assertEquals(CustomEvent::class, $result->last());
     }
-
 }

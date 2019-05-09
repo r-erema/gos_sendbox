@@ -38,4 +38,3 @@ $entityManager->persist($bug);
 $entityManager->flush();
 
 echo "Your new Bug Id: {$bug->getId()}" . PHP_EOL;
-

@@ -6,8 +6,8 @@ namespace learning\Patterns\AbstractFactory\Example2;
 
 class SamsMySQLBook extends AbstractMysqlBook
 {
-
-    private $author, $title;
+    private $author;
+    private $title;
 
     public function __construct()
     {

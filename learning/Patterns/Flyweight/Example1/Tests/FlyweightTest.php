@@ -9,9 +9,8 @@ use PHPUnit\Framework\TestCase;
 
 class FlyweightTest extends TestCase
 {
-
-    private static $characters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
-                   $fonts = ['Arial', 'Times New Roman', 'Verdana', 'Helvetica'];
+    private static $characters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+    private static $fonts = ['Arial', 'Times New Roman', 'Verdana', 'Helvetica'];
 
     public function testFlyweight(): void
     {
@@ -25,5 +24,4 @@ class FlyweightTest extends TestCase
         }
         $this->assertCount(count(self::$characters), $factory);
     }
-
 }

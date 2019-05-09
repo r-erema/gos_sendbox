@@ -4,7 +4,8 @@ namespace learning\Patterns\DataMapper\Example1;
 
 class User
 {
-    private $username, $email;
+    private $username;
+    private $email;
 
     public function __construct(string $username, string $email)
     {
@@ -26,5 +27,4 @@ class User
     {
         return $this->email;
     }
-
 }

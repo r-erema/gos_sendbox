@@ -12,5 +12,4 @@ class SlowDatabaseHandler extends Handler
     {
         return 'Hello World!';
     }
-
 }

@@ -32,7 +32,9 @@ class ExperimentalClass implements EventManagerAwareInterface
     {
         $params = compact('criteria1', 'criteria2');
         $result = $this->getEventManager()->triggerUntil(
-            function($r) {return ($r instanceof SomeResultClass);},
+            function ($r) {
+                return ($r instanceof SomeResultClass);
+            },
             __FUNCTION__ . '.pre',
             $this,
             $params
@@ -49,5 +51,4 @@ class ExperimentalClass implements EventManagerAwareInterface
         $this->events->trigger(__FUNCTION__ . '.post', $this, $params);
         return $calculateResults;
     }
-
 }

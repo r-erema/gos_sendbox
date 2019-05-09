@@ -8,7 +8,6 @@ use Zend\Validator\ValidatorInterface;
 
 class ValidatorPluginManager extends AbstractPluginManager
 {
-
     protected $instanceOf = ValidatorInterface::class;
 
     public function validate($instance)

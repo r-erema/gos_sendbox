@@ -6,7 +6,6 @@ namespace learning\Patterns\Memento\Example1;
 
 class State
 {
-
     private $state;
 
     public const STATE_CREATED = 'created',
@@ -38,5 +37,4 @@ class State
     {
         return $this->state;
     }
-
 }

@@ -3,13 +3,12 @@
 
 namespace learning\Patterns\Observer\Example1\Tests;
 
-use learning\Patterns\Observer\Example1\User,
-    learning\Patterns\Observer\Example1\UserObserver,
-    PHPUnit\Framework\TestCase;
+use learning\Patterns\Observer\Example1\User;
+use learning\Patterns\Observer\Example1\UserObserver;
+use PHPUnit\Framework\TestCase;
 
 class ObserverTest extends TestCase
 {
-
     public function testChangeInUserLeadsToUserObserverBeingNotified(): void
     {
         $observer = new UserObserver();
@@ -24,5 +23,4 @@ class ObserverTest extends TestCase
 
         $this->assertCount(2, $observer->getChangedUsers());
     }
-
 }

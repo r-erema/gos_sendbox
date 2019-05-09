@@ -6,8 +6,8 @@ namespace learning\Patterns\AbstractFactory\Example2;
 
 class SamsPHPBook extends AbstractPhpBook
 {
-
-    private $author, $title;
+    private $author;
+    private $title;
 
     public function __construct()
     {

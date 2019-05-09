@@ -11,7 +11,6 @@ include __DIR__ . '/vendor/autoload.php';
 
 class MyDocument implements StatefulInterface
 {
-
     private $state;
 
     public function getFiniteState()
@@ -23,7 +22,6 @@ class MyDocument implements StatefulInterface
     {
         $this->state = $state;
     }
-
 }
 
 $document = new MyDocument();

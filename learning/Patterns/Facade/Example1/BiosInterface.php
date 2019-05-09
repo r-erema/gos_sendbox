@@ -6,7 +6,6 @@ namespace learning\Patterns\Facade\Example1;
 
 interface BiosInterface
 {
-
     public function execute(): void;
 
     public function waitForKeyPress(): void;
@@ -14,5 +13,4 @@ interface BiosInterface
     public function launch(OsInterface $os): void;
 
     public function powerDown(): void;
-
 }

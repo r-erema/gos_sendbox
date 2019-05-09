@@ -4,7 +4,6 @@ namespace learning\Patterns\Proxy\Example1\Tests;
 
 class ProxyTest extends \PHPUnit\Framework\TestCase
 {
-
     public function testProxy()
     {
         $image = new \learning\Patterns\Proxy\Example1\Image('image.jpg');
@@ -19,5 +18,4 @@ class ProxyTest extends \PHPUnit\Framework\TestCase
         $proxyImage->getImageContents();
         $this->assertEquals(1, $proxyImage->getLoadsCount());
     }
-
 }

@@ -13,5 +13,4 @@ class StateShipped implements State
     {
         return 'shipped';
     }
-
 }

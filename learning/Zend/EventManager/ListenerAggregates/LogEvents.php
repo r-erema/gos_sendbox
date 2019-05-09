@@ -2,7 +2,6 @@
 
 namespace learning\Zend\EventManager\ListenerAggregates;
 
-
 use Zend\EventManager\EventInterface;
 use Zend\EventManager\EventManagerInterface;
 use Zend\EventManager\ListenerAggregateInterface;
@@ -53,5 +52,4 @@ class LogEvents implements ListenerAggregateInterface
         $params = $e->getParams();
         $this->log->info(sprintf('%s: %s', $events, json_encode($params)));
     }
-
 }

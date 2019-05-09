@@ -3,16 +3,15 @@ declare(strict_types=1);
 
 namespace learning\Patterns\Builder\Tests;
 
-use learning\Patterns\Builder\Example1\CarBuilder,
-    learning\Patterns\Builder\Example1\Director,
-    learning\Patterns\Builder\Example1\Parts\Car,
-    learning\Patterns\Builder\Example1\Parts\Truck,
-    learning\Patterns\Builder\Example1\TruckBuilder,
-    PHPUnit\Framework\TestCase;
+use learning\Patterns\Builder\Example1\CarBuilder;
+use learning\Patterns\Builder\Example1\Director;
+use learning\Patterns\Builder\Example1\Parts\Car;
+use learning\Patterns\Builder\Example1\Parts\Truck;
+use learning\Patterns\Builder\Example1\TruckBuilder;
+use PHPUnit\Framework\TestCase;
 
 class BuilderTest extends TestCase
 {
-
     public function testCanBuildTruck(): void
     {
         $truckBuilder = new TruckBuilder();
@@ -26,5 +25,4 @@ class BuilderTest extends TestCase
         $car = (new Director())->build($carBuilder);
         $this->assertInstanceOf(Car::class, $car);
     }
-
 }

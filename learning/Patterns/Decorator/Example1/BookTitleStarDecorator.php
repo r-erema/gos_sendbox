@@ -22,5 +22,4 @@ class BookTitleStarDecorator extends BookTitleDecorator
     {
         $this->bookTitleDecorator->title = str_replace(' ', '*', $this->bookTitleDecorator->title);
     }
-
 }

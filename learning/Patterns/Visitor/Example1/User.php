@@ -22,5 +22,4 @@ class User implements Role
     {
         $visitor->visitUser($this);
     }
-
 }

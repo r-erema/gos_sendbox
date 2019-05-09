@@ -11,12 +11,11 @@ use Zend\ServiceManager\ServiceManager;
 
 class PluginManagersTest extends TestCase
 {
-
     public function testPluginManagers()
     {
         $serviceManager = new ServiceManager([
             'factories' => [
-                ValidatorPluginManager::class => function(ContainerInterface $container, string $requestedName) {
+                ValidatorPluginManager::class => function (ContainerInterface $container, string $requestedName) {
                     return new ValidatorPluginManager($container, [
                         'factories' => [
                             Foo::class => InvokableFactory::class
@@ -30,5 +29,4 @@ class PluginManagersTest extends TestCase
         $foo = $pluginManager->get(Foo::class);
         $this->assertInstanceOf(Foo::class, $foo);
     }
-
 }

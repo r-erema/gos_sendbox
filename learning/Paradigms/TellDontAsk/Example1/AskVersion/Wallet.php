@@ -4,7 +4,6 @@ namespace learning\Paradigms\TellDontAsk\Example1\AskVersion;
 
 class Wallet
 {
-
     private $id;
     private $balance;
     private $overdraftAllowed;
@@ -35,5 +34,4 @@ class Wallet
     {
         return $this->overdraftAllowed;
     }
-
 }

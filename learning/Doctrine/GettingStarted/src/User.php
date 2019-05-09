@@ -20,7 +20,8 @@ use Doctrine\ORM\Mapping\OneToMany;
  * @package learning\Doctrine\GettingStarted\src
  * @Entity(repositoryClass="UserRepository") @Table(name="users")
  */
-class User {
+class User
+{
 
     /**
      * @Id() @GeneratedValue() @Column(type="integer")
@@ -49,7 +50,8 @@ class User {
     /**
      * User constructor.
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->reportedBugs = new ArrayCollection();
         $this->assignedBugs = new ArrayCollection();
     }
@@ -57,36 +59,40 @@ class User {
     /**
      * @return int
      */
-    public function getId(): int {
+    public function getId(): int
+    {
         return $this->id;
     }
 
     /**
      * @return string
      */
-    public function getName(): string {
+    public function getName(): string
+    {
         return $this->name;
     }
 
     /**
      * @param string $name
      */
-    public function setName(string $name) {
+    public function setName(string $name)
+    {
         $this->name = $name;
     }
 
     /**
      * @param Bug $bug
      */
-    public function addReportedBug(Bug $bug) {
+    public function addReportedBug(Bug $bug)
+    {
         $this->reportedBugs[] = $bug;
     }
 
     /**
      * @param Bug $bug
      */
-    public function assignedToBug(Bug $bug) {
+    public function assignedToBug(Bug $bug)
+    {
         $this->assignedBugs[] = $bug;
     }
-
 }

@@ -11,7 +11,6 @@ use Zend\ServiceManager\ServiceManager;
 
 class LazyServicesTest extends TestCase
 {
-
     public function testLazyServices()
     {
         $serviceManager = new ServiceManager([
@@ -35,5 +34,4 @@ class LazyServicesTest extends TestCase
 
         $this->assertEquals('Buzz!', $buzzer->buzz());
     }
-
 }

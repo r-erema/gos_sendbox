@@ -6,7 +6,6 @@ use Zend\Validator\AbstractValidator;
 
 class FloatValidator extends AbstractValidator
 {
-
     const FLOAT = 'float';
 
     /**
@@ -29,5 +28,4 @@ class FloatValidator extends AbstractValidator
         }
         return true;
     }
-
 }

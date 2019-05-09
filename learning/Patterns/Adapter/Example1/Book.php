@@ -6,7 +6,6 @@ namespace learning\Patterns\Adapter\Example1;
 
 class Book implements BookInterface
 {
-
     private $page;
 
     public function turnPage(): void

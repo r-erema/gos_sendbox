@@ -17,5 +17,4 @@ class ExtraBed extends BookingDecorator
     {
         return $this->booking->getDescription() . ' with extra bed';
     }
-
 }

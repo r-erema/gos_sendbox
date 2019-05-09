@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace learning\Patterns\Strategy\Example1\Tests;
 
-use learning\Patterns\Strategy\Example1\Context,
-    learning\Patterns\Strategy\Example1\DateComparator,
-    learning\Patterns\Strategy\Example1\IdComparator,
-    PHPUnit\Framework\TestCase;
+use learning\Patterns\Strategy\Example1\Context;
+use learning\Patterns\Strategy\Example1\DateComparator;
+use learning\Patterns\Strategy\Example1\IdComparator;
+use PHPUnit\Framework\TestCase;
 
 class StrategyTest extends TestCase
 {

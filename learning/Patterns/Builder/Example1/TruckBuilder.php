@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace learning\Patterns\Builder\Example1;
 
-use learning\Patterns\Builder\Example1\Parts\Door,
-    learning\Patterns\Builder\Example1\Parts\Engine,
-    learning\Patterns\Builder\Example1\Parts\Truck,
-    learning\Patterns\Builder\Example1\Parts\Wheel;
+use learning\Patterns\Builder\Example1\Parts\Door;
+use learning\Patterns\Builder\Example1\Parts\Engine;
+use learning\Patterns\Builder\Example1\Parts\Truck;
+use learning\Patterns\Builder\Example1\Parts\Wheel;
 
 class TruckBuilder implements BuilderInterface
 {

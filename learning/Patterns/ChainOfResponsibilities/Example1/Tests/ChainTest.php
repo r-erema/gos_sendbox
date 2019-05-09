@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace learning\Patterns\ChainOfResponsibilities\Example1\Tests;
 
-use learning\Patterns\ChainOfResponsibilities\Example1\Handler,
-    learning\Patterns\ChainOfResponsibilities\Example1\HttpInMemoryCacheHandler,
-    learning\Patterns\ChainOfResponsibilities\Example1\SlowDatabaseHandler,
-    PHPUnit\Framework\TestCase,
-    Psr\Http\Message\RequestInterface,
-    Psr\Http\Message\UriInterface,
-    PHPUnit\Framework\MockObject\MockObject;
+use learning\Patterns\ChainOfResponsibilities\Example1\Handler;
+use learning\Patterns\ChainOfResponsibilities\Example1\HttpInMemoryCacheHandler;
+use learning\Patterns\ChainOfResponsibilities\Example1\SlowDatabaseHandler;
+use PHPUnit\Framework\TestCase;
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\UriInterface;
+use PHPUnit\Framework\MockObject\MockObject;
 
 class ChainTest extends TestCase
 {
@@ -61,6 +61,5 @@ class ChainTest extends TestCase
         $request->method('getUri')->willReturn($uri);
 
         $this->assertEquals('Hello World!', $this->chain->handle($request));
-
     }
 }

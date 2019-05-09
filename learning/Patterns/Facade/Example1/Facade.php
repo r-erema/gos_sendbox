@@ -6,8 +6,8 @@ namespace learning\Patterns\Facade\Example1;
 
 class Facade
 {
-
-    private $os, $bios;
+    private $os;
+    private $bios;
 
     public function __construct(BiosInterface $bios, OsInterface $os)
     {
@@ -27,5 +27,4 @@ class Facade
         $this->os->halt();
         $this->bios->powerDown();
     }
-
 }

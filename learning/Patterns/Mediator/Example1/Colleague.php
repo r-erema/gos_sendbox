@@ -15,5 +15,4 @@ abstract class Colleague
     {
         $this->mediator = $mediator;
     }
-
 }

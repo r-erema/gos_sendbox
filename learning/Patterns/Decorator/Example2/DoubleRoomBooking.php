@@ -15,5 +15,4 @@ class DoubleRoomBooking implements Booking
     {
         return 'double room';
     }
-
 }

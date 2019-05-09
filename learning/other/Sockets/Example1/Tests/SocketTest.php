@@ -8,9 +8,8 @@ use PHPUnit\Framework\TestCase;
 
 class SocketTest extends TestCase
 {
-
-    private $socketServer,
-            $socketClient;
+    private $socketServer;
+    private $socketClient;
 
     public function setUp(): void
     {

@@ -6,8 +6,8 @@ namespace learning\Patterns\Pool\Example1;
 
 class WorkerPool implements \Countable
 {
-
-    private $occupiedWorker = [], $freeWorkers = [];
+    private $occupiedWorker = [];
+    private $freeWorkers = [];
 
     /** @throws \Exception */
     public function get(): StringReverseWorker
@@ -34,5 +34,4 @@ class WorkerPool implements \Countable
     {
         return count($this->occupiedWorker) + count($this->freeWorkers);
     }
-
 }

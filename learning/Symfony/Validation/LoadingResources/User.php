@@ -43,5 +43,4 @@ class User
 
         $metadata->addPropertyConstraint('password', new Length(['max' => 5]));
     }
-
 }

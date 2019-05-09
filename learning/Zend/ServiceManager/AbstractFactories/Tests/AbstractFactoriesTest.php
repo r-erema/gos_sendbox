@@ -13,7 +13,6 @@ use Zend\ServiceManager\ServiceManager;
 
 class AbstractFactoriesTest extends TestCase
 {
-
     public function testAbstractFactories()
     {
         $serviceManager = new ServiceManager([
@@ -38,7 +37,5 @@ class AbstractFactoriesTest extends TestCase
 
         $serviceManager->addAbstractFactory(new ConfigAbstractFactory());
         $this->assertInstanceOf(UserMapper::class, $serviceManager->get(UserMapper::class));
-
     }
-
 }

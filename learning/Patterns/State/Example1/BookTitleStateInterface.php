@@ -2,6 +2,7 @@
 
 namespace learning\Patterns\State\Example1;
 
-interface BookTitleStateInterface {
+interface BookTitleStateInterface
+{
     public function showTitle(BookContext $context): string;
 }

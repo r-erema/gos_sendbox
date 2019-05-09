@@ -21,7 +21,8 @@ trait Logger
     /**
      * @throws \ReflectionException
      */
-    private function initLogger() {
+    private function initLogger()
+    {
         $calledClassName = get_called_class();
         $classFileName = (new \ReflectionClass($calledClassName))->getFileName();
         $this->logFilePath = dirname($classFileName) . '/test.log';
@@ -32,11 +33,13 @@ trait Logger
     /**
      * @return bool|string
      */
-    private function readLog() {
+    private function readLog()
+    {
         return file_get_contents($this->logFilePath);
     }
 
-    private function destroyLogFile() {
+    private function destroyLogFile()
+    {
         unlink($this->logFilePath);
     }
 }

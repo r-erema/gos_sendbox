@@ -20,15 +20,15 @@ define("TPL_DIR_SITE", "kadrovik-info.ru/");
 define("WWW_URL", "https://kadrovik-info.ryaroma.web");
 define("TEMP_DIR", "../temp/");
 define("TIME_ZONE", "Europe/Moscow");
-define("EMAIL_VALIDATION" , true);
+define("EMAIL_VALIDATION", true);
 
-define("TEMPLATE_COMPILE_DIR" , ABSOLUTE_PATH . 'templates_compiled/');
+define("TEMPLATE_COMPILE_DIR", ABSOLUTE_PATH . 'templates_compiled/');
 
 define("GALLERY_01", "/pictures");
 define("GALLERY_TEMP", ABSOLUTE_PATH.'/pictures/temp');
 define("NEWS_IMAGE_DIR", ABSOLUTE_PATH.'pictures/news/');
-define("MAGARTICLES_IMAGE_DIR" , ABSOLUTE_PATH.'pictures/magazine-articles/');
-define("PHOTOGALLERY_DIR" , ABSOLUTE_PATH.'photo/');
+define("MAGARTICLES_IMAGE_DIR", ABSOLUTE_PATH.'pictures/magazine-articles/');
+define("PHOTOGALLERY_DIR", ABSOLUTE_PATH.'photo/');
 
 define('COMPANY_NAME', 'журнала «Кадровые решения»');
 define('BODY_CHARS_COUNT', 10000); // если вывод модуля меньше, то вывести дополнительный блок (чтобы занять пустое место). если false -- ничего не покажется.
@@ -40,5 +40,3 @@ define("LAST_TOPICS_STOP_RUBRIC_ID", 56);
 define("SEARCH_SERVICE_URL", "http://pi.commontools.net/ProfInfo/WebServices/ForumsWebService.asmx?wsdl");
 
 include("system.conf.php");
-
-?>

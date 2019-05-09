@@ -6,7 +6,6 @@ namespace learning\Paradigms\TellDontAsk\Example1\TellVersion;
 
 class Wallet
 {
-
     private $ownerId;
     private $balance;
     private $overdraftAllowed;
@@ -31,12 +30,11 @@ class Wallet
         $this->balance += $amount;
     }
 
-	/**
-	 * @return string
-	 */
-	public function getOwnerId(): string
-	{
-		return $this->ownerId;
-	}
-
+    /**
+     * @return string
+     */
+    public function getOwnerId(): string
+    {
+        return $this->ownerId;
+    }
 }

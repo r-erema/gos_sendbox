@@ -6,7 +6,6 @@ namespace learning\Patterns\NullObject\Example1;
 
 class Service
 {
-
     private $logger;
 
     public function __construct(LoggerInterface $logger)

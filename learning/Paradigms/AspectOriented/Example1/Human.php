@@ -2,10 +2,8 @@
 
 namespace learning\Paradigms\AspectOriented\Example1;
 
-
 class Human
 {
-
     public function eat()
     {
         echo 'eating...', PHP_EOL;
@@ -30,5 +28,4 @@ class Human
     {
         echo 'Go to sleep', PHP_EOL;
     }
-
 }

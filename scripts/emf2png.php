@@ -8,7 +8,8 @@ foreach ($manuals as $manual) {
     convert(realpath("/home/gutsout/HelpAndManualConverter/archs/{$manual}"));
 }
 
-function convert($manual) {
+function convert($manual)
+{
     echo "{$manual} converting...";
     $baggageDir = "{$manual}/Baggage";
     $files = scandir($baggageDir);

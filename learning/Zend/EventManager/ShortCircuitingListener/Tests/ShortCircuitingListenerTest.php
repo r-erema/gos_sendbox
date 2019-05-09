@@ -10,7 +10,6 @@ use Zend\EventManager\EventManager;
 
 class ShortCircuitingListenerTest extends TestCase
 {
-
     public function testShortCircuitingListener()
     {
         $experimentalClass = new ExperimentalClass();
@@ -28,6 +27,5 @@ class ShortCircuitingListenerTest extends TestCase
         });
         $result = $experimentalClass->do();
         $this->assertInstanceOf(SomeResultClass::class, $result);
-
     }
 }

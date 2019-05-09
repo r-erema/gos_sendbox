@@ -49,5 +49,4 @@ class Image
     {
         return $this->loadsCount;
     }
-
 }

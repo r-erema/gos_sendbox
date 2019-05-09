@@ -12,5 +12,4 @@ abstract class BookingDecorator implements Booking
     {
         $this->booking = $booking;
     }
-
 }

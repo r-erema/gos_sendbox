@@ -4,12 +4,11 @@ declare(strict_types=1);
 
 namespace learning\Patterns\FluentInterface\Example1\Tests;
 
-use learning\Patterns\FluentInterface\Example1\Sql,
-    PHPUnit\Framework\TestCase;
+use learning\Patterns\FluentInterface\Example1\Sql;
+use PHPUnit\Framework\TestCase;
 
 class FluentInterfaceTest extends TestCase
 {
-
     public function testBuildSQL(): void
     {
         $query = (new Sql())
@@ -19,5 +18,4 @@ class FluentInterfaceTest extends TestCase
 
         $this->assertEquals('SELECT foo, bar FROM foobar AS f WHERE f.bar = ?', (string) $query);
     }
-
 }

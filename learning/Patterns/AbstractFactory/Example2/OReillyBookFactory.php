@@ -6,15 +6,15 @@ namespace learning\Patterns\AbstractFactory\Example2;
 
 class OReillyBookFactory extends AbstractBookFactory
 {
-	private $context = 'OReilly';
+    private $context = 'OReilly';
 
-	public function makePhpBook(): AbstractPhpBook
-	{
-		return new OReillyPhpBook();
-	}
+    public function makePhpBook(): AbstractPhpBook
+    {
+        return new OReillyPhpBook();
+    }
 
-	public function makeMysqlBook(): AbstractMysqlBook
-	{
-		return new OReillyMySQLBook();
-	}
+    public function makeMysqlBook(): AbstractMysqlBook
+    {
+        return new OReillyMySQLBook();
+    }
 }

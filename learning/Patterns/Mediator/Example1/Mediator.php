@@ -6,7 +6,9 @@ namespace learning\Patterns\Mediator\Example1;
 
 class Mediator implements MediatorInterface
 {
-    private $server, $database, $client;
+    private $server;
+    private $database;
+    private $client;
 
     public function __construct(Server $server, Database $database, Client $client)
     {
@@ -27,7 +29,6 @@ class Mediator implements MediatorInterface
     }
     public function queryDb(): string
     {
-       return $this->database->getData();
+        return $this->database->getData();
     }
-
 }

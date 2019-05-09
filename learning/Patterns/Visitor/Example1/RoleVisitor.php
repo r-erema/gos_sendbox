@@ -6,7 +6,6 @@ namespace learning\Patterns\Visitor\Example1;
 
 class RoleVisitor implements RoleVisitorInterface
 {
-
     private $visited = [];
 
     public function visitUser(User $role): void
@@ -23,5 +22,4 @@ class RoleVisitor implements RoleVisitorInterface
     {
         return $this->visited;
     }
-
 }

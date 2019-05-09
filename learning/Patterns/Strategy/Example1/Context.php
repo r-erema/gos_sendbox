@@ -6,7 +6,6 @@ namespace learning\Patterns\Strategy\Example1;
 
 class Context
 {
-
     private $comparator;
 
     public function __construct(ComparatorInterface $comparator)
@@ -19,5 +18,4 @@ class Context
         uasort($elements, [$this->comparator, 'compare']);
         return $elements;
     }
-
 }

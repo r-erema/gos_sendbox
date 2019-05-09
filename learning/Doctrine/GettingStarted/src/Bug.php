@@ -20,7 +20,8 @@ use Doctrine\ORM\Mapping\ManyToOne;
  * @package learning\Doctrine\GettingStarted\src
  * @Entity(repositoryClass="BugRepository") @Table(name="bugs")
  */
-class Bug {
+class Bug
+{
 
     /**
      * @Id @Column(type="integer") @GeneratedValue()
@@ -67,25 +68,29 @@ class Bug {
     /**
      * @param Product $product
      */
-    public function assignToProduct(Product $product) {
+    public function assignToProduct(Product $product)
+    {
         $this->products[] = $product;
     }
 
     /**
      * @return ArrayCollection
      */
-    public function getProducts() {
+    public function getProducts()
+    {
         return $this->products;
     }
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->products = new ArrayCollection();
     }
 
     /**
      * @param User $engineer
      */
-    public function setEngineer(User $engineer) {
+    public function setEngineer(User $engineer)
+    {
         $engineer->assignedToBug($this);
         $this->engineer = $engineer;
     }
@@ -93,14 +98,16 @@ class Bug {
     /**
      * @return User
      */
-    public function getEngineer() : User {
+    public function getEngineer() : User
+    {
         return $this->engineer;
     }
 
     /**
      * @param User $reporter
      */
-    public function setReporter(User $reporter) {
+    public function setReporter(User $reporter)
+    {
         $reporter->addReportedBug($this);
         $this->reporter = $reporter;
     }
@@ -108,14 +115,16 @@ class Bug {
     /**
      * @return User
      */
-    public function getReporter(): User {
+    public function getReporter(): User
+    {
         return $this->reporter;
     }
 
     /**
      * @return int
      */
-    public function getId(): int {
+    public function getId(): int
+    {
         return $this->id;
     }
 
@@ -123,54 +132,61 @@ class Bug {
      * @param Product $products
      * @return Bug
      */
-    public function setProducts(Product $products) {
+    public function setProducts(Product $products)
+    {
         $this->products = $products;
     }
 
     /**
      * @return string
      */
-    public function getStatus(): string {
+    public function getStatus(): string
+    {
         return $this->status;
     }
 
     /**
      * @param string $status
      */
-    public function setStatus(string $status) {
+    public function setStatus(string $status)
+    {
         $this->status = $status;
     }
 
     /**
      * @return string
      */
-    public function getDescription(): string {
+    public function getDescription(): string
+    {
         return $this->description;
     }
 
     /**
      * @param string $description
      */
-    public function setDescription(string $description) {
+    public function setDescription(string $description)
+    {
         $this->description = $description;
     }
 
     /**
      * @return \DateTime
      */
-    public function getCreated(): \DateTime {
+    public function getCreated(): \DateTime
+    {
         return $this->created;
     }
 
     /**
      * @param \DateTime $created
      */
-    public function setCreated(\DateTime $created) {
+    public function setCreated(\DateTime $created)
+    {
         $this->created = $created;
     }
 
-    public function close() {
+    public function close()
+    {
         $this->status = 'CLOSE';
     }
-
 }

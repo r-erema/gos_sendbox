@@ -2,7 +2,6 @@
 
 namespace learning\Zend\View\PhpRenderer\Tests;
 
-
 use PHPUnit\Framework\TestCase;
 use Zend\View\Model\ViewModel;
 use Zend\View\Renderer\PhpRenderer;
@@ -13,7 +12,6 @@ use Zend\View\Resolver\TemplatePathStack;
 
 class PhpRendererTest extends TestCase
 {
-
     public function testPhpRenderer()
     {
         $renderer = new PhpRenderer();

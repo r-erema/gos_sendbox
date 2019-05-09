@@ -6,5 +6,7 @@ namespace learning\Patterns\SimpleFactory\Example1;
 
 class Bicycle
 {
-    public function driveTo(string $destination): void {}
+    public function driveTo(string $destination): void
+    {
+    }
 }

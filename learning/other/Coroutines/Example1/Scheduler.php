@@ -4,17 +4,16 @@ declare(strict_types=1);
 
 namespace learning\other\Coroutines\Example1;
 
-use Generator,
-    SplQueue;
+use Generator;
+use SplQueue;
 
 class Scheduler
 {
-
-    protected $maxTaskId = 0,
-              $taskMap = [],
-              $taskQueue,
-              $waitingForRead,
-              $waitingForWrite;
+    protected $maxTaskId = 0;
+    protected $taskMap = [];
+    protected $taskQueue;
+    protected $waitingForRead;
+    protected $waitingForWrite;
 
     public function __construct()
     {
@@ -90,5 +89,4 @@ class Scheduler
             }
         }
     }
-
 }

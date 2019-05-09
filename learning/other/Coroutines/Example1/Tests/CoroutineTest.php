@@ -4,15 +4,14 @@ declare(strict_types=1);
 
 namespace learning\other\Coroutines\Example1\Tests;
 
-use Generator,
-    learning\other\Coroutines\Example1\SystemCall,
-    learning\other\Coroutines\Example1\Task,
-    PHPUnit\Framework\TestCase,
-    learning\other\Coroutines\Example1\Scheduler;
+use Generator;
+use learning\other\Coroutines\Example1\SystemCall;
+use learning\other\Coroutines\Example1\Task;
+use PHPUnit\Framework\TestCase;
+use learning\other\Coroutines\Example1\Scheduler;
 
 class CoroutineTest extends TestCase
 {
-
     public function testCoroutine(): void
     {
         $scheduler = new Scheduler();
@@ -116,7 +115,7 @@ class CoroutineTest extends TestCase
 
     private static function getTaskId(): SystemCall
     {
-        return new SystemCall(static function(Task $task, Scheduler $scheduler) {
+        return new SystemCall(static function (Task $task, Scheduler $scheduler) {
             $task->setSendValue($task->getTaskId());
             $scheduler->schedule($task);
         });

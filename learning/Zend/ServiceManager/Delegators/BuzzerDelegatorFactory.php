@@ -35,5 +35,4 @@ class BuzzerDelegatorFactory implements DelegatorFactoryInterface
         });
         return new BuzzerDelegator($realBuzzer, $eventManager);
     }
-
 }

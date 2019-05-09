@@ -13,5 +13,4 @@ class StorageAdapter
     {
         return $this->data[$id] ?? null;
     }
-
 }

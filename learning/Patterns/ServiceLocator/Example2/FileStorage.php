@@ -6,7 +6,6 @@ use Exception;
 
 class FileStorage
 {
-
     const DEFAULT_STORAGE_FILE =  __DIR__ . '/data.dat';
 
     /**
@@ -60,11 +59,11 @@ class FileStorage
      * @return bool|int
      * @throws Exception
      */
-    public function write(string $data) {
+    public function write(string $data)
+    {
         try {
             return file_put_contents($this->file, $this->serializer->serialize($data));
-        }
-        catch (Exception $e) {
+        } catch (Exception $e) {
             throw new Exception($e->getMessage());
         }
     }

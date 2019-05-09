@@ -22,5 +22,4 @@ class Group implements Role
     {
         $visitor->visitGroup($this);
     }
-
 }
