@@ -19,7 +19,8 @@ class DelegatorsTest extends TestCase
         $eventManager = new EventManager();
         $buzzerDelegator = null;
         $eventManager->attach('buzz', function (Event $event) {
-            $buzzerDelegator = $event->getTarget();/** @var BuzzerDelegator $buzzerDelegator */
+            /** @var BuzzerDelegator $buzzerDelegator */
+            $buzzerDelegator = $event->getTarget();
             $buzzerDelegator->setResult('Stare at the art!' . PHP_EOL);
         });
         $buzzer = new BuzzerDelegator($wrappedBuzzer, $eventManager);

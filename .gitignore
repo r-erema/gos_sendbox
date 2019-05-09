@@ -2,4 +2,5 @@ vendor
 learning/Zend/ServiceManager/LazyServices/data/proxies
 .idea
 .phpunit.result.cache
+.php_cs.cache
 tmp

@@ -26,7 +26,10 @@ class SocketTest extends TestCase
 
         $acceptedSocketServer = socket_accept($this->socketServer);
         $message = 'Test message';
-        socket_write($acceptedSocketServer, $message, strlen($message));
+
+        if ($acceptedSocketServer) {
+            socket_write($acceptedSocketServer, $message, strlen($message));
+        }
 
         self::assertEquals($message, socket_read($this->socketClient, 2048));
     }

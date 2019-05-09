@@ -2,16 +2,17 @@
 
 namespace learning\other\Generators\Example1;
 
+use Generator;
 class GeneratorCoroutine
 {
-    public static function xrange($start, $end, $step): ?\Generator
+    public static function xrange($start, $end, $step): Generator
     {
         for ($i = $start; $i <= $end; $i += $step) {
             yield $i;
         }
     }
 
-    public static function logger($fileName): ?\Generator
+    public static function logger($fileName): Generator
     {
         if (!isset($_SERVER[$fileName])) {
             $GLOBALS[$fileName] = '';
@@ -22,7 +23,7 @@ class GeneratorCoroutine
         }
     }
 
-    public static function gen(): ?\Generator
+    public static function gen(): Generator
     {
         $GLOBALS['gen'] = '';
         $GLOBALS['gen'] .= yield 'yield1';

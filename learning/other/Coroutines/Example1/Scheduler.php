@@ -9,11 +9,13 @@ use SplQueue;
 
 class Scheduler
 {
-    protected $maxTaskId = 0;
-    protected $taskMap = [];
-    protected $taskQueue;
-    protected $waitingForRead;
-    protected $waitingForWrite;
+
+              /** @var int */
+    protected $maxTaskId = 0,
+              $taskMap = [],
+              $taskQueue,
+              $waitingForRead,
+              $waitingForWrite;
 
     public function __construct()
     {

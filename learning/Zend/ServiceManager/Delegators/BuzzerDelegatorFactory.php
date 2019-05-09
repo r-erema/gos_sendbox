@@ -30,7 +30,8 @@ class BuzzerDelegatorFactory implements DelegatorFactoryInterface
         $realBuzzer = call_user_func($callback); /** @var Buzzer $realBuzzer */
         $eventManager = $container->get(EventManager::class); /** @var EventManager $eventManager */
         $eventManager->attach('buzz', function (Event $event) {
-            $buzzerDelegator = $event->getTarget();/** @var BuzzerDelegator $buzzerDelegator */
+            /** @var BuzzerDelegator $buzzerDelegator */
+            $buzzerDelegator = $event->getTarget();
             $buzzerDelegator->setResult('Stare at the art!' . PHP_EOL);
         });
         return new BuzzerDelegator($realBuzzer, $eventManager);

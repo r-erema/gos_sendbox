@@ -1,0 +1,7 @@
+parameters:
+    level: max
+    memoryLimit: 256M
+    paths:
+        - learning
+    excludes_analyse:
+        - learning/Zend/ServiceManager/LazyServices/data/proxies/*

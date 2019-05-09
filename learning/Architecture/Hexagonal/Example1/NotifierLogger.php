@@ -19,7 +19,7 @@ class NotifierLogger implements NotifierInterface
 
     public function notify(MessageInterface $message): bool
     {
-        $this->logger->log($message);
-        return $this->next->notify($message);
+        $this->logger->log($message->getBody());
+        return $this->next->notify($message->getBody());
     }
 }
