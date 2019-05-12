@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit>
     <testsuites>
+        <testsuite name="Architecture tests">
+            <directory>./learning/Architecture/</directory>
+        </testsuite>
         <testsuite name="Patterns tests">
             <directory>./learning/Patterns/</directory>
         </testsuite>

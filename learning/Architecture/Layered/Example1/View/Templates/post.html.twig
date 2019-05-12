@@ -1,0 +1,18 @@
+{% block content %}
+{% if errormsg is defined %}
+    <div class="alert error">{{ errormsg }} </div>
+{% else %}
+    <div class="alert success">Bravo! Post was created successfully!</div>
+{% endif %}
+<table>
+    <thead><tr><th>ID</th><th>TITLE</th><th>ACTIONS</th></tr></thead>
+    <tbody>
+    <tr>
+        <td>{{ post.title }}</td>
+        <td>{{ post.title }}<?php echo $post['TITLE']; ?></td>
+        <td><a href="/edit/{{ post.title }}/">Edit Post</a></td>
+    </tr>
+    </tbody>
+</table>
+<div>{{ post.content }}</div>
+{% endblock %}

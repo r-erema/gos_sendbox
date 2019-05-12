@@ -24,7 +24,9 @@
         "webmozart/assert": "^1.4",
         "moneyphp/money": "^3.2",
         "mockery/mockery": "^1.2",
-        "ext-sockets": "*"
+        "ext-sockets": "*",
+        "twig/twig": "^2.9",
+        "ext-json": "*"
     },
     "autoload": {
         "psr-0": {"":""}
