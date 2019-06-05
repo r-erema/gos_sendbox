@@ -26,7 +26,8 @@
         "mockery/mockery": "^1.2",
         "ext-sockets": "*",
         "twig/twig": "^2.9",
-        "ext-json": "*"
+        "ext-json": "*",
+        "ext-mongodb": "*"
     },
     "autoload": {
         "psr-0": {"":""}
