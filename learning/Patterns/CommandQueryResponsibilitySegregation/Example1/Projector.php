@@ -6,17 +6,15 @@ namespace learning\Patterns\CommandQueryResponsibilitySegregation\Example1;
 
 use learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Events\DomainEvent;
 
-class DomainEventPublisher
+class Projector
 {
 
-    public static function getInstance(): self
+    private $events;
+
+    public function register(array $events): void
     {
-        return new self;
+        $this->events = $events;
     }
 
-    public function publish(DomainEvent $domainEvent): void
-    {
-
-    }
 
 }
