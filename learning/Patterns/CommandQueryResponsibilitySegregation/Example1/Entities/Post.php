@@ -14,7 +14,7 @@ use learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Events\Post
 use learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Events\PostWasPublished;
 
 /**
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Repositories\DoctrinePostRepository")
  * @ORM\MappedSuperclass
  * @ORM\Table(name="posts")
  */
@@ -57,12 +57,13 @@ class Post extends AggregateRoot
         $this->categories = new ArrayCollection();
     }
 
-    public static function writeNewFrom(string $title, string $content): void
+    public static function writeNewFrom(string $title, string $content): self
     {
         $post = new self(PostId::create());
         $post->recordApplyAndPublishThat(
             new PostWasCreated(PostId::generate(), $title, $content)
         );
+        return $post;
     }
 
     public function publish(): void
