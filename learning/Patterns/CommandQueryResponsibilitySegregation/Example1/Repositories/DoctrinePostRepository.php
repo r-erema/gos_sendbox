@@ -5,22 +5,37 @@ declare(strict_types=1);
 namespace learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Repositories;
 
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Mapping\ClassMetadata;
 use learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Entities\Post;
 use learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Entities\PostId;
 use learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Projector\Projector;
+use ReflectionException;
 
-class DoctrinePostRepository implements PostRepository
+class DoctrinePostRepository extends EntityRepository implements PostRepository
 {
 
     private $entityManager;
+
+    /** @var Projector */
     private $projector;
 
-    public function __construct(EntityManagerInterface $entityManager, Projector $projector)
+    public function __construct(EntityManagerInterface $entityManager, ClassMetadata $metadata)
     {
+        parent::__construct($entityManager, $metadata);
         $this->entityManager = $entityManager;
-        $this->projector = $projector;
     }
 
+    public function setProjector(Projector $projector): self
+    {
+        $this->projector = $projector;
+        return $this;
+    }
+
+    /**
+     * @param Post $post
+     * @throws ReflectionException
+     */
     public function save(Post $post): void
     {
         $this->entityManager->transactional(static function (EntityManagerInterface $em) use ($post) {

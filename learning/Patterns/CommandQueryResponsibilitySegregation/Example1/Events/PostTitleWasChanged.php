@@ -4,9 +4,14 @@ declare(strict_types=1);
 
 namespace learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Events;
 
+use learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Entities\Event;
 use learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Entities\PostId;
+use Doctrine\ORM\Mapping as ORM;
 
-class PostTitleWasChanged implements DomainEvent
+/**
+ * @ORM\Entity()
+ */
+class PostTitleWasChanged extends Event
 {
 
 
@@ -15,12 +20,18 @@ class PostTitleWasChanged implements DomainEvent
 
     public function __construct(PostId $postId, string $title)
     {
-        $this->postId = $postId;
+        parent::__construct();
+        $this->postId = $this->aggregateId = $postId;
         $this->title = $title;
     }
 
     public function getTitle(): string
     {
         return $this->title;
+    }
+
+    public function getPostId(): PostId
+    {
+        return $this->postId;
     }
 }

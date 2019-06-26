@@ -6,15 +6,29 @@ namespace learning\Patterns\CommandQueryResponsibilitySegregation\Tests;
 
 use Doctrine\DBAL\DBALException;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\ORMException;
 use Doctrine\ORM\Tools\Setup;
 use learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Controllers\PostsController;
+use learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Entities\Event;
+use learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Entities\Post;
+use learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Events\PostWasCreated;
+use learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Projector\Projector;
+use learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Repositories\DoctrinePostRepository;
+use learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Repositories\EventRepository;
 use PHPUnit\Framework\TestCase;
 
 class CQRSTest extends TestCase
 {
 
+    /** @var EntityManagerInterface */
     private $entityManager;
+
+    /** @var DoctrinePostRepository */
+    private $postRepository;
+
+    /** @var EventRepository */
+    private $eventRepository;
 
     /**
      * @throws DBALException
@@ -27,68 +41,25 @@ class CQRSTest extends TestCase
             'driver' => 'pdo_sqlite',
             'memory' => true
         ], $config);
+        $this->entityManager->getConnection()->exec(file_get_contents(__DIR__ . '/init.sql'));
+        $this->postRepository = $this->entityManager->getRepository(Post::class);
+        $this->postRepository->setProjector(new Projector($this->entityManager));
 
-        $queries = [
-
-            'CREATE TABLE IF NOT EXISTS posts (
-                id VARCHAR(100) NOT NULL,
-                title VARCHAR(100) NOT NULL,
-                content TEXT NOT NULL,
-                published INTEGER
-            );',
-
-            'CREATE TABLE IF NOT EXISTS single_post_with_comments (
-                id INTEGER NOT NULL,
-                post_id INTEGER NOT NULL,
-                post_title VARCHAR(100) NOT NULL,
-                post_content TEXT NOT NULL,
-                post_created_at DATETIME NOT NULL,
-                comment_content TEXT NOT NULL
-            );',
-
-            'INSERT INTO single_post_with_comments
-            (id, post_id, post_title, post_content, post_created_at, comment_content)
-            VALUES (
-                1,1, "Layered architecture", "Lorem ipsum dolor sit amet, ...", datetime(), "Lorem ipsum dolor sit amet, ..."
-            );',
-
-            'INSERT INTO single_post_with_comments
-            (id, post_id, post_title, post_content, post_created_at, comment_content)
-            VALUES (
-                2, 1, "Layered architecture", "Lorem ipsum\ dolor sit amet, ...", datetime(), "Lorem ipsum dolor sit amet, ..."
-            );',
-
-            'INSERT INTO single_post_with_comments
-            (id, post_id, post_title, post_content, post_created_at, comment_content)
-            VALUES (
-                3, 2, "Hexagonal architecture", "Lorem ips\ um dolor sit amet, ...", datetime(), "Lorem ipsum dolor sit amet, ..."
-            );',
-
-            'INSERT INTO single_post_with_comments
-            (id, post_id, post_title, post_content, post_created_at, comment_content)
-            VALUES (
-                4, 2, "Hexagonal architecture", "Lorem ips\ um dolor sit amet, ...", datetime(), "Lorem ipsum dolor sit amet, ..."
-            );',
-
-            'INSERT INTO single_post_with_comments
-            (id, post_id, post_title, post_content, post_created_at, comment_content)
-            VALUES (
-                5, 3, "Command - Query Responsability Segg\ regation", "Lorem ipsum dolor sit amet, ...", datetime(), "Lorem ipsum dolor sit amet\, ..."
-            );',
-
-            'INSERT INTO single_post_with_comments
-            (id, post_id, post_title, post_content, post_created_at, comment_content)
-            VALUES (
-                6, 3, "Command - Query Responsability Segg\ regation", "Lorem ipsum dolor sit amet, ...", datetime(), "Lorem ipsum dolor sit amet\
-            , ...");'
-
-        ];
-        $this->entityManager->getConnection()->exec(implode('', $queries));
+        $this->eventRepository = $this->entityManager->getRepository(Event::class);
     }
 
-    public function testCQRS(): void
+    public function testCreatePost(): void
     {
-        $controller = new PostsController();
-        self::assertInstanceOf(PostsController::class, $controller);
+        $controller = new PostsController($this->postRepository);
+        $controller->createPost(
+            'What is Lorem Ipsum?',
+            'Lorem Ipsum is simply dummy text of the printing and typesetting industry'
+        );
+        $this->assertNotEmpty($this->postRepository->findAll());
+        $this->entityManager->clear();
+
+        $events = $this->eventRepository->findAll();
+        $this->assertInstanceOf(PostWasCreated::class, $events[array_key_first($events)]);
+
     }
 }

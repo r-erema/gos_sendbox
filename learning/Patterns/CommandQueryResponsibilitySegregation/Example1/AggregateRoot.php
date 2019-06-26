@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace learning\Patterns\CommandQueryResponsibilitySegregation\Example1;
 
+use Go\ParserReflection\ReflectionClass;
 use learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Events\DomainEvent;
 
 class AggregateRoot
@@ -25,7 +26,8 @@ class AggregateRoot
 
     protected function applyThat(DomainEvent $domainEvent): void
     {
-        $modifier = 'apply' . get_class($domainEvent);
+        $reflection = new ReflectionClass($domainEvent);
+        $modifier = 'apply' . $reflection->getShortName();
         $this->$modifier($domainEvent);
     }
 

@@ -4,9 +4,14 @@ declare(strict_types=1);
 
 namespace learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Events;
 
-class PostWasCreated implements DomainEvent
-{
+use learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Entities\Event;
+use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * @ORM\Entity()
+ */
+class PostWasCreated extends Event
+{
 
     private $postId;
     private $title;
@@ -14,7 +19,8 @@ class PostWasCreated implements DomainEvent
 
     public function __construct(string $postId, string $title, string $content)
     {
-        $this->postId = $postId;
+        parent::__construct();
+        $this->postId = $this->aggregateId = $postId;
         $this->title = $title;
         $this->content = $content;
     }
@@ -33,7 +39,5 @@ class PostWasCreated implements DomainEvent
     {
         return $this->content;
     }
-
-
 
 }
