@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Controllers;
 
-
 use learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Entities\Post;
 use learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Repositories\PostRepository;
 

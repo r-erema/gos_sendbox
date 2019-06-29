@@ -10,9 +10,12 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\ORMException;
 use Doctrine\ORM\Tools\Setup;
 use learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Controllers\PostsController;
+use learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Entities\Event;
 use learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Entities\Post;
+use learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Events\PostWasCreated;
 use learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Projector\Projector;
 use learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Repositories\DoctrinePostRepository;
+use learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Repositories\EventRepository;
 use PHPUnit\Framework\TestCase;
 
 class CQRSTest extends TestCase
@@ -23,6 +26,9 @@ class CQRSTest extends TestCase
 
     /** @var DoctrinePostRepository */
     private $postRepository;
+
+    /** @var EventRepository */
+    private $eventRepository;
 
     /**
      * @throws DBALException
@@ -38,16 +44,22 @@ class CQRSTest extends TestCase
         $this->entityManager->getConnection()->exec(file_get_contents(__DIR__ . '/init.sql'));
         $this->postRepository = $this->entityManager->getRepository(Post::class);
         $this->postRepository->setProjector(new Projector($this->entityManager));
+
+        $this->eventRepository = $this->entityManager->getRepository(Event::class);
     }
 
     public function testCreatePost(): void
     {
-
         $controller = new PostsController($this->postRepository);
         $controller->createPost(
             'What is Lorem Ipsum?',
             'Lorem Ipsum is simply dummy text of the printing and typesetting industry'
         );
         $this->assertNotEmpty($this->postRepository->findAll());
+        $this->entityManager->clear();
+
+        $events = $this->eventRepository->findAll();
+        $this->assertInstanceOf(PostWasCreated::class, $events[array_key_first($events)]);
+
     }
 }

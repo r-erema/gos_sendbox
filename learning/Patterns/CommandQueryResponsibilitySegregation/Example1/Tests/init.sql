@@ -13,3 +13,11 @@ CREATE TABLE IF NOT EXISTS single_post_with_comments (
     post_created_at DATETIME NOT NULL,
     comment_content TEXT NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS events (
+    id INTEGER PRIMARY KEY,
+    aggregate_id INTEGER NOT NULL,
+    type VARCHAR(100) NOT NULL,
+    created_at DATETIME NOT NULL,
+    data VARCHAR(255)
+);

@@ -6,5 +6,6 @@ namespace learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Event
 
 interface DomainEvent
 {
-
+    /*public function getAggregateId(): string;
+    public function setAggregateId(string $aggregateId): void;*/
 }

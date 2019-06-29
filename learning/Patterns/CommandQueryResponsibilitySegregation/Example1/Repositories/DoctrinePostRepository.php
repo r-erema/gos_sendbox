@@ -41,9 +41,9 @@ class DoctrinePostRepository extends EntityRepository implements PostRepository
         $this->entityManager->transactional(static function (EntityManagerInterface $em) use ($post) {
             $em->persist($post);
 
-            /*foreach ($post->getRecordedEvents() as $event) {
+            foreach ($post->getRecordedEvents() as $event) {
                 $em->persist($event);
-            }*/
+            }
         });
 
         $this->projector->project($post->getRecordedEvents());
