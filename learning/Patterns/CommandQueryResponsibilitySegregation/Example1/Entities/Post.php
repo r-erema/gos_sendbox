@@ -12,13 +12,15 @@ use learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Events\Post
 use learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Events\PostWasCategorized;
 use learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Events\PostWasCreated;
 use learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Events\PostWasPublished;
+use learning\Patterns\CommandQueryResponsibilitySegregation\Example1\EventSourcedAggregateRoot;
+use learning\Patterns\CommandQueryResponsibilitySegregation\Example1\EventStream;
 
 /**
  * @ORM\Entity(repositoryClass="learning\Patterns\CommandQueryResponsibilitySegregation\Example1\Repositories\DoctrinePostRepository")
  * @ORM\MappedSuperclass
  * @ORM\Table(name="posts")
  */
-class Post extends AggregateRoot
+class Post extends AggregateRoot implements EventSourcedAggregateRoot
 {
 
     /**
@@ -94,6 +96,11 @@ class Post extends AggregateRoot
         );
     }
 
+    public function getId(): PostId
+    {
+        return $this->id;
+    }
+
     protected function applyPostWasCreated(PostWasCreated $event): void
     {
         $this->id = $event->getPostId();
@@ -120,4 +127,13 @@ class Post extends AggregateRoot
     {
         $this->title = $event->getTitle();
     }
+    public static function reconstitute(EventStream $eventStream): Post
+    {
+        $post = new static($eventStream->getAggregateId());
+        foreach ($eventStream as $event) {
+            $post->applyThat($event);
+        }
+        return $post;
+    }
+
 }
