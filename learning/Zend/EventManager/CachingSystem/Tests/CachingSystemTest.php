@@ -46,8 +46,7 @@ class CachingSystemTest extends TestCase
         $experimentalObject->getEventManager()->attach('someExpensiveCall.pre', function (Event $e) {
             $params = $e->getParams();
             $key = md5(json_encode($params));
-            $hit = $this->cache->getItem($key);
-            return $hit;
+            return $this->cache->getItem($key);
         }, 100);
 
         $experimentalObject->getEventManager()->attach('someExpensiveCall.post', function (Event $e) {

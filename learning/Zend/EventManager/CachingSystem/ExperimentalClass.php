@@ -32,7 +32,7 @@ class ExperimentalClass implements EventManagerAwareInterface
     {
         $params = compact('criteria1', 'criteria2');
         $result = $this->getEventManager()->triggerUntil(
-            function ($r) {
+            static function ($r) {
                 return ($r instanceof SomeResultClass);
             },
             __FUNCTION__ . '.pre',
