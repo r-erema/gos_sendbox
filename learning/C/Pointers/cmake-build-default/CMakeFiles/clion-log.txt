@@ -1,4 +1,0 @@
-/home/gutsout/ide/clion-2018.1.1/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE= -G "CodeBlocks - Unix Makefiles" /home/gutsout/h/gos_sendbox/learning/C/Pointers
--- Configuring done
--- Generating done
--- Build files have been written to: /home/gutsout/h/gos_sendbox/learning/C/Pointers/cmake-build-default

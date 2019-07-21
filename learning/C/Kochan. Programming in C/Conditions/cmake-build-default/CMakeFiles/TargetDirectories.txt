@@ -1,3 +1,0 @@
-/home/gutsout/h/gos_sendbox/learning/C/Kochan. Programming in C/Conditions/cmake-build-default/CMakeFiles/edit_cache.dir
-/home/gutsout/h/gos_sendbox/learning/C/Kochan. Programming in C/Conditions/cmake-build-default/CMakeFiles/rebuild_cache.dir
-/home/gutsout/h/gos_sendbox/learning/C/Kochan. Programming in C/Conditions/cmake-build-default/CMakeFiles/Conditions.dir

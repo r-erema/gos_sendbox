@@ -1,1 +1,0 @@
-/usr/bin/cc    CMakeFiles/Cycles.dir/Cycles.c.o  -o Cycles -lm 

@@ -22,5 +22,8 @@
         <testsuite name="Other">
             <directory>./learning/other/</directory>
         </testsuite>
+        <testsuite name="Doctrine">
+            <directory>./learning/Doctrine/</directory>
+        </testsuite>
     </testsuites>
 </phpunit>
