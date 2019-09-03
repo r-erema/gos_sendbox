@@ -27,7 +27,8 @@
         "ext-sockets": "*",
         "twig/twig": "^2.9",
         "ext-json": "*",
-        "ext-mongodb": "*"
+        "ext-mongodb": "*",
+        "symfony/dependency-injection": "^4.3"
     },
     "autoload": {
         "psr-0": {"":""}
