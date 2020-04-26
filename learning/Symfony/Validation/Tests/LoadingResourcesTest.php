@@ -2,8 +2,8 @@
 
 use PHPUnit\Framework\TestCase;
 use \learning\Symfony\Validation\LoadingResources\User;
+use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use \Symfony\Component\Validator\Validation;
-use \Symfony\Component\Validator\Mapping\Cache\Psr6Cache;
 use \learning\Symfony\Validation\LoadingResources\UserMetadataFactory;
 
 class LoadingResourcesTest extends TestCase
@@ -66,7 +66,7 @@ class LoadingResourcesTest extends TestCase
     {
         $validator = Validation::createValidatorBuilder()
             ->addMethodMapping('loadValidatorMetadata')
-            ->setMetadataCache(new Psr6Cache(new Symfony\Component\Cache\Adapter\ArrayAdapter()))
+            ->setMappingCache(new ArrayAdapter())
             ->getValidator();
 
         $violations = $validator->validate(new User('G.Selinger', '123'));
