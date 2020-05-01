@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 
-use App\Kernel;
+use other\ProjectManager\src\Kernel;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\ErrorHandler\Debug;
@@ -12,7 +12,8 @@ if (!in_array(PHP_SAPI, ['cli', 'phpdbg', 'embed'], true)) {
 
 set_time_limit(0);
 
-require dirname(__DIR__).'/vendor/autoload.php';
+/** @noinspection PhpIncludeInspection */
+require dirname(__DIR__, 3) . '/vendor/autoload.php';
 
 if (!class_exists(Application::class)) {
     throw new LogicException('You need to add "symfony/framework-bundle" as a Composer dependency.');
@@ -39,4 +40,5 @@ if ($_SERVER['APP_DEBUG']) {
 
 $kernel = new Kernel($_SERVER['APP_ENV'], (bool) $_SERVER['APP_DEBUG']);
 $application = new Application($kernel);
+
 $application->run($input);

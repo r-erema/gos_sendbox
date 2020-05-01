@@ -36,7 +36,7 @@ while ($req = $psr7->acceptRequest()) {
         $roadRunnerResponse->getBody()->write($response->getContent());
         $psr7->respond($roadRunnerResponse);
         $kernel->terminate($request, $response);
-    } catch (\Throwable $e) {
+    } catch (Throwable $e) {
         $psr7->getWorker()->error((string) $e);
     }
 }

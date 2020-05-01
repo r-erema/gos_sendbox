@@ -1,0 +1,23 @@
+doctrine:
+  dbal:
+    driver: 'pdo_pgsql'
+    server_version: '12.2'
+    charset: utf8
+    default_table_options:
+      charset: utf8mb4
+      collate: utf8mb4_unicode_ci
+    url: '%env(resolve:DATABASE_URL)%'
+    types:
+      uuid: Ramsey\Uuid\Doctrine\UuidType
+      network_type: other\ProjectManager\src\Infrastructure\Doctrine\Types\NetworkType
+      status_type: other\ProjectManager\src\Infrastructure\Doctrine\Types\UserStatusType
+  orm:
+    auto_generate_proxy_classes: true
+    naming_strategy: doctrine.orm.naming_strategy.underscore
+    auto_mapping: true
+    mappings:
+      User:
+        type: php
+        dir: '%kernel.project_dir%/src/Infrastructure/Doctrine/Mapping'
+        prefix: 'other\ProjectManager\src\Model\User\Entity'
+        alias: User

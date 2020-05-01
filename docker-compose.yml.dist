@@ -3,13 +3,18 @@ services:
   php-cli:
     image: erema/php-cli:latest
     volumes:
-      - ./:/var/www/html
+    - ./:/var/www/html
     working_dir: /var/www/html
     tty: true
+    ports:
+      - 8080:8080
+    environment:
+      PHP_IDE_CONFIG: serverName=roadrunner
+      XDEBUG_CONFIG: remote_host=192.168.0.105
   sqlite3:
     image: nouchka/sqlite3:latest
     stdin_open: true
     tty: true
     volumes:
-      - ./data/sqlite/:/root/db/
+    - ./data/sqlite/:/root/db/
     working_dir: /var/www/html

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit>
+
+    <php>
+        <server name="KERNEL_CLASS" value="other\ProjectManager\src\Kernel" />
+    </php>
+
     <testsuites>
         <testsuite name="Architecture tests">
             <directory>./learning/Architecture/</directory>
@@ -24,6 +29,9 @@
         </testsuite>
         <testsuite name="Doctrine">
             <directory>./learning/Doctrine/</directory>
+        </testsuite>
+        <testsuite name="Project Manager">
+            <directory>./other/ProjectManager/tests/</directory>
         </testsuite>
     </testsuites>
 </phpunit>
