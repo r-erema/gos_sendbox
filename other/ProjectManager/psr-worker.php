@@ -2,6 +2,7 @@
 
 use Laminas\Diactoros\Response;
 use other\ProjectManager\src\Kernel;
+use Symfony\Bridge\PsrHttpMessage\Factory\HttpFoundationFactory;
 use Symfony\Component\ErrorHandler\Debug;
 use Symfony\Component\HttpFoundation\Request;
 use Spiral\Goridge;
@@ -27,10 +28,11 @@ $kernel = new Kernel($_SERVER['APP_ENV'], (bool) $_SERVER['APP_DEBUG']);
 
 $worker = new RoadRunner\Worker(new Goridge\StreamRelay(STDIN, STDOUT));
 $psr7 = new RoadRunner\PSR7Client($worker);
+$symfonyRequestFactory = new HttpFoundationFactory();
 
 while ($req = $psr7->acceptRequest()) {
     try {
-        $request = Request::createFromGlobals();
+        $request = $symfonyRequestFactory->createRequest($req);
         $response = $kernel->handle($request);
         $roadRunnerResponse = new Response();
         $roadRunnerResponse->getBody()->write($response->getContent());

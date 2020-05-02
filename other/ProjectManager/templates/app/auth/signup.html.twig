@@ -1,0 +1,15 @@
+{% extends 'auth.html.twig' %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block body %}
+    <div>
+        {{ form_start(form) }}
+            {{ form_widget(form.email, {'attr': {'placeholder': 'Email'}}) }}
+            {{ form_errors(form.email) }}
+            {{ form_widget(form.password, {'attr': {'placeholder': 'Password'}}) }}
+            {{ form_errors(form.password) }}
+            <button type="submit" class="btn btn-block btn-success">Create Account</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

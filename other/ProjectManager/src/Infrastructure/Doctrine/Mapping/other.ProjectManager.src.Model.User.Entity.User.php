@@ -23,7 +23,7 @@ $metadata->mapField([
 
 $metadata->mapField([
     'fieldName' => 'email',
-    'type' => 'string',
+    'type' => 'email_type',
     'length' => 254,
     'unique' => true,
     'nullable' => true
@@ -59,5 +59,6 @@ $metadata->mapOneToMany([
     'fieldName' => 'networks',
     'targetEntity' => Network::class,
     'mappedBy' => 'users',
-    'cascade' => ['persist']
+    'cascade' => ['persist'],
+    'orphanRemoval' => true
 ]);

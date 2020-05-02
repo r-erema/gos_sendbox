@@ -31,6 +31,9 @@ $metadata->mapManyToOne([
     'targetEntity' => User::class,
     'cascade' => ['persist'],
     'joinColumns' => [
-        ['nullable' => false]
+        [
+            'nullable' => false,
+            'onDelete' => 'cascade'
+        ]
     ]
 ]);

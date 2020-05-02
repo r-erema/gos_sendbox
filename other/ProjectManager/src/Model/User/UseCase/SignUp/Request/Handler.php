@@ -6,15 +6,13 @@ namespace other\ProjectManager\src\Model\User\UseCase\SignUp\Request;
 
 use DateTimeImmutable;
 use DomainException;
-use IFlusher;
+use other\ProjectManager\src\Infrastructure\Service\IFlusher;
 use other\ProjectManager\src\Model\User\Entity\Email;
-use other\ProjectManager\src\Model\User\Entity\Id;
-use other\ProjectManager\src\Model\User\Entity\IUserRepository;
 use other\ProjectManager\src\Model\User\Entity\User;
+use other\ProjectManager\src\Model\User\Repository\IUserRepository;
 use other\ProjectManager\src\Model\User\Service\ConfirmTokenizer;
 use other\ProjectManager\src\Model\User\Service\IConfirmTokenSender;
 use other\ProjectManager\src\Model\User\Service\PasswordHasher;
-use Ramsey\Uuid\Guid\Guid;
 use Ramsey\Uuid\Uuid;
 
 class Handler

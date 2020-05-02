@@ -10,6 +10,7 @@ doctrine:
     types:
       uuid: Ramsey\Uuid\Doctrine\UuidType
       network_type: other\ProjectManager\src\Infrastructure\Doctrine\Types\NetworkType
+      email_type: other\ProjectManager\src\Infrastructure\Doctrine\Types\EmailType
       status_type: other\ProjectManager\src\Infrastructure\Doctrine\Types\UserStatusType
   orm:
     auto_generate_proxy_classes: true

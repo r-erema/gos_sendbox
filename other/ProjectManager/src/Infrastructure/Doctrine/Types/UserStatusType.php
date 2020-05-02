@@ -6,6 +6,7 @@ namespace other\ProjectManager\src\Infrastructure\Doctrine\Types;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Fresh\DoctrineEnumBundle\DBAL\Types\AbstractEnumType;
+use other\ProjectManager\src\Model\User\Entity\Email;
 use other\ProjectManager\src\Model\User\Entity\Status;
 use Webmozart\Assert\Assert;
 
@@ -19,4 +20,8 @@ class UserStatusType extends AbstractEnumType
         return parent::convertToDatabaseValue($value->getValue(), $platform);
     }
 
+    public function convertToPHPValue($value, AbstractPlatform $platform)
+    {
+        return !empty($value) ? new Status($value) : null;
+    }
 }
