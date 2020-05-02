@@ -3,6 +3,7 @@
 
     <php>
         <server name="KERNEL_CLASS" value="other\ProjectManager\src\Kernel" />
+        <server name="APP_ENV" value="test" force="true" />
     </php>
 
     <testsuites>
@@ -34,4 +35,8 @@
             <directory>./other/ProjectManager/tests/</directory>
         </testsuite>
     </testsuites>
+
+    <extensions>
+        <extension class="infrastructure\TestsExtension" />
+    </extensions>
 </phpunit>
