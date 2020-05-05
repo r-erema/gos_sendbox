@@ -1,28 +1,24 @@
-# This file is the entry point to configure your own services.
-# Files in the packages/ subdirectory configure your dependencies.
-
-# Put parameters here that don't need to change on each machine where the app is deployed
-# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
+    locale: 'ru'
+    fromEmail: '%env(FROM_EMAIL)%'
 
 services:
-    # default configuration for services in *this* file
     _defaults:
-        autowire: true      # Automatically injects dependencies in your services.
-        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        autowire: true
+        autoconfigure: true
 
-    # makes classes in src/ available to be used as services
-    # this creates a service per class whose id is the fully-qualified class name
     other\ProjectManager\src\:
         resource: '../src'
         exclude: '../src/{Entity,Migration,Kernel.php}'
 
-    # controllers are imported separately to make sure services can be injected
-    # as action arguments even if you don't extend any base controller class
-    #other\ProjectManager\src\Controller\:
-    #    resource: '../src/Controller'
-    #    tags: ['controller.service_arguments']
-
     other\ProjectManager\src\Model\User\Repository\IUserRepository: '@other\ProjectManager\src\Model\User\Repository\UserRepository'
     other\ProjectManager\src\Infrastructure\Service\IFlusher: '@other\ProjectManager\src\Infrastructure\Service\Flusher'
     other\ProjectManager\src\Model\User\Service\IConfirmTokenSender: '@other\ProjectManager\src\Model\User\Service\ConfirmTokenSender'
+    other\ProjectManager\src\Model\User\Service\ConfirmTokenSender:
+        $from: '%fromEmail%'
+    other\ProjectManager\src\Model\User\Service\ResetTokenSender:
+        $from: '%fromEmail%'
+    other\ProjectManager\src\Model\User\Service\ResetTokenizer:
+        factory: 'other\ProjectManager\src\Infrastructure\DI\Factory\ResetTokenizerFactory::create'
+        arguments:
+            $interval: 'PT1H'

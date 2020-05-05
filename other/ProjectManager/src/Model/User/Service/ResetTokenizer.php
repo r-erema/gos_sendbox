@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace other\ProjectManager\src\Model\User\Service;
 
 use DateInterval;
+use DateTimeImmutable;
 use other\ProjectManager\src\Model\User\Entity\ResetToken;
 use Ramsey\Uuid\Uuid;
 
@@ -21,7 +22,7 @@ class ResetTokenizer
     {
         return new ResetToken(
             Uuid::uuid4()->toString(),
-            (new \DateTimeImmutable())->add($this->interval)
+            (new DateTimeImmutable())->add($this->interval)
         );
     }
 }

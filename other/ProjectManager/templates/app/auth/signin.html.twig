@@ -1,0 +1,30 @@
+{% extends 'app/layout.html.twig' %}
+
+{% block title %}Log in{% endblock %}
+
+{% block body %}
+
+    {% if error %}
+        <div class="error">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <form method="post">
+        <div>
+            <label>
+                <input type="email" name="email" value="{{ last_username }}" placeholder="Email" />
+            </label>
+        </div>
+        <div>
+            <label>
+                <input class="form-control" type="password" name="password" placeholder="Password" />
+            </label>
+        </div>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        <div>
+            <input type="submit" value="{{ "Sign in" | trans([], 'common') }}"/>
+        </div>
+    </form>
+    <a href='{{ path(constant('other\\ProjectManager\\src\\Controller\\Auth\\ResetController::RESET_REQUEST_ROUTE')) }}'>
+        {{ "Reset password" | trans([], 'common') }}
+    </a>
+{% endblock %}

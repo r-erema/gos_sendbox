@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace other\ProjectManager\src\Model\User\UseCase\Reset\Request;
 
-use IFlusher;
+use DateTimeImmutable;
+use other\ProjectManager\src\Infrastructure\Exception\EntityNotFoundException;
+use other\ProjectManager\src\Infrastructure\Service\IFlusher;
 use other\ProjectManager\src\Model\User\Entity\Email;
-use other\ProjectManager\src\Model\User\Entity\IUserRepository;
+use other\ProjectManager\src\Model\User\Repository\IUserRepository;
 use other\ProjectManager\src\Model\User\Service\IResetTokenSender;
 use other\ProjectManager\src\Model\User\Service\ResetTokenizer;
 
@@ -30,14 +32,19 @@ class Handler
         $this->tokenSender = $tokenSender;
     }
 
+    /**
+     * @param Command $command
+     * @throws EntityNotFoundException
+     */
     public function handle(Command $command): void
     {
         $user = $this->users->getByEmail(new Email($command->getEmail()));
 
-        $user->requestPasswordReset($this->tokenizer->generate());
+        $resetToken = $this->tokenizer->generate();
+        $user->requestPasswordReset($resetToken, new DateTimeImmutable());
 
         $this->flusher->flush();
-        $this->tokenSender->send($user->getEmail(), $user->getResetToken());
+        $this->tokenSender->send($user->getEmail(), $resetToken->getToken());
     }
 
 }

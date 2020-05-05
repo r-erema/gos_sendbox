@@ -10,6 +10,6 @@ class UserIsNotActive extends RuntimeException
 {
     public function __construct()
     {
-        parent::__construct();
+        parent::__construct('User is not active');
     }
 }

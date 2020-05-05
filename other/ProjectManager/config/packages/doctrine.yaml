@@ -12,9 +12,10 @@ doctrine:
       network_type: other\ProjectManager\src\Infrastructure\Doctrine\Types\NetworkType
       email_type: other\ProjectManager\src\Infrastructure\Doctrine\Types\EmailType
       status_type: other\ProjectManager\src\Infrastructure\Doctrine\Types\UserStatusType
+      role_type: other\ProjectManager\src\Infrastructure\Doctrine\Types\UserRoleType
   orm:
     auto_generate_proxy_classes: true
-    naming_strategy: doctrine.orm.naming_strategy.underscore
+    naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
     auto_mapping: true
     mappings:
       User:

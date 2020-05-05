@@ -5,13 +5,10 @@ declare(strict_types=1);
 namespace other\ProjectManager\src\Model\User\UseCase\Reset\Reset;
 
 use DateTimeImmutable;
-use IFlusher;
-use other\ProjectManager\src\Model\User\Entity\Email;
-use other\ProjectManager\src\Model\User\Entity\IUserRepository;
+use other\ProjectManager\src\Infrastructure\Service\IFlusher;
 use other\ProjectManager\src\Model\User\Exception\BadResetToken;
-use other\ProjectManager\src\Model\User\Service\IResetTokenSender;
+use other\ProjectManager\src\Model\User\Repository\IUserRepository;
 use other\ProjectManager\src\Model\User\Service\PasswordHasher;
-use other\ProjectManager\src\Model\User\Service\ResetTokenizer;
 
 class Handler
 {

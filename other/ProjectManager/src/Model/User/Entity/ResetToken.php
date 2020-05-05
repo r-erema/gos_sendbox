@@ -11,7 +11,7 @@ class ResetToken
 {
 
     private string $token;
-    private DateTimeImmutable $expires;
+    private ?DateTimeImmutable $expires = null;
 
     public function __construct(string $token, DateTimeImmutable $expires)
     {
@@ -20,9 +20,14 @@ class ResetToken
         $this->expires = $expires;
     }
 
-    public function isExpiredTo(\DateTimeImmutable $date): bool
+    public function isExpiredTo(DateTimeImmutable $date): bool
     {
         return $this->expires <= $date;
+    }
+
+    public function getToken(): string
+    {
+        return $this->token;
     }
 
 }

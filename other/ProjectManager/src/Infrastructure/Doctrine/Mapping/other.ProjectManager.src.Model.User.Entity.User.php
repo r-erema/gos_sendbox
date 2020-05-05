@@ -55,10 +55,15 @@ $metadata->mapField([
     'type' => 'status_type'
 ]);
 
+$metadata->mapField([
+    'fieldName' => 'role',
+    'type' => 'role_type'
+]);
+
 $metadata->mapOneToMany([
     'fieldName' => 'networks',
     'targetEntity' => Network::class,
-    'mappedBy' => 'users',
+    'mappedBy' => 'user',
     'cascade' => ['persist'],
     'orphanRemoval' => true
 ]);

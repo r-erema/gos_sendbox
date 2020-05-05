@@ -32,7 +32,12 @@
         "ramsey/uuid-doctrine": "^1.6",
         "symfony/form": "^5.0",
         "symfony/twig-bundle": "^5.0",
-        "symfony/psr-http-message-bridge": "^2.0"
+        "symfony/psr-http-message-bridge": "^2.0",
+        "symfony/translation": "^5.0",
+        "symfony/mailer": "^5.0",
+        "symfony/monolog-bundle": "^3.5",
+        "nyholm/psr7": "^1.2",
+        "symfony/security-bundle": "^5.0"
     },
     "autoload": {
         "psr-4": {"":""}
@@ -45,8 +50,10 @@
         "friendsofphp/php-cs-fixer": "^2.15",
         "phpstan/phpstan": "^0.12.19",
         "symfony/error-handler": "^5.0",
-        "symfony/maker-bundle": "^1.15",
-        "symfony/flex": "^1.6"
+        "symfony/maker-bundle": "^1.16",
+        "symfony/flex": "^1.6",
+        "symfony/profiler-pack": "^1.0",
+        "doctrine/doctrine-fixtures-bundle": "^3.3"
     },
     "scripts": {
         "lint" : "./vendor/bin/phpstan analyse"

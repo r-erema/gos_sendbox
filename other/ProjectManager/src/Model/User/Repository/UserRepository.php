@@ -35,7 +35,7 @@ class UserRepository implements IUserRepository
     public function getByEmail(Email $email): User
     {
         /** @var User $user */
-        $user = $this->repository->findBy(['email' => $email]);
+        $user = $this->repository->findOneBy(['email' => $email]);
         if ($user === null) {
             throw new EntityNotFoundException(User::class, ["email = `{$email->getValue()}`"]);
         }
@@ -51,6 +51,14 @@ class UserRepository implements IUserRepository
                 ->getQuery()
                 ->getSingleScalarResult() > 0;
     }
+
+    public function findByEmail(Email $email): ?User
+    {
+        /** @var User $user */
+        $user = $this->repository->findOneBy(['email' => $email]);
+        return $user;
+    }
+
     public function hasByNetworkIdentity(string $networkName, string $identity): bool
     {
         return $this->repository->createQueryBuilder('t')

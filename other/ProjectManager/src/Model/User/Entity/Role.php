@@ -10,6 +10,10 @@ class Role
 
     public const ROLE_USER = 'ROLE_USER';
     public const ROLE_ADMIN = 'ROLE_ADMIN';
+    public const ROLES = [
+        self::ROLE_USER => self::ROLE_USER,
+        self::ROLE_ADMIN => self::ROLE_ADMIN
+    ];
 
     private string $value;
 

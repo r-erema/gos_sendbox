@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200502153454 extends AbstractMigration
+final class Version20200505153526 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -27,11 +27,12 @@ final class Version20200502153454 extends AbstractMigration
         $this->addSql('COMMENT ON COLUMN networks.id IS \'(DC2Type:uuid)\'');
         $this->addSql('COMMENT ON COLUMN networks.user_id IS \'(DC2Type:uuid)\'');
         $this->addSql('COMMENT ON COLUMN networks.name IS \'(DC2Type:network_type)\'');
-        $this->addSql('CREATE TABLE users (id UUID NOT NULL, date TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, email VARCHAR(254) DEFAULT NULL, password_hash VARCHAR(100) DEFAULT NULL, confirm_token VARCHAR(100) DEFAULT NULL, status VARCHAR(255) CHECK(status IN (\'wait\', \'active\')) NOT NULL, reset_token_token VARCHAR(100) DEFAULT NULL, reset_token_expires TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE users (id UUID NOT NULL, date TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, email VARCHAR(254) DEFAULT NULL, password_hash VARCHAR(100) DEFAULT NULL, confirm_token VARCHAR(100) DEFAULT NULL, status VARCHAR(255) CHECK(status IN (\'wait\', \'active\')) NOT NULL, role VARCHAR(255) CHECK(role IN (\'ROLE_USER\', \'ROLE_ADMIN\')) NOT NULL, reset_token_token VARCHAR(100) DEFAULT NULL, reset_token_expires TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_1483A5E9E7927C74 ON users (email)');
         $this->addSql('COMMENT ON COLUMN users.id IS \'(DC2Type:uuid)\'');
         $this->addSql('COMMENT ON COLUMN users.date IS \'(DC2Type:datetime_immutable)\'');
         $this->addSql('COMMENT ON COLUMN users.status IS \'(DC2Type:status_type)\'');
+        $this->addSql('COMMENT ON COLUMN users.role IS \'(DC2Type:role_type)\'');
         $this->addSql('COMMENT ON COLUMN users.reset_token_expires IS \'(DC2Type:datetime_immutable)\'');
         $this->addSql('ALTER TABLE networks ADD CONSTRAINT FK_D9B9B42BA76ED395 FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE NOT DEFERRABLE INITIALLY IMMEDIATE');
     }

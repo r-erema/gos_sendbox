@@ -29,6 +29,7 @@ class Form extends AbstractType
                 $form->get(self::EMAIL)->getData(),
                 $form->get(self::PASSWORD)->getData()
             ),
+            'translation_domain' => 'common'
         ]);
     }
 }

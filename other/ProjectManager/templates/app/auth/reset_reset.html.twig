@@ -1,0 +1,15 @@
+{% extends 'app/layout.html.twig' %}
+
+{% block title %}Reset password{% endblock %}
+
+{% block body %}
+    <div>
+        {{ form_start(form) }}
+        <div>
+            {{ form_widget(form.password, {'attr': {'placeholder': 'Password'}}) }}
+            <div class="error">{{ form_errors(form.password) }}</div>
+        </div>
+        <button type="submit" >{{ "Reset password" | trans([], 'common') }}</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

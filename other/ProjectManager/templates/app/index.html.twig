@@ -1,0 +1,21 @@
+{% extends 'app/layout.html.twig' %}
+
+{% block body %}
+    <ul>
+        <li>
+            <a href='{{ path(constant('other\\ProjectManager\\src\\Controller\\Auth\\SignInController::SIGN_IN_ROUTE')) }}'>
+                {{ "Sign in" | trans([], 'common') }}
+            </a>
+        </li>
+        <li>
+            <a href='{{ path(constant('other\\ProjectManager\\src\\Controller\\Auth\\SignUpController::SIGNUP_ROUTE')) }}'>
+                {{ "Sign up" | trans([], 'common') }}
+            </a>
+        </li>
+        <li>
+            <a href='{{ path(constant('other\\ProjectManager\\src\\Controller\\Auth\\ResetController::RESET_REQUEST_ROUTE')) }}'>
+                {{ "Reset password" | trans([], 'common') }}
+            </a>
+        </li>
+    </ul>
+{% endblock %}

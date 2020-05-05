@@ -27,6 +27,7 @@ interface IUserRepository
     public function getByEmail(Email $email): User;
 
     public function hasByEmail(Email $email): bool;
+    public function findByEmail(Email $email): ?User;
     public function hasByNetworkIdentity(string $networkName, string $identity): bool;
     public function findByConfirmToken(string $token): ?User;
     public function findByResetToken(string $token): ?User;

@@ -10,6 +10,6 @@ class ResettingAlreadyRequested extends RuntimeException
 {
     public function __construct()
     {
-        parent::__construct();
+        parent::__construct('Reset request already sent');
     }
 }

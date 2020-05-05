@@ -26,8 +26,8 @@ class User
     private ?string $confirmToken = null;
     private ?ResetToken $resetToken = null;
     private Status $status;
-    private Collection $networks;
     private Role $role;
+    private Collection $networks;
 
     private function __construct(UuidInterface $id, DateTimeImmutable $date)
     {
@@ -150,6 +150,11 @@ class User
     public function getRole(): Role
     {
         return $this->role;
+    }
+
+    public function getStatus(): Status
+    {
+        return $this->status;
     }
 
 }
