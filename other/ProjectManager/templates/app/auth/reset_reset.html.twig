@@ -1,15 +1,36 @@
-{% extends 'app/layout.html.twig' %}
+{% extends 'app/auth/layout.html.twig' %}
 
-{% block title %}Reset password{% endblock %}
+{% block title %}{{ "Reset password" | trans([], 'common') }}{% endblock %}
+{% block bg_class %}bg-password-image{% endblock %}
+{% block bottom_links %}
+    <div class="text-center">
+        <a class="small" href='{{ path(constant('other\\ProjectManager\\src\\Controller\\Auth\\SignUpController::SIGNUP_ROUTE')) }}'>
+            {{ "Sign up" | trans([], 'common') }}
+        </a>
+    </div>
+    <div class="text-center">
+        <a class="small" href='{{ path(constant('other\\ProjectManager\\src\\Controller\\Auth\\SignInController::SIGN_IN_ROUTE')) }}'>
+            {{ "Sign in" | trans([], 'common') }}
+        </a>
+    </div>
+{% endblock %}
 
-{% block body %}
+{% block form %}
     <div>
-        {{ form_start(form) }}
-        <div>
-            {{ form_widget(form.password, {'attr': {'placeholder': 'Password'}}) }}
-            <div class="error">{{ form_errors(form.password) }}</div>
+        {{ form_start(form, {attr: {'class': 'user'} }) }}
+        <div class="form-group">
+            {{ form_widget(form.password, {'attr': {
+                'placeholder': 'Password' | trans([], 'common'),
+                'class' : 'form-control form-control-user',
+            }}) }}
+            <div class="invalid-feedback" >{{ form_errors(form.password) }}</div>
         </div>
-        <button type="submit" >{{ "Reset password" | trans([], 'common') }}</button>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
+        <input type="submit" class="btn btn-primary btn-user btn-block" value="{{ "Reset password" | trans([], 'common') }}" />
+        <hr>
+        <a href="{{ path(constant('other\\ProjectManager\\src\\Controller\\Auth\\FacebookController::CONNECT_ROUTE')) }}" class="btn btn-facebook btn-user btn-block">
+            <i class="fab fa-facebook-f fa-fw"></i> {{ "Sign in via Facebook" | trans([], 'common') }}
+        </a>
         {{ form_end(form) }}
     </div>
 {% endblock %}

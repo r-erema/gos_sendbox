@@ -29,6 +29,7 @@ interface IUserRepository
     public function hasByEmail(Email $email): bool;
     public function findByEmail(Email $email): ?User;
     public function hasByNetworkIdentity(string $networkName, string $identity): bool;
+    public function findByNetworkIdentity(string $networkName, string $identity): ?User;
     public function findByConfirmToken(string $token): ?User;
     public function findByResetToken(string $token): ?User;
     public function add(User $user): void;

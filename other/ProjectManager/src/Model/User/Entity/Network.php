@@ -36,4 +36,14 @@ class Network
         return $this->name;
     }
 
+    public function getUser(): User
+    {
+        return $this->user;
+    }
+
+    public function getIdentity(): string
+    {
+        return $this->identity;
+    }
+
 }

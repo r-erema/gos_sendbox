@@ -18,3 +18,16 @@ services:
     volumes:
     - ./data/sqlite/:/root/db/
     working_dir: /var/www/html
+  postgres:
+    image: postgres:12.2
+    environment:
+      POSTGRES_USER: go
+      POSTGRES_DB: go
+      POSTGRES_PASSWORD: 123
+    ports:
+    - 5432:5432
+  mailhog:
+    image: mailhog/mailhog:latest
+    ports:
+      - "8025:8025"
+

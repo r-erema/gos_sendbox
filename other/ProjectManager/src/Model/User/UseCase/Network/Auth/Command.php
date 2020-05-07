@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace other\ProjectManager\src\Model\User\UseCase\Network\Auth;
 
-use other\ProjectManager\src\Model\User\Entity\Network;
 class Command
 {
     private string $networkName;

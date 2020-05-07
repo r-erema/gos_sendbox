@@ -21,8 +21,8 @@ class User
 
     private UuidInterface $id;
     private DateTimeImmutable $date;
-    private ?Email $email;
-    private ?string $passwordHash;
+    private ?Email $email = null;
+    private ?string $passwordHash = null;
     private ?string $confirmToken = null;
     private ?ResetToken $resetToken = null;
     private Status $status;
@@ -59,12 +59,12 @@ class User
     {
         return $this->id;
     }
-    public function getEmail(): Email
+    public function getEmail(): ?Email
     {
         return $this->email;
     }
 
-    public function getPasswordHash(): string
+    public function getPasswordHash(): ?string
     {
         return $this->passwordHash;
     }
@@ -109,6 +109,13 @@ class User
     public function getNetworksArray(): array
     {
         return $this->networks->toArray();
+    }
+
+    public function getNetworkByName(string $networkName): ?Network
+    {
+        return $this->networks
+            ->filter(fn(Network $network): bool => $network->getName() === $networkName)
+            ->first();
     }
 
     public function requestPasswordReset(ResetToken $resetToken, DateTimeImmutable $date): void

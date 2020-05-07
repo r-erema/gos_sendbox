@@ -11,9 +11,16 @@ services:
         resource: '../src'
         exclude: '../src/{Entity,Migration,Kernel.php}'
 
-    other\ProjectManager\src\Model\User\Repository\IUserRepository: '@other\ProjectManager\src\Model\User\Repository\UserRepository'
-    other\ProjectManager\src\Infrastructure\Service\IFlusher: '@other\ProjectManager\src\Infrastructure\Service\Flusher'
+    other\ProjectManager\src\Model\User\Repository\IUserRepository:
+        class: other\ProjectManager\src\Model\User\Repository\UserRepository
+    other\ProjectManager\src\Infrastructure\Service\IFlusher:
+        class: other\ProjectManager\src\Infrastructure\Service\Flusher
     other\ProjectManager\src\Model\User\Service\IConfirmTokenSender: '@other\ProjectManager\src\Model\User\Service\ConfirmTokenSender'
+    Predis\ClientInterface:
+        class: Predis\Client
+        arguments: ['%env(REDIS_URL)%']
+    Symfony\Component\HttpFoundation\Session\Storage\Handler\RedisSessionHandler:
+        arguments: ['@Predis\ClientInterface']
     other\ProjectManager\src\Model\User\Service\ConfirmTokenSender:
         $from: '%fromEmail%'
     other\ProjectManager\src\Model\User\Service\ResetTokenSender:

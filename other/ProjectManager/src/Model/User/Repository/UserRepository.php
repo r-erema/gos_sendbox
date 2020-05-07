@@ -8,6 +8,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectRepository;
 use other\ProjectManager\src\Infrastructure\Exception\EntityNotFoundException;
 use other\ProjectManager\src\Model\User\Entity\Email;
+use other\ProjectManager\src\Model\User\Entity\Network;
 use other\ProjectManager\src\Model\User\Entity\User;
 use Ramsey\Uuid\UuidInterface;
 
@@ -61,13 +62,25 @@ class UserRepository implements IUserRepository
 
     public function hasByNetworkIdentity(string $networkName, string $identity): bool
     {
-        return $this->repository->createQueryBuilder('t')
-                ->select('COUNT(t.id)')
-                ->innerJoin('t.networks', 'n')
-                ->andWhere('n.network = :network and n.identity = :identity')
-                ->setParameter(':network', $networkName)
-                ->setParameter(':identity', $identity)
+        return $this->repository->createQueryBuilder('u')
+                ->select('COUNT(u.id)')
+                ->innerJoin('u.networks', 'n')
+                ->andWhere('n.name = :network and n.identity = :identity')
+                ->setParameters([
+                    ':network' => $networkName,
+                    ':identity' => $identity
+                ])
                 ->getQuery()->getSingleScalarResult() > 0;
+    }
+
+    public function findByNetworkIdentity(string $networkName, string $identity): ?User
+    {
+        /** @var Network $network */
+        $network = $this->em->getRepository(Network::class)->findOneBy([
+            'name' => $networkName,
+            'identity' => $identity
+        ]);
+        return $network !== null ? $network->getUser() : null;
     }
 
     public function findByConfirmToken(string $token): ?User

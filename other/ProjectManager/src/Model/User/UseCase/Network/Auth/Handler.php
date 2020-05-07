@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace other\ProjectManager\src\Model\User\UseCase\Network\Auth;
 
 use DateTimeImmutable;
-use IFlusher;
+use other\ProjectManager\src\Infrastructure\Service\IFlusher;
 use other\ProjectManager\src\Model\User\Entity\Id;
-use other\ProjectManager\src\Model\User\Entity\IUserRepository;
 use other\ProjectManager\src\Model\User\Entity\Network;
 use other\ProjectManager\src\Model\User\Entity\User;
 use other\ProjectManager\src\Model\User\Exception\UserAlreadyExists;
+use other\ProjectManager\src\Model\User\Repository\IUserRepository;
+use Ramsey\Uuid\Uuid;
 
 class Handler
 {
@@ -30,9 +31,10 @@ class Handler
         }
 
         $user = User::signUpByNetwork(
-            Id::next(),
+            Uuid::uuid4(),
             new DateTimeImmutable(),
-            new Network($command->getNetworkName(), $command->getIdentity())
+            $command->getNetworkName(),
+            $command->getIdentity()
         );
 
         $this->users->add($user);

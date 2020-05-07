@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace other\ProjectManager\src\Security;
 
+use other\ProjectManager\src\Infrastructure\Service\UsernameDeterminer;
 use other\ProjectManager\src\Model\User\Entity\Email;
 use other\ProjectManager\src\Model\User\Entity\User;
 use other\ProjectManager\src\Model\User\Repository\IUserRepository;
+use RuntimeException;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -24,8 +26,9 @@ class UserProvider implements UserProviderInterface
 
     public function loadUserByUsername($username): UserInterface
     {
-        $user = $this->loadUser($username);
-        return self::identityByUser($user);
+        $networkDeterminer = new UsernameDeterminer($username);
+        $user = $this->loadUser($networkDeterminer->getUserIdentity(), $networkDeterminer->getNetworkName());
+        return self::identityByUser($user, $networkDeterminer->getNetworkName());
     }
 
     public function refreshUser(UserInterface $identity): UserInterface
@@ -34,8 +37,9 @@ class UserProvider implements UserProviderInterface
             throw new UnsupportedUserException('Invalid user class ' . get_class($identity));
         }
 
-        $user = $this->loadUser($identity->getUsername());
-        return self::identityByUser($user);
+        $networkDeterminer = new UsernameDeterminer($identity->getUsername());
+        $user = $this->loadUser($networkDeterminer->getUserIdentity(), $networkDeterminer->getNetworkName());
+        return self::identityByUser($user, $networkDeterminer->getNetworkName());
     }
 
     public function supportsClass($class): bool
@@ -43,23 +47,35 @@ class UserProvider implements UserProviderInterface
         return $class === UserIdentity::class;
     }
 
-    private function loadUser(string $username): User
+    private function loadUser(string $identity, string $networkName = null): User
     {
-        if ($user = $this->users->findByEmail(new Email($username))) {
+        if ($networkName !== null && $user = $this->users->findByNetworkIdentity($networkName, $identity)) {
+            return $user;
+        }
+
+        if ($networkName === null && $user = $this->users->findByEmail(new Email($identity))) {
             return $user;
         }
 
         throw new UsernameNotFoundException('');
     }
 
-    private static function identityByUser(User $user): UserIdentity
+    private static function identityByUser(User $user, string $networkName = null): UserIdentity
     {
+        if ($networkName !== null && $network = $user->getNetworkByName($networkName)) {
+            $userName = "{$networkName}:{$network->getIdentity()}";
+        } else if ($email = $user->getEmail()) {
+            $userName = $email->getValue();
+        } else {
+            throw new RuntimeException('Auth error');
+        }
+
         return new UserIdentity(
             $user->getId()->toString(),
-            $user->getEmail()->getValue(),
-            $user->getPasswordHash(),
+            $userName,
             $user->getRole()->getValue(),
-            $user->getStatus()->getValue()
+            $user->getStatus()->getValue(),
+            $user->getPasswordHash(),
         );
     }
 }

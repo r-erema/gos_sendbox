@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace other\ProjectManager\src\DataFixture;
 
 use DateTimeImmutable;
@@ -13,52 +15,37 @@ use Ramsey\Uuid\Uuid;
 
 class UserFixture extends Fixture
 {
-    public const REFERENCE_ADMIN = 'user_user_admin';
-    public const REFERENCE_USER = 'user_user_user';
+    public const PASSWORD = '111111';
+    public const SIMPLE_USER_ACTIVE_EMAIL = 'user_actvie@test.test';
+    public const SIMPLE_USER_NOT_ACTIVE_EMAIL = 'user_not_active@test.test';
+    public const ADMIN_EMAIL = 'admin@test.test';
 
     public function load(ObjectManager $manager): void
     {
-        $hash = PasswordHasher::hash('password');
-
-        $requested = $this->createSignUpRequestedByEmail(
-            new Email('requested@app.test'),
-            $hash
-        );
-        $manager->persist($requested);
-
-        $confirmed = $this->createSignUpConfirmedByEmail(new Email('user@app.test'), $hash);
-        $manager->persist($confirmed);
-        $this->setReference(self::REFERENCE_USER, $confirmed);
-
-        $admin = $this->createAdminByEmail(new Email('admin@app.test'), $hash);
+        $notActiveSimpleUser = self::createUser(self::SIMPLE_USER_NOT_ACTIVE_EMAIL, false, false);
+        $activeSimpleUser = self::createUser(self::SIMPLE_USER_ACTIVE_EMAIL);
+        $admin = self::createUser(self::ADMIN_EMAIL, true);
+        $manager->persist($notActiveSimpleUser);
+        $manager->persist($activeSimpleUser);
         $manager->persist($admin);
-        $this->setReference(self::REFERENCE_ADMIN, $admin);
-
         $manager->flush();
     }
 
-    private function createAdminByEmail(Email $email, string $hash): User
+    private static function createUser(string $email, bool $isAdmin = false, bool $autoConfirm = true): User
     {
-        $user = $this->createSignUpConfirmedByEmail($email, $hash);
-        $user->setRole(Role::admin());
-        return $user;
-    }
-
-    private function createSignUpConfirmedByEmail(Email $email, string $hash): User
-    {
-        $user = $this->createSignUpRequestedByEmail($email, $hash);
-        $user->confirmSignUp();
-        return $user;
-    }
-
-    private function createSignUpRequestedByEmail(Email $email, string $hash): User
-    {
-        return User::signUpByEmail(
+        $user = User::signUpByEmail(
             Uuid::uuid4(),
             new DateTimeImmutable(),
-            $email,
-            $hash,
+            new Email($email),
+            PasswordHasher::hash(self::PASSWORD),
             'token'
         );
+        if ($isAdmin) {
+            $user->setRole(Role::admin());
+        }
+        if ($autoConfirm) {
+            $user->confirmSignUp();
+        }
+        return $user;
     }
 }
