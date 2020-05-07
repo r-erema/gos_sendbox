@@ -13,11 +13,10 @@ interface IUserRepository
 {
 
     /**
-     * @param UuidInterface $id
+     * @param string $id
      * @return User
-     * @throws EntityNotFoundException
      */
-    public function get(UuidInterface $id): User;
+    public function get(string $id): User;
 
     /**
      * @param Email $email

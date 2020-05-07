@@ -24,7 +24,7 @@ class UserRepository implements IUserRepository
         $this->repository = $em->getRepository(User::class);
     }
 
-    public function get(UuidInterface $id): User
+    public function get(string $id): User
     {
         /** @var User $user */
         $user = $this->repository->find($id);
