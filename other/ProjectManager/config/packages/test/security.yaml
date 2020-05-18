@@ -1,6 +1,0 @@
-security:
-    encoders:
-        other\ProjectManager\src\Security\UserIdentity: native
-    firewalls:
-        main:
-            http_basic: ~
