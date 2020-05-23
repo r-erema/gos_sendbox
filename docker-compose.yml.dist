@@ -8,9 +8,10 @@ services:
     tty: true
     ports:
       - 8080:8080
+    command: php -S 0.0.0.0:8080
     environment:
-      PHP_IDE_CONFIG: serverName=roadrunner
-      XDEBUG_CONFIG: remote_host=192.168.0.105
+      PHP_IDE_CONFIG: serverName=php_sendbox
+      XDEBUG_CONFIG: remote_host=192.168.1.3
   sqlite3:
     image: nouchka/sqlite3:latest
     stdin_open: true
@@ -18,16 +19,4 @@ services:
     volumes:
     - ./data/sqlite/:/root/db/
     working_dir: /var/www/html
-  postgres:
-    image: postgres:12.2
-    environment:
-      POSTGRES_USER: go
-      POSTGRES_DB: go
-      POSTGRES_PASSWORD: 123
-    ports:
-    - 5432:5432
-  mailhog:
-    image: mailhog/mailhog:latest
-    ports:
-      - "8025:8025"
 
